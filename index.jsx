@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Router, Route, hashHistory ,Link ,browserHistory } from 'react-router';
-import ChosenApp from './chosen/index.jsx';
 import FieldApp from './field/index.jsx';
+import VideoApp from './video/index.jsx';
 import Obserable from './assets/libs/obserable.js';
 class App extends React.Component{
 	constructor(args) {
@@ -12,8 +12,7 @@ class App extends React.Component{
 	render() {
 		var apps = [
 				{path: '/', app:FieldApp },
-				{path: '/chosen', app: ChosenApp},
-			
+				{path: '/video', app:VideoApp }
 		];
 		return (
 			<Router history={hashHistory}>

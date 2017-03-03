@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <script type="text/javascript" src="//bitmovin-a.akamaihd.net/bitmovin-player/stable/7/bitmovinplayer.js"></script>
+  </head>
+  <body>
+    <div id="player"></div>
+    <script type="text/javascript">
+      var conf = {
+        key: "YOUR_KEY_HERE",
+        source:    {
+          dash: "http://bitmovin-a.akamaihd.net/content/sintel/sintel.mpd"
+        }
+      };
+      var player = bitmovin.player('player');
+ 
+      player.setup(conf).then(function(value) {
+        // Success
+      }, function(reason) {
+        // Error!
+      });
+    </script>
+  </body>
+</html>

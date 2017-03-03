@@ -63,7 +63,6 @@ input, textarea {
     .wc-header-ui aside.wc-header-r div {
       width: 25px;
       margin: 0 auto;
-      position: relative;
-      top: -2px; }
+      position: relative; }
 
 /*# sourceMappingURL=header.css.map */

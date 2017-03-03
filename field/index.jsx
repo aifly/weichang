@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import WCHeader from '../components/wc-header.jsx';
 import {WCPubCom} from '../components/public/pub.jsx';
 import IScroll from 'iscroll';
+
+import  $ from 'jquery';
 import { Router, Route, hashHistory ,Link ,browserHistory } from 'react-router';
 import './assets/css/index.css';
 class FieldApp extends Component {
@@ -9,13 +11,20 @@ class FieldApp extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			 describeImg:'./assets/images/f-remark.jpg',
+
+			 defaultDetailDescribeState:'查看更多',
+			 defaultCommentState:'查看更多',
+			 commentHeight:'auto',
+
+
+			 describeSrc:'http://139.129.229.241/VR/jinmaowanli.html',
 			 title:'798艺术区约美术馆',
 			 cate:'艺术区',
 			 addressObj:{
 			 		address:'[朝阳区 燕莎]酒仙桥路4号',
 			 		longitude:'',//经度
-			 		latitude:'',//纬度 
+			 		latitude:'',//纬度
+				 	collect:'2341万',
 			 		tel:'15718879215'//电话
 			 },
 			 detailDescribe:'这里的展览从来不会让挑剔的观众失望，什么样的艺术大师都来过。新馆是2008年10月新建的，地处偏远，但来的人很多。整个建筑设计得非常有特色，展示的空间布局合理，移步换景。由建筑师矶崎新设计，据说设计费每平米达700。',
@@ -196,7 +205,6 @@ class FieldApp extends Component {
 					 address:'朝阳区',
 					 area:'1500m2',
 					 personCount:'1000'
-
 				 }
 			 ]
 
@@ -209,12 +217,13 @@ class FieldApp extends Component {
 				<section ref="scroll" className="wc-field-scroll" style={{height:document.documentElement.clientHeight - 44 }}>
 					<div style={{border:'1px solid transparent',paddingBottom:10}}>
 						<div className='wc-field-describe'>
-							<img src={this.state.describeImg}/>
+							<iframe src={this.state.describeSrc} frameBorder="0"></iframe>
 						</div>
 						<div className='wc-field-title-C'>
 							<div className="wc-field-title-item">
 								<h3>{this.state.title}</h3>
-								<div className="wc-field-cate">{this.state.cate}</div>
+								<div className="wc-field-cate">{this.state.cate} | <span><img
+									src="./assets/images/heart.png" alt=""/></span> <span>{this.state.addressObj.collect}</span></div>
 							</div>
 							<div className='wc-field-tel wc-field-title-item'>
 								<a href={'tel:'+this.state.addressObj.tel}><img src='./assets/images/tel.png'/></a>
@@ -222,25 +231,27 @@ class FieldApp extends Component {
 						</div>
 						<div className="wc-field-address">
 							<img src="./assets/images/pos.png" alt=""/>
-							<div>地址：{this.state.addressObj.address}</div>
+							<div>地址：<span className='wc-address'>{this.state.addressObj.address}</span><span>查看地图</span></div>
 						</div>
 						<div className="wc-field-detail">
 							{this.state.detailDescribe}
 						</div>
-						<div className="wc-field-more"><span>查看更多</span></div>
+						<div className="wc-field-more" onTouchTap={this.seeMoreDetailDescribe.bind(this)}><span>{this.state.defaultDetailDescribeState}</span></div>
 						<div className="wc-field-commit-C">
 							<aside>专业提示</aside>
 							<aside><span><img src="./assets/images/commom.png" alt=""/></span>我要评论</aside>
 						</div>
-						<ul className="wc-field-comment-list">
-							{this.state.commentList.map((item,i)=>{
-								return <li key={i}>
-									<div><img className="wc-comment-logo" src={item.logo} alt=""/>{item.name}</div>
-									<div className="wc-comment-content">{item.content}</div>
-								</li>
-							})}
-						</ul>
-						<div className="wc-field-more"><span>查看更多</span></div>
+						<div style={{overflow:'hidden',height:this.state.commentHeight}}>
+							<ul className="wc-field-comment-list">
+								{this.state.commentList.map((item,i)=>{
+									return <li key={i}>
+										<div><img className="wc-comment-logo" src={item.logo} alt=""/>{item.name}</div>
+										<div className="wc-comment-content">{item.content}</div>
+									</li>
+								})}
+							</ul>
+						</div>
+						<div className="wc-field-more" onTouchTap={this.seeMoreComment.bind(this)}><span>{this.state.defaultCommentState}</span></div>
 
 						<div className="wc-field-commit-C wc-field-params">
 							<aside>场地参数</aside>
@@ -325,6 +336,39 @@ class FieldApp extends Component {
 			</div>
 		);
 	}
+	seeMoreComment(){
+		if(this.state.commentHeight === 'auto'){
+			this.state.commentHeight = this.defaultHeight;
+			this.state.defaultCommentState = '查看更多';
+
+		}else{
+			this.state.commentHeight = 'auto';
+			
+			this.state.defaultCommentState = '收起';
+		}
+		this.forceUpdate();
+		setTimeout(()=>{
+			this.mainScroll.refresh();//刷新滚动条
+		},100);
+	}
+
+	seeMoreDetailDescribe(){
+			if(this.state.detailDescribe === this.defaultDetailDescribe){
+					this.state.detailDescribe = this.state.detailDescribe.substring(0,52)+'...';
+					this.state.defaultDetailDescribeState = '查看更多';
+					
+			}else{
+				this.state.detailDescribe = this.defaultDetailDescribe;
+				this.state.defaultDetailDescribeState = '收起';
+				
+			}
+			this.forceUpdate();
+			setTimeout(()=>{
+				this.mainScroll.refresh();//刷新滚动条
+			},100);
+
+			
+	}
 	componentDidMount(){
 		setTimeout(()=>{
 			this.mainScroll = new IScroll(this.refs['scroll'],{
@@ -344,7 +388,21 @@ class FieldApp extends Component {
 				scrollX:true,
 				scrollY:false,
 			})
-  	},100)
+  		},100);
+
+		this.defaultDetailDescribe = this.state.detailDescribe;
+		this.state.detailDescribe = this.state.detailDescribe.substring(0,52)+'...';
+
+
+		this.defaultHeight = 0 ;
+		$('.wc-field-comment-list li').each((i,n)=>{
+			if(i<=2){
+				this.defaultHeight+=$(n).height()+ 10;
+			}
+		});
+
+		this.state.commentHeight = this.defaultHeight;
+		this.forceUpdate();
 	}
 }
 export default WCPubCom(FieldApp);

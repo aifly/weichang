@@ -13,7 +13,24 @@
 		<div id="fly-main-ui">
 			
 		</div>
-		<script src='http://localhost:1234/index.js'></script>
-		<!--<script src='./assets/js/index.js'></script>-->
+
+			<script>
+				
+				function onError(){
+
+						var script = '<script src="./assets/js/index.js"><\/script> ';
+						var s = document.createElement('script');
+						s.src='./assets/js/index.js';
+						document.body.appendChild(s);;
+				}
+
+		</script>
+
+		<script src='./assets/libs//UtoVRPlayerGuide.js'></script>
+		<script src='http://localhost:1234/index.js' onError='onError()'></script>
+		<!--
+
+			<script src='./assets/js/index.js'></script>
+			-->
 </body>
 </html>
