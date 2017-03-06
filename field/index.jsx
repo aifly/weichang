@@ -360,7 +360,6 @@ class FieldApp extends Component {
 			}else{
 				this.state.detailDescribe = this.defaultDetailDescribe;
 				this.state.defaultDetailDescribeState = '收起';
-				
 			}
 			this.forceUpdate();
 			setTimeout(()=>{

@@ -1,0 +1,59 @@
+@import "../../../components/css/base.scss";
+body{
+  overflow: hidden;
+}
+
+$mainW : 9.4rem;
+.wc-news-main-ui{
+  .wc-news-title{
+    font-weight:normal;
+    width: $mainW;
+    margin:.3rem auto 0;
+    font-size:.5rem;
+  }
+  .wc-news-info{
+    width:$mainW;
+    height:40px;
+    margin:0 auto;
+    @include displayBox(horizontal);
+    -webkit-box-pack: start;
+    font-size:12px;
+    color:#cdd6e7;
+    span{
+      &:first-of-type{
+        color:#7f8fa9;
+      }
+      margin:0 .2rem;
+    }
+    aside{
+      -webkit-box-flex: 1;
+      &:last-of-type{
+        img{
+          width:.5rem;
+        }
+      }
+      &:last-of-type{
+        text-align: right;
+      }
+    }
+  }
+
+  .wc-news-img{
+    width:$mainW;
+    margin:0 auto;
+    img{
+      @include br(5px);
+    }
+  }
+
+  .wc-news-content{
+    width:$mainW;
+    margin:0 auto;
+    p{
+      text-indent:2em;
+      font-size:12px;
+      line-height:.65rem;
+      margin:10px 0;
+    }
+  }
+}
