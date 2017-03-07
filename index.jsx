@@ -17,11 +17,12 @@ class App extends React.Component{
 	}
 	render() {
 		var apps = [
-				{path: '/', app:FieldApp },
-				{path: '/video', app:VideoApp },
-				{path: '/live', app:LiveApp },
-				{path: '/news', app:NewsApp },
-				{path: '/subject', app:SubjectApp },
+				{path: '/:id', app:FieldApp },
+				{path: '/field/:id', app:FieldApp },
+				{path: '/video/:id', app:VideoApp },
+				{path: '/live/:id', app:LiveApp },
+				{path: '/news/:id', app:NewsApp },
+				{path: '/subject/:id', app:SubjectApp },
 		];
 		return (
 			<Router history={hashHistory}>

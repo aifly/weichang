@@ -80,15 +80,15 @@
 
 	var _liveIndexJsx2 = _interopRequireDefault(_liveIndexJsx);
 
-	var _newsIndexJsx = __webpack_require__(270);
+	var _newsIndexJsx = __webpack_require__(268);
 
 	var _newsIndexJsx2 = _interopRequireDefault(_newsIndexJsx);
 
-	var _subjectIndexJsx = __webpack_require__(273);
+	var _subjectIndexJsx = __webpack_require__(271);
 
 	var _subjectIndexJsx2 = _interopRequireDefault(_subjectIndexJsx);
 
-	var _assetsLibsObserableJs = __webpack_require__(268);
+	var _assetsLibsObserableJs = __webpack_require__(274);
 
 	var _assetsLibsObserableJs2 = _interopRequireDefault(_assetsLibsObserableJs);
 
@@ -104,7 +104,7 @@
 		_createClass(App, [{
 			key: 'render',
 			value: function render() {
-				var apps = [{ path: '/', app: _fieldIndexJsx2['default'] }, { path: '/video', app: _videoIndexJsx2['default'] }, { path: '/live', app: _liveIndexJsx2['default'] }, { path: '/news', app: _newsIndexJsx2['default'] }, { path: '/subject', app: _subjectIndexJsx2['default'] }];
+				var apps = [{ path: '/:id', app: _fieldIndexJsx2['default'] }, { path: '/field/:id', app: _fieldIndexJsx2['default'] }, { path: '/video/:id', app: _videoIndexJsx2['default'] }, { path: '/live/:id', app: _liveIndexJsx2['default'] }, { path: '/news/:id', app: _newsIndexJsx2['default'] }, { path: '/subject/:id', app: _subjectIndexJsx2['default'] }];
 				return _react2['default'].createElement(
 					_reactRouter.Router,
 					{ history: _reactRouter.hashHistory },
@@ -41577,74 +41577,6 @@
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var Obserable = (function () {
-		function Obserable() {
-			_classCallCheck(this, Obserable);
-
-			this.handlers = {};
-		}
-
-		_createClass(Obserable, [{
-			key: "on",
-			value: function on(type, handler) {
-
-				this.handlers[type] = this.handlers[type] || [];
-
-				this.off(type);
-				this.handlers[type].push({ handler: handler, type: type });
-			}
-		}, {
-			key: "off",
-			value: function off(type) {
-				var _this = this;
-
-				this.handlers[type] && this.handlers[type].forEach(function (item, i) {
-					if (item.type === type) {
-						_this.handlers[type].splice(i, 1);
-					};
-				});
-			}
-		}, {
-			key: "trigger",
-			value: function trigger(event) {
-
-				if (!event.target) {
-					event.target = this;
-				}
-				if (this.handlers[event.type] instanceof Array) {
-					var handlers = this.handlers[event.type]; //检出被观察者注册的观察者
-					for (var i = 0, len = handlers.length; i < len; i++) {
-						return handlers[i].handler(event.data); //回调函数执行，也就是观察者更新自己
-					}
-				}
-			}
-		}]);
-
-		return Obserable;
-	})();
-
-	exports["default"] = Obserable;
-	module.exports = exports["default"];
-
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "obserable.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
-
-/***/ },
-/* 269 */,
-/* 270 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
-
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -41677,7 +41609,7 @@
 
 	var _reactRouter = __webpack_require__(179);
 
-	__webpack_require__(271);
+	__webpack_require__(269);
 
 	var _componentsVideoJsx = __webpack_require__(262);
 
@@ -41818,13 +41750,13 @@
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
-/* 271 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(272);
+	var content = __webpack_require__(270);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(248)(content, {});
@@ -41844,7 +41776,7 @@
 	}
 
 /***/ },
-/* 272 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(247)();
@@ -41858,7 +41790,7 @@
 
 
 /***/ },
-/* 273 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -41895,7 +41827,7 @@
 
 	var _reactRouter = __webpack_require__(179);
 
-	__webpack_require__(274);
+	__webpack_require__(272);
 
 	var _componentsVideoJsx = __webpack_require__(262);
 
@@ -41916,11 +41848,12 @@
 			_get(Object.getPrototypeOf(SubjectApp.prototype), 'constructor', this).call(this, props);
 
 			this.state = {
-				imgSrc: '',
-				describe: '',
+				imgSrc: './assets/images/zt.jpg',
+				describe: '在第一期我们讲了登录界面的设计方法，这期我们聊聊引导页。有哪些常见的引导页类型，如何才能快速提升它的设计格调，从理论到方法都有了，强烈建议新手学习。',
 				list: [{
+					id: '1',
 					type: 'field',
-					'imgSrc': './assets/images/feild.jpg',
+					imgSrc: './assets/images/feild.jpg',
 					name: '798艺术区约美术馆',
 					detail: {
 						address: '朝阳区',
@@ -41928,8 +41861,27 @@
 						maxPerson: '1000'
 					},
 					title: '城市让生活更美好，而城市里的美丽人生，从美术馆开始。',
-					describe: ' '
-
+					describe: '这里的展览从来不会让挑剔的观众失望，什么样的艺术大师都来过。新馆是2008年10月新建的，地处偏远，但来的人很多。整个建筑设计得非常有特色，展示的空间布局合理，移步换景。由建筑师矶崎新设计，据说设计费每平米达700元。'
+				}, {
+					id: '2',
+					type: 'news',
+					imgSrc: './assets/images/f-remark.jpg',
+					title: '城市里面的美丽人生，从美术馆开始。',
+					describe: '这里的展览从来不会让挑剔的观众失望，什么样的艺术大师都来过。新馆是2008年10月新建的，地处偏远，但来的人很多。整个建筑设计得非常有特色，展示的空间布局合理，移步换景。由建筑师矶崎新设计，据说设计费每平米达700元。'
+				}, {
+					id: 1,
+					type: 'video',
+					isVr: true,
+					imgSrc: './assets/images/video-poster.jpg',
+					from: {
+						src: './assets/images/yk-logo.png',
+						name: '优酷'
+					},
+					videoTitle: '2017年维多利亚的秘密秀场直播',
+					duration: '01:54:30',
+					follow: 355,
+					desTitle: '城市里面的美丽人生，从美术馆开始。',
+					describe: '这里的展览从来不会让挑剔的观众失望，什么样的艺术大师都来过。新馆是2008年10月新建的，地处偏远，但来的人很多。整个建筑设计得非常有特色，展示的空间布局合理，移步换景。由建筑师矶崎新设计，据说设计费每平米达700元。'
 				}]
 			};
 			this.viewW = document.documentElement.clientWidth;
@@ -41940,16 +41892,218 @@
 			key: 'render',
 			value: function render() {
 
-				var headerProps = {};
+				var headerProps = {
+					rightMenu: _react2['default'].createElement('img', { src: './assets/images/collect.png' })
+				};
 				return _react2['default'].createElement(
 					'div',
 					{ className: 'wc-subject-main-ui' },
-					_react2['default'].createElement(_componentsWcHeaderJsx2['default'], headerProps)
+					_react2['default'].createElement(_componentsWcHeaderJsx2['default'], headerProps),
+					_react2['default'].createElement(
+						'div',
+						{ className: 'wc-subject-scroll-C', ref: 'wc-subject-scroll-C', style: { height: this.viewH - 44, overflow: 'hidden' } },
+						_react2['default'].createElement(
+							'ul',
+							null,
+							_react2['default'].createElement(
+								'li',
+								null,
+								_react2['default'].createElement('img', { src: this.state.imgSrc }),
+								_react2['default'].createElement(
+									'div',
+									{ className: 'wc-subject-main-describe' },
+									this.state.describe
+								)
+							),
+							this.state.list.map(function (item, i) {
+								var component = _react2['default'].createElement('li', { key: i });
+								switch (item.type) {
+									case "field":
+										component = _react2['default'].createElement(
+											'li',
+											{ key: i },
+											_react2['default'].createElement(
+												'section',
+												{ className: 'wc-subject-field' },
+												_react2['default'].createElement(
+													'div',
+													{ className: 'wc-subject-field-img' },
+													_react2['default'].createElement(
+														_reactRouter.Link,
+														{ to: '/' + item.type + '/' + item.id },
+														_react2['default'].createElement('img', { src: item.imgSrc })
+													)
+												),
+												_react2['default'].createElement(
+													'div',
+													{ className: 'wc-subject-field-prop' },
+													_react2['default'].createElement(
+														'h4',
+														null,
+														item.name
+													),
+													_react2['default'].createElement(
+														'span',
+														null,
+														item.detail.address
+													),
+													_react2['default'].createElement(
+														'span',
+														null,
+														item.detail.area
+													),
+													_react2['default'].createElement(
+														'span',
+														null,
+														'最多容纳',
+														item.detail.maxPerson,
+														'人'
+													)
+												),
+												_react2['default'].createElement(
+													'div',
+													{ className: 'wc-subject-field-title' },
+													item.title
+												),
+												_react2['default'].createElement(
+													'div',
+													{ className: 'wc-subject-field-describe' },
+													item.describe
+												)
+											)
+										);
+										break;
+									case "news":
+										component = _react2['default'].createElement(
+											'li',
+											{ key: i },
+											_react2['default'].createElement(
+												'section',
+												{ className: 'wc-subject-news' },
+												_react2['default'].createElement(
+													'div',
+													{ className: 'wc-subject-new-img' },
+													_react2['default'].createElement(
+														_reactRouter.Link,
+														{ to: '/' + item.type + '/' + item.id },
+														_react2['default'].createElement('img', { src: item.imgSrc })
+													)
+												),
+												_react2['default'].createElement(
+													'h3',
+													{ className: 'wc-subject-news-title' },
+													item.title
+												),
+												_react2['default'].createElement(
+													'div',
+													{ className: 'wc-subject-news-describe' },
+													item.describe
+												),
+												_react2['default'].createElement(
+													'div',
+													{ className: 'wc-subject-see-all' },
+													_react2['default'].createElement(
+														_reactRouter.Link,
+														{ to: '/' + item.type + '/' + item.id },
+														'查看全部'
+													)
+												)
+											)
+										);
+										break;
+									case "video":
+										component = _react2['default'].createElement(
+											'li',
+											{ key: i },
+											_react2['default'].createElement(
+												'section',
+												{ className: 'wc-subject-video' },
+												_react2['default'].createElement(
+													'div',
+													{ className: 'wc-subject-video-img' },
+													_react2['default'].createElement(
+														_reactRouter.Link,
+														{ to: '/' + item.type + '/' + item.id },
+														_react2['default'].createElement('img', { src: item.imgSrc })
+													),
+													item.isVr && _react2['default'].createElement('img', { className: 'wc-subject-vr', src: './assets/images/vr.png' })
+												),
+												_react2['default'].createElement(
+													'div',
+													{ className: 'wc-subject-video-info' },
+													_react2['default'].createElement(
+														'aside',
+														null,
+														_react2['default'].createElement(
+															'div',
+															{ className: 'wc-subject-from-logo' },
+															_react2['default'].createElement('img', { src: item.from.src })
+														),
+														_react2['default'].createElement(
+															'div',
+															null,
+															item.from.name
+														)
+													),
+													_react2['default'].createElement(
+														'aside',
+														null,
+														_react2['default'].createElement(
+															'h2',
+															null,
+															item.videoTitle
+														),
+														_react2['default'].createElement(
+															'div',
+															{ className: 'wc-subject-video-duration' },
+															_react2['default'].createElement(
+																'span',
+																null,
+																item.duration
+															),
+															_react2['default'].createElement(
+																'span',
+																null,
+																'|'
+															),
+															_react2['default'].createElement(
+																'span',
+																null,
+																_react2['default'].createElement('img', { src: './assets/images/heart.png' }),
+																item.follow
+															)
+														)
+													)
+												),
+												_react2['default'].createElement(
+													'h2',
+													{ className: 'wc-subject-video-title' },
+													item.desTitle
+												),
+												_react2['default'].createElement(
+													'div',
+													{ className: 'wc-subject-video-describe' },
+													item.describe
+												)
+											)
+										);
+										break;
+								}
+								return component;
+							})
+						)
+					)
 				);
 			}
 		}, {
 			key: 'componentDidMount',
-			value: function componentDidMount() {}
+			value: function componentDidMount() {
+				var _this = this;
+
+				setTimeout(function () {
+					_this.scroll = new _iscroll2['default'](_this.refs['wc-subject-scroll-C']);
+				}, 100);
+			}
 		}]);
 
 		return SubjectApp;
@@ -41961,13 +42115,13 @@
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
-/* 274 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(275);
+	var content = __webpack_require__(273);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(248)(content, {});
@@ -41987,7 +42141,7 @@
 	}
 
 /***/ },
-/* 275 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(247)();
@@ -41995,10 +42149,77 @@
 
 
 	// module
-	exports.push([module.id, "/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden; }\r\n\r\n.wc-news-main-ui .wc-news-title {\r\n  font-weight: normal;\r\n  width: 9.4rem;\r\n  margin: .3rem auto 0;\r\n  font-size: .5rem; }\r\n.wc-news-main-ui .wc-news-info {\r\n  width: 9.4rem;\r\n  height: 40px;\r\n  margin: 0 auto;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-pack: start;\r\n  font-size: 12px;\r\n  color: #cdd6e7; }\r\n  .wc-news-main-ui .wc-news-info span {\r\n    margin: 0 .2rem; }\r\n    .wc-news-main-ui .wc-news-info span:first-of-type {\r\n      color: #7f8fa9; }\r\n  .wc-news-main-ui .wc-news-info aside {\r\n    -webkit-box-flex: 1; }\r\n    .wc-news-main-ui .wc-news-info aside:last-of-type img {\r\n      width: .5rem; }\r\n    .wc-news-main-ui .wc-news-info aside:last-of-type {\r\n      text-align: right; }\r\n.wc-news-main-ui .wc-news-img {\r\n  width: 9.4rem;\r\n  margin: 0 auto; }\r\n  .wc-news-main-ui .wc-news-img img {\r\n    border-radius: 5px; }\r\n.wc-news-main-ui .wc-news-content {\r\n  width: 9.4rem;\r\n  margin: 0 auto; }\r\n  .wc-news-main-ui .wc-news-content p {\r\n    text-indent: 2em;\r\n    font-size: 12px;\r\n    line-height: .65rem;\r\n    margin: 10px 0; }\r\n\r\n/*# sourceMappingURL=index.css.map */\r\n", ""]);
+	exports.push([module.id, "/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden; }\r\n\r\n.wc-subject-main-ui h2, .wc-subject-main-ui h3, .wc-subject-main-ui h4 {\r\n  font-weight: normal; }\r\n.wc-subject-main-ui .wc-subject-main-describe {\r\n  width: 9.4rem;\r\n  margin: .5rem auto 0;\r\n  color: #6d788f;\r\n  font-size: 12px;\r\n  line-height: .7rem;\r\n  text-align: center; }\r\n.wc-subject-main-ui .wc-subject-scroll-C > ul {\r\n  width: 10rem; }\r\n  .wc-subject-main-ui .wc-subject-scroll-C > ul li {\r\n    padding-top: .5rem;\r\n    padding-bottom: .8rem;\r\n    position: relative; }\r\n    .wc-subject-main-ui .wc-subject-scroll-C > ul li > section {\r\n      width: 9.4rem;\r\n      margin: 0 auto; }\r\n    .wc-subject-main-ui .wc-subject-scroll-C > ul li:nth-of-type(2) {\r\n      border-top: 1px solid #ebebeb; }\r\n    .wc-subject-main-ui .wc-subject-scroll-C > ul li:first-of-type {\r\n      padding-top: 0; }\r\n    .wc-subject-main-ui .wc-subject-scroll-C > ul li:before {\r\n      content: '';\r\n      position: absolute;\r\n      bottom: 0;\r\n      width: 100%;\r\n      height: 3px;\r\n      background: #eeeeee; }\r\n    .wc-subject-main-ui .wc-subject-scroll-C > ul li:last-of-type:before {\r\n      display: none; }\r\n.wc-subject-main-ui .wc-subject-field .wc-subject-field-img img, .wc-subject-main-ui .wc-subject-field .wc-subject-field-img a {\r\n  border-radius: 5px; }\r\n.wc-subject-main-ui .wc-subject-field h4 {\r\n  font-size: .6rem;\r\n  height: 1.2rem;\r\n  line-height: 1.2rem; }\r\n.wc-subject-main-ui .wc-subject-field .wc-subject-field-prop span {\r\n  font-size: 12px;\r\n  color: #7f8fa9; }\r\n  .wc-subject-main-ui .wc-subject-field .wc-subject-field-prop span:nth-of-type(2) {\r\n    margin: 0 10px; }\r\n.wc-subject-main-ui .wc-subject-field .wc-subject-field-title {\r\n  font-size: .5rem;\r\n  text-align: center;\r\n  margin: .5rem 0; }\r\n.wc-subject-main-ui .wc-subject-field .wc-subject-field-describe {\r\n  text-indent: 2em;\r\n  color: #7f8fa9; }\r\n.wc-subject-main-ui .wc-subject-news .wc-subject-news-img img, .wc-subject-main-ui .wc-subject-news .wc-subject-news-img a {\r\n  border-radius: 5px; }\r\n.wc-subject-main-ui .wc-subject-news .wc-subject-news-title {\r\n  font-size: .5rem;\r\n  text-align: center;\r\n  margin: .3rem 0; }\r\n.wc-subject-main-ui .wc-subject-news .wc-subject-news-describe {\r\n  text-indent: 2em;\r\n  color: #7f8fa9; }\r\n.wc-subject-main-ui .wc-subject-news .wc-subject-see-all {\r\n  text-align: center; }\r\n  .wc-subject-main-ui .wc-subject-news .wc-subject-see-all a {\r\n    color: #1d94d4; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-img img, .wc-subject-main-ui .wc-subject-video .wc-subject-video-img a {\r\n  border-radius: 5px; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-vr {\r\n  position: absolute;\r\n  width: 1rem;\r\n  right: .5rem;\r\n  z-index: 1;\r\n  top: 1rem; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-duration {\r\n  margin: .3rem 0; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-info {\r\n  width: 9.4rem;\r\n  margin: .5rem auto 0;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-pack: start;\r\n  -webkit-box-align: start; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside:first-of-type {\r\n    width: 1rem;\r\n    color: #b2d2e3; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside:last-of-type {\r\n    width: 7.2rem;\r\n    padding-left: .3rem;\r\n    margin-left: .3rem;\r\n    border-left: 1px solid rgba(234, 234, 234, 0.7); }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside h2 {\r\n    width: 100%;\r\n    font-size: .6rem;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    white-space: nowrap; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside .wc-subject-video-duration span:first-of-type {\r\n    color: #7f8fa9; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside .wc-subject-video-duration span:nth-of-type(2) {\r\n    margin: 0 .3rem;\r\n    color: #cdd6e7; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside .wc-subject-video-duration span:last-of-type {\r\n    color: #cdd6e7; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside .wc-subject-video-duration span img {\r\n    width: .5rem;\r\n    margin-right: .3rem; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-title {\r\n  font-size: .5rem;\r\n  text-align: center;\r\n  margin: .3rem 0; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-describe {\r\n  text-indent: 2em;\r\n  color: #7f8fa9; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-see-all {\r\n  text-align: center; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-see-all a {\r\n    color: #1d94d4; }\r\n\r\n/*# sourceMappingURL=index.css.map */", ""]);
 
 	// exports
 
+
+/***/ },
+/* 274 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Obserable = (function () {
+		function Obserable() {
+			_classCallCheck(this, Obserable);
+
+			this.handlers = {};
+		}
+
+		_createClass(Obserable, [{
+			key: "on",
+			value: function on(type, handler) {
+
+				this.handlers[type] = this.handlers[type] || [];
+
+				this.off(type);
+				this.handlers[type].push({ handler: handler, type: type });
+			}
+		}, {
+			key: "off",
+			value: function off(type) {
+				var _this = this;
+
+				this.handlers[type] && this.handlers[type].forEach(function (item, i) {
+					if (item.type === type) {
+						_this.handlers[type].splice(i, 1);
+					};
+				});
+			}
+		}, {
+			key: "trigger",
+			value: function trigger(event) {
+
+				if (!event.target) {
+					event.target = this;
+				}
+				if (this.handlers[event.type] instanceof Array) {
+					var handlers = this.handlers[event.type]; //检出被观察者注册的观察者
+					for (var i = 0, len = handlers.length; i < len; i++) {
+						return handlers[i].handler(event.data); //回调函数执行，也就是观察者更新自己
+					}
+				}
+			}
+		}]);
+
+		return Obserable;
+	})();
+
+	exports["default"] = Obserable;
+	module.exports = exports["default"];
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "obserable.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ }
 /******/ ]);
