@@ -15,20 +15,21 @@ class VideoApp extends Component {
 		this.state = {
 			videoShow:false,
 			scrollHeight:0,
-			"poster":"./assets/images/video-poster.jpg",
-			"isVr":true,
-			"watch":"1235",
-			"videoSrc":'http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8',//"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
-			"title":"2016年维多利亚的秘密秀场",
-			"cate":"时尚",
-			"time":"01:35:55",
-			"collect":"124",
-			"from":{
-				"src":"./assets/images/yk-logo.png",
-				"name":"优酷"
-			},
-			"remark":"尤伦斯当代艺术中心的展览规格大都不小，尤其能给人惊喜的是这里的布展。展厅经常会被艺术家打造成全新的空间，王迈把这里变成过狭窄的蓝色海峡，徐震在这里开过超市，前阵子这里又被重新装置成了可以隐居的“家”，而这种展厅的开发利用，也使得美术馆的展览看起来更加诱人。尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，"
-
+			videoObj:{
+				"poster":"./assets/images/video-poster.jpg",
+				"isVr":true,
+				"watch":"1235",
+				"videoSrc":'',//"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
+				"title":"2016年维多利亚的秘密秀场",
+				"cate":"时尚",
+				"time":"01:35:55",
+				"collect":"124",
+				"from":{
+					"src":"./assets/images/yk-logo.png",
+					"name":"优酷"
+				},
+				"remark":"尤伦斯当代艺术中心的展览规格大都不小，尤其能给人惊喜的是这里的布展。展厅经常会被艺术家打造成全新的空间，王迈把这里变成过狭窄的蓝色海峡，徐震在这里开过超市，前阵子这里又被重新装置成了可以隐居的“家”，而这种展厅的开发利用，也使得美术馆的展览看起来更加诱人。尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，"	
+			}
 		}
 		this.viewW = document.documentElement.clientWidth;
 		this.viewH = document.documentElement.clientHeight;
@@ -38,7 +39,7 @@ class VideoApp extends Component {
 		var  posterStyle = {
 			width:this.viewW,
 			height:this.viewW * 3 /4,
-			background:'url('+this.state.poster+') no-repeat center center',
+			background:'url('+this.state.videoObj.poster+') no-repeat center center',
 			backgroundSize:'cover'
 		}
 		var data = this.state;
@@ -49,7 +50,7 @@ class VideoApp extends Component {
 				<div className="wc-video-remark-scroll" ref='wc-video-remark-scroll' style={{height:this.state.scrollHeight,overflow:'hidden'}}>
 					<div>
 					<VideoChildApp {...data}></VideoChildApp>
-						<div className='wc-video-remark'>{this.state.remark}</div>
+						<div className='wc-video-remark'>{this.state.videoObj.remark}</div>
 					</div>
 				</div>
 			</div>
@@ -104,6 +105,24 @@ class VideoApp extends Component {
 				preventDefault:true
 			});
 		},1000);
+
+		var id = this.props.params.id;
+		var s = this;
+		$.ajax({
+			url:window.baseUrl + '/get_video_detail',
+			data:{
+				videoId:id,
+			},
+			success(data){
+				console.log(data);
+				if(data.code === 200){
+					var result = data.result;
+					console.log(result)
+					s.state.videoObj = result;
+					s.forceUpdate();
+				}
+			}
+		})
 
 
 

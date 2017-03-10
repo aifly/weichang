@@ -19,20 +19,23 @@ class LiveApp extends Component {
 			videoShow:false,
 			inputShow:true,
 			scrollHeight:'auto',
-			"poster":"./assets/images/video-poster.jpg",
-			"isVr":true,
-			"watch":"1235",
-			"videoSrc":'http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8',//"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
-			"title":"2016年维多利亚的秘密秀场",
-			"cate":"时尚",
-			"time":"01:35:55",
-			"collect":"124",
 			scale:9/16,
-			"from":{
-				"src":"./assets/images/yk-logo.png",
-				"name":"优酷"
+			videoObj:{
+				"poster":"./assets/images/video-poster.jpg",
+				"isVr":true,
+				"videoSrc":'http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8',//"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
+				"title":"2016年维多利亚的秘密秀场",
+				"cate":"时尚",
+				"time":"01:35:55",
+				"collect":"124",
+				
+				"from":{
+					"src":"./assets/images/yk-logo.png",
+					"name":"优酷"
+				},
+				"remark":"尤伦斯当代艺术中心的展览规格大都不小，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展中心的展览规格伦当代艺术中心的展览规格大都不小，",
+			
 			},
-			"remark":"尤伦斯当代艺术中心的展览规格大都不小，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展中心的展览规格伦当代艺术中心的展览规格大都不小，",
 			"commentList":[
 				{
 					ico:'./assets/images/yk-logo.png',
@@ -62,7 +65,7 @@ class LiveApp extends Component {
 	}
 	render() {
 
-		this.defaultRemark = this.defaultRemark || this.state.remark;
+		this.defaultRemark = this.defaultRemark || this.state.videoObj.remark;
 		var  posterStyle = {
 			width:this.viewW,
 			height:this.viewW * 3 /4,
@@ -82,8 +85,8 @@ class LiveApp extends Component {
 				<div className="wc-video-remark-scroll" ref='wc-live-remark-scroll' style={{height:this.state.scrollHeight,overflow:'hidden'}}>
 					<div>
 						<VideoChildApp {...data}></VideoChildApp>
-						<div className='wc-video-remark'>{this.state.remark}</div>
-						<div className="wc-live-more" onTouchTap={this.seeMoreDescribe.bind(this)}><span>{this.state.defaultRemarkState}</span></div>
+						<div className='wc-video-remark'>{this.state.videoObj.remark}</div>
+						{this.state.videoObj.remark.length>50 && <div className="wc-live-more" onTouchTap={this.seeMoreDescribe.bind(this)}><span>{this.state.defaultRemarkState}</span></div>}
 					</div>
 				</div>
 				<div className='wc-live-comment-list' ref="wc-live-comment-list" style={{height:this.state.commentHeight}}>
@@ -148,45 +151,66 @@ class LiveApp extends Component {
 
 	componentDidMount(){
 		
+		var id = this.props.params.id;
+
+		var s = this;
+		$.ajax({
+			url:window.baseUrl + '/get_video_detail',
+			data:{
+				videoId:id,
+			},
+			success(data){
+				if(data.code === 200){
+					var result = data.result;
+					console.log(result)
+					s.state.videoObj = result;
+					s.forceUpdate(()=>{
+
+						s.defaultRemark = s.state.videoObj.remark;
+						s.state.videoObj.remark = s.state.videoObj.remark.substring(0,32)+'...';
+
+						
+						s.forceUpdate(()=>{
+							s.minRemarkHeight = s.refs['wc-live-remark-scroll'].offsetHeight;
+						});
+
+						s.isMaxHeight = s.refs['wc-live-remark-scroll'].offsetHeight > s.viewH;
+						s.maxRemarkHeight =s.isMaxHeight? s.viewH -44 -6 : s.refs['wc-live-remark-scroll'].offsetHeight; 
+						setTimeout(()=>{
+							 s.topScroll = new IScroll(s.refs['wc-live-remark-scroll']);
+							 var commentHeight = s.viewH - s.refs['wc-live-remark-scroll'].offsetHeight - 44 - 6;
+							 s.setState({commentHeight:commentHeight})
+							  s.commentScroll = new IScroll(s.refs['wc-live-comment-list'],{probeType:3});
+							  var startY = 0;
+
+							  s.refs['wc-live-comment-list'].addEventListener('touchstart',function(e){
+							  	var  e = e.changedTouches[0];
+							  	startY = e.pageY;
+							  	document.ontouchmove=function(e){
+							  		var  e = e.changedTouches[0];
+							  		var endY = e.pageY;
+							  		s.setState({
+							  			inputShow:startY<endY
+							  		},()=>{
+							  			startY = endY;
+							  		});
+							  	}
+							  	document.ontouchend = function(e){
+							  		var  e = e.changedTouches[0];
+							  		s.ontouchend = s.ontouchmove = null;
+							  	}
+							  });
+							   
+						},100);
+
+					});
+				}
+			}
+		})
+
 
 		
-		this.defaultRemark = this.state.remark;
-		this.state.remark = this.state.remark.substring(0,32)+'...';
 		
-		this.forceUpdate(()=>{
-			this.minRemarkHeight = this.refs['wc-live-remark-scroll'].offsetHeight;
-		});
-
-		var s=  this;
-
-		this.isMaxHeight = this.refs['wc-live-remark-scroll'].offsetHeight > this.viewH;
-		this.maxRemarkHeight =this.isMaxHeight? this.viewH -44 -6 : this.refs['wc-live-remark-scroll'].offsetHeight; 
-		setTimeout(()=>{
-			 this.topScroll = new IScroll(this.refs['wc-live-remark-scroll']);
-			 var commentHeight = this.viewH - this.refs['wc-live-remark-scroll'].offsetHeight - 44 - 6;
-			 this.setState({commentHeight:commentHeight})
-			  this.commentScroll = new IScroll(this.refs['wc-live-comment-list'],{probeType:3});
-			  var startY = 0;
-
-			  this.refs['wc-live-comment-list'].addEventListener('touchstart',function(e){
-			  	var  e = e.changedTouches[0];
-			  	startY = e.pageY;
-			  	document.ontouchmove=function(e){
-			  		var  e = e.changedTouches[0];
-			  		var endY = e.pageY;
-			  		s.setState({
-			  			inputShow:startY<endY
-			  		},()=>{
-			  			startY = endY;
-			  		});
-			  	}
-			  	document.ontouchend = function(e){
-			  		var  e = e.changedTouches[0];
-			  		this.ontouchend = this.ontouchmove = null;
-			  	}
-			  });
-			   
-		},100);
 	}
 }
 export default WCPubCom(LiveApp);

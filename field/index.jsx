@@ -17,7 +17,7 @@ class FieldApp extends Component {
 			 commentHeight:'auto',
 
 
-			 describeSrc:'http://139.129.229.241/VR/jinmaowanli.html',
+			 describeSrc:'',
 			 title:'798艺术区约美术馆',
 			 cate:'艺术区',
 			 addressObj:{
@@ -29,7 +29,7 @@ class FieldApp extends Component {
 			 },
 			 detailDescribe:'这里的展览从来不会让挑剔的观众失望，什么样的艺术大师都来过。新馆是2008年10月新建的，地处偏远，但来的人很多。整个建筑设计得非常有特色，展示的空间布局合理，移步换景。由建筑师矶崎新设计，据说设计费每平米达700。',
 			 commentList:[
-			 		{
+			 		/*{
 			 			 logo:"./assets/images/yk-logo.png",
 			 			 name:'优酷',
 			 			 content:' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
@@ -49,7 +49,7 @@ class FieldApp extends Component {
 			 			 logo:"./assets/images/yk-logo.png",
 			 			 name:'优酷',
 			 			 content:' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
-			 		}
+			 		}*/
 			 ],
 			 fieldParams:[//场地参数 
 			 		{
@@ -217,7 +217,7 @@ class FieldApp extends Component {
 				<section ref="scroll" className="wc-field-scroll" style={{height:document.documentElement.clientHeight - 44 }}>
 					<div style={{border:'1px solid transparent',paddingBottom:10}}>
 						<div className='wc-field-describe'>
-							<iframe src={this.state.describeSrc} frameBorder="0"></iframe>
+							{this.state.describeSrc && <iframe src={this.state.describeSrc} frameBorder="0"></iframe>}
 						</div>
 						<div className='wc-field-title-C'>
 							<div className="wc-field-title-item">
@@ -303,7 +303,8 @@ class FieldApp extends Component {
 								 <img src={this.state.fieldActive.activePic}/>
 							</div>
 							<div  className="wc-field-active-scroll" ref='wc-field-active-scroll'>
-								<ul  className="wc-field-active-list" style={{width:this.state.fieldActive.activeList.length * (document.documentElement.clientWidth/ 10 * 4+ 10)}}>
+								{!this.state.fieldActive.activeList && <div></div>}
+								{this.state.fieldActive.activeList && <ul  className="wc-field-active-list" style={{width:this.state.fieldActive.activeList.length * (document.documentElement.clientWidth/ 10 * 4+ 10)}}>
 									{this.state.fieldActive.activeList.map((item,i)=>{
 										return <li key={i}>
 											<div><img src={item.src} alt=""/></div>
@@ -311,7 +312,7 @@ class FieldApp extends Component {
 											<div>{item.date}</div>
 										</li>
 									})}
-								</ul>
+								</ul>}
 							</div>
 						</div>
 
@@ -369,39 +370,66 @@ class FieldApp extends Component {
 			
 	}
 	componentDidMount(){
-		setTimeout(()=>{
-			this.mainScroll = new IScroll(this.refs['scroll'],{
-				preventDefault:false
-			});
+		var s = this;
+		var id = this.props.params.id;
+		$.ajax({
+			url:window.baseUrl + '/get_place_detail',
+			data:{
+				place_id:id
+			},
+			success(data){
+					if(data.code === 200){
+							var result = data.result;
+							s.state.describeSrc = result.describeSrc;
+							s.state.title = result.title;
+							s.state.cate = result.cate;
+							s.state.addressObj = result.addressObj;
+							s.state.detailDescribe = result.detailDescribe;
+							s.state.commentList = result.commentList;
+							s.state.fieldPicList = result.fieldPicList;
+							s.state.fieldActive = result.fieldActive;
+							s.state.fieldParams = result.fieldParams;
+							s.state.sameFeildList = result.similarPlace;
+							s.forceUpdate();
+							setTimeout(()=>{
+							s.mainScroll = new IScroll(s.refs['scroll'],{
+								preventDefault:false
+							});
 
-			this.fieldPicScroll = new IScroll(this.refs['wc-field-pic-scroll'],{
-				scrollX:true,
-				scrollY:false,
-			});
+							s.fieldPicScroll = new IScroll(s.refs['wc-field-pic-scroll'],{
+								scrollX:true,
+								scrollY:false,
+							});
 
-			this.fieldActiveScroll = new IScroll(this.refs['wc-field-active-scroll'],{
-				scrollX:true,
-				scrollY:false,
-			});
-			this.sameFeildScroll = new IScroll(this.refs['wc-feild-same-scroll'],{
-				scrollX:true,
-				scrollY:false,
-			})
-  		},100);
+							s.fieldActiveScroll = new IScroll(s.refs['wc-field-active-scroll'],{
+								scrollX:true,
+								scrollY:false,
+							});
+							s.sameFeildScroll = new IScroll(s.refs['wc-feild-same-scroll'],{
+								scrollX:true,
+								scrollY:false,
+							})
+				  		},100);
 
-		this.defaultDetailDescribe = this.state.detailDescribe;
-		this.state.detailDescribe = this.state.detailDescribe.substring(0,52)+'...';
+						s.defaultDetailDescribe = s.state.detailDescribe;
+						s.state.detailDescribe = s.state.detailDescribe.substring(0,52)+'...';
 
 
-		this.defaultHeight = 0 ;
-		$('.wc-field-comment-list li').each((i,n)=>{
-			if(i<=2){
-				this.defaultHeight+=$(n).height()+ 10;
+						s.defaultHeight = 0 ;
+						$('.wc-field-comment-list li').each((i,n)=>{
+							if(i<=2){
+								s.defaultHeight+=$(n).height()+ 10;
+							}
+						});
+
+						s.state.commentHeight = s.defaultHeight;
+						s.forceUpdate();
+					}
+					console.log(data);
 			}
-		});
+		})
 
-		this.state.commentHeight = this.defaultHeight;
-		this.forceUpdate();
+		
 	}
 }
 export default WCPubCom(FieldApp);
