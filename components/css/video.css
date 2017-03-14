@@ -62,6 +62,18 @@ body {
       .wc-video-title-C .wc-video-title-item.wc-video-from div:last-of-type {
         -webkit-transform: scale(0.9);
         transform: scale(0.9); }
+      .wc-video-title-C .wc-video-title-item.wc-video-from .wc-from-logo section {
+        width: 1rem;
+        height: 1rem;
+        margin: 0 auto;
+        position: relative; }
+        .wc-video-title-C .wc-video-title-item.wc-video-from .wc-from-logo section img {
+          vertical-align: middle;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0); }
     .wc-video-title-C .wc-video-title-item .wc-video-cate {
       font-size: 12px;
       color: #9da9bc; }

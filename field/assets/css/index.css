@@ -10,7 +10,9 @@ body {
 
 .wc-field-describe {
   width: 9.4rem;
-  margin: .5rem auto; }
+  margin: .5rem auto;
+  overflow: hidden;
+  height: 5rem; }
 
 .wc-field-scroll {
   overflow: hidden; }
@@ -54,14 +56,18 @@ body {
     color: #1d94d4;
     margin-left: 10px; }
   .wc-field-address .wc-address {
-    width: 5rem;
+    width: 6rem;
     overflow: hidden;
     display: inline-block;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    position: relative;
-    top: 4px; }
+    position: relative; }
+  .wc-field-address .wc-entry-map {
+    display: inline-block;
+    color: #ccc;
+    -webkit-transform: scale(1, 1.5);
+    transform: scale(1, 1.5); }
   .wc-field-address > div {
     color: #9da9bc; }
 
@@ -122,9 +128,16 @@ body {
   margin: 0 auto 0; }
   .wc-field-comment-list li {
     margin: 10px 0; }
+  .wc-field-comment-list span {
+    margin-right: .2rem;
+    position: relative;
+    top: 4px;
+    width: .8rem;
+    height: 1rem;
+    text-align: center;
+    line-height: 1rem; }
   .wc-field-comment-list .wc-comment-logo {
     width: .5rem;
-    margin-right: .2rem;
     font-size: .6875rem; }
   .wc-field-comment-list .wc-comment-content {
     font-family: 瀹嬩綋;

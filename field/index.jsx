@@ -52,7 +52,7 @@ class FieldApp extends Component {
 			 		}*/
 			 ],
 			 fieldParams:[//场地参数 
-			 		{
+			 	/*	{
 			 			name:'场内',
 			 			size:'50/56/90',
 			 			area:'1000m2',
@@ -82,7 +82,7 @@ class FieldApp extends Component {
 			 			size:'50/56/90',
 			 			area:'1000m2',
 			 			personCount:1000
-			 		}
+			 		}*/
 			 ],
 			 fieldPicList:[
 			 		{
@@ -207,17 +207,28 @@ class FieldApp extends Component {
 					 personCount:'1000'
 				 }
 			 ]
+		};
+		this.viewW = document.documentElement.clientWidth;
+	}	
 
-		}
-	}		
+
+
 	render() {
+
+			var headerProps = {
+				goBack(){
+					if(window.historyArr.length<=0 && window.H5Manager){
+							H5Manager.goBack();
+					}
+				}
+			};	
 		return (
 			<div className='wc-field-ui'>
-				<WCHeader></WCHeader>
-				<section ref="scroll" className="wc-field-scroll" style={{height:document.documentElement.clientHeight - 44 }}>
+				<WCHeader {...headerProps}></WCHeader>
+				<section ref="scroll" className="wc-field-scroll" style={{height:document.documentElement.clientHeight - 64 }}>
 					<div style={{border:'1px solid transparent',paddingBottom:10}}>
 						<div className='wc-field-describe'>
-							{this.state.describeSrc && <iframe src={this.state.describeSrc} frameBorder="0"></iframe>}
+							{this.state.describeSrc && <iframe height={153} width={this.viewW/10*9.4} src={this.state.describeSrc} frameBorder="0"></iframe>}
 						</div>
 						<div className='wc-field-title-C'>
 							<div className="wc-field-title-item">
@@ -229,9 +240,9 @@ class FieldApp extends Component {
 								<a href={'tel:'+this.state.addressObj.tel}><img src='./assets/images/tel.png'/></a>
 							</div>
 						</div>
-						<div className="wc-field-address">
+						<div className="wc-field-address" onTouchTap={this.showMap.bind(this)}>
 							<img src="./assets/images/pos.png" alt=""/>
-							<div>地址：<span className='wc-address'>{this.state.addressObj.address}</span><span>查看地图</span></div>
+							<div>地址：<span className='wc-address' style={{top:window.H5Manager?0:4}}>{this.state.addressObj.address}</span><span className='wc-entry-map'>></span></div>
 						</div>
 						<div className="wc-field-detail">
 							{this.state.detailDescribe}
@@ -239,13 +250,13 @@ class FieldApp extends Component {
 						<div className="wc-field-more" onTouchTap={this.seeMoreDetailDescribe.bind(this)}><span>{this.state.defaultDetailDescribeState}</span></div>
 						<div className="wc-field-commit-C">
 							<aside>专业提示</aside>
-							<aside><span><img src="./assets/images/commom.png" alt=""/></span>我要评论</aside>
+							<aside onTouchTap={this.showComment.bind(this)}><span><img src="./assets/images/commom.png" alt=""/></span>我要评论</aside>
 						</div>
 						<div style={{overflow:'hidden',height:this.state.commentHeight}}>
 							<ul className="wc-field-comment-list">
 								{this.state.commentList.map((item,i)=>{
 									return <li key={i}>
-										<div><img className="wc-comment-logo" src={item.logo} alt=""/>{item.name}</div>
+										<div><span style={{background:'url(./assets/images/logo-bg.png) no-repeat center center',backgroundSize:'contain','display':'inline-block'}}><img className="wc-comment-logo" src={item.logo}  alt=""/></span>{item.name}</div>
 										<div className="wc-comment-content">{item.content}</div>
 									</li>
 								})}
@@ -286,7 +297,7 @@ class FieldApp extends Component {
 						<div className='wc-field-pic-scroll' ref='wc-field-pic-scroll'>
 								<ul className='wc-field-pic-list' style={{width:this.state.fieldPicList.length * (document.documentElement.clientWidth/ 10 * 4+ 10)}}>
 										{this.state.fieldPicList.map((item,i)=>{
-											return <li key={i}>
+											return <li onTouchTap={this.showImage.bind(this,i)} key={i}>
 													<div><img src={item.src} alt=""/></div>
 													<div>{item.name}</div>
 											</li>
@@ -337,6 +348,31 @@ class FieldApp extends Component {
 			</div>
 		);
 	}
+
+
+
+	showComment(){//进入评论页面
+		if(window.H5Manager){
+			H5Manager.showComment(this.state.title,this.fieldId);
+		}
+	}
+
+	showMap(){
+		if(H5Manager){
+			H5Manager.log(this.state.addressObj.latitude+','+this.state.addressObj.longitude)
+			window.H5Manager.showMap(this.state.addressObj.longitude,this.state.addressObj.latitude);
+		}
+	}
+
+	showImage(index){
+		if(H5Manager){
+			var arr = [];
+			this.state.fieldPicList.map((item,i)=>{
+					arr.push(item.src);
+			});
+			H5Manager.showImage(index,arr);	
+		}
+	}
 	seeMoreComment(){
 		if(this.state.commentHeight === 'auto'){
 			this.state.commentHeight = this.defaultHeight;
@@ -372,6 +408,7 @@ class FieldApp extends Component {
 	componentDidMount(){
 		var s = this;
 		var id = this.props.params.id;
+		this.fieldId = id;
 		$.ajax({
 			url:window.baseUrl + '/get_place_detail',
 			data:{
@@ -379,6 +416,8 @@ class FieldApp extends Component {
 			},
 			success(data){
 					if(data.code === 200){
+
+						console.log(data.result)
 							var result = data.result;
 							s.state.describeSrc = result.describeSrc;
 							s.state.title = result.title;
@@ -392,40 +431,42 @@ class FieldApp extends Component {
 							s.state.sameFeildList = result.similarPlace;
 							s.forceUpdate();
 							setTimeout(()=>{
-							s.mainScroll = new IScroll(s.refs['scroll'],{
-								preventDefault:false
-							});
+								s.mainScroll = new IScroll(s.refs['scroll'],{
+									preventDefault:false
+								});
 
-							s.fieldPicScroll = new IScroll(s.refs['wc-field-pic-scroll'],{
-								scrollX:true,
-								scrollY:false,
-							});
+								s.fieldPicScroll = new IScroll(s.refs['wc-field-pic-scroll'],{
+									scrollX:true,
+									scrollY:false,
+								});
 
-							s.fieldActiveScroll = new IScroll(s.refs['wc-field-active-scroll'],{
-								scrollX:true,
-								scrollY:false,
-							});
-							s.sameFeildScroll = new IScroll(s.refs['wc-feild-same-scroll'],{
-								scrollX:true,
-								scrollY:false,
-							})
-				  		},100);
+								s.fieldActiveScroll = new IScroll(s.refs['wc-field-active-scroll'],{
+									scrollX:true,
+									scrollY:false,
+								});
+								s.sameFeildScroll = new IScroll(s.refs['wc-feild-same-scroll'],{
+									scrollX:true,
+									scrollY:false,
+								});
 
-						s.defaultDetailDescribe = s.state.detailDescribe;
-						s.state.detailDescribe = s.state.detailDescribe.substring(0,52)+'...';
+								s.defaultDetailDescribe = s.state.detailDescribe;
+
+								s.state.detailDescribe = s.state.detailDescribe.substring(0,52)+'...';
 
 
-						s.defaultHeight = 0 ;
-						$('.wc-field-comment-list li').each((i,n)=>{
-							if(i<=2){
-								s.defaultHeight+=$(n).height()+ 10;
-							}
-						});
+								s.defaultHeight = 0 ;
+								$('.wc-field-comment-list li').each((i,n)=>{
+									if(i<=2){
+										s.defaultHeight+=$(n).height()+ 10;
+									}
+								});
 
-						s.state.commentHeight = s.defaultHeight;
-						s.forceUpdate();
-					}
-					console.log(data);
+								s.state.commentHeight = s.defaultHeight;
+								s.forceUpdate();
+				  		},500);
+
+						
+					} 
 			}
 		})
 

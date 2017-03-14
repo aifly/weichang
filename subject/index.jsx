@@ -65,7 +65,7 @@ class SubjectApp extends Component {
 		return (
 			<div className="wc-subject-main-ui">
 				<WCHeader {...headerProps}></WCHeader>
-				<div className='wc-subject-scroll-C' ref='wc-subject-scroll-C' style={{height:this.viewH - 44,overflow:'hidden'}}>
+				<div className='wc-subject-scroll-C' ref='wc-subject-scroll-C' style={{height:this.viewH - 64,overflow:'hidden'}}>
 					<ul>
 						<li>
 							<img src={this.state.imgSrc}/>

@@ -7,7 +7,7 @@ import VideoApp from './video/index.jsx';
 import LiveApp from './live/index.jsx';
 import NewsApp from './news/index.jsx';
 import SubjectApp from './subject/index.jsx';
-
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Obserable from './assets/libs/obserable.js';
 
@@ -34,7 +34,7 @@ class App extends React.Component{
 	}
 
 	componentWillMount(){
-		
+		window.historyArr = [];
 	}
 	
 	componentDidMount() {

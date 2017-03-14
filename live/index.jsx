@@ -16,7 +16,7 @@ class LiveApp extends Component {
 		this.state = {
 			defaultRemarkState:'查看更多',
 			commentHeight:0,
-			videoShow:false,
+			videoShow:true,
 			inputShow:true,
 			scrollHeight:'auto',
 			scale:9/16,
@@ -74,6 +74,7 @@ class LiveApp extends Component {
 		}
 		var data = this.state;
 		data.startPlay = this.startPlay.bind(this);
+		data.container = 'live-video'
 
 		var headerProps = {
 			rightMenu:<img src='./assets/images/share.png'/>
@@ -82,7 +83,7 @@ class LiveApp extends Component {
 		return (
 			<div className="wc-video-main-ui">
 				<WCHeader {...headerProps}></WCHeader>
-				<div className="wc-video-remark-scroll" ref='wc-live-remark-scroll' style={{height:this.state.scrollHeight,overflow:'hidden'}}>
+				<div className="wc-video-remark-scroll"  ref='wc-live-remark-scroll' style={{height:this.state.scrollHeight,overflow:'hidden'}}>
 					<div>
 						<VideoChildApp {...data}></VideoChildApp>
 						<div className='wc-video-remark'>{this.state.videoObj.remark}</div>
@@ -144,6 +145,35 @@ class LiveApp extends Component {
 
 	startPlay(){
 		//alert(Hls.isSupported);
+
+		 var params = {
+            container: document.getElementById('live-video'),
+            name: "SceneViewer",
+            isGyro:true,        //默认开启陀螺仪功能  移动端支持陀螺仪设备有效
+            scenesArr: [
+                //todo:注意修改视频路径，需要保证播放页面与视频属于同一域名下
+                {
+                    sceneId: "v1",
+                    sceneName: "赛车",
+                    sceneFilePath: this.state.videoObj.videoSrc,
+                    sceneType: "Video",
+                    isVideoAutoPlay: true  //todo:注意isVideoAutoPlay 是H5 模式下的播放属性，不适用于移动端
+                }
+            ],
+            //播放器不支持全景播放回调
+            errorCallBack: function (e) {
+                console.log("错误状态：" + e);
+            },
+            //浏览器不支持全屏回调
+            fsCallBack: function (status, playObj) {
+                alert("浏览器不支持全屏！");
+            }
+        };
+   
+     initLoad(params);
+
+    
+
 		this.setState({videoShow:true});
 	 
 	}
@@ -175,12 +205,12 @@ class LiveApp extends Component {
 						});
 
 						s.isMaxHeight = s.refs['wc-live-remark-scroll'].offsetHeight > s.viewH;
-						s.maxRemarkHeight =s.isMaxHeight? s.viewH -44 -6 : s.refs['wc-live-remark-scroll'].offsetHeight; 
+						s.maxRemarkHeight =s.isMaxHeight? s.viewH -64 -6 : s.refs['wc-live-remark-scroll'].offsetHeight; 
 						setTimeout(()=>{
 							 s.topScroll = new IScroll(s.refs['wc-live-remark-scroll']);
-							 var commentHeight = s.viewH - s.refs['wc-live-remark-scroll'].offsetHeight - 44 - 6;
+							 var commentHeight = s.viewH - s.refs['wc-live-remark-scroll'].offsetHeight - 64 - 6;
 							 s.setState({commentHeight:commentHeight})
-							  s.commentScroll = new IScroll(s.refs['wc-live-comment-list'],{probeType:3});
+							  s.commentScroll = new IScroll(s.refs['wc-live-comment-list']);
 							  var startY = 0;
 
 							  s.refs['wc-live-comment-list'].addEventListener('touchstart',function(e){

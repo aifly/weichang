@@ -7,7 +7,7 @@ class WCHeader extends Component {
 	render() {
 		return (
 			<div className='wc-header-ui'>
-					<aside className='wc-header-l'>
+					<aside className='wc-header-l' onTouchTap={()=>{this.props.goBack && this.props.goBack()}}>
 							<div><img src='./assets/images/back.png'/></div>
 					</aside>
 					<aside className='wc-header-c'>{this.props.title|| <img src='./assets/images/logo.png'/>}</aside>
@@ -18,5 +18,11 @@ class WCHeader extends Component {
 		);
 	}
 }
-
+WCHeader.defaultProps = {
+	goBack:()=>{
+		if(window.H5Manager){
+				H5Manager.goBack();
+		}
+	}
+}
 export default WCPubCom(WCHeader);

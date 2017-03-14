@@ -88,6 +88,10 @@
 
 	var _subjectIndexJsx2 = _interopRequireDefault(_subjectIndexJsx);
 
+	var _reactTapEventPlugin = __webpack_require__(249);
+
+	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
+
 	var _assetsLibsObserableJs = __webpack_require__(274);
 
 	var _assetsLibsObserableJs2 = _interopRequireDefault(_assetsLibsObserableJs);
@@ -115,7 +119,9 @@
 			}
 		}, {
 			key: 'componentWillMount',
-			value: function componentWillMount() {}
+			value: function componentWillMount() {
+				window.historyArr = [];
+			}
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {}
@@ -27367,7 +27373,7 @@
 				defaultCommentState: '查看更多',
 				commentHeight: 'auto',
 
-				describeSrc: 'http://139.129.229.241/VR/jinmaowanli.html',
+				describeSrc: '',
 				title: '798艺术区约美术馆',
 				cate: '艺术区',
 				addressObj: {
@@ -27378,59 +27384,62 @@
 					tel: '15718879215' //电话
 				},
 				detailDescribe: '这里的展览从来不会让挑剔的观众失望，什么样的艺术大师都来过。新馆是2008年10月新建的，地处偏远，但来的人很多。整个建筑设计得非常有特色，展示的空间布局合理，移步换景。由建筑师矶崎新设计，据说设计费每平米达700。',
-				commentList: [{
-					logo: "./assets/images/yk-logo.png",
-					name: '优酷',
-					content: ' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
-				}, {
-					logo: "./assets/images/yk-logo.png",
-					name: '优酷',
-					content: ' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
-				}, {
-					logo: "./assets/images/yk-logo.png",
-					name: '优酷',
-					content: ' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
-				}, {
-					logo: "./assets/images/yk-logo.png",
-					name: '优酷',
-					content: ' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
-				}, {
-					logo: "./assets/images/yk-logo.png",
-					name: '优酷',
-					content: ' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
-				}],
+				commentList: [
+					/*{
+	    	 logo:"./assets/images/yk-logo.png",
+	    	 name:'优酷',
+	    	 content:' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
+	    },{
+	    	 logo:"./assets/images/yk-logo.png",
+	    	 name:'优酷',
+	    	 content:' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
+	    },{
+	    	 logo:"./assets/images/yk-logo.png",
+	    	 name:'优酷',
+	    	 content:' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
+	    },{
+	    	 logo:"./assets/images/yk-logo.png",
+	    	 name:'优酷',
+	    	 content:' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
+	    },{
+	    	 logo:"./assets/images/yk-logo.png",
+	    	 name:'优酷',
+	    	 content:' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
+	    }*/
+				],
 				fieldParams: [//场地参数
-				{
-					name: '场内',
-					size: '50/56/90',
-					area: '1000m2',
-					personCount: 1000
-				}, {
-					name: '场内',
-					size: '50/56/90',
-					area: '1000m2',
-					personCount: 1000
-				}, {
-					name: '场内',
-					size: '50/56/90',
-					area: '1000m2',
-					personCount: 1000
-				}, {
-					name: '场内',
-					size: '50/56/90',
-					area: '1000m2',
-					personCount: 1000
-				}, {
-					name: '场内',
-					size: '50/56/90',
-					area: '1000m2',
-					personCount: 1000
-				}, {
-					name: '场内',
-					size: '50/56/90',
-					area: '1000m2',
-					personCount: 1000
-				}],
+					/*	{
+	    		name:'场内',
+	    		size:'50/56/90',
+	    		area:'1000m2',
+	    		personCount:1000
+	    	},{
+	    		name:'场内',
+	    		size:'50/56/90',
+	    		area:'1000m2',
+	    		personCount:1000
+	    	},{
+	    		name:'场内',
+	    		size:'50/56/90',
+	    		area:'1000m2',
+	    		personCount:1000
+	    	},{
+	    		name:'场内',
+	    		size:'50/56/90',
+	    		area:'1000m2',
+	    		personCount:1000
+	    	},{
+	    		name:'场内',
+	    		size:'50/56/90',
+	    		area:'1000m2',
+	    		personCount:1000
+	    	},{
+	    		name:'场内',
+	    		size:'50/56/90',
+	    		area:'1000m2',
+	    		personCount:1000
+	    	}*/
+				],
 				fieldPicList: [{
 					src: "./assets/images/f-pic1.jpg",
 					name: '外场'
@@ -27548,27 +27557,36 @@
 					area: '1500m2',
 					personCount: '1000'
 				}]
-
 			};
+			this.viewW = document.documentElement.clientWidth;
 		}
 
 		_createClass(FieldApp, [{
 			key: 'render',
 			value: function render() {
+				var _this = this;
+
+				var headerProps = {
+					goBack: function goBack() {
+						if (window.historyArr.length <= 0 && window.H5Manager) {
+							H5Manager.goBack();
+						}
+					}
+				};
 				return _react2['default'].createElement(
 					'div',
 					{ className: 'wc-field-ui' },
-					_react2['default'].createElement(_componentsWcHeaderJsx2['default'], null),
+					_react2['default'].createElement(_componentsWcHeaderJsx2['default'], headerProps),
 					_react2['default'].createElement(
 						'section',
-						{ ref: 'scroll', className: 'wc-field-scroll', style: { height: document.documentElement.clientHeight - 44 } },
+						{ ref: 'scroll', className: 'wc-field-scroll', style: { height: document.documentElement.clientHeight - 64 } },
 						_react2['default'].createElement(
 							'div',
 							{ style: { border: '1px solid transparent', paddingBottom: 10 } },
 							_react2['default'].createElement(
 								'div',
 								{ className: 'wc-field-describe' },
-								_react2['default'].createElement('iframe', { src: this.state.describeSrc, frameBorder: '0' })
+								this.state.describeSrc && _react2['default'].createElement('iframe', { height: 153, width: this.viewW / 10 * 9.4, src: this.state.describeSrc, frameBorder: '0' })
 							),
 							_react2['default'].createElement(
 								'div',
@@ -27612,7 +27630,7 @@
 							),
 							_react2['default'].createElement(
 								'div',
-								{ className: 'wc-field-address' },
+								{ className: 'wc-field-address', onTouchTap: this.showMap.bind(this) },
 								_react2['default'].createElement('img', { src: './assets/images/pos.png', alt: '' }),
 								_react2['default'].createElement(
 									'div',
@@ -27620,13 +27638,13 @@
 									'地址：',
 									_react2['default'].createElement(
 										'span',
-										{ className: 'wc-address' },
+										{ className: 'wc-address', style: { top: window.H5Manager ? 0 : 4 } },
 										this.state.addressObj.address
 									),
 									_react2['default'].createElement(
 										'span',
-										null,
-										'查看地图'
+										{ className: 'wc-entry-map' },
+										'>'
 									)
 								)
 							),
@@ -27654,7 +27672,7 @@
 								),
 								_react2['default'].createElement(
 									'aside',
-									null,
+									{ onTouchTap: this.showComment.bind(this) },
 									_react2['default'].createElement(
 										'span',
 										null,
@@ -27676,7 +27694,11 @@
 											_react2['default'].createElement(
 												'div',
 												null,
-												_react2['default'].createElement('img', { className: 'wc-comment-logo', src: item.logo, alt: '' }),
+												_react2['default'].createElement(
+													'span',
+													{ style: { background: 'url(./assets/images/logo-bg.png) no-repeat center center', backgroundSize: 'contain', 'display': 'inline-block' } },
+													_react2['default'].createElement('img', { className: 'wc-comment-logo', src: item.logo, alt: '' })
+												),
 												item.name
 											),
 											_react2['default'].createElement(
@@ -27788,7 +27810,7 @@
 									this.state.fieldPicList.map(function (item, i) {
 										return _react2['default'].createElement(
 											'li',
-											{ key: i },
+											{ onTouchTap: _this.showImage.bind(_this, i), key: i },
 											_react2['default'].createElement(
 												'div',
 												null,
@@ -27824,7 +27846,8 @@
 								_react2['default'].createElement(
 									'div',
 									{ className: 'wc-field-active-scroll', ref: 'wc-field-active-scroll' },
-									_react2['default'].createElement(
+									!this.state.fieldActive.activeList && _react2['default'].createElement('div', null),
+									this.state.fieldActive.activeList && _react2['default'].createElement(
 										'ul',
 										{ className: 'wc-field-active-list', style: { width: this.state.fieldActive.activeList.length * (document.documentElement.clientWidth / 10 * 4 + 10) } },
 										this.state.fieldActive.activeList.map(function (item, i) {
@@ -27911,9 +27934,36 @@
 				);
 			}
 		}, {
+			key: 'showComment',
+			value: function showComment() {
+				//进入评论页面
+				if (window.H5Manager) {
+					H5Manager.showComment(this.state.title, this.fieldId);
+				}
+			}
+		}, {
+			key: 'showMap',
+			value: function showMap() {
+				if (H5Manager) {
+					H5Manager.log(this.state.addressObj.latitude + ',' + this.state.addressObj.longitude);
+					window.H5Manager.showMap(this.state.addressObj.longitude, this.state.addressObj.latitude);
+				}
+			}
+		}, {
+			key: 'showImage',
+			value: function showImage(index) {
+				if (H5Manager) {
+					var arr = [];
+					this.state.fieldPicList.map(function (item, i) {
+						arr.push(item.src);
+					});
+					H5Manager.showImage(index, arr);
+				}
+			}
+		}, {
 			key: 'seeMoreComment',
 			value: function seeMoreComment() {
-				var _this = this;
+				var _this2 = this;
 
 				if (this.state.commentHeight === 'auto') {
 					this.state.commentHeight = this.defaultHeight;
@@ -27925,13 +27975,13 @@
 				}
 				this.forceUpdate();
 				setTimeout(function () {
-					_this.mainScroll.refresh(); //刷新滚动条
+					_this2.mainScroll.refresh(); //刷新滚动条
 				}, 100);
 			}
 		}, {
 			key: 'seeMoreDetailDescribe',
 			value: function seeMoreDetailDescribe() {
-				var _this2 = this;
+				var _this3 = this;
 
 				if (this.state.detailDescribe === this.defaultDetailDescribe) {
 					this.state.detailDescribe = this.state.detailDescribe.substring(0, 52) + '...';
@@ -27942,46 +27992,72 @@
 				}
 				this.forceUpdate();
 				setTimeout(function () {
-					_this2.mainScroll.refresh(); //刷新滚动条
+					_this3.mainScroll.refresh(); //刷新滚动条
 				}, 100);
 			}
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				var _this3 = this;
+				var s = this;
+				var id = this.props.params.id;
+				this.fieldId = id;
+				_jquery2['default'].ajax({
+					url: window.baseUrl + '/get_place_detail',
+					data: {
+						place_id: id
+					},
+					success: function success(data) {
+						if (data.code === 200) {
 
-				setTimeout(function () {
-					_this3.mainScroll = new _iscroll2['default'](_this3.refs['scroll'], {
-						preventDefault: false
-					});
+							console.log(data.result);
+							var result = data.result;
+							s.state.describeSrc = result.describeSrc;
+							s.state.title = result.title;
+							s.state.cate = result.cate;
+							s.state.addressObj = result.addressObj;
+							s.state.detailDescribe = result.detailDescribe;
+							s.state.commentList = result.commentList;
+							s.state.fieldPicList = result.fieldPicList;
+							s.state.fieldActive = result.fieldActive;
+							s.state.fieldParams = result.fieldParams;
+							s.state.sameFeildList = result.similarPlace;
+							s.forceUpdate();
+							setTimeout(function () {
+								s.mainScroll = new _iscroll2['default'](s.refs['scroll'], {
+									preventDefault: false
+								});
 
-					_this3.fieldPicScroll = new _iscroll2['default'](_this3.refs['wc-field-pic-scroll'], {
-						scrollX: true,
-						scrollY: false
-					});
+								s.fieldPicScroll = new _iscroll2['default'](s.refs['wc-field-pic-scroll'], {
+									scrollX: true,
+									scrollY: false
+								});
 
-					_this3.fieldActiveScroll = new _iscroll2['default'](_this3.refs['wc-field-active-scroll'], {
-						scrollX: true,
-						scrollY: false
-					});
-					_this3.sameFeildScroll = new _iscroll2['default'](_this3.refs['wc-feild-same-scroll'], {
-						scrollX: true,
-						scrollY: false
-					});
-				}, 100);
+								s.fieldActiveScroll = new _iscroll2['default'](s.refs['wc-field-active-scroll'], {
+									scrollX: true,
+									scrollY: false
+								});
+								s.sameFeildScroll = new _iscroll2['default'](s.refs['wc-feild-same-scroll'], {
+									scrollX: true,
+									scrollY: false
+								});
 
-				this.defaultDetailDescribe = this.state.detailDescribe;
-				this.state.detailDescribe = this.state.detailDescribe.substring(0, 52) + '...';
+								s.defaultDetailDescribe = s.state.detailDescribe;
 
-				this.defaultHeight = 0;
-				(0, _jquery2['default'])('.wc-field-comment-list li').each(function (i, n) {
-					if (i <= 2) {
-						_this3.defaultHeight += (0, _jquery2['default'])(n).height() + 10;
+								s.state.detailDescribe = s.state.detailDescribe.substring(0, 52) + '...';
+
+								s.defaultHeight = 0;
+								(0, _jquery2['default'])('.wc-field-comment-list li').each(function (i, n) {
+									if (i <= 2) {
+										s.defaultHeight += (0, _jquery2['default'])(n).height() + 10;
+									}
+								});
+
+								s.state.commentHeight = s.defaultHeight;
+								s.forceUpdate();
+							}, 500);
+						}
 					}
 				});
-
-				this.state.commentHeight = this.defaultHeight;
-				this.forceUpdate();
 			}
 		}]);
 
@@ -28041,12 +28117,16 @@
 		_createClass(WCHeader, [{
 			key: 'render',
 			value: function render() {
+				var _this = this;
+
 				return _react2['default'].createElement(
 					'div',
 					{ className: 'wc-header-ui' },
 					_react2['default'].createElement(
 						'aside',
-						{ className: 'wc-header-l' },
+						{ className: 'wc-header-l', onTouchTap: function () {
+								_this.props.goBack && _this.props.goBack();
+							} },
 						_react2['default'].createElement(
 							'div',
 							null,
@@ -28074,6 +28154,13 @@
 		return WCHeader;
 	})(_react.Component);
 
+	WCHeader.defaultProps = {
+		goBack: function goBack() {
+			if (window.H5Manager) {
+				H5Manager.goBack();
+			}
+		}
+	};
 	exports['default'] = (0, _publicPubJsx.WCPubCom)(WCHeader);
 	module.exports = exports['default'];
 
@@ -28125,11 +28212,19 @@
 				key: 'componentWillMount',
 				value: function componentWillMount() {}
 			}, {
+				key: 'getQueryString',
+				value: function getQueryString(name) {
+					var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+					var r = window.location.search.substr(1).match(reg);
+					if (r != null) return unescape(r[2]);
+					return null;
+				}
+			}, {
 				key: 'render',
 				value: function render() {
 
 					var methods = {
-
+						getQueryString: this.getQueryString
 						//fillFeilds:this.fillFeilds
 					};
 
@@ -28179,7 +28274,7 @@
 
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\r\n/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nhtml, body, div, p, ul, li, ol, dl, dt, dd, header, footer, video, h1, h2, h3, h4, canvas, section, figure {\r\n  padding: 0;\r\n  margin: 0; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\nli {\r\n  list-style: none; }\r\n\r\nhtml, body {\r\n  height: 100%; }\r\n\r\nbody {\r\n  font-family: \"Helvetica Neue\", 'Helvetica', \"Microsoft YaHei\", '\\5FAE\\8F6F\\96C5\\9ED1', arial, sans-serif; }\r\n\r\nimg {\r\n  border: none;\r\n  vertical-align: middle;\r\n  width: 100%;\r\n  height: auto; }\r\n\r\ninput, textarea {\r\n  outline: none; }\r\n\r\n.wc-header-ui {\r\n  width: 100vw;\r\n  height: 44px;\r\n  position: relative;\r\n  background: #fff;\r\n  padding-bottom: 5px;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: row; }\r\n  .wc-header-ui:before {\r\n    content: '';\r\n    width: 100%;\r\n    height: 1px;\r\n    -webkit-transform: scale(1, 0.4);\r\n    transform: scale(1, 0.4);\r\n    position: absolute;\r\n    background: rgba(0, 0, 0, 0.15);\r\n    left: 0;\r\n    bottom: 0;\r\n    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);\r\n    z-index: 2; }\r\n  .wc-header-ui aside {\r\n    -webkit-box-flex: 1;\r\n    text-align: center; }\r\n    .wc-header-ui aside.wc-header-c {\r\n      width: 6rem;\r\n      color: #2094d4; }\r\n    .wc-header-ui aside.wc-header-l div {\r\n      width: 12px;\r\n      margin: 0 auto; }\r\n    .wc-header-ui aside.wc-header-r div {\r\n      width: 25px;\r\n      margin: 0 auto;\r\n      position: relative; }\r\n\r\n/*# sourceMappingURL=header.css.map */\r\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\r\n/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nhtml, body, div, p, ul, li, ol, dl, dt, dd, header, footer, video, h1, h2, h3, h4, canvas, section, figure {\r\n  padding: 0;\r\n  margin: 0; }\r\n\r\na {\r\n  text-decoration: none; }\r\n\r\nli {\r\n  list-style: none; }\r\n\r\nhtml, body {\r\n  height: 100%; }\r\n\r\nbody {\r\n  font-family: \"Helvetica Neue\", 'Helvetica', \"Microsoft YaHei\", '\\5FAE\\8F6F\\96C5\\9ED1', arial, sans-serif; }\r\n\r\nimg {\r\n  border: none;\r\n  vertical-align: middle;\r\n  width: 100%;\r\n  height: auto; }\r\n\r\ninput, textarea {\r\n  outline: none; }\r\n\r\n.wc-header-ui {\r\n  width: 100vw;\r\n  height: 44px;\r\n  margin-top: 20px;\r\n  position: relative;\r\n  background: #fff;\r\n  padding-bottom: 5px;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: row; }\r\n  .wc-header-ui:before {\r\n    content: '';\r\n    width: 100%;\r\n    height: 1px;\r\n    -webkit-transform: scale(1, 0.4);\r\n    transform: scale(1, 0.4);\r\n    position: absolute;\r\n    background: rgba(0, 0, 0, 0.15);\r\n    left: 0;\r\n    bottom: 0;\r\n    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);\r\n    z-index: 2; }\r\n  .wc-header-ui aside {\r\n    -webkit-box-flex: 1;\r\n    text-align: center; }\r\n    .wc-header-ui aside.wc-header-c {\r\n      width: 6rem;\r\n      color: #2094d4; }\r\n    .wc-header-ui aside.wc-header-l div {\r\n      width: 12px;\r\n      margin: 0 auto; }\r\n    .wc-header-ui aside.wc-header-r div {\r\n      width: 25px;\r\n      margin: 0 auto;\r\n      position: relative; }\r\n\r\n/*# sourceMappingURL=header.css.map */", ""]);
 
 	// exports
 
@@ -40848,7 +40943,7 @@
 
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\r\n/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden;\r\n  font-size: 14px; }\r\n\r\n.wc-field-describe {\r\n  width: 9.4rem;\r\n  margin: .5rem auto; }\r\n\r\n.wc-field-scroll {\r\n  overflow: hidden; }\r\n\r\n.wc-field-title-C {\r\n  width: 9.4rem;\r\n  margin: 0 auto;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-field-title-C .wc-field-title-item {\r\n    -webkit-box-flex: 1; }\r\n    .wc-field-title-C .wc-field-title-item h3 {\r\n      font-weight: normal;\r\n      font-size: .52rem; }\r\n    .wc-field-title-C .wc-field-title-item .wc-field-cate {\r\n      font-size: 12px;\r\n      color: #9da9bc; }\r\n      .wc-field-title-C .wc-field-title-item .wc-field-cate img {\r\n        width: .5rem;\r\n        margin: 0 5px; }\r\n    .wc-field-title-C .wc-field-title-item.wc-field-tel a {\r\n      width: 1rem;\r\n      margin-left: 2rem;\r\n      display: block; }\r\n\r\n.wc-field-address {\r\n  width: 9.4rem;\r\n  margin: .5rem auto .3rem;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-pack: start; }\r\n  .wc-field-address > img {\r\n    width: .5rem;\r\n    display: block;\r\n    margin-right: .4rem; }\r\n  .wc-field-address span:last-of-type {\r\n    color: #1d94d4;\r\n    margin-left: 10px; }\r\n  .wc-field-address .wc-address {\r\n    width: 5rem;\r\n    overflow: hidden;\r\n    display: inline-block;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    position: relative;\r\n    top: 4px; }\r\n  .wc-field-address > div {\r\n    color: #9da9bc; }\r\n\r\n.wc-field-detail {\r\n  width: 9.4rem;\r\n  margin: 0 auto;\r\n  text-indent: 2em;\r\n  color: #6d788f;\r\n  line-height: .7rem; }\r\n\r\n.wc-field-more {\r\n  color: #1d94d4;\r\n  text-align: center; }\r\n  .wc-field-more span {\r\n    position: relative; }\r\n    .wc-field-more span:before, .wc-field-more span:after {\r\n      content: '';\r\n      width: 0;\r\n      height: 0;\r\n      border-left: 6px solid transparent;\r\n      border-right: 6px solid transparent;\r\n      border-bottom: 6px solid #e8ebf2;\r\n      position: absolute; }\r\n    .wc-field-more span:after {\r\n      margin-top: 4px; }\r\n    .wc-field-more span:before {\r\n      width: 6px;\r\n      height: 1px;\r\n      background: #e8ebf2;\r\n      bordor-left: none;\r\n      border-bottom: none;\r\n      border-right: none;\r\n      bottom: 4px;\r\n      right: -12px; }\r\n\r\n.wc-field-commit-C {\r\n  width: 9.4rem;\r\n  margin: 0 auto 0;\r\n  height: 1.2rem;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-field-commit-C aside {\r\n    -webkit-box-flex: 1; }\r\n    .wc-field-commit-C aside img {\r\n      width: .5rem;\r\n      margin-right: .2rem; }\r\n    .wc-field-commit-C aside:nth-of-type(2) {\r\n      text-align: right; }\r\n    .wc-field-commit-C aside:nth-of-type(1) {\r\n      color: #1d94d4;\r\n      font-weight: bold;\r\n      font-size: .6rem; }\r\n\r\n.wc-field-comment-list {\r\n  width: 9.4rem;\r\n  margin: 0 auto 0; }\r\n  .wc-field-comment-list li {\r\n    margin: 10px 0; }\r\n  .wc-field-comment-list .wc-comment-logo {\r\n    width: .5rem;\r\n    margin-right: .2rem;\r\n    font-size: .6875rem; }\r\n  .wc-field-comment-list .wc-comment-content {\r\n    font-family: 瀹嬩綋;\r\n    color: #999;\r\n    -webkit-transform: scale(0.85);\r\n    transform: scale(0.85);\r\n    text-indent: 2em; }\r\n\r\n.wc-field-parameter-table {\r\n  width: 100%; }\r\n  .wc-field-parameter-table tr {\r\n    text-align: center;\r\n    height: 1rem; }\r\n  .wc-field-parameter-table td, .wc-field-parameter-table th {\r\n    width: 25%;\r\n    text-align: center;\r\n    font-weight: normal;\r\n    font-size: .4rem; }\r\n\r\n.wc-field-pic-list, .wc-field-active-list {\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-field-pic-list li, .wc-field-active-list li {\r\n    margin: 0 5px;\r\n    width: 4rem;\r\n    text-align: center; }\r\n\r\n.wc-field-active div.wc-field-active-img {\r\n  position: relative; }\r\n  .wc-field-active div.wc-field-active-img:before {\r\n    content: '';\r\n    width: 0;\r\n    height: 0;\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 44%;\r\n    border-left: 15px solid transparent;\r\n    border-right: 15px solid transparent;\r\n    border-bottom: 15px solid #fff; }\r\n\r\n.wc-field-active-list {\r\n  margin-top: 5px; }\r\n  .wc-field-active-list h3 {\r\n    font-weight: normal;\r\n    font-size: .4rem;\r\n    margin: 5px 0; }\r\n  .wc-field-active-list div:last-of-type {\r\n    text-align: left;\r\n    margin-left: 4px;\r\n    font-size: 12px;\r\n    color: #999; }\r\n\r\n.wc-feild-same-list {\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-feild-same-list li {\r\n    margin: 0 5px;\r\n    width: 8rem; }\r\n    .wc-feild-same-list li h3 {\r\n      font-weight: normal;\r\n      margin: 6px 0; }\r\n    .wc-feild-same-list li img {\r\n      border-radius: 4px; }\r\n    .wc-feild-same-list li span {\r\n      color: #999;\r\n      font-size: 12px;\r\n      margin: 0 5px; }\r\n      .wc-feild-same-list li span:first-of-type {\r\n        margin-left: 0; }\r\n\r\n/*# sourceMappingURL=index.css.map */\r\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\r\n/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden;\r\n  font-size: 14px; }\r\n\r\n.wc-field-describe {\r\n  width: 9.4rem;\r\n  margin: .5rem auto;\r\n  overflow: hidden;\r\n  height: 5rem; }\r\n\r\n.wc-field-scroll {\r\n  overflow: hidden; }\r\n\r\n.wc-field-title-C {\r\n  width: 9.4rem;\r\n  margin: 0 auto;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-field-title-C .wc-field-title-item {\r\n    -webkit-box-flex: 1; }\r\n    .wc-field-title-C .wc-field-title-item h3 {\r\n      font-weight: normal;\r\n      font-size: .52rem; }\r\n    .wc-field-title-C .wc-field-title-item .wc-field-cate {\r\n      font-size: 12px;\r\n      color: #9da9bc; }\r\n      .wc-field-title-C .wc-field-title-item .wc-field-cate img {\r\n        width: .5rem;\r\n        margin: 0 5px; }\r\n    .wc-field-title-C .wc-field-title-item.wc-field-tel a {\r\n      width: 1rem;\r\n      margin-left: 2rem;\r\n      display: block; }\r\n\r\n.wc-field-address {\r\n  width: 9.4rem;\r\n  margin: .5rem auto .3rem;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-pack: start; }\r\n  .wc-field-address > img {\r\n    width: .5rem;\r\n    display: block;\r\n    margin-right: .4rem; }\r\n  .wc-field-address span:last-of-type {\r\n    color: #1d94d4;\r\n    margin-left: 10px; }\r\n  .wc-field-address .wc-address {\r\n    width: 6rem;\r\n    overflow: hidden;\r\n    display: inline-block;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    position: relative; }\r\n  .wc-field-address .wc-entry-map {\r\n    display: inline-block;\r\n    color: #ccc;\r\n    -webkit-transform: scale(1, 1.5);\r\n    transform: scale(1, 1.5); }\r\n  .wc-field-address > div {\r\n    color: #9da9bc; }\r\n\r\n.wc-field-detail {\r\n  width: 9.4rem;\r\n  margin: 0 auto;\r\n  text-indent: 2em;\r\n  color: #6d788f;\r\n  line-height: .7rem; }\r\n\r\n.wc-field-more {\r\n  color: #1d94d4;\r\n  text-align: center; }\r\n  .wc-field-more span {\r\n    position: relative; }\r\n    .wc-field-more span:before, .wc-field-more span:after {\r\n      content: '';\r\n      width: 0;\r\n      height: 0;\r\n      border-left: 6px solid transparent;\r\n      border-right: 6px solid transparent;\r\n      border-bottom: 6px solid #e8ebf2;\r\n      position: absolute; }\r\n    .wc-field-more span:after {\r\n      margin-top: 4px; }\r\n    .wc-field-more span:before {\r\n      width: 6px;\r\n      height: 1px;\r\n      background: #e8ebf2;\r\n      bordor-left: none;\r\n      border-bottom: none;\r\n      border-right: none;\r\n      bottom: 4px;\r\n      right: -12px; }\r\n\r\n.wc-field-commit-C {\r\n  width: 9.4rem;\r\n  margin: 0 auto 0;\r\n  height: 1.2rem;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-field-commit-C aside {\r\n    -webkit-box-flex: 1; }\r\n    .wc-field-commit-C aside img {\r\n      width: .5rem;\r\n      margin-right: .2rem; }\r\n    .wc-field-commit-C aside:nth-of-type(2) {\r\n      text-align: right; }\r\n    .wc-field-commit-C aside:nth-of-type(1) {\r\n      color: #1d94d4;\r\n      font-weight: bold;\r\n      font-size: .6rem; }\r\n\r\n.wc-field-comment-list {\r\n  width: 9.4rem;\r\n  margin: 0 auto 0; }\r\n  .wc-field-comment-list li {\r\n    margin: 10px 0; }\r\n  .wc-field-comment-list span {\r\n    margin-right: .2rem;\r\n    position: relative;\r\n    top: 4px;\r\n    width: .8rem;\r\n    height: 1rem;\r\n    text-align: center;\r\n    line-height: 1rem; }\r\n  .wc-field-comment-list .wc-comment-logo {\r\n    width: .5rem;\r\n    font-size: .6875rem; }\r\n  .wc-field-comment-list .wc-comment-content {\r\n    font-family: 瀹嬩綋;\r\n    color: #999;\r\n    -webkit-transform: scale(0.85);\r\n    transform: scale(0.85);\r\n    text-indent: 2em; }\r\n\r\n.wc-field-parameter-table {\r\n  width: 100%; }\r\n  .wc-field-parameter-table tr {\r\n    text-align: center;\r\n    height: 1rem; }\r\n  .wc-field-parameter-table td, .wc-field-parameter-table th {\r\n    width: 25%;\r\n    text-align: center;\r\n    font-weight: normal;\r\n    font-size: .4rem; }\r\n\r\n.wc-field-pic-list, .wc-field-active-list {\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-field-pic-list li, .wc-field-active-list li {\r\n    margin: 0 5px;\r\n    width: 4rem;\r\n    text-align: center; }\r\n\r\n.wc-field-active div.wc-field-active-img {\r\n  position: relative; }\r\n  .wc-field-active div.wc-field-active-img:before {\r\n    content: '';\r\n    width: 0;\r\n    height: 0;\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 44%;\r\n    border-left: 15px solid transparent;\r\n    border-right: 15px solid transparent;\r\n    border-bottom: 15px solid #fff; }\r\n\r\n.wc-field-active-list {\r\n  margin-top: 5px; }\r\n  .wc-field-active-list h3 {\r\n    font-weight: normal;\r\n    font-size: .4rem;\r\n    margin: 5px 0; }\r\n  .wc-field-active-list div:last-of-type {\r\n    text-align: left;\r\n    margin-left: 4px;\r\n    font-size: 12px;\r\n    color: #999; }\r\n\r\n.wc-feild-same-list {\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-feild-same-list li {\r\n    margin: 0 5px;\r\n    width: 8rem; }\r\n    .wc-feild-same-list li h3 {\r\n      font-weight: normal;\r\n      margin: 6px 0; }\r\n    .wc-feild-same-list li img {\r\n      border-radius: 4px; }\r\n    .wc-feild-same-list li span {\r\n      color: #999;\r\n      font-size: 12px;\r\n      margin: 0 5px; }\r\n      .wc-feild-same-list li span:first-of-type {\r\n        margin-left: 0; }\r\n\r\n/*# sourceMappingURL=index.css.map */", ""]);
 
 	// exports
 
@@ -40912,20 +41007,21 @@
 			this.state = {
 				videoShow: false,
 				scrollHeight: 0,
-				"poster": "./assets/images/video-poster.jpg",
-				"isVr": true,
-				"watch": "1235",
-				"videoSrc": 'http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8', //"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
-				"title": "2016年维多利亚的秘密秀场",
-				"cate": "时尚",
-				"time": "01:35:55",
-				"collect": "124",
-				"from": {
-					"src": "./assets/images/yk-logo.png",
-					"name": "优酷"
-				},
-				"remark": "尤伦斯当代艺术中心的展览规格大都不小，尤其能给人惊喜的是这里的布展。展厅经常会被艺术家打造成全新的空间，王迈把这里变成过狭窄的蓝色海峡，徐震在这里开过超市，前阵子这里又被重新装置成了可以隐居的“家”，而这种展厅的开发利用，也使得美术馆的展览看起来更加诱人。尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，"
-
+				videoObj: {
+					"poster": "./assets/images/video-poster.jpg",
+					"isVr": true,
+					"watch": "1235",
+					"videoSrc": '', //"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
+					"title": "2016年维多利亚的秘密秀场",
+					"cate": "时尚",
+					"time": "01:35:55",
+					"collect": "124",
+					"from": {
+						"src": "./assets/images/yk-logo.png",
+						"name": "优酷"
+					},
+					"remark": "尤伦斯当代艺术中心的展览规格大都不小，尤其能给人惊喜的是这里的布展。展厅经常会被艺术家打造成全新的空间，王迈把这里变成过狭窄的蓝色海峡，徐震在这里开过超市，前阵子这里又被重新装置成了可以隐居的“家”，而这种展厅的开发利用，也使得美术馆的展览看起来更加诱人。尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，"
+				}
 			};
 			this.viewW = document.documentElement.clientWidth;
 			this.viewH = document.documentElement.clientHeight;
@@ -40938,7 +41034,7 @@
 				var posterStyle = {
 					width: this.viewW,
 					height: this.viewW * 3 / 4,
-					background: 'url(' + this.state.poster + ') no-repeat center center',
+					background: 'url(' + this.state.videoObj.poster + ') no-repeat center center',
 					backgroundSize: 'cover'
 				};
 				var data = this.state;
@@ -40957,7 +41053,7 @@
 							_react2['default'].createElement(
 								'div',
 								{ className: 'wc-video-remark' },
-								this.state.remark
+								this.state.videoObj.remark
 							)
 						)
 					)
@@ -41007,13 +41103,31 @@
 				var _this = this;
 
 				this.setState({
-					scrollHeight: this.viewH - 44
+					scrollHeight: this.viewH - 64
 				});
 				setTimeout(function () {
 					_this.scroll = new _iscroll2['default'](_this.refs['wc-video-remark-scroll'], {
 						preventDefault: true
 					});
 				}, 1000);
+
+				var id = this.props.params.id;
+				var s = this;
+				_jquery2['default'].ajax({
+					url: window.baseUrl + '/get_video_detail',
+					data: {
+						videoId: id
+					},
+					success: function success(data) {
+						console.log(data);
+						if (data.code === 200) {
+							var result = data.result;
+							console.log(result);
+							s.state.videoObj = result;
+							s.forceUpdate();
+						}
+					}
+				});
 			}
 		}]);
 
@@ -41119,21 +41233,17 @@
 	            var posterStyle = {
 	                width: this.viewW,
 	                height: this.viewW * this.props.scale,
-	                background: 'url(' + this.props.poster + ') no-repeat center center',
+	                background: 'url(' + this.props.videoObj.poster + ') no-repeat center center',
 	                backgroundSize: 'cover'
 	            };
+	            console.log(this.props.videoObj.videoSrc);
 	            return _react2['default'].createElement(
 	                'div',
 	                { className: 'wc-video-child-main-ui' },
 	                _react2['default'].createElement(
 	                    'div',
-	                    { className: 'wc-video-poster', onTouchTap: this.props.startPlay, style: posterStyle },
-	                    this.props.isVr && _react2['default'].createElement('img', { src: './assets/images/vr.png' }),
-	                    _react2['default'].createElement(
-	                        'video',
-	                        { ref: 'video', width: this.viewW, height: this.viewW * this.props.scale, style: { position: 'absolute', zIndex: 10, opacity: this.props.videoShow ? 1 : 0, background: '#000' }, controls: true },
-	                        _react2['default'].createElement('source', { src: this.props.videoSrc })
-	                    )
+	                    { className: 'wc-video-poster', id: this.props.container, onTouchTap: this.props.startPlay, style: posterStyle },
+	                    this.props.videoObj.isVr * 1 && _react2['default'].createElement('img', { src: './assets/images/vr.png' })
 	                ),
 	                _react2['default'].createElement(
 	                    'div',
@@ -41144,12 +41254,12 @@
 	                        _react2['default'].createElement(
 	                            'h3',
 	                            null,
-	                            this.props.title
+	                            this.props.videoObj.title
 	                        ),
 	                        _react2['default'].createElement(
 	                            'div',
 	                            { className: 'wc-video-cate' },
-	                            this.props.cate,
+	                            this.props.videoObj.cate,
 	                            ' | ',
 	                            _react2['default'].createElement(
 	                                'span',
@@ -41158,7 +41268,7 @@
 	                                _react2['default'].createElement(
 	                                    'span',
 	                                    null,
-	                                    this.props.time
+	                                    this.props.videoObj.time
 	                                ),
 	                                ' ',
 	                                _react2['default'].createElement('img', {
@@ -41168,7 +41278,7 @@
 	                            _react2['default'].createElement(
 	                                'span',
 	                                null,
-	                                this.props.collect
+	                                this.props.videoObj.collect
 	                            )
 	                        )
 	                    ),
@@ -41177,13 +41287,17 @@
 	                        { className: 'wc-video-from wc-video-title-item' },
 	                        _react2['default'].createElement(
 	                            'div',
-	                            null,
-	                            _react2['default'].createElement('img', { src: this.props.from.src })
+	                            { className: 'wc-from-logo', style: { background: 'url(./assets/images/logo-bg.png) no-repeat center center', backgroundSize: 'contain' } },
+	                            _react2['default'].createElement(
+	                                'section',
+	                                null,
+	                                _react2['default'].createElement('img', { src: this.props.videoObj.from.src })
+	                            )
 	                        ),
 	                        _react2['default'].createElement(
 	                            'div',
 	                            null,
-	                            this.props.from.name
+	                            this.props.videoObj.from.name
 	                        )
 	                    )
 	                )
@@ -41191,7 +41305,10 @@
 	        }
 	    }, {
 	        key: 'componentDidMount',
-	        value: function componentDidMount() {}
+	        value: function componentDidMount() {
+	            /*播放器参数配置*/
+
+	        }
 	    }]);
 
 	    return VideoChildApp;
@@ -41202,6 +41319,9 @@
 	};
 	exports['default'] = (0, _componentsPublicPubJsx.WCPubCom)(VideoChildApp);
 	module.exports = exports['default'];
+	/*<video ref='video' width={this.viewW} height={this.viewW * this.props.scale} style={{position:'absolute',left:0,zIndex:10,opacity:this.props.videoShow?1:0,background:'#000'}} controls  >
+	   <source src={this.props.videoObj.videoSrc}/>
+	</video>*/
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "video.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
@@ -41240,7 +41360,7 @@
 
 
 	// module
-	exports.push([module.id, "/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden; }\r\n\r\n.wc-video-poster {\r\n  position: relative;\r\n  z-index: 1; }\r\n  .wc-video-poster:before, .wc-video-poster:after {\r\n    content: '';\r\n    position: absolute;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    border: 2px solid #fff;\r\n    border-radius: 50%;\r\n    left: 50%;\r\n    top: 50%;\r\n    margin-left: -.5rem;\r\n    margin-top: -.5rem;\r\n    z-index: 0; }\r\n  .wc-video-poster:after {\r\n    border-right: none;\r\n    width: 0;\r\n    height: 0;\r\n    z-index: -1;\r\n    border-radius: 0;\r\n    margin-left: -.03rem;\r\n    margin-top: -0.23077rem;\r\n    border-top: 0.3rem solid transparent;\r\n    border-left: 0.4rem solid #fff;\r\n    border-bottom: 0.3rem solid transparent; }\r\n  .wc-video-poster img {\r\n    width: 1.2rem;\r\n    position: absolute;\r\n    right: .4rem;\r\n    top: .4rem; }\r\n\r\n.wc-video-title-C {\r\n  width: 9.4rem;\r\n  margin: .5rem auto;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-video-title-C .wc-video-title-item {\r\n    -webkit-box-flex: 1; }\r\n    .wc-video-title-C .wc-video-title-item h3 {\r\n      font-weight: normal;\r\n      font-size: .52rem;\r\n      line-height: 1rem; }\r\n    .wc-video-title-C .wc-video-title-item.wc-video-from {\r\n      position: relative;\r\n      top: .1rem;\r\n      font-size: 12px;\r\n      color: #999;\r\n      text-align: center; }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from img {\r\n        width: .63rem; }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from div:last-of-type {\r\n        -webkit-transform: scale(0.9);\r\n        transform: scale(0.9); }\r\n    .wc-video-title-C .wc-video-title-item .wc-video-cate {\r\n      font-size: 12px;\r\n      color: #9da9bc; }\r\n      .wc-video-title-C .wc-video-title-item .wc-video-cate img {\r\n        width: .5rem;\r\n        margin: 0 5px; }\r\n\r\n.wc-video-remark-scroll {\r\n  width: 10rem;\r\n  margin: 0 auto; }\r\n  .wc-video-remark-scroll div.wc-video-remark {\r\n    text-indent: 2em;\r\n    line-height: .75rem;\r\n    width: 9.4rem;\r\n    margin: 0 auto;\r\n    color: #6d788f;\r\n    padding-bottom: 10px; }\r\n\r\n.wc-video-tool {\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal;\r\n  width: 9.4rem;\r\n  height: 40px;\r\n  line-height: 40px;\r\n  margin: 0 auto; }\r\n  .wc-video-tool aside {\r\n    -webkit-box-flex: 1; }\r\n    .wc-video-tool aside img {\r\n      width: .8rem; }\r\n    .wc-video-tool aside:last-of-type {\r\n      text-align: right; }\r\n      .wc-video-tool aside:last-of-type img {\r\n        margin: 0 5px; }\r\n\r\n/*# sourceMappingURL=video.css.map */\r\n", ""]);
+	exports.push([module.id, "/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden; }\r\n\r\n.wc-video-poster {\r\n  position: relative;\r\n  z-index: 1; }\r\n  .wc-video-poster:before, .wc-video-poster:after {\r\n    content: '';\r\n    position: absolute;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    border: 2px solid #fff;\r\n    border-radius: 50%;\r\n    left: 50%;\r\n    top: 50%;\r\n    margin-left: -.5rem;\r\n    margin-top: -.5rem;\r\n    z-index: 0; }\r\n  .wc-video-poster:after {\r\n    border-right: none;\r\n    width: 0;\r\n    height: 0;\r\n    z-index: -1;\r\n    border-radius: 0;\r\n    margin-left: -.03rem;\r\n    margin-top: -0.23077rem;\r\n    border-top: 0.3rem solid transparent;\r\n    border-left: 0.4rem solid #fff;\r\n    border-bottom: 0.3rem solid transparent; }\r\n  .wc-video-poster img {\r\n    width: 1.2rem;\r\n    position: absolute;\r\n    right: .4rem;\r\n    top: .4rem; }\r\n\r\n.wc-video-title-C {\r\n  width: 9.4rem;\r\n  margin: .5rem auto;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-video-title-C .wc-video-title-item {\r\n    -webkit-box-flex: 1; }\r\n    .wc-video-title-C .wc-video-title-item h3 {\r\n      font-weight: normal;\r\n      font-size: .52rem;\r\n      line-height: 1rem; }\r\n    .wc-video-title-C .wc-video-title-item.wc-video-from {\r\n      position: relative;\r\n      top: .1rem;\r\n      font-size: 12px;\r\n      color: #999;\r\n      text-align: center; }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from img {\r\n        width: .63rem; }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from div:last-of-type {\r\n        -webkit-transform: scale(0.9);\r\n        transform: scale(0.9); }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from .wc-from-logo section {\r\n        width: 1rem;\r\n        height: 1rem;\r\n        margin: 0 auto;\r\n        position: relative; }\r\n        .wc-video-title-C .wc-video-title-item.wc-video-from .wc-from-logo section img {\r\n          vertical-align: middle;\r\n          position: absolute;\r\n          top: 50%;\r\n          left: 50%;\r\n          -webkit-transform: translate3d(-50%, -50%, 0);\r\n          transform: translate3d(-50%, -50%, 0); }\r\n    .wc-video-title-C .wc-video-title-item .wc-video-cate {\r\n      font-size: 12px;\r\n      color: #9da9bc; }\r\n      .wc-video-title-C .wc-video-title-item .wc-video-cate img {\r\n        width: .5rem;\r\n        margin: 0 5px; }\r\n\r\n.wc-video-remark-scroll {\r\n  width: 10rem;\r\n  margin: 0 auto; }\r\n  .wc-video-remark-scroll div.wc-video-remark {\r\n    text-indent: 2em;\r\n    line-height: .75rem;\r\n    width: 9.4rem;\r\n    margin: 0 auto;\r\n    color: #6d788f;\r\n    padding-bottom: 10px; }\r\n\r\n.wc-video-tool {\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal;\r\n  width: 9.4rem;\r\n  height: 40px;\r\n  line-height: 40px;\r\n  margin: 0 auto; }\r\n  .wc-video-tool aside {\r\n    -webkit-box-flex: 1; }\r\n    .wc-video-tool aside img {\r\n      width: .8rem; }\r\n    .wc-video-tool aside:last-of-type {\r\n      text-align: right; }\r\n      .wc-video-tool aside:last-of-type img {\r\n        margin: 0 5px; }\r\n\r\n/*# sourceMappingURL=video.css.map */", ""]);
 
 	// exports
 
@@ -41306,23 +41426,26 @@
 			this.state = {
 				defaultRemarkState: '查看更多',
 				commentHeight: 0,
-				videoShow: false,
+				videoShow: true,
 				inputShow: true,
 				scrollHeight: 'auto',
-				"poster": "./assets/images/video-poster.jpg",
-				"isVr": true,
-				"watch": "1235",
-				"videoSrc": 'http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8', //"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
-				"title": "2016年维多利亚的秘密秀场",
-				"cate": "时尚",
-				"time": "01:35:55",
-				"collect": "124",
 				scale: 9 / 16,
-				"from": {
-					"src": "./assets/images/yk-logo.png",
-					"name": "优酷"
+				videoObj: {
+					"poster": "./assets/images/video-poster.jpg",
+					"isVr": true,
+					"videoSrc": 'http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8', //"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
+					"title": "2016年维多利亚的秘密秀场",
+					"cate": "时尚",
+					"time": "01:35:55",
+					"collect": "124",
+
+					"from": {
+						"src": "./assets/images/yk-logo.png",
+						"name": "优酷"
+					},
+					"remark": "尤伦斯当代艺术中心的展览规格大都不小，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展中心的展览规格伦当代艺术中心的展览规格大都不小，"
+
 				},
-				"remark": "尤伦斯当代艺术中心的展览规格大都不小，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展中心的展览规格伦当代艺术中心的展览规格大都不小，",
 				"commentList": [{
 					ico: './assets/images/yk-logo.png',
 					name: '优酷',
@@ -41353,7 +41476,7 @@
 			key: 'render',
 			value: function render() {
 
-				this.defaultRemark = this.defaultRemark || this.state.remark;
+				this.defaultRemark = this.defaultRemark || this.state.videoObj.remark;
 				var posterStyle = {
 					width: this.viewW,
 					height: this.viewW * 3 / 4,
@@ -41362,6 +41485,7 @@
 				};
 				var data = this.state;
 				data.startPlay = this.startPlay.bind(this);
+				data.container = 'live-video';
 
 				var headerProps = {
 					rightMenu: _react2['default'].createElement('img', { src: './assets/images/share.png' })
@@ -41381,9 +41505,9 @@
 							_react2['default'].createElement(
 								'div',
 								{ className: 'wc-video-remark' },
-								this.state.remark
+								this.state.videoObj.remark
 							),
-							_react2['default'].createElement(
+							this.state.videoObj.remark.length > 50 && _react2['default'].createElement(
 								'div',
 								{ className: 'wc-live-more', onTouchTap: this.seeMoreDescribe.bind(this) },
 								_react2['default'].createElement(
@@ -41477,49 +41601,91 @@
 			key: 'startPlay',
 			value: function startPlay() {
 				//alert(Hls.isSupported);
+
+				var params = {
+					container: document.getElementById('live-video'),
+					name: "SceneViewer",
+					isGyro: true, //默认开启陀螺仪功能  移动端支持陀螺仪设备有效
+					scenesArr: [
+					//todo:注意修改视频路径，需要保证播放页面与视频属于同一域名下
+					{
+						sceneId: "v1",
+						sceneName: "赛车",
+						sceneFilePath: this.state.videoObj.videoSrc,
+						sceneType: "Video",
+						isVideoAutoPlay: true //todo:注意isVideoAutoPlay 是H5 模式下的播放属性，不适用于移动端
+					}],
+					//播放器不支持全景播放回调
+					errorCallBack: function errorCallBack(e) {
+						console.log("错误状态：" + e);
+					},
+					//浏览器不支持全屏回调
+					fsCallBack: function fsCallBack(status, playObj) {
+						alert("浏览器不支持全屏！");
+					}
+				};
+
+				initLoad(params);
+
 				this.setState({ videoShow: true });
 			}
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				var _this2 = this;
 
-				this.defaultRemark = this.state.remark;
-				this.state.remark = this.state.remark.substring(0, 32) + '...';
-
-				this.forceUpdate(function () {
-					_this2.minRemarkHeight = _this2.refs['wc-live-remark-scroll'].offsetHeight;
-				});
+				var id = this.props.params.id;
 
 				var s = this;
+				_jquery2['default'].ajax({
+					url: window.baseUrl + '/get_video_detail',
+					data: {
+						videoId: id
+					},
+					success: function success(data) {
+						if (data.code === 200) {
+							var result = data.result;
+							console.log(result);
+							s.state.videoObj = result;
+							s.forceUpdate(function () {
 
-				this.isMaxHeight = this.refs['wc-live-remark-scroll'].offsetHeight > this.viewH;
-				this.maxRemarkHeight = this.isMaxHeight ? this.viewH - 44 - 6 : this.refs['wc-live-remark-scroll'].offsetHeight;
-				setTimeout(function () {
-					_this2.topScroll = new _iscroll2['default'](_this2.refs['wc-live-remark-scroll']);
-					var commentHeight = _this2.viewH - _this2.refs['wc-live-remark-scroll'].offsetHeight - 44 - 6;
-					_this2.setState({ commentHeight: commentHeight });
-					_this2.commentScroll = new _iscroll2['default'](_this2.refs['wc-live-comment-list'], { probeType: 3 });
-					var startY = 0;
+								s.defaultRemark = s.state.videoObj.remark;
+								s.state.videoObj.remark = s.state.videoObj.remark.substring(0, 32) + '...';
 
-					_this2.refs['wc-live-comment-list'].addEventListener('touchstart', function (e) {
-						var e = e.changedTouches[0];
-						startY = e.pageY;
-						document.ontouchmove = function (e) {
-							var e = e.changedTouches[0];
-							var endY = e.pageY;
-							s.setState({
-								inputShow: startY < endY
-							}, function () {
-								startY = endY;
+								s.forceUpdate(function () {
+									s.minRemarkHeight = s.refs['wc-live-remark-scroll'].offsetHeight;
+								});
+
+								s.isMaxHeight = s.refs['wc-live-remark-scroll'].offsetHeight > s.viewH;
+								s.maxRemarkHeight = s.isMaxHeight ? s.viewH - 64 - 6 : s.refs['wc-live-remark-scroll'].offsetHeight;
+								setTimeout(function () {
+									s.topScroll = new _iscroll2['default'](s.refs['wc-live-remark-scroll']);
+									var commentHeight = s.viewH - s.refs['wc-live-remark-scroll'].offsetHeight - 64 - 6;
+									s.setState({ commentHeight: commentHeight });
+									s.commentScroll = new _iscroll2['default'](s.refs['wc-live-comment-list']);
+									var startY = 0;
+
+									s.refs['wc-live-comment-list'].addEventListener('touchstart', function (e) {
+										var e = e.changedTouches[0];
+										startY = e.pageY;
+										document.ontouchmove = function (e) {
+											var e = e.changedTouches[0];
+											var endY = e.pageY;
+											s.setState({
+												inputShow: startY < endY
+											}, function () {
+												startY = endY;
+											});
+										};
+										document.ontouchend = function (e) {
+											var e = e.changedTouches[0];
+											s.ontouchend = s.ontouchmove = null;
+										};
+									});
+								}, 100);
 							});
-						};
-						document.ontouchend = function (e) {
-							var e = e.changedTouches[0];
-							this.ontouchend = this.ontouchmove = null;
-						};
-					});
-				}, 100);
+						}
+					}
+				});
 			}
 		}]);
 
@@ -41566,7 +41732,7 @@
 
 
 	// module
-	exports.push([module.id, "/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden; }\r\n\r\n.wc-video-poster {\r\n  position: relative;\r\n  z-index: 1; }\r\n  .wc-video-poster:before, .wc-video-poster:after {\r\n    content: '';\r\n    position: absolute;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    border: 2px solid #fff;\r\n    border-radius: 50%;\r\n    left: 50%;\r\n    top: 50%;\r\n    margin-left: -.5rem;\r\n    margin-top: -.5rem;\r\n    z-index: 0; }\r\n  .wc-video-poster:after {\r\n    border-right: none;\r\n    width: 0;\r\n    height: 0;\r\n    z-index: -1;\r\n    border-radius: 0;\r\n    margin-left: -.03rem;\r\n    margin-top: -0.23077rem;\r\n    border-top: 0.3rem solid transparent;\r\n    border-left: 0.4rem solid #fff;\r\n    border-bottom: 0.3rem solid transparent; }\r\n  .wc-video-poster img {\r\n    width: 1.2rem;\r\n    position: absolute;\r\n    right: .4rem;\r\n    top: .4rem; }\r\n\r\n.wc-video-title-C {\r\n  width: 9.4rem;\r\n  margin: .5rem auto;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-video-title-C .wc-video-title-item {\r\n    -webkit-box-flex: 1; }\r\n    .wc-video-title-C .wc-video-title-item h3 {\r\n      font-weight: normal;\r\n      font-size: .52rem;\r\n      line-height: 1rem; }\r\n    .wc-video-title-C .wc-video-title-item.wc-video-from {\r\n      position: relative;\r\n      top: .1rem;\r\n      font-size: 12px;\r\n      color: #999;\r\n      text-align: center; }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from img {\r\n        width: .63rem; }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from div:last-of-type {\r\n        -webkit-transform: scale(0.9);\r\n        transform: scale(0.9); }\r\n    .wc-video-title-C .wc-video-title-item .wc-video-cate {\r\n      font-size: 12px;\r\n      color: #9da9bc; }\r\n      .wc-video-title-C .wc-video-title-item .wc-video-cate img {\r\n        width: .5rem;\r\n        margin: 0 5px; }\r\n\r\n.wc-video-remark-scroll {\r\n  width: 10rem;\r\n  margin: 0 auto; }\r\n  .wc-video-remark-scroll div.wc-video-remark {\r\n    text-indent: 2em;\r\n    line-height: .75rem;\r\n    width: 9.4rem;\r\n    margin: 0 auto;\r\n    color: #6d788f;\r\n    padding-bottom: 10px; }\r\n\r\n.wc-live-more {\r\n  color: #1d94d4;\r\n  text-align: center; }\r\n  .wc-live-more span {\r\n    position: relative; }\r\n    .wc-live-more span:before, .wc-live-more span:after {\r\n      content: '';\r\n      width: 0;\r\n      height: 0;\r\n      border-left: 6px solid transparent;\r\n      border-right: 6px solid transparent;\r\n      border-bottom: 6px solid #e8ebf2;\r\n      position: absolute; }\r\n    .wc-live-more span:after {\r\n      margin-top: 4px; }\r\n    .wc-live-more span:before {\r\n      width: 6px;\r\n      height: 1px;\r\n      background: #e8ebf2;\r\n      bordor-left: none;\r\n      border-bottom: none;\r\n      border-right: none;\r\n      bottom: 4px;\r\n      right: -12px; }\r\n\r\n.wc-live-comment-list {\r\n  width: 9.4rem;\r\n  overflow: hidden;\r\n  margin: 0 auto;\r\n  border-top: 1px solid #ccc;\r\n  box-sizing: border-box; }\r\n  .wc-live-comment-list ul {\r\n    padding-bottom: 2px; }\r\n  .wc-live-comment-list li {\r\n    color: #6d788f;\r\n    margin: .5rem 0;\r\n    font-size: 12px;\r\n    display: -webkit-box;\r\n    -webkit-box-align: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-align: start;\r\n    -webkit-box-pack: start; }\r\n    .wc-live-comment-list li aside:first-of-type {\r\n      margin-right: .1rem;\r\n      color: #90b4dc; }\r\n      .wc-live-comment-list li aside:first-of-type img {\r\n        width: .5rem;\r\n        margin-right: .1rem; }\r\n    .wc-live-comment-list li aside:last-of-type {\r\n      width: 7.2rem;\r\n      -webkit-transform: scale(0.95);\r\n      transform: scale(0.95); }\r\n\r\n.wc-live-input-C {\r\n  -webkit-transition: -webkit-transform 0.2s;\r\n  transition: transform 0.2s;\r\n  -webkit-transform: translate3d(0, 100%, 0);\r\n  transform: translate3d(0, 100%, 0);\r\n  width: 10rem;\r\n  position: fixed;\r\n  bottom: 0;\r\n  height: 1.2rem;\r\n  line-height: 1.2rem;\r\n  background: #f4f8ff; }\r\n  .wc-live-input-C.active {\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  .wc-live-input-C:before {\r\n    content: '';\r\n    width: 100%;\r\n    height: 1px;\r\n    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);\r\n    position: absolute;\r\n    background: rgba(0, 0, 0, 0.1);\r\n    top: 0; }\r\n  .wc-live-input-C img {\r\n    width: .5rem;\r\n    position: relative;\r\n    left: .5rem; }\r\n  .wc-live-input-C .wc-live-input {\r\n    margin: 0 auto;\r\n    display: -webkit-box;\r\n    -webkit-box-align: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-pack: start; }\r\n    .wc-live-input-C .wc-live-input input {\r\n      border: none;\r\n      background: transparent;\r\n      border-bottom: 1px solid #ccc;\r\n      height: 24px;\r\n      width: 7rem;\r\n      padding-left: .5rem; }\r\n    .wc-live-input-C .wc-live-input button {\r\n      border: none;\r\n      height: 26px;\r\n      width: 1.3rem;\r\n      margin-left: .1rem;\r\n      line-height: 26px;\r\n      background: #1d94d4;\r\n      color: #fff;\r\n      border-radius: 3px; }\r\n\r\n/*# sourceMappingURL=index.css.map */\r\n", ""]);
+	exports.push([module.id, "/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden; }\r\n\r\n.wc-video-poster {\r\n  position: relative;\r\n  z-index: 1; }\r\n  .wc-video-poster:before, .wc-video-poster:after {\r\n    content: '';\r\n    position: absolute;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    border: 2px solid #fff;\r\n    border-radius: 50%;\r\n    left: 50%;\r\n    top: 50%;\r\n    margin-left: -.5rem;\r\n    margin-top: -.5rem;\r\n    z-index: 0; }\r\n  .wc-video-poster:after {\r\n    border-right: none;\r\n    width: 0;\r\n    height: 0;\r\n    z-index: -1;\r\n    border-radius: 0;\r\n    margin-left: -.03rem;\r\n    margin-top: -0.23077rem;\r\n    border-top: 0.3rem solid transparent;\r\n    border-left: 0.4rem solid #fff;\r\n    border-bottom: 0.3rem solid transparent; }\r\n  .wc-video-poster img {\r\n    width: 1.2rem;\r\n    position: absolute;\r\n    right: .4rem;\r\n    top: .4rem; }\r\n\r\n.wc-video-title-C {\r\n  width: 9.4rem;\r\n  margin: .5rem auto;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-video-title-C .wc-video-title-item {\r\n    -webkit-box-flex: 1; }\r\n    .wc-video-title-C .wc-video-title-item h3 {\r\n      font-weight: normal;\r\n      font-size: .52rem;\r\n      line-height: 1rem; }\r\n    .wc-video-title-C .wc-video-title-item.wc-video-from {\r\n      position: relative;\r\n      top: .1rem;\r\n      font-size: 12px;\r\n      color: #999;\r\n      text-align: center; }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from img {\r\n        width: .63rem; }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from div:last-of-type {\r\n        -webkit-transform: scale(0.9);\r\n        transform: scale(0.9); }\r\n    .wc-video-title-C .wc-video-title-item .wc-video-cate {\r\n      font-size: 12px;\r\n      color: #9da9bc; }\r\n      .wc-video-title-C .wc-video-title-item .wc-video-cate img {\r\n        width: .5rem;\r\n        margin: 0 5px; }\r\n\r\n.wc-video-remark-scroll {\r\n  width: 10rem;\r\n  margin: 0 auto; }\r\n  .wc-video-remark-scroll div.wc-video-remark {\r\n    text-indent: 2em;\r\n    line-height: .75rem;\r\n    width: 9.4rem;\r\n    margin: 0 auto;\r\n    color: #6d788f;\r\n    padding-bottom: 10px; }\r\n\r\n.wc-live-more {\r\n  color: #1d94d4;\r\n  text-align: center; }\r\n  .wc-live-more span {\r\n    position: relative; }\r\n    .wc-live-more span:before, .wc-live-more span:after {\r\n      content: '';\r\n      width: 0;\r\n      height: 0;\r\n      border-left: 6px solid transparent;\r\n      border-right: 6px solid transparent;\r\n      border-bottom: 6px solid #e8ebf2;\r\n      position: absolute; }\r\n    .wc-live-more span:after {\r\n      margin-top: 4px; }\r\n    .wc-live-more span:before {\r\n      width: 6px;\r\n      height: 1px;\r\n      background: #e8ebf2;\r\n      bordor-left: none;\r\n      border-bottom: none;\r\n      border-right: none;\r\n      bottom: 4px;\r\n      right: -12px; }\r\n\r\n.wc-live-comment-list {\r\n  width: 9.4rem;\r\n  overflow: hidden;\r\n  margin: 0 auto;\r\n  border-top: 1px solid #ccc;\r\n  box-sizing: border-box; }\r\n  .wc-live-comment-list ul {\r\n    padding-bottom: 2px; }\r\n  .wc-live-comment-list li {\r\n    color: #6d788f;\r\n    margin: .5rem 0;\r\n    font-size: 12px;\r\n    display: -webkit-box;\r\n    -webkit-box-align: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-align: start;\r\n    -webkit-box-pack: start; }\r\n    .wc-live-comment-list li aside:first-of-type {\r\n      margin-right: .1rem;\r\n      color: #90b4dc; }\r\n      .wc-live-comment-list li aside:first-of-type img {\r\n        width: .5rem;\r\n        margin-right: .1rem; }\r\n    .wc-live-comment-list li aside:last-of-type {\r\n      width: 7.2rem;\r\n      -webkit-transform: scale(0.95);\r\n      transform: scale(0.95); }\r\n\r\n.wc-live-input-C {\r\n  -webkit-transition: -webkit-transform 0.2s;\r\n  transition: -webkit-transform 0.2s;\r\n  transition: transform 0.2s;\r\n  transition: transform 0.2s, -webkit-transform 0.2s;\r\n  -webkit-transform: translate3d(0, 100%, 0);\r\n  transform: translate3d(0, 100%, 0);\r\n  width: 10rem;\r\n  position: fixed;\r\n  bottom: 0;\r\n  height: 1.2rem;\r\n  line-height: 1.2rem;\r\n  background: #f4f8ff; }\r\n  .wc-live-input-C.active {\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  .wc-live-input-C:before {\r\n    content: '';\r\n    width: 100%;\r\n    height: 1px;\r\n    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);\r\n    position: absolute;\r\n    background: rgba(0, 0, 0, 0.1);\r\n    top: 0; }\r\n  .wc-live-input-C img {\r\n    width: .5rem;\r\n    position: relative;\r\n    left: .5rem; }\r\n  .wc-live-input-C .wc-live-input {\r\n    margin: 0 auto;\r\n    display: -webkit-box;\r\n    -webkit-box-align: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-pack: start; }\r\n    .wc-live-input-C .wc-live-input input {\r\n      border: none;\r\n      background: transparent;\r\n      border-bottom: 1px solid #ccc;\r\n      height: 24px;\r\n      width: 7rem;\r\n      padding-left: .5rem;\r\n      border-radius: 0; }\r\n    .wc-live-input-C .wc-live-input button {\r\n      border: none;\r\n      height: 26px;\r\n      width: 1.4rem;\r\n      margin-left: .1rem;\r\n      line-height: 26px;\r\n      background: #1d94d4;\r\n      color: #fff;\r\n      border-radius: 3px; }\r\n\r\n/*# sourceMappingURL=index.css.map */", ""]);
 
 	// exports
 
@@ -41633,10 +41799,11 @@
 				"title": "城市让生活更美好，而城市里的美丽人生， 从美术馆开始。",
 				"date": "2017/03/06",
 				"from": "维场",
+				type: 0, //0图片 1、视频
 				"name": "小ming",
 				"follow": "2352万",
 				"imgSrc": "./assets/images/f-remark.jpg",
-				"content": ''
+				"content": "这里的展览从来不会让挑剔的观众失望，什么样的艺术大师都来过。新馆是2008年10月新建的，地处偏远，但来的人很多。整个建筑设计得非常有特色，展示的空间布局合理，移步换景。由建筑师矶崎新设计，据说设计费每平米达700元。除了中国美术馆、798艺术区，京城还有很多美术馆藏在各个充满艺术气息的角落。带着家人和朋友去美术馆感受下艺术氛围，不啻为一个消夏的好选择。今天就来盘点下京城美术馆。"
 			};
 			this.viewW = document.documentElement.clientWidth;
 			this.viewH = document.documentElement.clientHeight;
@@ -41653,7 +41820,7 @@
 					_react2['default'].createElement(_componentsWcHeaderJsx2['default'], headerProps),
 					_react2['default'].createElement(
 						'div',
-						{ className: 'wc-news-scroll', ref: 'wc-news-scroll', style: { height: this.viewH - 44, overflow: 'hidden' } },
+						{ className: 'wc-news-scroll', ref: 'wc-news-scroll', style: { height: this.viewH - 64, overflow: 'hidden' } },
 						_react2['default'].createElement(
 							'div',
 							null,
@@ -41728,16 +41895,37 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				var _this = this;
 
-				var s = this.HTMLDeCode('&lt;p&gt;&lt;strong&gt;国家体育场（鸟巢）&lt;/strong&gt;位于北京奥林匹克公园中心区南部，为2008年&lt;strong&gt;&lt;span style="color: rgb(255, 0, 0);"&gt;北京奥运会&lt;/span&gt;&lt;/strong&gt;的主体育场。工程总占地面积21公顷，场内观众坐席约为91000个。举行了奥运会、残奥会开闭幕式、&lt;strong&gt;&lt;span style="text-decoration: underline;"&gt;&lt;em&gt;田径比赛&lt;/em&gt;&lt;/span&gt;&lt;/strong&gt;及足球比赛决赛。奥运会后成为北京市民参与体育活动及享受体育娱乐的大型专业场所，并成为地标性的体育建筑和奥运遗产。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;&lt;span style="color: rgb(23, 54, 93);"&gt;体育场由雅克·赫尔佐格、德梅隆、艾未未以及李兴刚等设计&lt;/span&gt;&lt;/strong&gt;，由北京城建集团负责施工。体育场的形态如同孕育生命的“巢”和摇篮，寄托着人类对未来的希望。设计者们对这个场馆没有做任何多余的处理，把结构暴露在外，因而自然形成了建筑的外观。&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;');
-				this.setState({
-					content: s.replace(/&/g, '>')
+				var s = this;
+				var id = this.props.params.id;
+				this.messageID = id;
+				_jquery2['default'].ajax({
+					url: window.baseUrl + '/get_news_detail',
+					data: {
+						messageID: id
+					},
+					success: function success(data) {
+						if (data.code === 200) {
+							var result = data.result;
+
+							s.state.title = result.title;
+							s.state.date = result.date;
+							s.state.from = result.from;
+							s.state.type = result.type;
+							s.state.name = result.name;
+							s.state.follow = result.follow;
+							s.state.imgSrc = result.imgSrc;
+							var text = s.HTMLDeCode(result.content);
+
+							s.state.content = text.replace(/&/g, '>');
+							s.state.content = s.state.content.replace(/>amp;nbsp;/g, '');
+							s.forceUpdate();
+							setTimeout(function () {
+								s.scroll = new _iscroll2['default'](s.refs['wc-news-scroll']);
+							}, 500);
+						}
+					}
 				});
-				window.s = this;
-				setTimeout(function () {
-					_this.scroll = new _iscroll2['default'](_this.refs['wc-news-scroll']);
-				}, 100);
 			}
 		}]);
 
@@ -41901,7 +42089,7 @@
 					_react2['default'].createElement(_componentsWcHeaderJsx2['default'], headerProps),
 					_react2['default'].createElement(
 						'div',
-						{ className: 'wc-subject-scroll-C', ref: 'wc-subject-scroll-C', style: { height: this.viewH - 44, overflow: 'hidden' } },
+						{ className: 'wc-subject-scroll-C', ref: 'wc-subject-scroll-C', style: { height: this.viewH - 64, overflow: 'hidden' } },
 						_react2['default'].createElement(
 							'ul',
 							null,

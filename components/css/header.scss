@@ -31,6 +31,7 @@ input, textarea {
 .wc-header-ui{
 	 width:100vw;
 	 height: 44px;//所有手机统一高度
+	 margin-top:20px;
 	 @include pos(r);
 	 	background: #fff;
 	 	padding-bottom: 5px;

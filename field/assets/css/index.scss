@@ -7,6 +7,8 @@ $mainW:9.4rem;
 .wc-field-describe{
 	width: $mainW;
 	margin: .5rem auto;
+	overflow: hidden;;
+	height: 5rem;
 }
 
 
@@ -57,13 +59,18 @@ $mainW:9.4rem;
 		margin-left: 10px;
 	}
 	.wc-address{
-		width:5rem;
+		width:6rem;
 		overflow: hidden;
 		display: inline-block;
 		text-overflow:ellipsis;
 	  overflow:hidden; white-space:nowrap; 
 	  @include pos(r);
-	  top:4px;
+	  
+	}
+	.wc-entry-map{
+		display: inline-block;
+		color:#ccc;
+		@include transform(scale(1,1.5));
 	}
 	&>div{
 		color:#9da9bc;
@@ -135,9 +142,18 @@ $mainW:9.4rem;
 	li{
 		margin:10px 0;
 	}
+	span{
+		margin-right:.2rem;
+		@include pos(r);
+		top:4px;
+		width:.8rem;
+		height: 1rem;
+		text-align: center;
+		line-height: 1rem;
+	}
 	.wc-comment-logo{
 		width:.5rem;
-		margin-right:.2rem;
+		
 		font-size:.6875rem;
 	}
 	.wc-comment-content{

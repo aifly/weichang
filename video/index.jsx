@@ -98,7 +98,7 @@ class VideoApp extends Component {
 
 	componentDidMount(){
 		this.setState({
-			scrollHeight:this.viewH -  44
+			scrollHeight:this.viewH -  64
 		});
 		setTimeout(()=>{
 			this.scroll = new IScroll(this.refs['wc-video-remark-scroll'],{

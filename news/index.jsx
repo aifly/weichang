@@ -17,10 +17,11 @@ class NewsApp extends Component {
 			"title":"城市让生活更美好，而城市里的美丽人生， 从美术馆开始。",
 			"date":"2017/03/06",
 			"from":"维场",
+			type:0,//0图片 1、视频
 			"name":"小ming",
 			"follow":"2352万",
 			"imgSrc":"./assets/images/f-remark.jpg",
-			"content":''
+			"content":"这里的展览从来不会让挑剔的观众失望，什么样的艺术大师都来过。新馆是2008年10月新建的，地处偏远，但来的人很多。整个建筑设计得非常有特色，展示的空间布局合理，移步换景。由建筑师矶崎新设计，据说设计费每平米达700元。除了中国美术馆、798艺术区，京城还有很多美术馆藏在各个充满艺术气息的角落。带着家人和朋友去美术馆感受下艺术氛围，不啻为一个消夏的好选择。今天就来盘点下京城美术馆。"
 		}
 		this.viewW = document.documentElement.clientWidth;
 		this.viewH = document.documentElement.clientHeight;
@@ -32,7 +33,7 @@ class NewsApp extends Component {
 		return (
 			<div className="wc-news-main-ui">
 				<WCHeader {...headerProps}></WCHeader>
-				<div className="wc-news-scroll" ref='wc-news-scroll' style={{height:this.viewH - 44 ,overflow:'hidden'}}>
+				<div className="wc-news-scroll" ref='wc-news-scroll' style={{height:this.viewH - 64 ,overflow:'hidden'}}>
 					<div>
 						<h2 className='wc-news-title'>{this.state.title}</h2>
 						<div className='wc-news-info'>
@@ -74,14 +75,38 @@ class NewsApp extends Component {
 		 return {__html:  this.state.content};
 	}
 	componentDidMount(){
-		var s = this.HTMLDeCode('&lt;p&gt;&lt;strong&gt;国家体育场（鸟巢）&lt;/strong&gt;位于北京奥林匹克公园中心区南部，为2008年&lt;strong&gt;&lt;span style="color: rgb(255, 0, 0);"&gt;北京奥运会&lt;/span&gt;&lt;/strong&gt;的主体育场。工程总占地面积21公顷，场内观众坐席约为91000个。举行了奥运会、残奥会开闭幕式、&lt;strong&gt;&lt;span style="text-decoration: underline;"&gt;&lt;em&gt;田径比赛&lt;/em&gt;&lt;/span&gt;&lt;/strong&gt;及足球比赛决赛。奥运会后成为北京市民参与体育活动及享受体育娱乐的大型专业场所，并成为地标性的体育建筑和奥运遗产。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;&lt;span style="color: rgb(23, 54, 93);"&gt;体育场由雅克·赫尔佐格、德梅隆、艾未未以及李兴刚等设计&lt;/span&gt;&lt;/strong&gt;，由北京城建集团负责施工。体育场的形态如同孕育生命的“巢”和摇篮，寄托着人类对未来的希望。设计者们对这个场馆没有做任何多余的处理，把结构暴露在外，因而自然形成了建筑的外观。&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;');
-		this.setState({
-			content:s.replace(/&/g,'>')
+
+
+		var s = this;
+		var id = this.props.params.id;
+		this.messageID = id;
+		$.ajax({
+			url:window.baseUrl + '/get_news_detail',
+			data:{
+				messageID:id
+			},
+			success(data){
+					if(data.code === 200){
+							var result = data.result;
+ 
+							s.state.title = result.title;
+							s.state.date = result.date;
+							s.state.from = result.from;
+							s.state.type = result.type;
+							s.state.name = result.name;
+							s.state.follow = result.follow;
+							s.state.imgSrc = result.imgSrc;
+							var text = s.HTMLDeCode(result.content);
+
+							s.state.content = text.replace(/&/g,'>');
+							s.state.content = s.state.content.replace(/>amp;nbsp;/g,'');
+							s.forceUpdate();
+							setTimeout(()=>{
+								s.scroll = new IScroll(s.refs['wc-news-scroll']);
+				  		},500);
+					} 
+			}
 		})
-		window.s = this;
-		setTimeout(()=>{
-			this.scroll = new IScroll(this.refs['wc-news-scroll']);
-		},100);
 	}
 }
 export default WCPubCom(NewsApp);

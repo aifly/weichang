@@ -62,6 +62,23 @@ $mainW:9.4rem;
       div:last-of-type{
         @include transform(scale(.9));
       }
+      .wc-from-logo{
+        
+        section{
+          $size:1rem;
+          width:$size;
+          height:$size;
+          margin: 0 auto;
+          @include pos(r);
+          img{
+            vertical-align: middle;
+            @include pos(a);
+            top:50%;
+            left: 50%;
+            @include transform(translate3d(-50%,-50%,0));
+          }
+        }
+      }
       color:#999;
       text-align: center;
     }
