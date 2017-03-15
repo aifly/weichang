@@ -1,19 +1,100 @@
 <!DOCTYPE html>
 <html style="font-size: 32px;">
 <head>
-	<title></title>
+	<title>维场</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 	<script>
 		 document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/ 10+'px';
 		 document.addEventListener('touchmove',function(e){e.preventDefault();},false)
 	</script>
+	<style type="text/css">
+		.lt-logo{
+			position: absolute;
+			top:50%;
+			width:1.8rem;
+			margin-top:-.9rem;
+			left: 50%;
+			margin-left: -.9rem;
+			height: 1.8rem;
+			font-size: .3rem;
+			text-align: center;
+			line-height: 1.8rem;
+			background: url(./assets/images/logo-bg.png) no-repeat center center;
+			background-size: contain;
+		}
+		.lt-logo div{
+			-webkit-animation: rotate 2s infinite;
+		}
+		.lt-logo span{
+			 display: inline-block;
+			 width: 6px;
+			 height: 6px;
+			 margin: 0 3px;
+			 border:2px solid #349ed8;
+			 border-radius: 50%;
+			 box-sizing: border-box;
+		}
+		.lt-logo span:nth-of-type(1){
+			-webkit-animation: move 2s infinite ;
+		}
+		.lt-logo span:nth-of-type(2){
+
+		}
+		.lt-logo span:nth-of-type(3){
+       -webkit-animation: move1 2s infinite ;
+		}
+
+		@-webkit-keyframes rotate{
+			30%{
+				-webkit-transform: rotate(0deg);
+			}
+			70%{
+				-webkit-transform: rotate(-360deg);
+			}
+			100%{
+				-webkit-transform: rotate(0deg);
+			}
+		}
+
+		@-webkit-keyframes move{
+			0%{
+				-webkit-transform:translate3d(15px,0,0);
+			}
+			50%{
+				-webkit-transform:translate3d(0,0,0);
+			}
+			100%{
+				-webkit-transform:translate3d(15px,0,0);
+			}
+		}
+
+		@-webkit-keyframes move1{
+			0%{
+				-webkit-transform:translate3d(-15px,0,0);
+			}
+			50%{
+				-webkit-transform:translate3d(0,0,0);
+			}
+			100%{
+				-webkit-transform:translate3d(-15px,0,0);
+			}
+		}
+		#fly-main-ui{
+			-webkit-transition:1s opacity;
+		}
+	</style>
 </head>
 <body>
 		<div id="fly-main-ui">
-			
+				<div class="lt-logo" style=";">
+						<div>
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+				</div>
 		</div>
-
 			<script>
 				
 				function onError(){
@@ -25,10 +106,12 @@
 				}
 
 				window.baseUrl = 'http://api.wechang.net/weichang/api.php/';
+				window.shareIco = 'http://h5.zmiti.com/public/weichang/assets/images/logo300.jpg'
 		</script>
 
 		<script src='./assets/libs/UtoVRPlayerGuide.js'></script>
-		<script src='http://localhost:1234/index.js' onError='onError()'></script>
+		<script src='http://localhost:1234/index.js' onError='onError()'></script> 
+		<!-- -->
 		<!--
 		<script src='./assets/js/index.js'></script>
 

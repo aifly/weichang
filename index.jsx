@@ -18,10 +18,10 @@ class App extends React.Component{
 	render() {
 		var apps = [
 				{path: '/:id', app:FieldApp },
-				{path: '/field/:id', app:FieldApp },
-				{path: '/video/:id', app:VideoApp },
-				{path: '/live/:id', app:LiveApp },
-				{path: '/news/:id', app:NewsApp },
+				{path: '/field/:id(/:subjectId)', app:FieldApp },
+				{path: '/video/:id(/:subjectId)', app:VideoApp },
+				{path: '/live/:id(/:subjectId)', app:LiveApp },
+				{path: '/news/:id(/:subjectId)', app:NewsApp },
 				{path: '/subject/:id', app:SubjectApp },
 		];
 		return (
@@ -43,6 +43,14 @@ class App extends React.Component{
 
 }
 
-	ReactDOM.render(<App></App>,document.getElementById('fly-main-ui'));
+var main = document.getElementById('fly-main-ui');
+main.style.opacity = 0;
+
+setTimeout(()=>{
+	ReactDOM.render(<App></App>,main);
+},500);
+setTimeout(()=>{
+	main.style.opacity = 1;
+},800)
  
 

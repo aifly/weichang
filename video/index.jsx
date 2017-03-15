@@ -44,9 +44,17 @@ class VideoApp extends Component {
 		}
 		var data = this.state;
 		data.startPlay = this.startPlay.bind(this);
+
+
+			var headerProps = {
+				subjectId:this.props.params.subjectId,
+				title:this.state.videoObj.title,
+				describe:this.state.videoObj.remark,
+			};
+
 		return (
 			<div className="wc-video-main-ui">
-				<WCHeader></WCHeader>
+				<WCHeader {...headerProps}></WCHeader>
 				<div className="wc-video-remark-scroll" ref='wc-video-remark-scroll' style={{height:this.state.scrollHeight,overflow:'hidden'}}>
 					<div>
 					<VideoChildApp {...data}></VideoChildApp>

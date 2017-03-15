@@ -54,13 +54,15 @@ class SubjectApp extends Component {
 				}
 			]
 		}
+		this.subjectId = 100;
 		this.viewW = document.documentElement.clientWidth;
 		this.viewH = document.documentElement.clientHeight;
 	}
 	render() {
  
 		var headerProps = {
-			rightMenu:<img src='./assets/images/collect.png'/>
+			rightMenu:<img src='./assets/images/collect.png'/>,
+			type:'subjectlist'//列表页面
 		}
 		return (
 			<div className="wc-subject-main-ui">
@@ -78,7 +80,7 @@ class SubjectApp extends Component {
 								component = <li  key={i}>
 									<section className='wc-subject-field'>
 										<div className='wc-subject-field-img'>
-											<Link to={'/'+item.type+'/'+item.id}><img src={item.imgSrc} /></Link>
+											<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}><img src={item.imgSrc} /></Link>
 										</div>
 										<div className='wc-subject-field-prop'>
 											<h4>{item.name}</h4>
@@ -87,10 +89,10 @@ class SubjectApp extends Component {
 											<span>最多容纳{item.detail.maxPerson}人</span>
 										</div>
 										<div className='wc-subject-field-title'>
-											 	{item.title}
+												<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}>{item.title}</Link>
 										</div>
 										<div className='wc-subject-field-describe'>
-												{item.describe}
+												<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}>{item.describe}</Link>
 										</div>
 									</section>
 								</li>
@@ -99,13 +101,13 @@ class SubjectApp extends Component {
 								component = <li  key={i}>
 									<section className='wc-subject-news'>
 										<div className='wc-subject-new-img'>
-												<Link to={'/'+item.type+'/'+item.id}><img src={item.imgSrc} /></Link>
+												<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}><img src={item.imgSrc} /></Link>
 										</div>
 										<h3 className='wc-subject-news-title'>
-												{item.title}
+												<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}>	{item.title}</Link>
 										</h3>
 										<div className='wc-subject-news-describe'>
-												{item.describe}
+												<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}>{item.describe}</Link>
 										</div>
 										<div className='wc-subject-see-all'><Link to={'/'+item.type+'/'+item.id}>查看全部</Link></div>
 									</section>
@@ -115,15 +117,15 @@ class SubjectApp extends Component {
 								component = <li  key={i}>
 											<section className='wc-subject-video'>
 												<div className='wc-subject-video-img'>
-														<Link to={'/'+item.type+'/'+item.id}><img src={item.imgSrc} /></Link>
+														<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}><img src={item.imgSrc} /></Link>
 														{item.isVr && <img className='wc-subject-vr' src='./assets/images/vr.png'/>}
 												</div>
 												<div className='wc-subject-video-info'>
 														<aside>
-																<div className='wc-subject-from-logo'>
+																<div className='wc-subject-from-logo' style={{background:'url(./assets/images/logo-bg.png) no-repeat center center',backgroundSize:'contain',padding:6,boxSizing:'border-box'}}>
 																	<img src={item.from.src}/>
 																</div>
-																<div>{item.from.name}</div>
+																<div style={{textAlign:'center'}}>{item.from.name}</div>
 														</aside>
 														<aside>
 																<h2>{item.videoTitle}</h2>
@@ -135,10 +137,10 @@ class SubjectApp extends Component {
 														</aside>												
 												</div>
 												<h2 className='wc-subject-video-title'>
-														{item.desTitle}
+														<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}>{item.desTitle}</Link>
 												</h2>
 												<div className='wc-subject-video-describe'>
-														{item.describe}
+														<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}>{item.describe}</Link>
 												</div>
 										</section>
 								</li>
@@ -154,9 +156,31 @@ class SubjectApp extends Component {
 
 
 	componentDidMount(){
-		setTimeout(()=>{
-			this.scroll = new IScroll(this.refs['wc-subject-scroll-C']);
-		},100)
+		var subjectID = this.props.params.id || 'LocXxuu4'
+		this.subjectId = subjectID;
+		var s = this;
+	  $.ajax({
+	  	url:window.baseUrl + '/get_subject_detail',
+	  	data:{
+	  		subjectID:subjectID
+	  	},
+	  	success(data){
+	  		if(data.code  === 200){
+	  			var result = data.result;
+	  			s.state.imgSrc = result.imgSrc;
+	  			s.state.describe = result.describe;
+	  			s.state.list = result.list;
+
+	  			s.forceUpdate();
+	  			setTimeout(()=>{
+						s.scroll = new IScroll(s.refs['wc-subject-scroll-C'],{
+							preventDefault:false
+						});
+					},100)
+	  		}
+	  	}
+	  })
+		
 	}
 }
 export default WCPubCom(SubjectApp);

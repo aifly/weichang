@@ -29,7 +29,10 @@ class NewsApp extends Component {
 	render() {
 
 		var headerProps = {
-		}
+				subjectId:this.props.params.subjectId,
+				...this.state,
+				describe:this.state.content,
+			};	
 		return (
 			<div className="wc-news-main-ui">
 				<WCHeader {...headerProps}></WCHeader>

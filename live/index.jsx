@@ -77,7 +77,9 @@ class LiveApp extends Component {
 		data.container = 'live-video'
 
 		var headerProps = {
-			rightMenu:<img src='./assets/images/share.png'/>
+			subjectId:this.props.params.subjectId,
+			...this.state,
+			describe:this.state.videoObj.remark
 		}
 
 		return (

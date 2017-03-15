@@ -6,6 +6,8 @@
 body {
   overflow: hidden; }
 
+.wc-subject-main-ui a {
+  color: #7f8fa9; }
 .wc-subject-main-ui h2, .wc-subject-main-ui h3, .wc-subject-main-ui h4 {
   font-weight: normal; }
 .wc-subject-main-ui .wc-subject-main-describe {

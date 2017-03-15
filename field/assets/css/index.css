@@ -47,7 +47,7 @@ body {
   -webkit-box-align: center;
   -webkit-box-pack: center;
   -webkit-box-orient: horizontal;
-  -webkit-box-pack: start; }
+  -webkit-box-pack: justify; }
   .wc-field-address > img {
     width: .5rem;
     display: block;
@@ -76,7 +76,8 @@ body {
   margin: 0 auto;
   text-indent: 2em;
   color: #6d788f;
-  line-height: .7rem; }
+  line-height: .7rem;
+  font-size: 12px; }
 
 .wc-field-more {
   color: #1d94d4;

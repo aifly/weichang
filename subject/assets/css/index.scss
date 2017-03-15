@@ -5,6 +5,9 @@ body{
 
 $mainW : 9.4rem;
 .wc-subject-main-ui{
+  a{
+    color:#7f8fa9
+   }
     h2,h3,h4{font-weight: normal;}
     .wc-subject-main-describe{
       width:$mainW;
@@ -75,6 +78,7 @@ $mainW : 9.4rem;
        .wc-subject-field-describe{
          text-indent: 2em;
          color:#7f8fa9;
+
        }
     } 
 

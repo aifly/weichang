@@ -46,9 +46,10 @@ $mainW:9.4rem;
 
 .wc-field-address{
 	width:$mainW;
+
 	margin:.5rem auto .3rem;
 	@include displayBox(horizontal);
-	-webkit-box-pack: start;
+	-webkit-box-pack: justify;
 	&>img{
 		width:.5rem;
 		display: block;
@@ -83,6 +84,7 @@ $mainW:9.4rem;
 	text-indent:2em;
 	color:#6d788f;
 	line-height:.7rem;
+	font-size: 12px;
 }
 
 .wc-field-more{

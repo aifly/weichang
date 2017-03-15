@@ -214,13 +214,11 @@ class FieldApp extends Component {
 
 
 	render() {
-
+			
 			var headerProps = {
-				goBack(){
-					if(window.historyArr.length<=0 && window.H5Manager){
-							H5Manager.goBack();
-					}
-				}
+				subjectId:this.props.params.subjectId,
+				title:this.state.title,
+				describe:this.state.detailDescribe,
 			};	
 		return (
 			<div className='wc-field-ui'>
@@ -262,7 +260,7 @@ class FieldApp extends Component {
 								})}
 							</ul>
 						</div>
-						<div className="wc-field-more" onTouchTap={this.seeMoreComment.bind(this)}><span>{this.state.defaultCommentState}</span></div>
+						{this.state.commentList.length>0 && <div className="wc-field-more" onTouchTap={this.seeMoreComment.bind(this)}><span>{this.state.defaultCommentState}</span></div>}
 
 						<div className="wc-field-commit-C wc-field-params">
 							<aside>场地参数</aside>
@@ -408,6 +406,7 @@ class FieldApp extends Component {
 	componentDidMount(){
 		var s = this;
 		var id = this.props.params.id;
+
 		this.fieldId = id;
 		$.ajax({
 			url:window.baseUrl + '/get_place_detail',
@@ -449,7 +448,10 @@ class FieldApp extends Component {
 									scrollY:false,
 								});
 
-								s.defaultDetailDescribe = s.state.detailDescribe;
+								
+				  		},500);
+
+					  		s.defaultDetailDescribe = s.state.detailDescribe;
 
 								s.state.detailDescribe = s.state.detailDescribe.substring(0,52)+'...';
 
@@ -460,11 +462,8 @@ class FieldApp extends Component {
 										s.defaultHeight+=$(n).height()+ 10;
 									}
 								});
-
 								s.state.commentHeight = s.defaultHeight;
 								s.forceUpdate();
-				  		},500);
-
 						
 					} 
 			}
