@@ -67,7 +67,10 @@ class VideoApp extends Component {
 
 	startPlay(){
 		//alert(Hls.isSupported);
-		this.setState({videoShow:true});
+		
+		this.state.videoObj.poster = '';
+		this.state.videoShow=true;
+		this.forceUpdate();
 		/*if(Hls.isSupported()) {
 		 alert(3)
 		 var video = this.refs['video'];
@@ -105,6 +108,29 @@ class VideoApp extends Component {
 
 
 	componentDidMount(){
+
+		var id = this.props.params.id;
+		var s = this;
+		window.obserable.on('updateCollect',()=>{
+			$.ajax({
+				url:window.baseUrl+'like',
+				data:{
+					resID:id
+				},
+				success(data){
+					console.log(data)
+					if(data.code === 200 && data.result*1 === 1){
+						 window.obserable.trigger({
+			            type:'toast',
+			            data:''
+			        });
+						s.state.videoObj.collect = this.state.videoObj.collect*1 + 1;
+						s.forceUpdate();
+					}
+				}
+			});
+		});
+
 		this.setState({
 			scrollHeight:this.viewH -  64
 		});
@@ -114,8 +140,7 @@ class VideoApp extends Component {
 			});
 		},1000);
 
-		var id = this.props.params.id;
-		var s = this;
+		
 		$.ajax({
 			url:window.baseUrl + '/get_video_detail',
 			data:{

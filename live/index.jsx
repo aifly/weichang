@@ -172,11 +172,12 @@ class LiveApp extends Component {
             }
         };
    
-     initLoad(params);
+ //    initLoad(params);
 
     
-
-		this.setState({videoShow:true});
+ 		this.state.videoObj.poster = '';
+		this.state.videoShow=true;
+		this.forceUpdate();
 	 
 	}
 
@@ -186,6 +187,28 @@ class LiveApp extends Component {
 		var id = this.props.params.id;
 
 		var s = this;
+
+		window.obserable.on('updateCollect',()=>{
+			
+			$.ajax({
+				url:window.baseUrl+'like',
+				data:{
+					resID:id
+				},
+				success(data){
+					console.log(data)
+					if(data.code === 200 && data.result*1 === 1){
+						 window.obserable.trigger({
+			            type:'toast',
+			            data:''
+			        });
+						s.state.videoObj.collect = s.state.videoObj.collect*1 + 1;
+						s.forceUpdate();
+					}
+				}
+			});
+		
+		});
 		$.ajax({
 			url:window.baseUrl + '/get_video_detail',
 			data:{
@@ -232,17 +255,15 @@ class LiveApp extends Component {
 							  		s.ontouchend = s.ontouchmove = null;
 							  	}
 							  });
-							   
 						},100);
 
 					});
 				}
 			}
 		})
-
-
-		
-		
+	}
+	componentWillUnmount() {
+		document.ontouchend = document.ontouchmove = null;	
 	}
 }
 export default WCPubCom(LiveApp);

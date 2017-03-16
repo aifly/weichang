@@ -106,7 +106,34 @@
 				}
 
 				window.baseUrl = 'http://api.wechang.net/weichang/api.php/';
-				window.shareIco = 'http://h5.zmiti.com/public/weichang/assets/images/logo300.jpg'
+				window.shareIco = 'http://h5.zmiti.com/public/weichang/assets/images/logo300.jpg';
+
+				window.liveSrc ='http://pili-live-hls.live.zmiti.com/test-wechang/player_src.html?src=';
+
+				function  loading(arr, fn, fnEnd){
+                var len = arr.length;
+                var count = 0;
+                var i = 0;
+                
+                function loadimg() {
+                    if (i === len) {
+                        return;
+                    }
+                    var img = new Image();
+                    img.onload = img.onerror = function(){
+                        count++;
+                        if (i < len - 1) {
+                            i++;
+                            loadimg();
+                            fn && fn(i / (len - 1), img.src);
+                        } else {
+                            fnEnd && fnEnd(img.src);
+                        }
+                    };
+                    img.src = arr[i];
+                }
+               loadimg();
+            }
 		</script>
 
 		<script src='./assets/libs/UtoVRPlayerGuide.js'></script>

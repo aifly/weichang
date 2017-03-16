@@ -12,12 +12,12 @@ class SubjectApp extends Component {
 
 	constructor(props) {
 		super(props);
-
 		this.state = {
-			imgSrc:'./assets/images/zt.jpg',
-			describe:'在第一期我们讲了登录界面的设计方法，这期我们聊聊引导页。有哪些常见的引导页类型，如何才能快速提升它的设计格调，从理论到方法都有了，强烈建议新手学习。',
+			isCollect:false,
+			imgSrc:'',
+			describe:'',
 			list:[
-				{
+				/*{
 					id:'1',
 					type:'field',
 					imgSrc:'./assets/images/feild.jpg',
@@ -51,7 +51,7 @@ class SubjectApp extends Component {
 					follow:355,
 					desTitle:'城市里面的美丽人生，从美术馆开始。',
 					describe:'这里的展览从来不会让挑剔的观众失望，什么样的艺术大师都来过。新馆是2008年10月新建的，地处偏远，但来的人很多。整个建筑设计得非常有特色，展示的空间布局合理，移步换景。由建筑师矶崎新设计，据说设计费每平米达700元。'
-				}
+				}*/
 			]
 		}
 		this.subjectId = 100;
@@ -61,14 +61,14 @@ class SubjectApp extends Component {
 	render() {
  
 		var headerProps = {
-			rightMenu:<img src='./assets/images/collect.png'/>,
+			rightMenu:this.state.isCollect?<img src='./assets/images/collect1.png'/>:<img src='./assets/images/collect.png'/>,
 			type:'subjectlist'//列表页面
 		}
 		return (
 			<div className="wc-subject-main-ui">
 				<WCHeader {...headerProps}></WCHeader>
 				<div className='wc-subject-scroll-C' ref='wc-subject-scroll-C' style={{height:this.viewH - 64,overflow:'hidden'}}>
-					<ul>
+					{this.state.imgSrc && <ul>
 						<li>
 							<img src={this.state.imgSrc}/>
 							<div className='wc-subject-main-describe'>{this.state.describe}</div>
@@ -149,6 +149,7 @@ class SubjectApp extends Component {
 							return component;
 						})}
 					</ul>
+					}
 				</div>
 			</div>
 		)
@@ -172,11 +173,15 @@ class SubjectApp extends Component {
 	  			s.state.list = result.list;
 
 	  			s.forceUpdate();
-	  			setTimeout(()=>{
-						s.scroll = new IScroll(s.refs['wc-subject-scroll-C'],{
+	  			var imgList = [s.state.imgSrc];
+	  			s.state.list.map((item,i)=>{
+	  				imgList.push(item.imgSrc);
+	  			});
+	  			loading(imgList,null,()=>{
+	  				s.scroll = new IScroll(s.refs['wc-subject-scroll-C'],{
 							preventDefault:false
 						});
-					},100)
+	  			});
 	  		}
 	  	}
 	  })

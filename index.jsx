@@ -9,11 +9,17 @@ import NewsApp from './news/index.jsx';
 import SubjectApp from './subject/index.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import Obserable from './assets/libs/obserable.js';
+import './assets/css/index.css';
 
+import Obserable from './assets/libs/obserable.js';
+var obserable = new Obserable();
 class App extends React.Component{
 	constructor(args) {
 		super(...args);
+		this.state = {
+			toast:'点赞成功',
+			isToast:false
+		}
 	}
 	render() {
 		var apps = [
@@ -25,20 +31,39 @@ class App extends React.Component{
 				{path: '/subject/:id', app:SubjectApp },
 		];
 		return (
-			<Router history={hashHistory}>
-				{apps.map((app, i) => {
-					return <Route key={i} path={app.path} component={app.app}/>
-				})}
-			</Router>
+			<div>
+				<Router history={hashHistory}>
+					{apps.map((app, i) => {
+						return <Route key={i} path={app.path} component={app.app}/>
+					})}
+				</Router>
+				<div className={'wc-toast '+(this.state.isToast?'active':'')}>
+						{this.state.toast}
+				</div>
+			</div>
 			)
 	}
 
 	componentWillMount(){
 		window.historyArr = [];
+		window.obserable = obserable;
 	}
 	
 	componentDidMount() {
-
+		this.toast = true;
+		obserable.on('toast',(data)=>{
+			if(this.toast){
+					this.toast = false;
+					this.setState({
+					toast:data||'点赞成功',
+					isToast:true
+				});
+				setTimeout(()=>{
+					this.setState({isToast:false});
+					this.toast = true;
+				},1000)	
+			}
+		});
 	}
 
 }

@@ -1,0 +1,15 @@
+@import "../../components/css/base.scss";
+.wc-toast{
+	@include pos(f);
+	top:1rem;
+	background: rgba(0,0,0,.682);
+	padding:2px 5px;
+	@include br(4px);
+	color:#fff;
+	left: 50%;
+	@include transition(.3s);
+	@include transform(translate3d(-50%,-4rem,0));
+	&.active{
+		@include transform(translate3d(-50%,0,0));
+	}
+}
