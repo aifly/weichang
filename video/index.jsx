@@ -68,9 +68,12 @@ class VideoApp extends Component {
 	startPlay(){
 		//alert(Hls.isSupported);
 		
-		this.state.videoObj.poster = '';
+		
 		this.state.videoShow=true;
 		this.forceUpdate();
+		if(window.H5Manager){
+		      H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,0)
+		}
 		/*if(Hls.isSupported()) {
 		 alert(3)
 		 var video = this.refs['video'];
@@ -124,7 +127,7 @@ class VideoApp extends Component {
 			            type:'toast',
 			            data:''
 			        });
-						s.state.videoObj.collect = this.state.videoObj.collect*1 + 1;
+						s.state.videoObj.collect = s.state.videoObj.collect*1 + 1;
 						s.forceUpdate();
 					}
 				}

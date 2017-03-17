@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {WCPubCom} from './public/pub.jsx';
 import './css/header.css';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+
 class WCHeader extends Component {
 	render() {
 
@@ -21,16 +20,16 @@ class WCHeader extends Component {
 	}
 
 	rightMenuClick(){
-
+		
 		if(this.props.type === 'detail'){
+
 			if(window.H5Manager){
-					H5Manager.showShare(this.props.title,this.props.describe,window.shareIco,window.location.href.split('?')[0]);
+					H5Manager.showShare(this.props.title,(this.props.describe||'').stripHTML(),window.shareIco,window.location.href.split('?')[0],this.props.isLive);
 				}
 		}
 		else{//列表
 			if(window.H5Manager){//收藏接口
 					var userId = H5Manager.getUserID();
-					
 				}
 		}
 	}
@@ -52,6 +51,7 @@ class WCHeader extends Component {
 
 WCHeader.defaultProps = {
 	subjectId:-1,
-	type:'detail'
+	type:'detail',//区分是专题列表 ，还是其它 
+	isLive:0 //是否是直播
 }
 export default WCPubCom(WCHeader);

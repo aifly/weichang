@@ -68,11 +68,11 @@ class SubjectApp extends Component {
 			<div className="wc-subject-main-ui">
 				<WCHeader {...headerProps}></WCHeader>
 				<div className='wc-subject-scroll-C' ref='wc-subject-scroll-C' style={{height:this.viewH - 64,overflow:'hidden'}}>
-					{this.state.imgSrc && <ul>
-						<li>
+					 <ul>
+						{this.state.imgSrc &&<li>
 							<img src={this.state.imgSrc}/>
 							<div className='wc-subject-main-describe'>{this.state.describe}</div>
-						</li>
+						</li>}
 						{this.state.list.map((item,i)=>{
 							let component =  <li key={i}></li>;
 							switch(item.type){
@@ -149,7 +149,6 @@ class SubjectApp extends Component {
 							return component;
 						})}
 					</ul>
-					}
 				</div>
 			</div>
 		)
@@ -167,20 +166,26 @@ class SubjectApp extends Component {
 	  	},
 	  	success(data){
 	  		if(data.code  === 200){
+
 	  			var result = data.result;
 	  			s.state.imgSrc = result.imgSrc;
 	  			s.state.describe = result.describe;
 	  			s.state.list = result.list;
-
+  				
 	  			s.forceUpdate();
-	  			var imgList = [s.state.imgSrc];
+	  			s.scroll = null;
+	  			setTimeout(()=>{
+	  				s.scroll = new IScroll(s.refs['wc-subject-scroll-C'],{
+							preventDefault:false
+						});
+	  			},100 )
+	  			var imgList = [];
+	  			s.state.imgSrc && imgList.push(s.state.imgSrc);
 	  			s.state.list.map((item,i)=>{
 	  				imgList.push(item.imgSrc);
 	  			});
 	  			loading(imgList,null,()=>{
-	  				s.scroll = new IScroll(s.refs['wc-subject-scroll-C'],{
-							preventDefault:false
-						});
+	  				s.scroll && s.scroll.refresh();
 	  			});
 	  		}
 	  	}

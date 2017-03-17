@@ -46,7 +46,7 @@ class NewsApp extends Component {
 								<span>{this.state.name}</span>
 							</aside>
 							<aside>
-								<img src='./assets/images/heart.png' alt/>
+								<img onTouchTap={this.dianzan.bind(this)} src='./assets/images/heart.png' alt/>
 								<span>{this.state.follow}</span>
 							</aside>
 						</div>
@@ -59,6 +59,36 @@ class NewsApp extends Component {
 				</div>
 			</div>
 		)
+	}
+
+	dianzan(){
+		if(this.update){
+			var s = this;
+			var id = this.props.params.id;
+        this.update = false;
+        setTimeout(()=>{
+            this.update = true;
+        },1000);
+        $.ajax({
+						url:window.baseUrl+'like',
+						data:{
+							resID:id
+						},
+						success(data){
+							if(data.code === 200 && data.result*1 === 1){
+								 window.obserable.trigger({
+					            type:'toast',
+					            data:''
+					        });
+								s.state.follow = s.state.follow*1 + 1;
+								s.forceUpdate();
+							}
+				}
+			});
+
+        
+ 
+    }
 	}
 
 	HTMLDeCode(str) {
@@ -79,7 +109,7 @@ class NewsApp extends Component {
 	}
 	componentDidMount(){
 
-
+		this.update = true;
 		var s = this;
 		var id = this.props.params.id;
 		this.messageID = id;

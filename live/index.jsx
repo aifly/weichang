@@ -21,7 +21,7 @@ class LiveApp extends Component {
 			scrollHeight:'auto',
 			scale:9/16,
 			videoObj:{
-				"poster":"./assets/images/video-poster.jpg",
+				"poster":"",
 				"isVr":true,
 				"videoSrc":'http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8',//"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
 				"title":"2016年维多利亚的秘密秀场",
@@ -79,6 +79,7 @@ class LiveApp extends Component {
 		var headerProps = {
 			subjectId:this.props.params.subjectId,
 			...this.state,
+			isLive:1,
 			describe:this.state.videoObj.remark
 		}
 
@@ -97,7 +98,7 @@ class LiveApp extends Component {
 						{this.state.commentList.map((item,i)=>{
 							return <li key={i}>
 								<aside>
-									<img src={item.ico} alt=""/>
+									<div style={{background:'url(./assets/images/logo-bg.png) no-repeat  center center',backgroundSize:'contain',padding:5}}><img style={{display:'block',margin:'0 auto'}} width='20' src={item.ico} alt=""/></div>
 									<span>{item.name}</span>
 								</aside>
 								<aside>
@@ -147,7 +148,6 @@ class LiveApp extends Component {
 
 	startPlay(){
 		//alert(Hls.isSupported);
-
 		 var params = {
             container: document.getElementById('live-video'),
             name: "SceneViewer",
@@ -178,6 +178,10 @@ class LiveApp extends Component {
  		this.state.videoObj.poster = '';
 		this.state.videoShow=true;
 		this.forceUpdate();
+
+		 if(window.H5Manager){
+            H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,1)
+     }
 	 
 	}
 
@@ -217,7 +221,6 @@ class LiveApp extends Component {
 			success(data){
 				if(data.code === 200){
 					var result = data.result;
-					console.log(result)
 					s.state.videoObj = result;
 					s.forceUpdate(()=>{
 
@@ -237,6 +240,8 @@ class LiveApp extends Component {
 							 s.setState({commentHeight:commentHeight})
 							  s.commentScroll = new IScroll(s.refs['wc-live-comment-list']);
 							  var startY = 0;
+
+							 	s.scrollTo(s.state.commentHeight - s.refs['wc-live-comment-list'].querySelector('ul').offsetHeight);
 
 							  s.refs['wc-live-comment-list'].addEventListener('touchstart',function(e){
 							  	var  e = e.changedTouches[0];
@@ -261,6 +266,10 @@ class LiveApp extends Component {
 				}
 			}
 		})
+	}
+
+	scrollTo(y,time = 100){
+		this.commentScroll && this.commentScroll.scrollTo(0,y,time);
 	}
 	componentWillUnmount() {
 		document.ontouchend = document.ontouchmove = null;	

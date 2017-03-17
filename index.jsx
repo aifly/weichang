@@ -8,7 +8,7 @@ import LiveApp from './live/index.jsx';
 import NewsApp from './news/index.jsx';
 import SubjectApp from './subject/index.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-
+injectTapEventPlugin();
 import './assets/css/index.css';
 
 import Obserable from './assets/libs/obserable.js';
@@ -79,3 +79,7 @@ setTimeout(()=>{
 },800)
  
 
+String.prototype.stripHTML = function() {
+    var reTag = /<(?:.|\s)*?>/g;
+    return this.replace(reTag,"");
+  }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import WCHeader from '../components/wc-header.jsx';
 import {WCPubCom} from '../components/public/pub.jsx';
 import IScroll from 'iscroll';
-
 import  $ from 'jquery';
 import { Router, Route, hashHistory ,Link ,browserHistory } from 'react-router';
 import './assets/css/index.css';
@@ -11,6 +10,9 @@ class FieldApp extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+
+
+			subjectId:"LocXxuu4",
 
 			 defaultDetailDescribeState:'查看更多',
 			 defaultCommentState:'查看更多',
@@ -231,8 +233,8 @@ class FieldApp extends Component {
 						<div className='wc-field-title-C'>
 							<div className="wc-field-title-item">
 								<h3>{this.state.title}</h3>
-								<div className="wc-field-cate">{this.state.cate} | <span><img
-									src="./assets/images/heart.png" alt=""/></span> <span>{this.state.addressObj.collect}</span></div>
+								<div className="wc-field-cate">{this.state.cate} | <span onTouchTap={this.dianzan.bind(this)}><img
+									src="./assets/images/heart.png" alt=""/></span> <span >{this.state.addressObj.collect}</span></div>
 							</div>
 							<div className='wc-field-tel wc-field-title-item'>
 								<a href={'tel:'+this.state.addressObj.tel}><img src='./assets/images/tel.png'/></a>
@@ -309,18 +311,24 @@ class FieldApp extends Component {
 						</div>
 						<div className="wc-field-active">
 							<div className='wc-field-active-img'>
-								 <img src={this.state.fieldActive.activePic}/>
+								 {this.state.fieldActive.activeList && <img src={this.state.fieldActive.activePic}/>}
 							</div>
 							<div  className="wc-field-active-scroll" ref='wc-field-active-scroll'>
-								{!this.state.fieldActive.activeList && <div></div>}
-								{this.state.fieldActive.activeList && <ul  className="wc-field-active-list" style={{width:this.state.fieldActive.activeList.length * (document.documentElement.clientWidth/ 10 * 4+ 10)}}>
+								{!this.state.fieldActive.activeList && <div style={{width:'9.4rem',margin:'0 auto',color:'#ccc'}}>暂无活动</div>}
+								{this.state.fieldActive.activeList && <ul  className="wc-field-active-list" style={{width:(this.state.fieldActive.activeList.length+1) * (document.documentElement.clientWidth/ 10 * 4+ 10)}}>
 									{this.state.fieldActive.activeList.map((item,i)=>{
 										return <li key={i}>
-											<div><img src={item.src} alt=""/></div>
+											<div  style={{background:'url('+item.src+') no-repeat center center',backgroundSize:'cover',height:'2.5rem'}} ><img src={item.src} alt=""/></div>
 											<h3>{item.name}</h3>
 											<div>{item.date}</div>
 										</li>
 									})}
+									<li>
+										<div  style={{background:'url(./assets/images/subjectMore.png) no-repeat center center',backgroundSize:'cover',height:'2.5rem'}}><Link to={'/subject/'+this.state.subjectId}>
+										<img src='./assets/images/subjectMore.png'/></Link></div>
+										<h3 style={{opacity:0}}>item.name</h3>
+										<div  style={{opacity:0}}>item.date</div>
+									</li>
 								</ul>}
 							</div>
 						</div>
@@ -339,6 +347,7 @@ class FieldApp extends Component {
 										<div><span>{item.address}</span><span>{item.area}</span><span>最多容纳{item.personCount}人</span></div>
 									</li>
 								})}
+								{this.state.sameFeildList.length<=0 && <div style={{width:'9.4rem',marginLeft:'.3rem','color':'#ccc'}}>暂无场地</div>}
 							</ul>
 						</div>
 					</div>
@@ -347,7 +356,35 @@ class FieldApp extends Component {
 		);
 	}
 
+	dianzan(){
+		if(this.update){
+			var s = this;
+			var id = this.props.params.id;
+        this.update = false;
+        setTimeout(()=>{
+            this.update = true;
+        },1000);
+        $.ajax({
+						url:window.baseUrl+'like',
+						data:{
+							resID:id
+						},
+						success(data){
+							if(data.code === 200 && data.result*1 === 1){
+								 window.obserable.trigger({
+					            type:'toast',
+					            data:''
+					        });
+								s.state.addressObj.collect = s.state.addressObj.collect*1 + 1;
+								s.forceUpdate();
+							}
+				}
+			});
 
+        
+ 
+    }
+	}
 
 	showComment(){//进入评论页面
 		if(window.H5Manager){
@@ -379,7 +416,7 @@ class FieldApp extends Component {
 		}else{
 			this.state.commentHeight = 'auto';
 			
-			this.state.defaultCommentState = '收起';
+			this.state.defaultCommentState = '收起更多';
 		}
 		this.forceUpdate();
 		setTimeout(()=>{
@@ -394,7 +431,7 @@ class FieldApp extends Component {
 					
 			}else{
 				this.state.detailDescribe = this.defaultDetailDescribe;
-				this.state.defaultDetailDescribeState = '收起';
+				this.state.defaultDetailDescribeState = '收起更多';
 			}
 			this.forceUpdate();
 			setTimeout(()=>{
@@ -404,6 +441,8 @@ class FieldApp extends Component {
 			
 	}
 	componentDidMount(){
+
+		this.update = true;
 		var s = this;
 		var id = this.props.params.id;
 
@@ -416,7 +455,6 @@ class FieldApp extends Component {
 			success(data){
 					if(data.code === 200){
 
-						console.log(data.result)
 							var result = data.result;
 							s.state.describeSrc = result.describeSrc;
 							s.state.title = result.title;

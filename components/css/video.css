@@ -110,4 +110,15 @@ body {
       .wc-video-tool aside:last-of-type img {
         margin: 0 5px; }
 
+.lt-viode-toolbar {
+  background: #000;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px; }
+  .lt-viode-toolbar img {
+    width: 30px !important;
+    height: 30px  !important;
+    top: 5px !important; }
+
 /*# sourceMappingURL=video.css.map */

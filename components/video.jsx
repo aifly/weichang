@@ -25,15 +25,15 @@ class VideoChildApp extends Component {
             posterStyle.background='url('+this.props.videoObj.poster+') no-repeat center center';
         }
 
-        console.log(this.props)
         return (
             <div className="wc-video-child-main-ui">
-                <div className="wc-video-poster" id={this.props.container}  onTouchTap={()=>{  document.querySelector('#videoToolbar').style.display='none';this.props.startPlay()}} style={posterStyle} >
+                <div className="wc-video-poster" onTouchTap={()=>{this.props.container!=='live-video' && this.props.startPlay()}} id={this.props.container} style={posterStyle} >
                     {this.props.videoObj.isVr*1 && <img src="./assets/images/vr.png"/>}
                     {/*<video ref='video' width={this.viewW} height={this.viewW * this.props.scale} style={{position:'absolute',left:0,zIndex:10,opacity:this.props.videoShow?1:0,background:'#000'}} controls  >
                         <source src={this.props.videoObj.videoSrc}/>
                     </video>*/}
                     {this.props.container==='live-video' && <iframe width={this.viewW} height={this.viewW*this.props.scale} frameBorder={0} src={window.liveSrc+this.props.videoObj.videoSrc}></iframe>}
+                    {this.props.container==='live-video' &&  <div className='lt-viode-toolbar'><img src='./assets/images/fullscreen.png'   onTouchTap={()=>{this.props.startPlay()}}/></div>}
                 </div>
                 <div className="wc-video-title-C">
                     <div className="wc-video-title-item">
@@ -56,9 +56,7 @@ class VideoChildApp extends Component {
 
 
     playLive(){
-        if(window.H5Manager){
-            H5Manager.showVideo(this.props.videoObj.title,this.props.videoObj.videoSrc,this.props.container==='live-video'?1:0)
-        }
+       
     }
 
     dianzan(){//点赞
