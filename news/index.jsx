@@ -14,6 +14,7 @@ class NewsApp extends Component {
 		super(props);
 
 		this.state = {
+			isCollect:'false',
 			"title":"城市让生活更美好，而城市里的美丽人生， 从美术馆开始。",
 			"date":"2017/03/06",
 			"from":"维场",
@@ -32,6 +33,9 @@ class NewsApp extends Component {
 				subjectId:this.props.params.subjectId,
 				...this.state,
 				describe:this.state.content,
+				isCollect:this.state.isCollect === 'true'? 1 : 0,
+				resType:3 ,//1场地  2 视频  3 资讯 4 专题
+				ID:this.props.params.id
 			};	
 		return (
 			<div className="wc-news-main-ui">
@@ -70,7 +74,7 @@ class NewsApp extends Component {
             this.update = true;
         },1000);
         $.ajax({
-						url:window.baseUrl+'like',
+						url:window.baseUrl+'send_like',
 						data:{
 							resID:id
 						},
@@ -111,6 +115,14 @@ class NewsApp extends Component {
 
 		this.update = true;
 		var s = this;
+
+		window.updateCollect = function(data){
+			 s.setState({
+			 		isCollect:data
+			 });
+		}
+
+
 		var id = this.props.params.id;
 		this.messageID = id;
 		$.ajax({
@@ -124,6 +136,7 @@ class NewsApp extends Component {
  
 							s.state.title = result.title;
 							s.state.date = result.date;
+							s.state.isCollect = result.isCollect;
 							s.state.from = result.from;
 							s.state.type = result.type;
 							s.state.name = result.name;
@@ -134,9 +147,13 @@ class NewsApp extends Component {
 							s.state.content = text.replace(/&/g,'>');
 							s.state.content = s.state.content.replace(/>amp;nbsp;/g,'');
 							s.forceUpdate();
-							setTimeout(()=>{
-								s.scroll = new IScroll(s.refs['wc-news-scroll']);
-				  		},500);
+							var img = new Image();
+							img.onload = img.onerror = function(){
+								setTimeout(()=>{
+									s.scroll = new IScroll(s.refs['wc-news-scroll']);
+								},550)
+							}
+							img.src= s.state.imgSrc;
 					} 
 			}
 		})

@@ -61,8 +61,11 @@ class SubjectApp extends Component {
 	render() {
  
 		var headerProps = {
-			rightMenu:this.state.isCollect?<img src='./assets/images/collect1.png'/>:<img src='./assets/images/collect.png'/>,
-			type:'subjectlist'//列表页面
+			rightMenu:this.state.isCollect === 'true' ? <img style={{marginTop:10}} src='./assets/images/collect1.png'/>:<img style={{marginTop:10}} src='./assets/images/collect.png'/>,
+			type:'subjectlist',//列表页面,
+			subjectId:this.subjectId,
+			isCollect:this.state.isCollect === 'true' ? 1 : 0,
+			resType:4
 		}
 		return (
 			<div className="wc-subject-main-ui">
@@ -159,6 +162,12 @@ class SubjectApp extends Component {
 		var subjectID = this.props.params.id || 'LocXxuu4'
 		this.subjectId = subjectID;
 		var s = this;
+
+		window.obserable.on('modifyIsCollect',(data)=>{
+				this.setState({
+					isCollect:data
+				})
+		});
 	  $.ajax({
 	  	url:window.baseUrl + '/get_subject_detail',
 	  	data:{
@@ -171,7 +180,7 @@ class SubjectApp extends Component {
 	  			s.state.imgSrc = result.imgSrc;
 	  			s.state.describe = result.describe;
 	  			s.state.list = result.list;
-  				
+  				s.state.isCollect = result.isCollect;
 	  			s.forceUpdate();
 	  			s.scroll = null;
 	  			setTimeout(()=>{

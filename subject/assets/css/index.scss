@@ -18,8 +18,10 @@ $mainW : 9.4rem;
       text-align: center;
     } 
     .wc-subject-scroll-C{
+      width:100%;
       &>ul{
-          width: 10rem;
+          width: 100%;
+          margin:0 auto;
           li{
             &>section{
               width:$mainW;
@@ -78,6 +80,7 @@ $mainW : 9.4rem;
        .wc-subject-field-describe{
          text-indent: 2em;
          color:#7f8fa9;
+         line-height: .7rem;
 
        }
     } 
@@ -98,6 +101,7 @@ $mainW : 9.4rem;
          .wc-subject-news-describe{
            text-indent: 2em;
            color:#7f8fa9;
+           line-height: .7rem;
            
          }
          .wc-subject-see-all{
@@ -173,7 +177,8 @@ $mainW : 9.4rem;
          }
          .wc-subject-video-describe{
            text-indent: 2em;
-            color:#7f8fa9;
+           color:#7f8fa9;
+           line-height: .7rem;
          }
          .wc-subject-see-all{
            text-align: center;

@@ -15,6 +15,7 @@ class LiveApp extends Component {
 
 		this.state = {
 			defaultRemarkState:'查看更多',
+			isCollect:'false',
 			commentHeight:0,
 			videoShow:true,
 			inputShow:true,
@@ -80,7 +81,10 @@ class LiveApp extends Component {
 			subjectId:this.props.params.subjectId,
 			...this.state,
 			isLive:1,
-			describe:this.state.videoObj.remark
+			describe:this.state.videoObj.remark,
+			isCollect:this.state.isCollect === 'true'? 1 : 0,
+			resType:2, //1场地  2 视频  3 资讯 4 专题
+			ID:this.props.params.id
 		}
 
 		return (
@@ -195,7 +199,7 @@ class LiveApp extends Component {
 		window.obserable.on('updateCollect',()=>{
 			
 			$.ajax({
-				url:window.baseUrl+'like',
+				url:window.baseUrl+'send_like',
 				data:{
 					resID:id
 				},
@@ -222,6 +226,8 @@ class LiveApp extends Component {
 				if(data.code === 200){
 					var result = data.result;
 					s.state.videoObj = result;
+					s.state.isCollect = result.isCollect;
+
 					s.forceUpdate(()=>{
 
 						s.defaultRemark = s.state.videoObj.remark;

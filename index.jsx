@@ -47,6 +47,7 @@ class App extends React.Component{
 	componentWillMount(){
 		window.historyArr = [];
 		window.obserable = obserable;
+		
 	}
 	
 	componentDidMount() {

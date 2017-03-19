@@ -18,7 +18,7 @@ class FieldApp extends Component {
 			 defaultCommentState:'查看更多',
 			 commentHeight:'auto',
 
-
+			 isCollect:'false',
 			 describeSrc:'',
 			 title:'798艺术区约美术馆',
 			 cate:'艺术区',
@@ -221,6 +221,9 @@ class FieldApp extends Component {
 				subjectId:this.props.params.subjectId,
 				title:this.state.title,
 				describe:this.state.detailDescribe,
+				isCollect:this.state.isCollect === 'true'? 1 : 0,
+				resType:1, //1场地  2 视频  3 资讯 4 专题
+				ID:this.props.params.id
 			};	
 		return (
 			<div className='wc-field-ui'>
@@ -241,7 +244,7 @@ class FieldApp extends Component {
 							</div>
 						</div>
 						<div className="wc-field-address" onTouchTap={this.showMap.bind(this)}>
-							<img src="./assets/images/pos.png" alt=""/>
+							<div><img src="./assets/images/pos.png" alt=""/></div>
 							<div>地址：<span className='wc-address' style={{top:window.H5Manager?0:4}}>{this.state.addressObj.address}</span><span className='wc-entry-map'>></span></div>
 						</div>
 						<div className="wc-field-detail">
@@ -298,8 +301,8 @@ class FieldApp extends Component {
 								<ul className='wc-field-pic-list' style={{width:this.state.fieldPicList.length * (document.documentElement.clientWidth/ 10 * 4+ 10)}}>
 										{this.state.fieldPicList.map((item,i)=>{
 											return <li onTouchTap={this.showImage.bind(this,i)} key={i}>
-													<div><img src={item.src} alt=""/></div>
-													<div>{item.name}</div>
+													<div style={{background:'url('+item.src+') no-repeat center / contain'}}></div>
+													<section>{item.name}</section>
 											</li>
 										})}
 								</ul>
@@ -365,7 +368,7 @@ class FieldApp extends Component {
             this.update = true;
         },1000);
         $.ajax({
-						url:window.baseUrl+'like',
+						url:window.baseUrl+'send_like',
 						data:{
 							resID:id
 						},
@@ -444,6 +447,14 @@ class FieldApp extends Component {
 
 		this.update = true;
 		var s = this;
+
+		window.updateCollect = function(data){
+			alert(data);
+			 s.setState({
+			 		isCollect:data
+			 });
+		}
+
 		var id = this.props.params.id;
 
 		this.fieldId = id;
@@ -459,6 +470,7 @@ class FieldApp extends Component {
 							s.state.describeSrc = result.describeSrc;
 							s.state.title = result.title;
 							s.state.cate = result.cate;
+							s.state.isCollect = result.isCollect;
 							s.state.addressObj = result.addressObj;
 							s.state.detailDescribe = result.detailDescribe;
 							s.state.commentList = result.commentList;

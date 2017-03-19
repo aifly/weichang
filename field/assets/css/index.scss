@@ -6,7 +6,7 @@ body{
 $mainW:9.4rem;
 .wc-field-describe{
 	width: $mainW;
-	margin: .5rem auto;
+	margin: .5rem auto 0;
 	overflow: hidden;;
 	height: 5rem;
 }
@@ -50,10 +50,9 @@ $mainW:9.4rem;
 	margin:.5rem auto .3rem;
 	@include displayBox(horizontal);
 	-webkit-box-pack: justify;
-	&>img{
+	img{
 		width:.5rem;
 		display: block;
-		margin-right:.4rem;
 	}
 	span:last-of-type{
 		color:#1d94d4;
@@ -72,9 +71,17 @@ $mainW:9.4rem;
 		display: inline-block;
 		color:#ccc;
 		@include transform(scale(1,1.5));
+		@include pos(a);
+		right: 0;
+		top:1px;
 	}
 	&>div{
 		color:#9da9bc;
+		&:last-of-type{
+			width:8.7rem;
+			@include pos(r);
+
+		}
 	}
 }
 
@@ -193,6 +200,11 @@ $mainW:9.4rem;
  		width:4rem;
  		height: 4rem;
  		text-align: center;
+ 		div{
+ 			width:4rem;
+ 			height: 3.5rem;
+ 			overflow: hidden;
+ 		}
  	}
 }
 

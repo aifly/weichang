@@ -14,9 +14,10 @@ class VideoApp extends Component {
 
 		this.state = {
 			videoShow:false,
+			isCollect:'false',
 			scrollHeight:0,
 			videoObj:{
-				"poster":"./assets/images/video-poster.jpg",
+				"poster":"",
 				"isVr":true,
 				"watch":"1235",
 				"videoSrc":'',//"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
@@ -28,7 +29,7 @@ class VideoApp extends Component {
 					"src":"./assets/images/yk-logo.png",
 					"name":"优酷"
 				},
-				"remark":"尤伦斯当代艺术中心的展览规格大都不小，尤其能给人惊喜的是这里的布展。展厅经常会被艺术家打造成全新的空间，王迈把这里变成过狭窄的蓝色海峡，徐震在这里开过超市，前阵子这里又被重新装置成了可以隐居的“家”，而这种展厅的开发利用，也使得美术馆的展览看起来更加诱人。尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，尤伦斯当代艺术中心的展览规格大都不小，"	
+				"remark":""	
 			}
 		}
 		this.viewW = document.documentElement.clientWidth;
@@ -39,8 +40,10 @@ class VideoApp extends Component {
 		var  posterStyle = {
 			width:this.viewW,
 			height:this.viewW * 3 /4,
-			background:'url('+this.state.videoObj.poster+') no-repeat center center',
-			backgroundSize:'cover'
+		}
+		if(this.state.videoObj.poster){
+			posterStyle.background = 'url('+this.state.videoObj.poster+') no-repeat center center';
+			posterStyle.backgroundSize='cover';
 		}
 		var data = this.state;
 		data.startPlay = this.startPlay.bind(this);
@@ -50,6 +53,9 @@ class VideoApp extends Component {
 				subjectId:this.props.params.subjectId,
 				title:this.state.videoObj.title,
 				describe:this.state.videoObj.remark,
+				isCollect:this.state.isCollect === 'true'? 1 : 0,
+				resType:2, //1场地  2 视频  3 资讯 4 专题,
+				ID:this.props.params.id
 			};
 
 		return (
@@ -73,6 +79,33 @@ class VideoApp extends Component {
 		this.forceUpdate();
 		if(window.H5Manager){
 		      H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,0)
+		}else{
+			var src = this.state.videoObj.videoSrc;
+			//src='http://o8pomesqq.bkt.clouddn.com/5252.mp4'
+
+			 var params = {
+			 container: document.getElementsByClassName("wc-video-poster")[0],
+			 name:"SceneViewer",
+			 dragDirectionMode:true,
+			 dragMode:false,
+			 fullScreenMode:true,
+			 scenesArr:[
+			 //todo:注意修改视频路径，需要保证播放页面与视频属于同一域名下
+			 {sceneId:"v1", sceneName:"智媒体", sceneFilePath:src, sceneType:"Video",initFov:110}
+			 ],
+			 //播放器不支持全景播放回调
+			 errorCallBack:function(e){
+			 console.log("错误状态：" + e);
+			 },
+			 //浏览器不支持全屏回调
+			 fsCallBack:function(status,playObj){
+			 alert("浏览器不支持全屏！");
+			 }
+		 };
+		 //$('.wc-video-poster').css({position:'fixed',left:0,top:0,width:'100%','height':'100%'});
+		 /*初始化开始*/
+
+		 initLoad(params);
 		}
 		/*if(Hls.isSupported()) {
 		 alert(3)
@@ -84,28 +117,9 @@ class VideoApp extends Component {
 		 video.play();
 		 });
 		 }*/
-		/*	var src =this.state.videoSrc;
-		 var params = {
-		 container: document.getElementsByClassName("wc-video-poster")[0],
-		 name:"SceneViewer",
-		 dragDirectionMode:true,
-		 dragMode:false,
-		 fullScreenMode:true,
-		 scenesArr:[
-		 //todo:注意修改视频路径，需要保证播放页面与视频属于同一域名下
-		 {sceneId:"v1", sceneName:"赛车", sceneFilePath:src, sceneType:"Video",initFov:110}
-		 ],
-		 //播放器不支持全景播放回调
-		 errorCallBack:function(e){
-		 console.log("错误状态：" + e);
-		 },
-		 //浏览器不支持全屏回调
-		 fsCallBack:function(status,playObj){
-		 alert("浏览器不支持全屏！");
-		 }
-		 };
-		 //$('.wc-video-poster').css({position:'fixed',left:0,top:0,width:'100%','height':'100%'});
-		 /*初始化开始*/
+			
+
+
 
 	}
 
@@ -116,7 +130,7 @@ class VideoApp extends Component {
 		var s = this;
 		window.obserable.on('updateCollect',()=>{
 			$.ajax({
-				url:window.baseUrl+'like',
+				url:window.baseUrl+'send_like',
 				data:{
 					resID:id
 				},
@@ -133,6 +147,12 @@ class VideoApp extends Component {
 				}
 			});
 		});
+
+		window.updateCollect = function(data){
+			 s.setState({
+			 		isCollect:data
+			 });
+		}
 
 		this.setState({
 			scrollHeight:this.viewH -  64
@@ -153,7 +173,7 @@ class VideoApp extends Component {
 				console.log(data);
 				if(data.code === 200){
 					var result = data.result;
-					console.log(result)
+					s.state.isCollect = result.isCollect;
 					s.state.videoObj = result;
 					s.forceUpdate();
 				}

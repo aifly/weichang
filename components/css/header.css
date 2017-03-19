@@ -54,13 +54,23 @@ input, textarea {
     z-index: 2; }
   .wc-header-ui aside {
     -webkit-box-flex: 1;
-    text-align: center; }
+    text-align: center;
+    height: 100%; }
     .wc-header-ui aside.wc-header-c {
       width: 6rem;
       color: #2094d4; }
+      .wc-header-ui aside.wc-header-c img {
+        -webkit-transform: scale(0.8) translate3d(0, 8px, 0);
+        transform: scale(0.8) translate3d(0, 8px, 0); }
+    .wc-header-ui aside.wc-header-l img {
+      vertical-align: middle;
+      margin-top: 13px; }
     .wc-header-ui aside.wc-header-l div {
       width: 12px;
       margin: 0 auto; }
+    .wc-header-ui aside.wc-header-r img {
+      vertical-align: middle;
+      margin-top: 19px; }
     .wc-header-ui aside.wc-header-r div {
       width: 25px;
       margin: 0 auto;
