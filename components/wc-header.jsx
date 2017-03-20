@@ -5,13 +5,18 @@ import './css/header.css';
 import $ from 'jquery';
 
 class WCHeader extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			text:''
+		}
+	}
 	render() {
-
-
 		return (
 			<div className='wc-header-ui'>
 					<aside className='wc-header-l' onTouchTap={this.goBack.bind(this)}>
 							<div><img src='./assets/images/back.png'/></div>
+							{this.state.text}
 					</aside>
 					<aside className='wc-header-c'>{this.props.logo|| <img src='./assets/images/logo.png'/>}</aside>
 					<aside className='wc-header-r' onTouchTap={this.rightMenuClick.bind(this)}>
@@ -26,8 +31,7 @@ class WCHeader extends Component {
 
 		if(this.props.type === 'detail'){
 			if(window.H5Manager){
-					H5Manager.log('是否收藏 ： '+ this.props.isCollect);
-					H5Manager.log('类型 ： '+ this.props.resType);
+					
 					H5Manager.showShare(this.props.title,(this.props.describe||'').stripHTML(),window.shareIco,window.location.href.split('?')[0],this.props.ID,this.props.isLive,this.props.isCollect,this.props.resType);
 				}
 		}
@@ -67,11 +71,12 @@ class WCHeader extends Component {
 				if(this.props.resType === 4){
 					H5Manager.goBack();
 				}else{
-					location.href='/#/subject/'+ subjectId;
+					this.setState({text:'/#/subject/'+ subjectId+'?k='+ new Date().getTime()});
+					location.href='/#/subject/'+ subjectId+'?k='+ new Date().getTime();
 				}
 		}else{
 			if(window.H5Manager){
-					H5Manager.goBack();
+				H5Manager.goBack();
 			}	
 		}
 		

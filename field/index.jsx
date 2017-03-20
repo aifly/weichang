@@ -20,16 +20,16 @@ class FieldApp extends Component {
 
 			 isCollect:'false',
 			 describeSrc:'',
-			 title:'798艺术区约美术馆',
+			 title:'',
 			 cate:'艺术区',
 			 addressObj:{
-			 		address:'[朝阳区 燕莎]酒仙桥路4号',
+			 		address:'',
 			 		longitude:'',//经度
 			 		latitude:'',//纬度
 				 	collect:'2341万',
 			 		tel:'15718879215'//电话
 			 },
-			 detailDescribe:'这里的展览从来不会让挑剔的观众失望，什么样的艺术大师都来过。新馆是2008年10月新建的，地处偏远，但来的人很多。整个建筑设计得非常有特色，展示的空间布局合理，移步换景。由建筑师矶崎新设计，据说设计费每平米达700。',
+			 detailDescribe:'',
 			 commentList:[
 			 		/*{
 			 			 logo:"./assets/images/yk-logo.png",
@@ -231,13 +231,14 @@ class FieldApp extends Component {
 				<section ref="scroll" className="wc-field-scroll" style={{height:document.documentElement.clientHeight - 64 }}>
 					<div style={{border:'1px solid transparent',paddingBottom:10}}>
 						<div className='wc-field-describe'>
-							{this.state.describeSrc && <iframe height={153} width={this.viewW/10*9.4} src={this.state.describeSrc} frameBorder="0"></iframe>}
+							{this.state.describeSrc && <iframe height={this.viewW/10*9.4*9/16} width={this.viewW/10*9.4} src={this.state.describeSrc} frameBorder="0"></iframe>}
 						</div>
 						<div className='wc-field-title-C'>
 							<div className="wc-field-title-item">
 								<h3>{this.state.title}</h3>
-								<div className="wc-field-cate">{this.state.cate} | <span onTouchTap={this.dianzan.bind(this)}><img
-									src="./assets/images/heart.png" alt=""/></span> <span >{this.state.addressObj.collect}</span></div>
+								<div className="wc-field-cate">{this.state.cate} | <span onTouchTap={this.dianzan.bind(this)}>{this.state.isZan?<img
+									src="./assets/images/heart1.png" alt=""/>:<img
+									src="./assets/images/heart.png" alt=""/>}</span> <span >{this.state.addressObj.collect}</span></div>
 							</div>
 							<div className='wc-field-tel wc-field-title-item'>
 								<a href={'tel:'+this.state.addressObj.tel}><img src='./assets/images/tel.png'/></a>
@@ -250,11 +251,11 @@ class FieldApp extends Component {
 						<div className="wc-field-detail">
 							{this.state.detailDescribe}
 						</div>
-						<div className="wc-field-more" onTouchTap={this.seeMoreDetailDescribe.bind(this)}><span>{this.state.defaultDetailDescribeState}</span></div>
-						<div className="wc-field-commit-C">
-							<aside>专业提示</aside>
-							<aside onTouchTap={this.showComment.bind(this)}><span><img src="./assets/images/commom.png" alt=""/></span>我要评论</aside>
-						</div>
+						<div className="wc-field-more" onTouchTap={this.seeMoreDetailDescribe.bind(this)}><span className={this.state.defaultDetailDescribeState==='收起更多'?'active':''}>{this.state.defaultDetailDescribeState}</span></div>
+						{<div className="wc-field-commit-C">
+													<aside>专业提示</aside>
+													<aside onTouchTap={this.showComment.bind(this)}><span><img src="./assets/images/commom.png" alt=""/></span>我要评论</aside>
+												</div>}
 						<div style={{overflow:'hidden',height:this.state.commentHeight}}>
 							<ul className="wc-field-comment-list">
 								{this.state.commentList.map((item,i)=>{
@@ -267,10 +268,10 @@ class FieldApp extends Component {
 						</div>
 						{this.state.commentList.length>0 && <div className="wc-field-more" onTouchTap={this.seeMoreComment.bind(this)}><span>{this.state.defaultCommentState}</span></div>}
 
-						<div className="wc-field-commit-C wc-field-params">
-							<aside>场地参数</aside>
-							<aside></aside>
-						</div>
+						{this.state.fieldParams.length >0 && <div className="wc-field-commit-C wc-field-params">
+													<aside>场地参数</aside>
+													<aside></aside>
+												</div>}
 						<table className='wc-field-parameter-table'>
 							<thead>
 								<tr>
@@ -283,19 +284,19 @@ class FieldApp extends Component {
 							<tbody>
 								{this.state.fieldParams.map((item,i)=>{
 									return <tr key={i}>
-														<td>{item.name}</td>
-														<td>{item.size}</td>
-														<td>{item.area}</td>
-														<td>{item.personCount}</td>
-													</tr>
+												<td>{item.name}</td>
+												<td>{item.size}</td>
+												<td>{item.area}</td>
+												<td>{item.personCount}</td>
+											</tr>
 								})}
 							</tbody>
 						</table>
 						
-						<div className="wc-field-commit-C">
-							<aside>场地图片</aside>
-							<aside></aside>
-						</div>
+						{this.state.fieldPicList.length>0 && <div className="wc-field-commit-C">
+													<aside>场地图片</aside>
+													<aside></aside>
+												</div>}
 
 						<div className='wc-field-pic-scroll' ref='wc-field-pic-scroll'>
 								<ul className='wc-field-pic-list' style={{width:this.state.fieldPicList.length * (document.documentElement.clientWidth/ 10 * 4+ 10)}}>
@@ -308,49 +309,50 @@ class FieldApp extends Component {
 								</ul>
 						</div>
 
-						<div className="wc-field-commit-C">
-							<aside>曾办活动</aside>
-							<aside></aside>
-						</div>
+						{this.state.fieldActive.activeList && <div className="wc-field-commit-C">
+													<aside>曾办活动</aside>
+													<aside></aside>
+												</div>}
 						<div className="wc-field-active">
 							<div className='wc-field-active-img'>
 								 {this.state.fieldActive.activeList && <img src={this.state.fieldActive.activePic}/>}
 							</div>
 							<div  className="wc-field-active-scroll" ref='wc-field-active-scroll'>
-								{!this.state.fieldActive.activeList && <div style={{width:'9.4rem',margin:'0 auto',color:'#ccc'}}>暂无活动</div>}
+								{!this.state.fieldActive.activeList && <div style={{width:'9.4rem',margin:'0 auto',color:'#ccc'}}></div>}
 								{this.state.fieldActive.activeList && <ul  className="wc-field-active-list" style={{width:(this.state.fieldActive.activeList.length+1) * (document.documentElement.clientWidth/ 10 * 4+ 10)}}>
 									{this.state.fieldActive.activeList.map((item,i)=>{
 										return <li key={i}>
-											<div  style={{background:'url('+item.src+') no-repeat center center',backgroundSize:'cover',height:'2.5rem'}} ><img src={item.src} alt=""/></div>
+											<div  style={{background:'url('+item.src+') no-repeat center center / cover',backgroundSize:'cover',height:'2.5rem'}} ><Link to={''+ item.type+'/'+item.id}><img style={{opacity:0}} src={item.src}/></Link></div>
 											<h3>{item.name}</h3>
 											<div>{item.date}</div>
 										</li>
 									})}
-									<li>
-										<div  style={{background:'url(./assets/images/subjectMore.png) no-repeat center center',backgroundSize:'cover',height:'2.5rem'}}><Link to={'/subject/'+this.state.subjectId}>
-										<img src='./assets/images/subjectMore.png'/></Link></div>
-										<h3 style={{opacity:0}}>item.name</h3>
-										<div  style={{opacity:0}}>item.date</div>
-									</li>
+									{false && <li>
+											<div  style={{background:'url(./assets/images/subjectMore.png) no-repeat center center',backgroundSize:'cover',height:'2.5rem'}}><Link to={'/subject/'+this.state.subjectId}>
+											<img src='./assets/images/subjectMore.png'/></Link></div>
+											<h3 style={{opacity:0}}>item.name</h3>
+											<div  style={{opacity:0}}>item.date</div>
+										</li>}
+	
 								</ul>}
 							</div>
 						</div>
 
-						<div className="wc-field-commit-C">
-							<aside>相似场地</aside>
-							<aside></aside>
-						</div>
+						{this.state.sameFeildList.length>0 && <div className="wc-field-commit-C">
+													<aside>相似场地</aside>
+													<aside></aside>
+												</div>}
 
 						<div className="wc-feild-same-scroll" ref="wc-feild-same-scroll">
 							<ul className="wc-feild-same-list" style={{width:this.state.sameFeildList.length * (document.documentElement.clientWidth/ 10 * 8 + 10)}}>
 								{this.state.sameFeildList.map((item,i)=>{
 									return <li key={i}>
-										<div><img src={item.src} alt=""/></div>
+										<div  style={{background:'url('+item.src+') no-repeat center center / cover',backgroundSize:'cover',height:'2.5rem'}} ><Link to={'/field/'+item.id}><img src={item.src} style={{opacity:0}} alt=""/></Link></div>
 										<h3>{item.title}</h3>
 										<div><span>{item.address}</span><span>{item.area}</span><span>最多容纳{item.personCount}人</span></div>
 									</li>
 								})}
-								{this.state.sameFeildList.length<=0 && <div style={{width:'9.4rem',marginLeft:'.3rem','color':'#ccc'}}>暂无场地</div>}
+								{this.state.sameFeildList.length<=0 && <div style={{width:'9.4rem',marginLeft:'.3rem','color':'#ccc'}}></div>}
 							</ul>
 						</div>
 					</div>
@@ -368,21 +370,22 @@ class FieldApp extends Component {
             this.update = true;
         },1000);
         $.ajax({
-						url:window.baseUrl+'send_like',
-						data:{
-							resID:id
-						},
-						success(data){
-							if(data.code === 200 && data.result*1 === 1){
-								 window.obserable.trigger({
-					            type:'toast',
-					            data:''
-					        });
-								s.state.addressObj.collect = s.state.addressObj.collect*1 + 1;
-								s.forceUpdate();
-							}
+			url:window.baseUrl+'send_like',
+			data:{
+				resID:id
+			},
+			success(data){
+				if(data.code === 200 && data.result*1 === 1){
+					window.obserable.trigger({
+			            type:'toast',
+			            data:''
+			        });
+			        s.state.isZan = true;
+					s.state.addressObj.collect = s.state.addressObj.collect*1 + 1;
+					s.forceUpdate();
 				}
-			});
+				}
+		});
 
         
  
@@ -467,6 +470,7 @@ class FieldApp extends Component {
 					if(data.code === 200){
 
 							var result = data.result;
+							console.log(result)
 							s.state.describeSrc = result.describeSrc;
 							s.state.title = result.title;
 							s.state.cate = result.cate;
@@ -487,15 +491,18 @@ class FieldApp extends Component {
 								s.fieldPicScroll = new IScroll(s.refs['wc-field-pic-scroll'],{
 									scrollX:true,
 									scrollY:false,
+									preventDefault:false
 								});
 
 								s.fieldActiveScroll = new IScroll(s.refs['wc-field-active-scroll'],{
 									scrollX:true,
 									scrollY:false,
+									preventDefault:false
 								});
 								s.sameFeildScroll = new IScroll(s.refs['wc-feild-same-scroll'],{
 									scrollX:true,
 									scrollY:false,
+									preventDefault:false
 								});
 
 								

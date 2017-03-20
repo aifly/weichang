@@ -38,12 +38,13 @@ class VideoChildApp extends Component {
                 <div className="wc-video-title-C">
                     <div className="wc-video-title-item">
                         <h3>{this.props.videoObj.title}</h3>
-                        <div className="wc-video-cate">{this.props.videoObj.cate} | <span> <span>{this.props.videoObj.time}</span> <img
-                            src="./assets/images/heart.png" alt="" onTouchTap={this.dianzan.bind(this)}/></span> <span>{this.props.videoObj.collect}</span></div>
+                        <div className="wc-video-cate">{this.props.videoObj.cate} | <span> <span>{this.props.videoObj.time}</span>  {this.state.isZan?<img onTouchTap={this.dianzan.bind(this)}
+                                    src="./assets/images/heart1.png" alt=""/>:<img
+                                    onTouchTap={this.dianzan.bind(this)} src="./assets/images/heart.png" alt=""/>}</span> <span>{this.props.videoObj.collect}</span></div>
                     </div>
                     <div className='wc-video-from wc-video-title-item' onTouchTap={this.playLive.bind(this)}>
                         <div className='wc-from-logo' style={{background:'url(./assets/images/logo-bg.png) no-repeat center center',backgroundSize:'contain'}}>
-                            <section><img src={this.props.videoObj.from.src}/></section>
+                            {this.props.videoObj.from.src && <section><img src={this.props.videoObj.from.src}/></section>}
                         </div>
                         <div>
                             {this.props.videoObj.from.name}
@@ -67,6 +68,9 @@ class VideoChildApp extends Component {
             window.obserable.trigger({
                 type:'updateCollect'
             });
+            this.setState({
+                isZan:true
+            })
             setTimeout(()=>{
                 this.update = true;
             },1000);

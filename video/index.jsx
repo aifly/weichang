@@ -21,13 +21,13 @@ class VideoApp extends Component {
 				"isVr":true,
 				"watch":"1235",
 				"videoSrc":'',//"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
-				"title":"2016年维多利亚的秘密秀场",
+				"title":"",
 				"cate":"时尚",
 				"time":"01:35:55",
 				"collect":"124",
 				"from":{
-					"src":"./assets/images/yk-logo.png",
-					"name":"优酷"
+					"src":"",
+					"name":""
 				},
 				"remark":""	
 			}

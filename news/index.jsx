@@ -21,8 +21,8 @@ class NewsApp extends Component {
 			type:0,//0图片 1、视频
 			"name":"小ming",
 			"follow":"2352万",
-			"imgSrc":"./assets/images/f-remark.jpg",
-			"content":"这里的展览从来不会让挑剔的观众失望，什么样的艺术大师都来过。新馆是2008年10月新建的，地处偏远，但来的人很多。整个建筑设计得非常有特色，展示的空间布局合理，移步换景。由建筑师矶崎新设计，据说设计费每平米达700元。除了中国美术馆、798艺术区，京城还有很多美术馆藏在各个充满艺术气息的角落。带着家人和朋友去美术馆感受下艺术氛围，不啻为一个消夏的好选择。今天就来盘点下京城美术馆。"
+			"imgSrc":"",
+			"content":""
 		}
 		this.viewW = document.documentElement.clientWidth;
 		this.viewH = document.documentElement.clientHeight;
@@ -50,12 +50,14 @@ class NewsApp extends Component {
 								<span>{this.state.name}</span>
 							</aside>
 							<aside>
-								<img onTouchTap={this.dianzan.bind(this)} src='./assets/images/heart.png' alt/>
+								{this.state.isZan?<img onTouchTap={this.dianzan.bind(this)}
+									src="./assets/images/heart1.png" alt=""/>:<img
+									onTouchTap={this.dianzan.bind(this)} src="./assets/images/heart.png" alt=""/>}
 								<span>{this.state.follow}</span>
 							</aside>
 						</div>
 						<div className='wc-news-img'>
-							<img src={this.state.imgSrc}/>
+							{this.state.imgSrc && <img src={this.state.imgSrc}/>}
 						</div>
 						<div className='wc-news-content' dangerouslySetInnerHTML={this.createMarkup()}>
 						</div>
@@ -85,6 +87,7 @@ class NewsApp extends Component {
 					            data:''
 					        });
 								s.state.follow = s.state.follow*1 + 1;
+								s.state.isZan = true;
 								s.forceUpdate();
 							}
 				}

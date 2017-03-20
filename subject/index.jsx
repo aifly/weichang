@@ -87,8 +87,8 @@ class SubjectApp extends Component {
 										</div>
 										<div className='wc-subject-field-prop'>
 											<h4>{item.name}</h4>
-											<span>{item.detail.address}</span>
-											<span>{item.detail.area}</span>
+											<span>{item.detail.address}</span><span>|</span>
+											<span>{item.detail.area}</span><span>|</span>
 											<span>最多容纳{item.detail.maxPerson}人</span>
 										</div>
 										<div className='wc-subject-field-title'>
@@ -107,7 +107,7 @@ class SubjectApp extends Component {
 												<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}><img src={item.imgSrc} /></Link>
 										</div>
 										<h3 className='wc-subject-news-title'>
-												<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}>	{item.title}</Link>
+												<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}>{item.desTitle}</Link>
 										</h3>
 										<div className='wc-subject-news-describe'>
 												<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}>{item.describe}</Link>
@@ -125,7 +125,7 @@ class SubjectApp extends Component {
 												</div>
 												<div className='wc-subject-video-info'>
 														<aside>
-																<div className='wc-subject-from-logo' style={{background:'url(./assets/images/logo-bg.png) no-repeat center center',backgroundSize:'contain',padding:6,boxSizing:'border-box'}}>
+																<div className='wc-subject-from-logo' style={{background:'url(./assets/images/logo-bg.png) no-repeat center center',backgroundSize:'contain',padding:8,boxSizing:'border-box'}}>
 																	<img src={item.from.src}/>
 																</div>
 																<div style={{textAlign:'center'}}>{item.from.name}</div>
@@ -134,13 +134,13 @@ class SubjectApp extends Component {
 																<h2>{item.videoTitle}</h2>
 																<div className='wc-subject-video-duration'>
 																	<span>{item.duration}</span>
-																	<span>|</span>
-																	<span><img src='./assets/images/heart.png'/>{item.follow}</span>
+																	<span></span>
+																	<span><img style={{width:16}} src='./assets/images/heart.png'/>{item.follow}</span>
 																</div>
 														</aside>												
 												</div>
 												<h2 className='wc-subject-video-title'>
-														<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}>{item.desTitle}</Link>
+													<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}>{item.desTitle}</Link>
 												</h2>
 												<div className='wc-subject-video-describe'>
 														<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}>{item.describe}</Link>
@@ -164,9 +164,9 @@ class SubjectApp extends Component {
 		var s = this;
 
 		window.obserable.on('modifyIsCollect',(data)=>{
-				this.setState({
-					isCollect:data
-				})
+			this.setState({
+				isCollect:data
+			})
 		});
 	  $.ajax({
 	  	url:window.baseUrl + '/get_subject_detail',
@@ -177,16 +177,18 @@ class SubjectApp extends Component {
 	  		if(data.code  === 200){
 
 	  			var result = data.result;
+	  			console.log(result)
 	  			s.state.imgSrc = result.imgSrc;
-	  			s.state.describe = result.describe;
+	  			s.state.describe = (result.describe||'').substring(0,70);
 	  			s.state.list = result.list;
+	  			
   				s.state.isCollect = result.isCollect;
 	  			s.forceUpdate();
 	  			s.scroll = null;
 	  			setTimeout(()=>{
 	  				s.scroll = new IScroll(s.refs['wc-subject-scroll-C'],{
-							preventDefault:false
-						});
+						preventDefault:false
+					});
 	  			},100 )
 	  			var imgList = [];
 	  			s.state.imgSrc && imgList.push(s.state.imgSrc);
@@ -202,5 +204,6 @@ class SubjectApp extends Component {
 		
 	}
 }
+
 export default WCPubCom(SubjectApp);
 
