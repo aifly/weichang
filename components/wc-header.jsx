@@ -10,20 +10,25 @@ class WCHeader extends Component {
 		this.state = {
 			text:''
 		}
+		this.viewW = document.documentElement.clientWidth;
 	}
 	render() {
+	
 		return (
 			<div className='wc-header-ui'>
 					<aside className='wc-header-l' onTouchTap={this.goBack.bind(this)}>
 							<div><img src='./assets/images/back.png'/></div>
 							{this.state.text}
 					</aside>
-					<aside className='wc-header-c'>{this.props.logo|| <img src='./assets/images/logo.png'/>}</aside>
+					<aside className='wc-header-c'>{this.props.logo|| <img style={{width:this.viewW/750*310}} src='./assets/images/logo1.png'/>}</aside>
 					<aside className='wc-header-r' onTouchTap={this.rightMenuClick.bind(this)}>
 							<div>{this.props.rightMenu||<img src='./assets/images/menu.png'/>}</div>
 					</aside>
 			</div>
 		);
+	}
+
+	componentDidMount() {
 	}
 
 	rightMenuClick(){
@@ -39,28 +44,29 @@ class WCHeader extends Component {
 
 				 
 			if(window.H5Manager){//收藏接口
-					var userId = H5Manager.getUserID();
-					var subjectId = this.props.subjectId;
-					var isCollect = this.props.isCollect ;
-					$.ajax({
-						url:window.baseUrl + '/collect',
-						data:{
-							resid:subjectId,
-							restype:4, //专题
-							phone:userId,
-							collect:isCollect?0:1
-						},
-						success(data){
-							if(data.code === 200){
-								var result = data.result;
-								window.obserable.trigger({
-									type:'modifyIsCollect',
-									data:result === '1'? 'true':'false'
-								})
-							}
+				var userId = H5Manager.getUserID();
+				var subjectId = this.props.subjectId;
+				var isCollect = this.props.isCollect ;
+				$.ajax({
+					url:window.baseUrl + '/collect',
+					data:{
+						resid:subjectId,
+						restype:4, //专题
+						phone:userId,
+						collect:isCollect?0:1
+					},
+					success(data){
+						
+						if(data.code === 200){
+							var result = data.result;
+							window.obserable.trigger({
+								type:'modifyIsCollect',
+								data:result === '1'? 'true':'false'
+							})
 						}
-					})
-				}
+					}
+				})
+			}
 		}
 	}
 

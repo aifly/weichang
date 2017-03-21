@@ -24,7 +24,7 @@ class VideoChildApp extends Component {
         if(this.props.videoObj.poster){
             posterStyle.background='url('+this.props.videoObj.poster+') no-repeat center center';
         }
-
+        
         return (
             <div className="wc-video-child-main-ui">
                 <div className="wc-video-poster" onTouchTap={()=>{this.props.container!=='live-video' && this.props.startPlay()}} id={this.props.container} style={posterStyle} >
@@ -43,8 +43,8 @@ class VideoChildApp extends Component {
                                     onTouchTap={this.dianzan.bind(this)} src="./assets/images/heart.png" alt=""/>}</span> <span>{this.props.videoObj.collect}</span></div>
                     </div>
                     <div className='wc-video-from wc-video-title-item' onTouchTap={this.playLive.bind(this)}>
-                        <div className='wc-from-logo' style={{background:'url(./assets/images/logo-bg.png) no-repeat center center',backgroundSize:'contain'}}>
-                            {this.props.videoObj.from.src && <section><img src={this.props.videoObj.from.src}/></section>}
+                        <div className='wc-from-logo' >
+                            {this.props.videoObj.from.src && <section style={{background:'url('+this.props.videoObj.from.src+') no-repeat center center / contain'}}><img src={'./assets/images/logo-bg.png'}/></section>}
                         </div>
                         <div>
                             {this.props.videoObj.from.name}
@@ -81,7 +81,6 @@ class VideoChildApp extends Component {
            /*播放器参数配置*/
        this.update = true;
 
-     
 
     }
 }

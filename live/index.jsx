@@ -14,6 +14,7 @@ class LiveApp extends Component {
 		super(props);
 
 		this.state = {
+			comment:'',
 			defaultRemarkState:'查看更多',
 			isCollect:'false',
 			commentHeight:0,
@@ -31,34 +32,14 @@ class LiveApp extends Component {
 				"collect":"124",
 				
 				"from":{
-					"src":"./assets/images/yk-logo.png",
+					"src":"",
 					"name":"优酷"
 				},
-				"remark":"尤伦斯当代艺术中心的展览规格大都不小，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不，尤其能给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展给人惊览规格大都规格大都不小，尤伦斯当代艺术中心的展中心的展览规格伦当代艺术中心的展览规格大都不小，",
+				"remark":"",
 			
 			},
 			"commentList":[
-				{
-					ico:'./assets/images/yk-logo.png',
-					name:'优酷',
-					content:'这个美术馆希望通过真实的材料，纯净真实的材料，纯净真实的材料，纯净的空间'
-				},{
-					ico:'./assets/images/yk-logo.png',
-					name:'优酷',
-					content:'这个美术馆希望通过真实的材料，纯净的空间'
-				},{
-					ico:'./assets/images/yk-logo.png',
-					name:'优酷大侠',
-					content:'这个美术馆希望通过真实的材料，纯净的空间'
-				},{
-					ico:'./assets/images/yk-logo.png',
-					name:'陌陌',
-					content:'这个美术馆希望通过真实的材料，'
-				},{
-					ico:'./assets/images/yk-logo.png',
-					name:'陌陌',
-					content:'这个美术馆希望通过真实的材料，'
-				}
+				
 			]
 		}
 		this.viewW = document.documentElement.clientWidth;
@@ -116,10 +97,10 @@ class LiveApp extends Component {
 					 <div className="wc-live-input">
 						 <aside>
 							 <img src="./assets/images/write.png" alt=""/>
-							 <input type="text" placeholder="说点什么吧"/>
+							 <input onChange={e=>{this.setState({comment:e.target.value})}} value={this.state.comment} type="text" placeholder="说点什么吧"/>
 						 </aside>
 						 <aside>
-							 <button>发送</button>
+							 <button onTouchTap={this.publishComment.bind(this)}>发送</button>
 						 </aside>
 					 </div>
 				</div>
@@ -148,6 +129,37 @@ class LiveApp extends Component {
 				});
 
 			}
+	}
+
+	publishComment(){
+		var id = this.props.params.id;
+		
+		if(window.H5Manager ){
+			var phone =  H5Manager.getUserID();
+			var s = this;
+			if(s.state.comment.length<=0){
+				return;
+			}
+			$.ajax({
+				url:window.baseUrl+'/comment',
+				type:'post',
+				data:{
+					resid:id,
+					restype:2,
+					phone:phone,
+					comment:s.state.comment
+				},
+				error(){
+					
+				},
+				success(data){
+					if((data.result*1 === 1)){
+						s.setState({comment:''});
+					}
+				}
+			});	
+		}
+		
 	}
 
 	startPlay(){
@@ -191,10 +203,11 @@ class LiveApp extends Component {
 
 
 	componentDidMount(){
-		
-		var id = this.props.params.id;
 
+		return;
+		var id = this.props.params.id;
 		var s = this;
+
 
 		window.obserable.on('updateCollect',()=>{
 			

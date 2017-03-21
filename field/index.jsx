@@ -394,7 +394,7 @@ class FieldApp extends Component {
 
 	showComment(){//进入评论页面
 		if(window.H5Manager){
-			H5Manager.showComment(this.state.title,this.fieldId);
+			H5Manager.showComment(this.state.title,this.fieldId,1);
 		}
 	}
 
@@ -409,7 +409,7 @@ class FieldApp extends Component {
 		if(H5Manager){
 			var arr = [];
 			this.state.fieldPicList.map((item,i)=>{
-					arr.push(item.src);
+				arr.push(item.src);
 			});
 			H5Manager.showImage(index,arr);	
 		}
@@ -452,9 +452,8 @@ class FieldApp extends Component {
 		var s = this;
 
 		window.updateCollect = function(data){
-			alert(data);
 			 s.setState({
-			 		isCollect:data
+		 		isCollect:data
 			 });
 		}
 

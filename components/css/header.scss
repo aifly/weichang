@@ -31,10 +31,10 @@ input, textarea {
 .wc-header-ui{
 	 width:100vw;
 	 height: 44px;//所有手机统一高度
-	 margin-top:20px;
+	 padding-top: 20px;
 	 @include pos(r);
 	 	background: #fff;
-	 	padding-bottom: 5px;
+	 	//padding-bottom: 5px;
 	 &:before{
 	 	 content:'';
 	 	 width:100%;
@@ -47,23 +47,25 @@ input, textarea {
 	 	 box-shadow: 0 0 5px rgba(0,0,0,.15);
 	 	 z-index: 2;
 	 }
-	 @include displayBox(row);	
+	 @include displayBox(horizontal);
+	
 	 aside{
 	 	-webkit-box-flex:1;
 	 	text-align: center;
 	 	height: 100%;
-
 	 	&.wc-header-c{
 	 		width:6rem;
 	 		color:#2094d4;
 	 		img{
-	 			@include transform(scale(.8) translate3d(0,8px,0));
+	 			@include transform(translate3d(0,11.5px,0));
 	 		}
 	 	}
 	 	&.wc-header-l{
+	 		width:2rem;
 	 			img{
 			 		vertical-align: middle;
-			 		margin-top:13px;
+			 		margin-top: 10px;
+			 		margin-left: -20px;
 			 	}
 	 		div{
 	 			width: 12px;
@@ -71,9 +73,10 @@ input, textarea {
 	 		}
 	 	}
 	 	&.wc-header-r{
+	 		width:2rem;
 	 			img{
 				 		vertical-align: middle;
-				 		margin-top:19px;
+				 		margin-top: 20px;		
 				 	}
 	 			div{
 	 				width: 25px;

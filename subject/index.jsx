@@ -125,8 +125,8 @@ class SubjectApp extends Component {
 												</div>
 												<div className='wc-subject-video-info'>
 														<aside>
-																<div className='wc-subject-from-logo' style={{background:'url(./assets/images/logo-bg.png) no-repeat center center',backgroundSize:'contain',padding:8,boxSizing:'border-box'}}>
-																	<img src={item.from.src}/>
+																<div className='wc-subject-from-logo'>
+																	<section style={{background:'url('+item.from.src+') no-repeat center center / contain'}}><img src={'./assets/images/logo-bg.png'}/></section>
 																</div>
 																<div style={{textAlign:'center'}}>{item.from.name}</div>
 														</aside>
@@ -173,6 +173,9 @@ class SubjectApp extends Component {
 	  	data:{
 	  		subjectID:subjectID
 	  	},
+	  	error(){
+
+	  	},
 	  	success(data){
 	  		if(data.code  === 200){
 
@@ -196,6 +199,7 @@ class SubjectApp extends Component {
 	  				imgList.push(item.imgSrc);
 	  			});
 	  			loading(imgList,null,()=>{
+	  				
 	  				s.scroll && s.scroll.refresh();
 	  			});
 	  		}
