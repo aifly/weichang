@@ -120,8 +120,8 @@ class NewsApp extends Component {
 		var s = this;
 
 		window.updateCollect = function(data){
-			 s.setState({
-			 		isCollect:data
+			s.setState({
+		 		isCollect:data+''
 			 });
 		}
 

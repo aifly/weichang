@@ -27639,7 +27639,7 @@
 							{ style: { border: '1px solid transparent', paddingBottom: 10 } },
 							_react2['default'].createElement(
 								'div',
-								{ className: 'wc-field-describe' },
+								{ className: 'wc-field-describe', style: { height: this.viewW / 10 * 9.4 * 9 / 16 } },
 								this.state.describeSrc && _react2['default'].createElement('iframe', { height: this.viewW / 10 * 9.4 * 9 / 16, width: this.viewW / 10 * 9.4, src: this.state.describeSrc, frameBorder: '0' })
 							),
 							_react2['default'].createElement(
@@ -27694,10 +27694,10 @@
 								_react2['default'].createElement(
 									'div',
 									null,
-									'地址：',
 									_react2['default'].createElement(
 										'span',
-										{ className: 'wc-address', style: { top: window.H5Manager ? 0 : 4 } },
+										{ className: 'wc-address' },
+										'地址：',
 										this.state.addressObj.address
 									),
 									_react2['default'].createElement(
@@ -27870,7 +27870,7 @@
 										return _react2['default'].createElement(
 											'li',
 											{ onTouchTap: _this.showImage.bind(_this, i), key: i },
-											_react2['default'].createElement('div', { style: { background: 'url(' + item.src + ') no-repeat center / contain' } }),
+											_react2['default'].createElement('div', { style: { background: 'url(' + item.src + ') no-repeat left center / contain' } }),
 											_react2['default'].createElement(
 												'section',
 												null,
@@ -27893,10 +27893,10 @@
 							_react2['default'].createElement(
 								'div',
 								{ className: 'wc-field-active' },
-								_react2['default'].createElement(
+								this.state.fieldActive.activeList && _react2['default'].createElement(
 									'div',
 									{ className: 'wc-field-active-img' },
-									this.state.fieldActive.activeList && _react2['default'].createElement('img', { src: this.state.fieldActive.activePic })
+									_react2['default'].createElement('img', { src: this.state.fieldActive.activePic })
 								),
 								_react2['default'].createElement(
 									'div',
@@ -27958,7 +27958,7 @@
 							),
 							this.state.sameFeildList.length > 0 && _react2['default'].createElement(
 								'div',
-								{ className: 'wc-field-commit-C' },
+								{ className: 'wc-field-same-C' },
 								_react2['default'].createElement(
 									'aside',
 									null,
@@ -27978,10 +27978,14 @@
 											{ key: i },
 											_react2['default'].createElement(
 												'div',
-												{ style: { background: 'url(' + item.src + ') no-repeat center center / cover', backgroundSize: 'cover', height: '2.5rem' } },
+												{ style: { background: 'url(' + item.src + ') no-repeat center center / cover', backgroundSize: 'cover', height: '4.5rem', width: '8rem' } },
 												_react2['default'].createElement(
 													_reactRouter.Link,
-													{ to: '/field/' + item.id },
+													{ onTouchTap: function () {
+															setTimeout(function () {
+																window.location.reload();
+															}, 500);
+														}, to: '/field/' + item.id },
 													_react2['default'].createElement('img', { src: item.src, style: { opacity: 0 }, alt: '' })
 												)
 											),
@@ -27992,17 +27996,20 @@
 											),
 											_react2['default'].createElement(
 												'div',
-												null,
+												{ style: { maxWidth: '8rem' } },
 												_react2['default'].createElement(
 													'span',
 													null,
 													item.address
 												),
+												_react2['default'].createElement('span', null),
 												_react2['default'].createElement(
 													'span',
 													null,
-													item.area
+													item.area,
+													'㎡'
 												),
+												_react2['default'].createElement('span', null),
 												_react2['default'].createElement(
 													'span',
 													null,
@@ -28102,7 +28109,7 @@
 				var _this4 = this;
 
 				if (this.state.detailDescribe === this.defaultDetailDescribe) {
-					this.state.detailDescribe = this.state.detailDescribe.substring(0, 52) + '...';
+					this.state.detailDescribe = this.state.detailDescribe.substring(0, 130) + '...';
 					this.state.defaultDetailDescribeState = '查看更多';
 				} else {
 					this.state.detailDescribe = this.defaultDetailDescribe;
@@ -28121,8 +28128,9 @@
 				var s = this;
 
 				window.updateCollect = function (data) {
+
 					s.setState({
-						isCollect: data
+						isCollect: data + ''
 					});
 				};
 
@@ -28176,7 +28184,7 @@
 
 							s.defaultDetailDescribe = s.state.detailDescribe;
 
-							s.state.detailDescribe = s.state.detailDescribe.substring(0, 52) + '...';
+							s.state.detailDescribe = s.state.detailDescribe.substring(0, 130) + '...';
 
 							s.defaultHeight = 0;
 							(0, _jquery2['default'])('.wc-field-comment-list li').each(function (i, n) {
@@ -28332,8 +28340,7 @@
 					if (this.props.resType === 4) {
 						H5Manager.goBack();
 					} else {
-						this.setState({ text: '/#/subject/' + subjectId + '?k=' + new Date().getTime() });
-						location.href = '/#/subject/' + subjectId + '?k=' + new Date().getTime();
+						location.hash = '#/subject/' + subjectId + '?k=' + new Date().getTime();
 					}
 				} else {
 					if (window.H5Manager) {
@@ -40729,7 +40736,7 @@
 
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\r\n/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden;\r\n  font-size: 14px; }\r\n\r\n.wc-field-describe {\r\n  width: 9.4rem;\r\n  margin: .5rem auto 0;\r\n  overflow: hidden;\r\n  height: 180px; }\r\n\r\n.wc-field-scroll {\r\n  overflow: hidden; }\r\n\r\n.wc-field-title-C {\r\n  width: 9.4rem;\r\n  margin: 0 auto;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-field-title-C .wc-field-title-item {\r\n    -webkit-box-flex: 1; }\r\n    .wc-field-title-C .wc-field-title-item h3 {\r\n      font-weight: normal;\r\n      font-size: .52rem; }\r\n    .wc-field-title-C .wc-field-title-item .wc-field-cate {\r\n      font-size: 12px;\r\n      color: #9da9bc;\r\n      margin-top: 16px; }\r\n      .wc-field-title-C .wc-field-title-item .wc-field-cate img {\r\n        width: .5rem;\r\n        margin: 0 5px; }\r\n    .wc-field-title-C .wc-field-title-item.wc-field-tel a {\r\n      width: 1rem;\r\n      display: block;\r\n      float: right;\r\n      margin-right: .8rem;\r\n      position: relative;\r\n      top: .2rem; }\r\n\r\n.wc-field-address {\r\n  width: 9.4rem;\r\n  margin: .5rem auto .3rem;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-pack: justify; }\r\n  .wc-field-address img {\r\n    width: .5rem;\r\n    display: block; }\r\n  .wc-field-address span:last-of-type {\r\n    color: #1d94d4;\r\n    margin-left: 10px; }\r\n  .wc-field-address .wc-address {\r\n    width: 6rem;\r\n    overflow: hidden;\r\n    display: inline-block;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    position: relative; }\r\n  .wc-field-address .wc-entry-map {\r\n    display: inline-block;\r\n    color: #ccc;\r\n    -webkit-transform: scale(1, 1.5);\r\n    transform: scale(1, 1.5);\r\n    position: absolute;\r\n    right: 0;\r\n    top: 1px; }\r\n  .wc-field-address > div {\r\n    color: #9da9bc; }\r\n    .wc-field-address > div:last-of-type {\r\n      width: 8.7rem;\r\n      position: relative; }\r\n\r\n.wc-field-detail {\r\n  width: 9.4rem;\r\n  margin: 0 auto;\r\n  text-indent: 2em;\r\n  color: #6d788f;\r\n  line-height: .7rem;\r\n  font-size: 12px; }\r\n\r\n.wc-field-more {\r\n  color: #1d94d4;\r\n  text-align: center; }\r\n  .wc-field-more span {\r\n    font-size: 14px;\r\n    position: relative; }\r\n    .wc-field-more span.active:before {\r\n      content: '';\r\n      width: 0;\r\n      height: 0;\r\n      border-left: 6px solid transparent;\r\n      border-right: 6px solid transparent;\r\n      border-bottom: 6px solid #e8ebf2;\r\n      border-top: none;\r\n      position: absolute;\r\n      top: 2px;\r\n      background: transparent;\r\n      z-index: 10; }\r\n    .wc-field-more span.active:after {\r\n      height: 0;\r\n      left: 58px;\r\n      background: #e8ebf2;\r\n      border-left: 11px solid #e8ebf2;\r\n      border-bottom: none;\r\n      border-right: none;\r\n      border-top: 2px #e8ebf2 solid;\r\n      top: 40%; }\r\n    .wc-field-more span:before, .wc-field-more span:after {\r\n      content: '';\r\n      width: 0;\r\n      height: 0;\r\n      border-left: 6px solid transparent;\r\n      border-right: 6px solid transparent;\r\n      border-top: 6px solid #e8ebf2;\r\n      position: absolute; }\r\n    .wc-field-more span:after {\r\n      margin-top: 4px; }\r\n    .wc-field-more span:before {\r\n      height: 0;\r\n      left: 57px;\r\n      background: #e8ebf2;\r\n      border-left: 10px solid #e8ebf2;\r\n      border-bottom: none;\r\n      border-right: none;\r\n      border-top-width: 2px;\r\n      top: 70%; }\r\n\r\n.wc-field-commit-C {\r\n  width: 9.4rem;\r\n  margin: 0 auto 0;\r\n  height: 1.2rem;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-field-commit-C aside {\r\n    -webkit-box-flex: 1; }\r\n    .wc-field-commit-C aside img {\r\n      width: .5rem;\r\n      margin-right: .2rem; }\r\n    .wc-field-commit-C aside:nth-of-type(2) {\r\n      text-align: right; }\r\n    .wc-field-commit-C aside:nth-of-type(1) {\r\n      color: #1d94d4;\r\n      font-weight: bold;\r\n      font-size: .6rem; }\r\n\r\n.wc-field-comment-list {\r\n  width: 9.4rem;\r\n  margin: 0 auto 0; }\r\n  .wc-field-comment-list li {\r\n    margin: 10px 0; }\r\n  .wc-field-comment-list span {\r\n    margin-right: .2rem;\r\n    position: relative;\r\n    top: 4px;\r\n    width: .8rem;\r\n    height: 1rem;\r\n    text-align: center;\r\n    line-height: 1rem; }\r\n  .wc-field-comment-list .wc-comment-logo {\r\n    width: .5rem;\r\n    font-size: .6875rem; }\r\n  .wc-field-comment-list .wc-comment-content {\r\n    font-family: 瀹嬩綋;\r\n    color: #999;\r\n    -webkit-transform: scale(0.85);\r\n    transform: scale(0.85);\r\n    text-indent: 2em; }\r\n\r\n.wc-field-parameter-table {\r\n  width: 100%; }\r\n  .wc-field-parameter-table tr {\r\n    text-align: center;\r\n    height: 1rem; }\r\n  .wc-field-parameter-table td, .wc-field-parameter-table th {\r\n    width: 25%;\r\n    text-align: center;\r\n    font-weight: normal;\r\n    font-size: .4rem; }\r\n\r\n.wc-field-pic-list, .wc-field-active-list {\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-pack: start; }\r\n  .wc-field-pic-list li, .wc-field-active-list li {\r\n    margin: 0 5px;\r\n    width: 4rem;\r\n    height: 4rem;\r\n    text-align: center; }\r\n    .wc-field-pic-list li div, .wc-field-active-list li div {\r\n      width: 4rem;\r\n      height: 3.5rem;\r\n      overflow: hidden; }\r\n\r\n.wc-field-active div.wc-field-active-img {\r\n  position: relative; }\r\n  .wc-field-active div.wc-field-active-img:before {\r\n    content: '';\r\n    width: 0;\r\n    height: 0;\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 18%;\r\n    border-left: 15px solid transparent;\r\n    border-right: 15px solid transparent;\r\n    border-bottom: 15px solid #fff; }\r\n\r\n.wc-field-active-list {\r\n  margin-top: 5px; }\r\n  .wc-field-active-list h3 {\r\n    font-weight: normal;\r\n    font-size: .4rem;\r\n    margin: 5px 0; }\r\n  .wc-field-active-list div:last-of-type {\r\n    text-align: left;\r\n    margin-left: 4px;\r\n    font-size: 12px;\r\n    color: #999; }\r\n\r\n.wc-feild-same-list {\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-feild-same-list li {\r\n    margin: 0 5px;\r\n    width: 8rem; }\r\n    .wc-feild-same-list li h3 {\r\n      font-weight: normal;\r\n      margin: 6px 0; }\r\n    .wc-feild-same-list li img {\r\n      border-radius: 4px; }\r\n    .wc-feild-same-list li span {\r\n      color: #999;\r\n      font-size: 12px;\r\n      margin: 0 5px; }\r\n      .wc-feild-same-list li span:first-of-type {\r\n        margin-left: 0; }\r\n\r\n/*# sourceMappingURL=index.css.map */", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\r\n/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden;\r\n  font-size: 14px; }\r\n\r\n.wc-field-describe {\r\n  width: 9.4rem;\r\n  margin: .5rem auto 0;\r\n  overflow: hidden;\r\n  height: 180px; }\r\n\r\n.wc-field-scroll {\r\n  overflow: hidden; }\r\n\r\n.wc-field-title-C {\r\n  width: 9.4rem;\r\n  margin: .5rem auto 0;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-field-title-C .wc-field-title-item {\r\n    -webkit-box-flex: 1; }\r\n    .wc-field-title-C .wc-field-title-item h3 {\r\n      font-weight: normal;\r\n      font-size: .52rem; }\r\n    .wc-field-title-C .wc-field-title-item .wc-field-cate {\r\n      font-size: 12px;\r\n      color: #9da9bc;\r\n      margin-top: 16px; }\r\n      .wc-field-title-C .wc-field-title-item .wc-field-cate img {\r\n        width: .5rem;\r\n        margin: 0 5px; }\r\n    .wc-field-title-C .wc-field-title-item.wc-field-tel a {\r\n      width: 1rem;\r\n      display: block;\r\n      float: right;\r\n      margin-right: .8rem;\r\n      position: relative;\r\n      top: .2rem; }\r\n\r\n.wc-field-address {\r\n  width: 9.4rem;\r\n  margin: .5rem auto .3rem;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-pack: justify; }\r\n  .wc-field-address img {\r\n    width: 12px;\r\n    display: block; }\r\n  .wc-field-address span:last-of-type {\r\n    color: #1d94d4;\r\n    margin-left: 10px; }\r\n  .wc-field-address .wc-address {\r\n    width: 6rem;\r\n    overflow: hidden;\r\n    display: inline-block;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    position: relative; }\r\n  .wc-field-address .wc-entry-map {\r\n    display: inline-block;\r\n    color: #ccc;\r\n    -webkit-transform: scale(1, 1.5);\r\n    transform: scale(1, 1.5);\r\n    position: absolute;\r\n    right: 0;\r\n    top: 1px; }\r\n  .wc-field-address > div {\r\n    color: #9da9bc; }\r\n    .wc-field-address > div:last-of-type {\r\n      width: 8.7rem;\r\n      position: relative; }\r\n\r\n.wc-field-detail {\r\n  width: 9.4rem;\r\n  margin: 0 auto;\r\n  text-indent: 2em;\r\n  color: #6d788f;\r\n  line-height: 24px;\r\n  font-size: 12px; }\r\n\r\n.wc-field-more {\r\n  color: #1d94d4;\r\n  text-align: center; }\r\n  .wc-field-more span {\r\n    font-size: 14px;\r\n    position: relative; }\r\n    .wc-field-more span.active:before {\r\n      content: '';\r\n      width: 0;\r\n      height: 0;\r\n      border-left: 6px solid transparent;\r\n      border-right: 6px solid transparent;\r\n      border-bottom: 6px solid #e8ebf2;\r\n      border-top: none;\r\n      position: absolute;\r\n      top: 2px;\r\n      background: transparent;\r\n      z-index: 10; }\r\n    .wc-field-more span.active:after {\r\n      height: 0;\r\n      left: 58px;\r\n      background: #e8ebf2;\r\n      border-left: 11px solid #e8ebf2;\r\n      border-bottom: none;\r\n      border-right: none;\r\n      border-top: 2px #e8ebf2 solid;\r\n      top: 40%; }\r\n    .wc-field-more span:before, .wc-field-more span:after {\r\n      content: '';\r\n      width: 0;\r\n      height: 0;\r\n      border-left: 6px solid transparent;\r\n      border-right: 6px solid transparent;\r\n      border-top: 6px solid #e8ebf2;\r\n      position: absolute; }\r\n    .wc-field-more span:after {\r\n      margin-top: 4px; }\r\n    .wc-field-more span:before {\r\n      height: 0;\r\n      left: 57px;\r\n      background: #e8ebf2;\r\n      border-left: 10px solid #e8ebf2;\r\n      border-bottom: none;\r\n      border-right: none;\r\n      border-top-width: 2px;\r\n      top: 70%; }\r\n\r\n.wc-field-commit-C, .wc-field-same-C {\r\n  width: 9.4rem;\r\n  margin: 22px auto 0;\r\n  height: 1.2rem;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-field-commit-C aside, .wc-field-same-C aside {\r\n    -webkit-box-flex: 1; }\r\n    .wc-field-commit-C aside img, .wc-field-same-C aside img {\r\n      width: .5rem;\r\n      margin-right: .2rem; }\r\n    .wc-field-commit-C aside:nth-of-type(2), .wc-field-same-C aside:nth-of-type(2) {\r\n      text-align: right; }\r\n    .wc-field-commit-C aside:nth-of-type(1), .wc-field-same-C aside:nth-of-type(1) {\r\n      color: #1d94d4;\r\n      font-size: .6rem; }\r\n\r\n.wc-field-same-C {\r\n  margin: 0 auto; }\r\n\r\n.wc-field-comment-list {\r\n  width: 9.4rem;\r\n  margin: 0 auto 0; }\r\n  .wc-field-comment-list li {\r\n    margin: 10px 0; }\r\n  .wc-field-comment-list span {\r\n    margin-right: .2rem;\r\n    position: relative;\r\n    top: 4px;\r\n    width: .8rem;\r\n    height: 1rem;\r\n    text-align: center;\r\n    line-height: 1rem; }\r\n  .wc-field-comment-list .wc-comment-logo {\r\n    width: .5rem;\r\n    font-size: .6875rem; }\r\n  .wc-field-comment-list .wc-comment-content {\r\n    font-family: 瀹嬩綋;\r\n    color: #999;\r\n    -webkit-transform: scale(0.85);\r\n    transform: scale(0.85);\r\n    text-indent: 2em; }\r\n\r\n.wc-field-parameter-table {\r\n  width: 100%;\r\n  position: relative;\r\n  margin-top: -8px; }\r\n  .wc-field-parameter-table:before {\r\n    content: '';\r\n    position: absolute;\r\n    width: 94%;\r\n    height: 1px;\r\n    background: #e0e0e0;\r\n    top: 1.3rem;\r\n    left: 3%; }\r\n  .wc-field-parameter-table thead tr {\r\n    text-align: center;\r\n    height: 1.5rem; }\r\n  .wc-field-parameter-table th {\r\n    color: #666; }\r\n  .wc-field-parameter-table td {\r\n    color: #999;\r\n    height: 30px;\r\n    -webkit-transform: scale(0.9);\r\n    transform: scale(0.9); }\r\n  .wc-field-parameter-table td, .wc-field-parameter-table th {\r\n    width: 25%;\r\n    text-align: center;\r\n    font-weight: normal;\r\n    font-size: .4rem; }\r\n\r\n.wc-field-pic-list, .wc-field-active-list {\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-pack: start; }\r\n  .wc-field-pic-list li, .wc-field-active-list li {\r\n    margin: 0 5px;\r\n    width: 4rem;\r\n    height: 4rem;\r\n    text-align: center; }\r\n    .wc-field-pic-list li:first-of-type, .wc-field-active-list li:first-of-type {\r\n      margin-left: .3rem; }\r\n    .wc-field-pic-list li div, .wc-field-active-list li div {\r\n      width: 4rem;\r\n      height: 2.25rem;\r\n      overflow: hidden; }\r\n    .wc-field-pic-list li section, .wc-field-active-list li section {\r\n      margin-top: 10px; }\r\n\r\n.wc-field-active div.wc-field-active-img {\r\n  position: relative; }\r\n  .wc-field-active div.wc-field-active-img:before {\r\n    content: '';\r\n    width: 0;\r\n    height: 0;\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 18%;\r\n    border-left: 15px solid transparent;\r\n    border-right: 15px solid transparent;\r\n    border-bottom: 15px solid #fff; }\r\n\r\n.wc-field-active-list {\r\n  margin-top: 5px; }\r\n  .wc-field-active-list h3 {\r\n    font-weight: normal;\r\n    font-size: .4rem;\r\n    margin: 5px 0; }\r\n  .wc-field-active-list div:last-of-type {\r\n    text-align: left;\r\n    margin-left: 4px;\r\n    font-size: 12px;\r\n    color: #999; }\r\n\r\n.wc-feild-same-list {\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-align: start; }\r\n  .wc-feild-same-list li {\r\n    margin: 0 5px;\r\n    width: 8rem; }\r\n    .wc-feild-same-list li:first-of-type {\r\n      margin-left: .3rem; }\r\n    .wc-feild-same-list li h3 {\r\n      font-weight: normal;\r\n      margin: 6px 0; }\r\n    .wc-feild-same-list li img {\r\n      border-radius: 4px; }\r\n    .wc-feild-same-list li span {\r\n      color: #999;\r\n      font-size: 12px; }\r\n      .wc-feild-same-list li span:first-of-type {\r\n        margin-left: 0; }\r\n      .wc-feild-same-list li span:nth-of-type(2), .wc-feild-same-list li span:nth-of-type(4) {\r\n        margin: 0 8px;\r\n        display: inline-block;\r\n        width: 0;\r\n        height: 10px;\r\n        border: 1px solid #ddd;\r\n        opacity: .5;\r\n        position: relative;\r\n        top: 2px;\r\n        -webkit-transform: scale(0.5, 1);\r\n        transform: scale(0.5, 1); }\r\n\r\n/*# sourceMappingURL=index.css.map */", ""]);
 
 	// exports
 
@@ -40912,6 +40919,13 @@
 
 				var id = this.props.params.id;
 				var s = this;
+
+				window.updateCollect = function (data) {
+					s.setState({
+						isCollect: data + ''
+					});
+				};
+
 				window.obserable.on('updateCollect', function () {
 					_jquery2['default'].ajax({
 						url: window.baseUrl + 'send_like',
@@ -41321,7 +41335,19 @@
 					"remark": ""
 
 				},
-				"commentList": []
+				"commentList": [{
+					ico: "./assets/images/yk-logo.png",
+					name: '优酷',
+					content: ' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
+				}, {
+					ico: "./assets/images/yk-logo.png",
+					name: '优酷',
+					content: ' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
+				}, {
+					ico: "./assets/images/yk-logo.png",
+					name: '优酷',
+					content: ' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
+				}]
 			};
 			this.viewW = document.documentElement.clientWidth;
 			this.viewH = document.documentElement.clientHeight;
@@ -41341,7 +41367,7 @@
 				};
 				var data = this.state;
 				data.startPlay = this.startPlay.bind(this);
-				data.container = 'live-video';
+				data.container = 'live-video2';
 
 				var headerProps = _extends({
 					subjectId: this.props.params.subjectId
@@ -41387,6 +41413,7 @@
 							'ul',
 							null,
 							this.state.commentList.map(function (item, i) {
+
 								return _react2['default'].createElement(
 									'li',
 									{ key: i },
@@ -41472,6 +41499,7 @@
 
 				if (window.H5Manager) {
 					var phone = H5Manager.getUserID();
+
 					var s = this;
 					if (s.state.comment.length <= 0) {
 						return;
@@ -41535,9 +41563,31 @@
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 
-				return;
 				var id = this.props.params.id;
 				var s = this;
+
+				if (window.H5Manager) {
+					var phone = H5Manager.getUserID();
+					_jquery2['default'].ajax({
+						url: window.baseUrl + 'get_info',
+						data: {
+							phone: phone
+						},
+						success: function success(data) {
+							if (data.code === 200) {
+								var result = data.result;
+								s.nickName = result.nickname;
+								s.avatarUrl = result.avatarUrl;
+							}
+						}
+					});
+				}
+
+				window.updateCollect = function (data) {
+					s.setState({
+						isCollect: data + ''
+					});
+				};
 
 				window.obserable.on('updateCollect', function () {
 
@@ -41547,7 +41597,7 @@
 							resID: id
 						},
 						success: function success(data) {
-							console.log(data);
+
 							if (data.code === 200 && data.result * 1 === 1) {
 								window.obserable.trigger({
 									type: 'toast',
@@ -41559,17 +41609,18 @@
 						}
 					});
 				});
+
 				_jquery2['default'].ajax({
 					url: window.baseUrl + '/get_video_detail',
 					data: {
 						videoId: id
 					},
+					error: function error() {},
 					success: function success(data) {
 						if (data.code === 200) {
 							var result = data.result;
 							s.state.videoObj = result;
 							s.state.isCollect = result.isCollect;
-
 							s.forceUpdate(function () {
 
 								s.defaultRemark = s.state.videoObj.remark;
@@ -41612,14 +41663,30 @@
 						}
 					}
 				});
+
+				var i = 0;
+
+				setInterval(function () {
+					s.state.commentList.push({
+						ico: "./assets/images/yk-logo.png",
+						name: '优酷',
+						content: ' 这个美术馆希望通过真实的材料，纯净的空间表' + i++
+					});
+					s.forceUpdate();
+					s.scrollTo(s.state.commentHeight - s.refs['wc-live-comment-list'].querySelector('ul').offsetHeight);
+					s.commentScroll.refresh();
+				}, 1000);
 			}
 		}, {
 			key: 'scrollTo',
 			value: function scrollTo(y) {
-				var time = arguments.length <= 1 || arguments[1] === undefined ? 100 : arguments[1];
+				var time = arguments.length <= 1 || arguments[1] === undefined ? 200 : arguments[1];
 
 				this.commentScroll && this.commentScroll.scrollTo(0, y, time);
 			}
+		}, {
+			key: 'listen',
+			value: function listen() {}
 		}, {
 			key: 'componentWillUnmount',
 			value: function componentWillUnmount() {
@@ -41882,7 +41949,7 @@
 
 				window.updateCollect = function (data) {
 					s.setState({
-						isCollect: data
+						isCollect: data + ''
 					});
 				};
 
@@ -42416,7 +42483,7 @@
 
 
 	// module
-	exports.push([module.id, "/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden; }\r\n\r\n.wc-subject-main-ui a {\r\n  color: #888a92; }\r\n.wc-subject-main-ui h2, .wc-subject-main-ui h3, .wc-subject-main-ui h4 {\r\n  font-weight: normal; }\r\n.wc-subject-main-ui .wc-subject-main-describe {\r\n  width: 9.4rem;\r\n  margin: 15px auto;\r\n  color: #6d788f;\r\n  font-size: 12px;\r\n  line-height: 16px;\r\n  text-align: center; }\r\n.wc-subject-main-ui .wc-subject-scroll-C {\r\n  width: 100%; }\r\n  .wc-subject-main-ui .wc-subject-scroll-C > ul {\r\n    width: 100%;\r\n    margin: 0 auto; }\r\n    .wc-subject-main-ui .wc-subject-scroll-C > ul li {\r\n      padding-top: 15px;\r\n      padding-bottom: 15px;\r\n      position: relative; }\r\n      .wc-subject-main-ui .wc-subject-scroll-C > ul li > section {\r\n        width: 9.4rem;\r\n        margin: 0 auto; }\r\n      .wc-subject-main-ui .wc-subject-scroll-C > ul li:nth-of-type(2) {\r\n        border-top: 1px solid #ebebeb; }\r\n      .wc-subject-main-ui .wc-subject-scroll-C > ul li:first-of-type {\r\n        padding-top: 0;\r\n        padding-bottom: 0; }\r\n        .wc-subject-main-ui .wc-subject-scroll-C > ul li:first-of-type:before {\r\n          display: none; }\r\n      .wc-subject-main-ui .wc-subject-scroll-C > ul li:before {\r\n        content: '';\r\n        position: absolute;\r\n        bottom: 0;\r\n        width: 100%;\r\n        height: 4px;\r\n        background: #eeeeee; }\r\n      .wc-subject-main-ui .wc-subject-scroll-C > ul li:last-of-type:before {\r\n        display: none; }\r\n.wc-subject-main-ui .wc-subject-field .wc-subject-field-img img, .wc-subject-main-ui .wc-subject-field .wc-subject-field-img a {\r\n  border-radius: 5px; }\r\n.wc-subject-main-ui .wc-subject-field h4 {\r\n  font-size: .5rem;\r\n  height: 1.2rem;\r\n  font-weight: normal;\r\n  line-height: 1.2rem;\r\n  color: #000; }\r\n.wc-subject-main-ui .wc-subject-field .wc-subject-field-prop {\r\n  -webkit-transform-origin: left;\r\n  transform-origin: left;\r\n  -webkit-transform: scale(0.8);\r\n  transform: scale(0.8);\r\n  color: #888a92; }\r\n  .wc-subject-main-ui .wc-subject-field .wc-subject-field-prop span {\r\n    font-size: 12px; }\r\n    .wc-subject-main-ui .wc-subject-field .wc-subject-field-prop span:nth-of-type(2), .wc-subject-main-ui .wc-subject-field .wc-subject-field-prop span:nth-of-type(4) {\r\n      margin: 0 10px;\r\n      display: inline-block;\r\n      -webkit-transform: scale(0.5, 0.8) translate3d(0, -1px, 0);\r\n      transform: scale(0.5, 0.8) translate3d(0, -1px, 0); }\r\n.wc-subject-main-ui .wc-subject-field .wc-subject-field-title {\r\n  font-size: .6rem;\r\n  text-align: center;\r\n  margin: .5rem 0; }\r\n  .wc-subject-main-ui .wc-subject-field .wc-subject-field-title a {\r\n    color: #21262c; }\r\n.wc-subject-main-ui .wc-subject-field .wc-subject-field-describe {\r\n  text-indent: 2em;\r\n  color: #888a92;\r\n  line-height: 16px;\r\n  font-size: 12px; }\r\n.wc-subject-main-ui .wc-subject-news .wc-subject-news-img img, .wc-subject-main-ui .wc-subject-news .wc-subject-news-img a {\r\n  border-radius: 5px; }\r\n.wc-subject-main-ui .wc-subject-news .wc-subject-news-title {\r\n  font-size: .5rem;\r\n  text-align: center;\r\n  margin: 22px 0 20px; }\r\n  .wc-subject-main-ui .wc-subject-news .wc-subject-news-title a {\r\n    color: #21262c; }\r\n.wc-subject-main-ui .wc-subject-news .wc-subject-news-describe {\r\n  text-indent: 2em;\r\n  color: #888a92;\r\n  line-height: 16px;\r\n  font-size: 12px; }\r\n.wc-subject-main-ui .wc-subject-news .wc-subject-see-all {\r\n  text-align: center; }\r\n  .wc-subject-main-ui .wc-subject-news .wc-subject-see-all a {\r\n    color: #1d94d4; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-img img, .wc-subject-main-ui .wc-subject-video .wc-subject-video-img a {\r\n  border-radius: 5px; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-vr {\r\n  position: absolute;\r\n  width: 1rem;\r\n  right: 1rem;\r\n  z-index: 1;\r\n  top: 1rem; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-duration {\r\n  margin-top: .1rem; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-duration img {\r\n    vertical-align: middle;\r\n    position: relative;\r\n    top: -1px; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-info {\r\n  width: 9.4rem;\r\n  height: 1.4rem;\r\n  -webkit-transform-origin: left;\r\n  transform-origin: left;\r\n  -webkit-transform: scale(0.8);\r\n  transform: scale(0.8);\r\n  margin: 15px auto 0;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-pack: start;\r\n  -webkit-box-align: center; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside:first-of-type {\r\n    width: .88rem;\r\n    color: #b2d2e3; }\r\n    .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside:first-of-type div {\r\n      font-size: 12px;\r\n      height: 1rem;\r\n      width: .82rem; }\r\n      .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside:first-of-type div section {\r\n        width: 100%;\r\n        height: 100%; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside:last-of-type {\r\n    width: 7.2rem;\r\n    padding-left: .3rem;\r\n    margin-left: .3rem;\r\n    height: 1.4rem;\r\n    position: relative; }\r\n    .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside:last-of-type:before {\r\n      content: '';\r\n      width: 1px;\r\n      height: 100%;\r\n      background: #ddd;\r\n      position: absolute;\r\n      left: 0; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside h2 {\r\n    width: 100%;\r\n    font-size: .45rem;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    white-space: nowrap; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside .wc-subject-video-duration span {\r\n    top: .2rem;\r\n    position: relative; }\r\n    .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside .wc-subject-video-duration span:first-of-type {\r\n      color: #888a92; }\r\n    .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside .wc-subject-video-duration span:nth-of-type(2) {\r\n      margin: 0 .35rem;\r\n      height: 10px;\r\n      width: 1px;\r\n      background: #888a92;\r\n      display: inline-block; }\r\n    .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside .wc-subject-video-duration span:last-of-type {\r\n      color: #cdd6e7; }\r\n    .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside .wc-subject-video-duration span img {\r\n      width: .5rem;\r\n      margin-right: .3rem; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-title {\r\n  font-size: .6rem;\r\n  text-align: center;\r\n  margin: .3rem 0; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-title a {\r\n    color: #21262c; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-describe {\r\n  text-indent: 2em;\r\n  margin: 15px auto 0;\r\n  color: #888a92;\r\n  line-height: 16px;\r\n  font-size: 12px; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-see-all {\r\n  text-align: center; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-see-all a {\r\n    color: #1d94d4; }\r\n\r\n/*# sourceMappingURL=index.css.map */", ""]);
+	exports.push([module.id, "/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden; }\r\n\r\n.wc-subject-main-ui a {\r\n  color: #888a92; }\r\n.wc-subject-main-ui h2, .wc-subject-main-ui h3, .wc-subject-main-ui h4 {\r\n  font-weight: normal; }\r\n.wc-subject-main-ui .wc-subject-main-describe {\r\n  width: 9.4rem;\r\n  margin: 15px auto;\r\n  color: #6d788f;\r\n  font-size: 12px;\r\n  line-height: 24px;\r\n  text-align: center; }\r\n.wc-subject-main-ui .wc-subject-scroll-C {\r\n  width: 100%; }\r\n  .wc-subject-main-ui .wc-subject-scroll-C > ul {\r\n    width: 100%;\r\n    margin: 0 auto; }\r\n    .wc-subject-main-ui .wc-subject-scroll-C > ul li {\r\n      padding-top: 30px;\r\n      padding-bottom: 30px;\r\n      position: relative; }\r\n      .wc-subject-main-ui .wc-subject-scroll-C > ul li > section {\r\n        width: 9.4rem;\r\n        margin: 0 auto; }\r\n      .wc-subject-main-ui .wc-subject-scroll-C > ul li:nth-of-type(2) {\r\n        border-top: 1px solid #ebebeb; }\r\n      .wc-subject-main-ui .wc-subject-scroll-C > ul li:first-of-type {\r\n        padding-top: 0;\r\n        padding-bottom: 0; }\r\n        .wc-subject-main-ui .wc-subject-scroll-C > ul li:first-of-type:before {\r\n          display: none; }\r\n      .wc-subject-main-ui .wc-subject-scroll-C > ul li:before {\r\n        content: '';\r\n        position: absolute;\r\n        bottom: 0;\r\n        width: 100%;\r\n        height: 4px;\r\n        background: #eeeeee; }\r\n      .wc-subject-main-ui .wc-subject-scroll-C > ul li:last-of-type:before {\r\n        display: none; }\r\n.wc-subject-main-ui .wc-subject-field .wc-subject-field-img img, .wc-subject-main-ui .wc-subject-field .wc-subject-field-img a {\r\n  border-radius: 5px; }\r\n.wc-subject-main-ui .wc-subject-field h4 {\r\n  font-size: .5rem;\r\n  height: 1.2rem;\r\n  font-weight: normal;\r\n  line-height: 1.2rem;\r\n  color: #000; }\r\n.wc-subject-main-ui .wc-subject-field .wc-subject-field-prop {\r\n  -webkit-transform-origin: left;\r\n  transform-origin: left;\r\n  -webkit-transform: scale(0.8);\r\n  transform: scale(0.8);\r\n  color: #888a92; }\r\n  .wc-subject-main-ui .wc-subject-field .wc-subject-field-prop span {\r\n    font-size: 12px; }\r\n    .wc-subject-main-ui .wc-subject-field .wc-subject-field-prop span:nth-of-type(2), .wc-subject-main-ui .wc-subject-field .wc-subject-field-prop span:nth-of-type(4) {\r\n      margin: 0 10px;\r\n      display: inline-block;\r\n      -webkit-transform: scale(0.5, 0.8) translate3d(0, -1px, 0);\r\n      transform: scale(0.5, 0.8) translate3d(0, -1px, 0); }\r\n.wc-subject-main-ui .wc-subject-field .wc-subject-field-title {\r\n  font-size: .6rem;\r\n  text-align: center;\r\n  margin: .5rem 0; }\r\n  .wc-subject-main-ui .wc-subject-field .wc-subject-field-title a {\r\n    color: #21262c; }\r\n.wc-subject-main-ui .wc-subject-field .wc-subject-field-describe {\r\n  text-indent: 2em;\r\n  color: #888a92;\r\n  line-height: 24px;\r\n  font-size: 12px; }\r\n.wc-subject-main-ui .wc-subject-news .wc-subject-news-img img, .wc-subject-main-ui .wc-subject-news .wc-subject-news-img a {\r\n  border-radius: 5px; }\r\n.wc-subject-main-ui .wc-subject-news .wc-subject-news-title {\r\n  font-size: .6rem;\r\n  text-align: center;\r\n  margin: 22px 0 20px; }\r\n  .wc-subject-main-ui .wc-subject-news .wc-subject-news-title a {\r\n    color: #21262c; }\r\n.wc-subject-main-ui .wc-subject-news .wc-subject-news-describe {\r\n  text-indent: 2em;\r\n  color: #888a92;\r\n  line-height: 24px;\r\n  font-size: 12px; }\r\n.wc-subject-main-ui .wc-subject-news .wc-subject-see-all {\r\n  text-align: center; }\r\n  .wc-subject-main-ui .wc-subject-news .wc-subject-see-all a {\r\n    color: #1d94d4; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-img img, .wc-subject-main-ui .wc-subject-video .wc-subject-video-img a {\r\n  border-radius: 5px; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-vr {\r\n  position: absolute;\r\n  width: 1rem;\r\n  right: 1rem;\r\n  z-index: 1;\r\n  top: 1rem; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-duration {\r\n  margin-top: .1rem; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-duration img {\r\n    vertical-align: middle;\r\n    position: relative;\r\n    top: -1px; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-info {\r\n  width: 9.4rem;\r\n  height: 1.4rem;\r\n  -webkit-transform-origin: left;\r\n  transform-origin: left;\r\n  -webkit-transform: scale(0.8);\r\n  transform: scale(0.8);\r\n  margin: 15px auto 0;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-pack: start;\r\n  -webkit-box-align: center; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside:first-of-type {\r\n    width: .88rem;\r\n    color: #b2d2e3; }\r\n    .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside:first-of-type div {\r\n      font-size: 12px;\r\n      height: 1rem;\r\n      width: .82rem; }\r\n      .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside:first-of-type div section {\r\n        width: 100%;\r\n        height: 100%; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside:last-of-type {\r\n    width: 7.2rem;\r\n    padding-left: .3rem;\r\n    margin-left: .3rem;\r\n    height: 1.4rem;\r\n    position: relative; }\r\n    .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside:last-of-type:before {\r\n      content: '';\r\n      width: 1px;\r\n      height: 100%;\r\n      background: #ddd;\r\n      position: absolute;\r\n      left: 0; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside h2 {\r\n    width: 100%;\r\n    font-size: .45rem;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    white-space: nowrap; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside .wc-subject-video-duration span {\r\n    top: .2rem;\r\n    position: relative; }\r\n    .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside .wc-subject-video-duration span:first-of-type {\r\n      color: #888a92; }\r\n    .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside .wc-subject-video-duration span:nth-of-type(2) {\r\n      margin: 0 .35rem;\r\n      height: 10px;\r\n      width: 1px;\r\n      background: #cdd6e7;\r\n      display: inline-block; }\r\n    .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside .wc-subject-video-duration span:last-of-type {\r\n      color: #cdd6e7; }\r\n    .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside .wc-subject-video-duration span img {\r\n      width: .5rem;\r\n      margin-right: .3rem; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-title {\r\n  font-size: .6rem;\r\n  text-align: center;\r\n  margin: .3rem 0; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-video-title a {\r\n    color: #21262c; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-video-describe {\r\n  text-indent: 2em;\r\n  margin: 15px auto 0;\r\n  color: #888a92;\r\n  line-height: 24px;\r\n  font-size: 12px; }\r\n.wc-subject-main-ui .wc-subject-video .wc-subject-see-all {\r\n  text-align: center; }\r\n  .wc-subject-main-ui .wc-subject-video .wc-subject-see-all a {\r\n    color: #1d94d4; }\r\n\r\n/*# sourceMappingURL=index.css.map */", ""]);
 
 	// exports
 

@@ -18,7 +18,7 @@ $mainW:9.4rem;
 
 .wc-field-title-C{
 	width: $mainW;
-	margin:0 auto;
+	margin: .5rem auto 0;
 	@include displayBox(horizontal);
 	.wc-field-title-item{
 		-webkit-box-flex: 1;
@@ -56,7 +56,7 @@ $mainW:9.4rem;
 	@include displayBox(horizontal);
 	-webkit-box-pack: justify;
 	img{
-		width:.5rem;
+		width:12px;
 		display: block;
 	}
 	span:last-of-type{
@@ -95,7 +95,7 @@ $mainW:9.4rem;
 	margin:0 auto;
 	text-indent:2em;
 	color:#6d788f;
-	line-height:.7rem;
+	line-height:24px;
 	font-size: 12px;
 }
 
@@ -156,9 +156,11 @@ $mainW:9.4rem;
 	}
 }
 
-.wc-field-commit-C{
+
+
+.wc-field-commit-C,.wc-field-same-C{
 	width:$mainW;
-	margin:0 auto 0;
+	margin:22px auto 0;
 	height: 1.2rem;
 	@include displayBox(horizontal);
 	aside{
@@ -172,10 +174,15 @@ $mainW:9.4rem;
 		}
 		&:nth-of-type(1){
 			color:#1d94d4;
-			font-weight:bold;
+			
 			font-size:.6rem;
 		}
 	}
+}
+
+.wc-field-same-C{
+	margin: 0 auto;
+
 }
 .wc-field-comment-list{
 	width:$mainW;
@@ -211,10 +218,30 @@ $mainW:9.4rem;
 
 .wc-field-parameter-table{
 	width:100%;
-	tr{
-		text-align: center;
-		height: 1rem;
+	@include pos(r);
+	margin-top: -8px;
+	&:before{
+		content:'';
+		@include pos(a);
+		width:94%;
+		height: 1px;
+		background: #e0e0e0;
+		top:1.3rem;
+		left: 3%;
 	}
+	thead tr{
+		text-align: center;
+		height: 1.5rem;
+	}
+	th{
+		color:#666;
+	}
+	td{
+		color:#999;
+		height: 30px;
+		@include transform(scale(.9));
+	}
+
 	td,th{
 		width:25%;
 		text-align: center;
@@ -233,10 +260,16 @@ $mainW:9.4rem;
  		width:4rem;
  		height: 4rem;
  		text-align: center;
+ 		&:first-of-type{
+ 			margin-left: .3rem;
+ 		}
  		div{
  			width:4rem;
- 			height: 3.5rem;
+ 			height: 2.25rem;
  			overflow: hidden;
+ 		}
+ 		section{
+ 			margin-top: 10px;
  		}
  	}
 }
@@ -279,8 +312,12 @@ $mainW:9.4rem;
 
 .wc-feild-same-list{
 	@include displayBox(horizontal);
+	-webkit-box-align:start;
 	li{
 		margin:0 5px;
+		&:first-of-type{
+			margin-left: .3rem;
+		}
 		width:8rem;
 		h3{
 			font-weight:normal;
@@ -292,9 +329,21 @@ $mainW:9.4rem;
 		span{
 			color:#999;
 			font-size:12px;
-			margin:0 5px;
+			
 			&:first-of-type{
 				margin-left:0;
+			}
+			&:nth-of-type(2),&:nth-of-type(4){
+				margin:0 8px;
+				display: inline-block;
+				width: 0;
+				height: 10px;
+				border:1px solid #ddd;
+				opacity:.5;
+				@include pos(r);
+				top:2px;
+				@include transform(scale(.5,1));
+				
 			}
 		}
 	}

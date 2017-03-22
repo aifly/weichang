@@ -39,7 +39,21 @@ class LiveApp extends Component {
 			
 			},
 			"commentList":[
-				
+				{
+		 			 ico:"./assets/images/yk-logo.png",
+		 			 name:'优酷',
+		 			 content:' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
+	 			},
+	 			{
+		 			 ico:"./assets/images/yk-logo.png",
+		 			 name:'优酷',
+		 			 content:' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
+	 			},
+	 			{
+		 			 ico:"./assets/images/yk-logo.png",
+		 			 name:'优酷',
+		 			 content:' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
+	 			}
 			]
 		}
 		this.viewW = document.documentElement.clientWidth;
@@ -56,7 +70,7 @@ class LiveApp extends Component {
 		}
 		var data = this.state;
 		data.startPlay = this.startPlay.bind(this);
-		data.container = 'live-video'
+		data.container = 'live-video2'
 
 		var headerProps = {
 			subjectId:this.props.params.subjectId,
@@ -81,6 +95,7 @@ class LiveApp extends Component {
 				<div className='wc-live-comment-list' ref="wc-live-comment-list" style={{height:this.state.commentHeight}}>
 					<ul>
 						{this.state.commentList.map((item,i)=>{
+
 							return <li key={i}>
 								<aside>
 									<div style={{background:'url(./assets/images/logo-bg.png) no-repeat  center center',backgroundSize:'contain',padding:5}}><img style={{display:'block',margin:'0 auto'}} width='20' src={item.ico} alt=""/></div>
@@ -136,6 +151,7 @@ class LiveApp extends Component {
 		
 		if(window.H5Manager ){
 			var phone =  H5Manager.getUserID();
+
 			var s = this;
 			if(s.state.comment.length<=0){
 				return;
@@ -204,9 +220,34 @@ class LiveApp extends Component {
 
 	componentDidMount(){
 
-		return;
+ 
 		var id = this.props.params.id;
 		var s = this;
+
+
+		if(window.H5Manager){
+			var phone =  H5Manager.getUserID();	
+			$.ajax({
+				url:window.baseUrl + 'get_info',
+				data:{
+					phone
+				},
+				success(data){
+					if(data.code === 200){
+						var result = data.result;
+						s.nickName = result.nickname;
+						s.avatarUrl = result.avatarUrl;
+					}
+				}
+			})
+		
+		}
+		
+		window.updateCollect = function(data){
+			 s.setState({
+		 		isCollect:data+''
+			 });
+		}
 
 
 		window.obserable.on('updateCollect',()=>{
@@ -217,12 +258,12 @@ class LiveApp extends Component {
 					resID:id
 				},
 				success(data){
-					console.log(data)
+					
 					if(data.code === 200 && data.result*1 === 1){
 						 window.obserable.trigger({
-			            type:'toast',
-			            data:''
-			        });
+				            type:'toast',
+				            data:''
+				        });
 						s.state.videoObj.collect = s.state.videoObj.collect*1 + 1;
 						s.forceUpdate();
 					}
@@ -230,17 +271,21 @@ class LiveApp extends Component {
 			});
 		
 		});
+
+
+
 		$.ajax({
 			url:window.baseUrl + '/get_video_detail',
 			data:{
 				videoId:id,
+			},
+			error(){
 			},
 			success(data){
 				if(data.code === 200){
 					var result = data.result;
 					s.state.videoObj = result;
 					s.state.isCollect = result.isCollect;
-
 					s.forceUpdate(()=>{
 
 						s.defaultRemark = s.state.videoObj.remark;
@@ -285,11 +330,31 @@ class LiveApp extends Component {
 				}
 			}
 		})
+
+		var i = 0;
+
+		setInterval(()=>{
+			s.state.commentList.push({
+		 			 ico:"./assets/images/yk-logo.png",
+		 			 name:'优酷',
+		 			 content:' 这个美术馆希望通过真实的材料，纯净的空间表'+(i++)
+			});
+			s.forceUpdate()
+			s.scrollTo(s.state.commentHeight - s.refs['wc-live-comment-list'].querySelector('ul').offsetHeight);
+			s.commentScroll.refresh();
+			
+
+		},1000)
 	}
 
-	scrollTo(y,time = 100){
+	scrollTo(y,time = 200){
 		this.commentScroll && this.commentScroll.scrollTo(0,y,time);
 	}
+
+	listen(){
+
+	}
+
 	componentWillUnmount() {
 		document.ontouchend = document.ontouchmove = null;	
 	}

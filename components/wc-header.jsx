@@ -77,8 +77,7 @@ class WCHeader extends Component {
 				if(this.props.resType === 4){
 					H5Manager.goBack();
 				}else{
-					this.setState({text:'/#/subject/'+ subjectId+'?k='+ new Date().getTime()});
-					location.href='/#/subject/'+ subjectId+'?k='+ new Date().getTime();
+					location.hash='#/subject/'+ subjectId+'?k='+ new Date().getTime();
 				}
 		}else{
 			if(window.H5Manager){

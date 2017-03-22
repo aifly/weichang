@@ -230,7 +230,7 @@ class FieldApp extends Component {
 				<WCHeader {...headerProps}></WCHeader>
 				<section ref="scroll" className="wc-field-scroll" style={{height:document.documentElement.clientHeight - 64 }}>
 					<div style={{border:'1px solid transparent',paddingBottom:10}}>
-						<div className='wc-field-describe'>
+						<div className='wc-field-describe' style={{height:this.viewW/10*9.4*9/16}}>
 							{this.state.describeSrc && <iframe height={this.viewW/10*9.4*9/16} width={this.viewW/10*9.4} src={this.state.describeSrc} frameBorder="0"></iframe>}
 						</div>
 						<div className='wc-field-title-C'>
@@ -245,8 +245,8 @@ class FieldApp extends Component {
 							</div>
 						</div>
 						<div className="wc-field-address" onTouchTap={this.showMap.bind(this)}>
-							<div><img src="./assets/images/pos.png" alt=""/></div>
-							<div>地址：<span className='wc-address' style={{top:window.H5Manager?0:4}}>{this.state.addressObj.address}</span><span className='wc-entry-map'>></span></div>
+							<div><img  src="./assets/images/pos.png" alt=""/></div>
+							<div><span className='wc-address'>地址：{this.state.addressObj.address}</span><span className='wc-entry-map'>></span></div>
 						</div>
 						<div className="wc-field-detail">
 							{this.state.detailDescribe}
@@ -302,7 +302,7 @@ class FieldApp extends Component {
 								<ul className='wc-field-pic-list' style={{width:this.state.fieldPicList.length * (document.documentElement.clientWidth/ 10 * 4+ 10)}}>
 										{this.state.fieldPicList.map((item,i)=>{
 											return <li onTouchTap={this.showImage.bind(this,i)} key={i}>
-													<div style={{background:'url('+item.src+') no-repeat center / contain'}}></div>
+													<div style={{background:'url('+item.src+') no-repeat left center / contain'}}></div>
 													<section>{item.name}</section>
 											</li>
 										})}
@@ -314,9 +314,9 @@ class FieldApp extends Component {
 													<aside></aside>
 												</div>}
 						<div className="wc-field-active">
-							<div className='wc-field-active-img'>
-								 {this.state.fieldActive.activeList && <img src={this.state.fieldActive.activePic}/>}
-							</div>
+							{this.state.fieldActive.activeList &&<div className='wc-field-active-img'>
+								  <img src={this.state.fieldActive.activePic}/>
+							</div>}
 							<div  className="wc-field-active-scroll" ref='wc-field-active-scroll'>
 								{!this.state.fieldActive.activeList && <div style={{width:'9.4rem',margin:'0 auto',color:'#ccc'}}></div>}
 								{this.state.fieldActive.activeList && <ul  className="wc-field-active-list" style={{width:(this.state.fieldActive.activeList.length+1) * (document.documentElement.clientWidth/ 10 * 4+ 10)}}>
@@ -338,7 +338,7 @@ class FieldApp extends Component {
 							</div>
 						</div>
 
-						{this.state.sameFeildList.length>0 && <div className="wc-field-commit-C">
+						{this.state.sameFeildList.length>0 && <div className="wc-field-same-C">
 													<aside>相似场地</aside>
 													<aside></aside>
 												</div>}
@@ -347,9 +347,9 @@ class FieldApp extends Component {
 							<ul className="wc-feild-same-list" style={{width:this.state.sameFeildList.length * (document.documentElement.clientWidth/ 10 * 8 + 10)}}>
 								{this.state.sameFeildList.map((item,i)=>{
 									return <li key={i}>
-										<div  style={{background:'url('+item.src+') no-repeat center center / cover',backgroundSize:'cover',height:'2.5rem'}} ><Link to={'/field/'+item.id}><img src={item.src} style={{opacity:0}} alt=""/></Link></div>
+										<div  style={{background:'url('+item.src+') no-repeat center center / cover',backgroundSize:'cover',height:'4.5rem',width:'8rem'}} ><Link onTouchTap={()=>{setTimeout(()=>{window.location.reload();},500)}} to={'/field/'+item.id} ><img src={item.src} style={{opacity:0}} alt=""/></Link></div>
 										<h3>{item.title}</h3>
-										<div><span>{item.address}</span><span>{item.area}</span><span>最多容纳{item.personCount}人</span></div>
+										<div style={{maxWidth:'8rem'}}><span>{item.address}</span><span></span><span>{item.area}㎡</span><span></span><span>最多容纳{item.personCount}人</span></div>
 									</li>
 								})}
 								{this.state.sameFeildList.length<=0 && <div style={{width:'9.4rem',marginLeft:'.3rem','color':'#ccc'}}></div>}
@@ -432,7 +432,7 @@ class FieldApp extends Component {
 
 	seeMoreDetailDescribe(){
 			if(this.state.detailDescribe === this.defaultDetailDescribe){
-					this.state.detailDescribe = this.state.detailDescribe.substring(0,52)+'...';
+					this.state.detailDescribe = this.state.detailDescribe.substring(0,130)+'...';
 					this.state.defaultDetailDescribeState = '查看更多';
 					
 			}else{
@@ -452,8 +452,9 @@ class FieldApp extends Component {
 		var s = this;
 
 		window.updateCollect = function(data){
+
 			 s.setState({
-		 		isCollect:data
+		 		isCollect:data+''
 			 });
 		}
 
@@ -509,7 +510,7 @@ class FieldApp extends Component {
 
 					  		s.defaultDetailDescribe = s.state.detailDescribe;
 
-								s.state.detailDescribe = s.state.detailDescribe.substring(0,52)+'...';
+								s.state.detailDescribe = s.state.detailDescribe.substring(0,130)+'...';
 
 
 								s.defaultHeight = 0 ;

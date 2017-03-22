@@ -128,6 +128,13 @@ class VideoApp extends Component {
 
 		var id = this.props.params.id;
 		var s = this;
+
+		window.updateCollect = function(data){
+			 s.setState({
+		 		isCollect:data+''
+			 });
+		}
+
 		window.obserable.on('updateCollect',()=>{
 			$.ajax({
 				url:window.baseUrl+'send_like',
