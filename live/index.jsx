@@ -39,21 +39,21 @@ class LiveApp extends Component {
 			
 			},
 			"commentList":[
-				{
-		 			 ico:"./assets/images/yk-logo.png",
+				/*{
+		 			 ico:"http://webapi.zmiti.com/public/weichang/assets/images/logo300.jpg",
 		 			 name:'优酷',
 		 			 content:' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
 	 			},
 	 			{
-		 			 ico:"./assets/images/yk-logo.png",
+		 			 ico:"http://webapi.zmiti.com/public/weichang/assets/images/logo300.jpg",
 		 			 name:'优酷',
 		 			 content:' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
 	 			},
 	 			{
-		 			 ico:"./assets/images/yk-logo.png",
+		 			 ico:"http://webapi.zmiti.com/public/weichang/assets/images/logo300.jpg",
 		 			 name:'优酷',
 		 			 content:' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
-	 			}
+	 			}*/
 			]
 		}
 		this.viewW = document.documentElement.clientWidth;
@@ -97,8 +97,8 @@ class LiveApp extends Component {
 						{this.state.commentList.map((item,i)=>{
 
 							return <li key={i}>
-								<aside>
-									<div style={{background:'url(./assets/images/logo-bg.png) no-repeat  center center',backgroundSize:'contain',padding:5}}><img style={{display:'block',margin:'0 auto'}} width='20' src={item.ico} alt=""/></div>
+								<aside className='wc-live-from'>
+									<section style={{background:'url('+item.ico+') no-repeat center / contain'}}><img src={'./assets/images/logo-bg.png'}/></section>
 									<span>{item.name}</span>
 								</aside>
 								<aside>
@@ -217,12 +217,53 @@ class LiveApp extends Component {
 	 
 	}
 
+	 randomString(len = 8) {
+	
+	　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+	　　var maxPos = $chars.length;
+	　　var pwd = '';
+	　　for (var i = 0; i < len; i++) {
+	　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+	　　}
+	　　return pwd;
+	}
+
 
 	componentDidMount(){
 
  
 		var id = this.props.params.id;
 		var s = this;
+
+		this.commentList = this.commentList || [];
+
+		var source = new EventSource(window.baseUrl+'/get_comment?resid='+id+"&id="+s.randomString());
+
+        source.addEventListener('message',function (e) {
+        	if(JSON.parse(e.data) && JSON.parse(e.data).commentList){
+        		JSON.parse(e.data).commentList.map((item,i)=>{
+	        		s.commentList.push(item);
+	        	});	
+        	}
+        	
+        });
+
+        setInterval(()=>{
+        	console.log(s.commentList.length)
+        	if(s.commentList.length>0 &&s.refs['wc-live-comment-list'].querySelector){
+        		var item = s.commentList.shift();
+        		
+        		s.state.commentList.push({
+        			ico:item.head,
+        			name:item.name,
+        			content:item.content
+        		});
+				s.forceUpdate()
+				s.scrollTo(s.state.commentHeight - s.refs['wc-live-comment-list'].querySelector('ul').offsetHeight);
+				s.commentScroll.refresh();	
+        	}
+		},1000)
+
 
 
 		if(window.H5Manager){
@@ -331,7 +372,7 @@ class LiveApp extends Component {
 			}
 		})
 
-		var i = 0;
+	/*	var i = 0;
 
 		setInterval(()=>{
 			s.state.commentList.push({
@@ -344,7 +385,7 @@ class LiveApp extends Component {
 			s.commentScroll.refresh();
 			
 
-		},1000)
+		},1000)*/
 	}
 
 	scrollTo(y,time = 200){
