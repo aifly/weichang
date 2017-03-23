@@ -19,8 +19,11 @@ class LiveApp extends Component {
 			isCollect:'false',
 			commentHeight:0,
 			videoShow:true,
+			commentBoxShow:false,
 			inputShow:true,
 			scrollHeight:'auto',
+			commentBottom:0,
+			windowH:0,
 			scale:9/16,
 			videoObj:{
 				"poster":"",
@@ -41,7 +44,7 @@ class LiveApp extends Component {
 			"commentList":[
 				/*{
 		 			 ico:"http://webapi.zmiti.com/public/weichang/assets/images/logo300.jpg",
-		 			 name:'优酷',
+		 			 name:'我',
 		 			 content:' 这个美术馆希望通过真实的材料，纯净的空间表达，为当地和外来的参观者提供一个与自然光、绿树、水体以及当代艺术互相对话的场所。'
 	 			},
 	 			{
@@ -83,7 +86,7 @@ class LiveApp extends Component {
 		}
 
 		return (
-			<div className="wc-video-main-ui">
+			<div className="wc-video-main-ui" style={{WebkitTransform:'translateY('+this.state.windowH+'px)'}}>
 				<WCHeader {...headerProps}></WCHeader>
 				<div className="wc-video-remark-scroll"  ref='wc-live-remark-scroll' style={{height:this.state.scrollHeight,overflow:'hidden'}}>
 					<div>
@@ -109,18 +112,63 @@ class LiveApp extends Component {
 					</ul>
 				</div>
 				<div className={"wc-live-input-C " + (this.state.inputShow?'active':'')}>
-					 <div className="wc-live-input">
+					 <div className="wc-live-input"  onTouchStart={this.displayCommentBox.bind(this)}>
 						 <aside>
 							 <img src="./assets/images/write.png" alt=""/>
-							 <input onChange={e=>{this.setState({comment:e.target.value})}} value={this.state.comment} type="text" placeholder="说点什么吧"/>
+							 <div></div>
 						 </aside>
 						 <aside>
-							 <button onTouchTap={this.publishComment.bind(this)}>发送</button>
+							 <button>评论</button>
 						 </aside>
 					 </div>
 				</div>
+				<div className={'wc-comment-box '+(this.state.commentBoxShow?'active':'')} >
+					<div>
+						<button onTouchStart={this.cancel.bind(this)}>取消</button>
+						<button onTouchTap={this.publishComment.bind(this)}>发送</button>
+					</div>
+					<textarea hidden onChange={(e)=>{this.setState({comment:e.target.value})}} onBlur={this.boxBlur.bind(this)} autoFocus onFocus={this.boxFocus.bind(this)} ref='wc-input'></textarea>
+				</div>
 			</div>
 		)
+	}
+
+	cancel(){
+		this.refs['wc-input'].blur();
+		this.setState({commentBoxShow:false,comment:''});
+
+	}
+
+	boxBlur(){
+		this.setState({
+			windowH:0
+		})
+	}
+
+	boxFocus(){
+		var startH = window.innerHeight;
+
+		setTimeout(()=>{
+
+			this.setState({
+				//windowH:window.innerHeight - startH
+			},()=>{
+				setTimeout(()=>{
+
+				},1000)
+			})
+		},100)
+	}
+
+	displayCommentBox(){
+
+		this.setState({commentBoxShow:true},()=>{
+			setTimeout(()=>{
+				this.refs['wc-input'].style.display='block';
+			},500)
+		})
+		
+		
 	}
 
 	seeMoreDescribe(){
@@ -137,10 +185,10 @@ class LiveApp extends Component {
 				this.state.remark = this.defaultRemark;
 				this.state.defaultRemarkState = '收起';
 				this.forceUpdate(()=>{
-						this.setState({scrollHeight:this.maxRemarkHeight - this.viewW /10 * 1.2});
-						setTimeout(()=>{
-							this.topScroll.refresh();
-						},100)
+					this.setState({scrollHeight:this.maxRemarkHeight - this.viewW /10 * 1.2});
+					setTimeout(()=>{
+						this.topScroll.refresh();
+					},100)
 				});
 
 			}
@@ -148,28 +196,38 @@ class LiveApp extends Component {
 
 	publishComment(){
 		var id = this.props.params.id;
-		
-		if(window.H5Manager ){
-			var phone =  H5Manager.getUserID();
+		if(window.H5Manager){
+			var phone = H5Manager.getUserID();
 
 			var s = this;
 			if(s.state.comment.length<=0){
 				return;
 			}
-			$.ajax({
-				url:window.baseUrl+'/comment',
-				type:'post',
-				data:{
+			console.log({
 					resid:id,
 					restype:2,
 					phone:phone,
 					comment:s.state.comment
+				})
+			$.ajax({
+				url:window.baseUrl+'/comment',
+				data:{
+					resid:id,
+					restype:2,
+					phone:phone,
+					content:s.state.comment
 				},
 				error(){
 					
 				},
 				success(data){
+					console.log(data);
 					if((data.result*1 === 1)){
+						s.commentList.push({
+							ico:s.avatarUrl || window.shareIco,
+							name:s.nickName || '我',
+							content:s.state.comment
+						});
 						s.setState({comment:''});
 					}
 				}
@@ -212,7 +270,7 @@ class LiveApp extends Component {
 		this.forceUpdate();
 
 		 if(window.H5Manager){
-            H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,1)
+            H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,1,1);
      }
 	 
 	}
@@ -228,15 +286,37 @@ class LiveApp extends Component {
 	　　return pwd;
 	}
 
+	loadComment(s){
+		
+		if(s.commentList.length>0 &&s.refs['wc-live-comment-list']){
+        		var item = s.commentList.shift();
+        		
+        		s.state.commentList.push({
+        			ico:item.head,
+        			name:item.name,
+        			content:item.content
+        		});
+        		if(s.state.commentList.length>200){
+        			for(var i = 0;i<50;i++){
+        				s.state.commentList.shift();//最多显示100条评论。
+        			}
+        		}
+				s.forceUpdate()
+				var y = s.state.commentHeight - s.refs['wc-live-comment-list'].querySelector('ul').offsetHeight;
+				if(y>-10){
+					y = 0;
+				}
+				s.scrollTo(y);
+				s.commentScroll.refresh();	
+        	}
+	}
 
 	componentDidMount(){
 
- 
 		var id = this.props.params.id;
 		var s = this;
 
 		this.commentList = this.commentList || [];
-
 		var source = new EventSource(window.baseUrl+'/get_comment?resid='+id+"&id="+s.randomString());
 
         source.addEventListener('message',function (e) {
@@ -248,20 +328,8 @@ class LiveApp extends Component {
         	
         });
 
-        setInterval(()=>{
-        	console.log(s.commentList.length)
-        	if(s.commentList.length>0 &&s.refs['wc-live-comment-list'].querySelector){
-        		var item = s.commentList.shift();
-        		
-        		s.state.commentList.push({
-        			ico:item.head,
-        			name:item.name,
-        			content:item.content
-        		});
-				s.forceUpdate()
-				s.scrollTo(s.state.commentHeight - s.refs['wc-live-comment-list'].querySelector('ul').offsetHeight);
-				s.commentScroll.refresh();	
-        	}
+       this.timer =  setInterval(()=>{
+        	s.loadComment(s);
 		},1000)
 
 
@@ -341,7 +409,7 @@ class LiveApp extends Component {
 						s.maxRemarkHeight =s.isMaxHeight? s.viewH -64 -6 : s.refs['wc-live-remark-scroll'].offsetHeight; 
 						setTimeout(()=>{
 							 s.topScroll = new IScroll(s.refs['wc-live-remark-scroll']);
-							 var commentHeight = s.viewH - s.refs['wc-live-remark-scroll'].offsetHeight - 64 - 6;
+							 var commentHeight = s.viewH - s.refs['wc-live-remark-scroll'].offsetHeight - 64 ;
 							 s.setState({commentHeight:commentHeight})
 							  s.commentScroll = new IScroll(s.refs['wc-live-comment-list']);
 							  var startY = 0;
@@ -351,6 +419,7 @@ class LiveApp extends Component {
 							  s.refs['wc-live-comment-list'].addEventListener('touchstart',function(e){
 							  	var  e = e.changedTouches[0];
 							  	startY = e.pageY;
+							  	clearInterval(s.timer)
 							  	document.ontouchmove=function(e){
 							  		var  e = e.changedTouches[0];
 							  		var endY = e.pageY;
@@ -363,6 +432,9 @@ class LiveApp extends Component {
 							  	document.ontouchend = function(e){
 							  		var  e = e.changedTouches[0];
 							  		s.ontouchend = s.ontouchmove = null;
+							  		s.timer = setInterval(()=>{
+						  				s.loadComment(s);
+						  			},1000)
 							  	}
 							  });
 						},100);

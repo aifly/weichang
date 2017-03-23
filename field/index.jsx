@@ -266,7 +266,7 @@ class FieldApp extends Component {
 								})}
 							</ul>
 						</div>
-						{this.state.commentList.length>0 && <div className="wc-field-more" onTouchTap={this.seeMoreComment.bind(this)}><span>{this.state.defaultCommentState}</span></div>}
+						{this.state.commentList.length>0 && <div className="wc-field-more" onTouchTap={this.seeMoreComment.bind(this)}><span className={this.state.defaultCommentState==='收起更多'?'active':''}>{this.state.defaultCommentState}</span></div>}
 
 						{this.state.fieldParams.length >0 && <div className="wc-field-commit-C wc-field-params">
 													<aside>场地参数</aside>

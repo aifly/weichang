@@ -3,6 +3,12 @@ body{
   overflow: hidden;
 }
 
+
+.wc-video-main-ui{
+  position: absolute;
+  overflow: auto;
+  height: 100%;
+}
 .wc-video-poster{
   @include pos(r);
   z-index: 1;
@@ -80,11 +86,13 @@ $mainW:9.4rem;
 .wc-live-from{
   height: 1rem;
   width:.82rem;
-  
+  text-align: center;
   @include pos(r);
   section{
     width:94%;
-    height:93%;
+    height:90%;
+  }
+  span{
   }
 }
 .wc-video-remark-scroll{
@@ -122,7 +130,7 @@ $mainW:9.4rem;
       width:6px;
       height:1px;
       background: #e8ebf2;
-      bordor-left:none;
+      border-left:none;
       border-bottom:none;
       border-right:none;
       bottom:4px;
@@ -196,14 +204,15 @@ $mainW:9.4rem;
     margin:0 auto;
     @include displayBox(horizontal);
     -webkit-box-pack: start;
-    input{
-      border:none;
-      background: transparent;
+    div{
+     
       border-bottom:1px solid #ccc;
       height:24px;
       width:7rem;
+      @include pos(r);
+      top: 5px;
       padding-left:.5rem;
-      @include br(0);
+      display: inline-block;
     }
     aside{
     }
@@ -219,4 +228,61 @@ $mainW:9.4rem;
     }
 
   }
+}
+
+
+.wc-comment-box{
+
+
+   @include transform(translate3d(0,6rem,0));
+   @include transition(.2s);
+   &.active{
+    @include transform(translate3d(0,0,0));
+   }
+   @include pos(a);
+   width:100%;
+   background: #dadada;
+   z-index: 999;
+   padding-bottom: 1rem;
+   bottom: 0;
+   textarea{
+    width:100%;
+    border:1px solid #ccc;
+    height: 2rem;
+    -webkit-appearance: textarea;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    user-select: text;
+   }
+   text-align: right;
+
+   div{
+     @include pos(r); 
+
+     height: 36px;
+
+   }
+
+    button{
+      margin-right: 10px;
+      top:5px;
+      left: 20px;
+      &:last-of-type{
+        right:20px;
+        left:auto;
+         background: #1d94d4;
+         color:#fff;
+      }
+      border:none;
+      line-height: 26px;
+      height:26px;
+      width:1.4rem;
+      margin-left:.1rem;
+      @include pos(a);
+      line-height:26px;
+      background:#cacaca;
+      color:#000;
+      
+      @include br(3px);
+    }
 }
