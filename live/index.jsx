@@ -147,25 +147,14 @@ class LiveApp extends Component {
 
 	boxFocus(){
 		var startH = window.innerHeight;
-
-		setTimeout(()=>{
-
-			this.setState({
-				//windowH:window.innerHeight - startH
-			},()=>{
-				setTimeout(()=>{
-
-				},1000)
-			})
-		},100)
+		document.activeElement.scrollIntoViewIfNeeded && document.activeElement.scrollIntoViewIfNeeded();
 	}
 
 	displayCommentBox(){
-
 		this.setState({commentBoxShow:true},()=>{
 			setTimeout(()=>{
 				this.refs['wc-input'].style.display='block';
-			},500)
+			},10)
 		})
 		
 		

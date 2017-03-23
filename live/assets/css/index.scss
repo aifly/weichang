@@ -6,8 +6,8 @@ body{
 
 .wc-video-main-ui{
   position: absolute;
-  overflow: auto;
-  height: 100%;
+  left:0;
+  top:0;
 }
 .wc-video-poster{
   @include pos(r);

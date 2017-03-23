@@ -17,6 +17,7 @@ class FieldApp extends Component {
 			 defaultDetailDescribeState:'查看更多',
 			 defaultCommentState:'查看更多',
 			 commentHeight:'auto',
+			 isFullScreen:false,
 
 			 isCollect:'false',
 			 describeSrc:'',
@@ -211,6 +212,7 @@ class FieldApp extends Component {
 			 ]
 		};
 		this.viewW = document.documentElement.clientWidth;
+		this.viewH = document.documentElement.clientHeight;
 	}	
 
 
@@ -225,13 +227,21 @@ class FieldApp extends Component {
 				resType:1, //1场地  2 视频  3 资讯 4 专题
 				ID:this.props.params.id
 			};	
+			var style = {
+				height:this.viewW/10*9.4*9/16
+			}
+			
 		return (
 			<div className='wc-field-ui'>
+				{this.state.describeSrc && this.state.isFullScreen && <div className='wc-feild-back' onTouchTap={()=>{this.setState({isFullScreen:false})}}>返回</div>}
+				{this.state.isFullScreen && <iframe className='wc-fullscreen' height={this.viewW/10*9.4*9/16} width={this.viewW/10*9.4} src={this.state.describeSrc} frameBorder="0"></iframe>}
 				<WCHeader {...headerProps}></WCHeader>
-				<section ref="scroll" className="wc-field-scroll" style={{height:document.documentElement.clientHeight - 64 }}>
+				<section ref="scroll" className="wc-field-scroll" style={{height:this.viewH - 64 }}>
 					<div style={{border:'1px solid transparent',paddingBottom:10}}>
-						<div className='wc-field-describe' style={{height:this.viewW/10*9.4*9/16}}>
+						<div className={'wc-field-describe ' +(this.state.isFullScreen?'active':'')} style={style}>
 							{this.state.describeSrc && <iframe height={this.viewW/10*9.4*9/16} width={this.viewW/10*9.4} src={this.state.describeSrc} frameBorder="0"></iframe>}
+							{this.state.describeSrc && <div className='wc-feild-fullscreen'  onTouchTap={()=>{this.setState({isFullScreen:true})}}><img src='./assets/images/fullscreen.png'/></div>}
+
 						</div>
 						<div className='wc-field-title-C'>
 							<div className="wc-field-title-item">
