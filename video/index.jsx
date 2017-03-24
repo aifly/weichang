@@ -78,7 +78,7 @@ class VideoApp extends Component {
 		this.state.videoShow=true;
 		this.forceUpdate();
 		if(window.H5Manager){
-		      H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,0,1)
+		      H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,0,this.state.videoObj.isVr*1);
 		}else{
 			var src = this.state.videoObj.videoSrc;
 			//src='http://o8pomesqq.bkt.clouddn.com/5252.mp4'

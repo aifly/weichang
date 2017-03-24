@@ -5,9 +5,11 @@ body{
 
 
 .wc-video-main-ui{
-  position: absolute;
-  left:0;
+  @include pos(f);
+  left: 0;
   top:0;
+  width:100%;
+  height: 100%;
 }
 .wc-video-poster{
   @include pos(r);
@@ -179,7 +181,7 @@ $mainW:9.4rem;
     @include transform(translate3d(0,0,0));
   }
   @include transform(translate3d(0,100%,0));
-  width:10rem;
+  width:100%;
   @include pos(f);
   bottom:0;
   height:1.2rem;
@@ -207,8 +209,9 @@ $mainW:9.4rem;
     div{
      
       border-bottom:1px solid #ccc;
-      height:24px;
+      height:.8rem;
       width:7rem;
+      color:#ccc;
       @include pos(r);
       top: 5px;
       padding-left:.5rem;
@@ -216,10 +219,12 @@ $mainW:9.4rem;
     }
     aside{
     }
-    button{
+    button,a{
       border:none;
       height:26px;
       width:1.4rem;
+      display: inline-block;
+      text-align: center;
       margin-left:.1rem;
       line-height:26px;
       background: #1d94d4;
@@ -263,7 +268,7 @@ $mainW:9.4rem;
 
    }
 
-    button{
+    button,a{
       margin-right: 10px;
       top:5px;
       left: 20px;
@@ -280,6 +285,7 @@ $mainW:9.4rem;
       margin-left:.1rem;
       @include pos(a);
       line-height:26px;
+      text-align: center;
       background:#cacaca;
       color:#000;
       

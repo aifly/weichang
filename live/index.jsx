@@ -73,12 +73,13 @@ class LiveApp extends Component {
 		}
 		var data = this.state;
 		data.startPlay = this.startPlay.bind(this);
-		data.container = 'live-video2'
+		data.container = 'live-video'
 
 		var headerProps = {
 			subjectId:this.props.params.subjectId,
 			...this.state,
 			isLive:1,
+			title:this.state.videoObj.title,
 			describe:this.state.videoObj.remark,
 			isCollect:this.state.isCollect === 'true'? 1 : 0,
 			resType:2, //1场地  2 视频  3 资讯 4 专题
@@ -115,20 +116,21 @@ class LiveApp extends Component {
 					 <div className="wc-live-input"  onTouchStart={this.displayCommentBox.bind(this)}>
 						 <aside>
 							 <img src="./assets/images/write.png" alt=""/>
-							 <div></div>
+							 <div>请输入评论内容</div>
 						 </aside>
 						 <aside>
-							 <button>评论</button>
+							 <a href="javascript:void(0)">评论</a>
 						 </aside>
 					 </div>
 				</div>
 				<div className={'wc-comment-box '+(this.state.commentBoxShow?'active':'')} >
 					<div>
-						<button onTouchStart={this.cancel.bind(this)}>取消</button>
-						<button onTouchTap={this.publishComment.bind(this)}>发送</button>
+						<a href="javascript:void(0)" onTouchStart={this.cancel.bind(this)}>取消</a>
+						<a href="javascript:void(0)" onTouchTap={this.publishComment.bind(this)}>发送</a>
 					</div>
-					<textarea hidden onChange={(e)=>{this.setState({comment:e.target.value})}} onBlur={this.boxBlur.bind(this)} autoFocus onFocus={this.boxFocus.bind(this)} ref='wc-input'></textarea>
+					<textarea  onChange={(e)=>{this.setState({comment:e.target.value})}} onBlur={this.boxBlur.bind(this)}  onFocus={this.boxFocus.bind(this)} ref='wc-input'></textarea>
 				</div>
+
 			</div>
 		)
 	}
@@ -147,14 +149,15 @@ class LiveApp extends Component {
 
 	boxFocus(){
 		var startH = window.innerHeight;
-		document.activeElement.scrollIntoViewIfNeeded && document.activeElement.scrollIntoViewIfNeeded();
+
+		setTimeout(()=>{
+			document.activeElement.scrollIntoViewIfNeeded && document.activeElement.scrollIntoViewIfNeeded();
+			this.refs['wc-input'].focus();
+		},100)
 	}
 
 	displayCommentBox(){
 		this.setState({commentBoxShow:true},()=>{
-			setTimeout(()=>{
-				this.refs['wc-input'].style.display='block';
-			},10)
 		})
 		
 		
@@ -183,10 +186,15 @@ class LiveApp extends Component {
 			}
 	}
 
-	publishComment(){
+	publishComment(e){
+		e.preventDefault();
 		var id = this.props.params.id;
 		if(window.H5Manager){
 			var phone = H5Manager.getUserID();
+			if(phone*1 === -1){
+				H5Manager.redirectToLogin();
+				return;
+			}
 
 			var s = this;
 			if(s.state.comment.length<=0){
@@ -259,13 +267,13 @@ class LiveApp extends Component {
 		this.forceUpdate();
 
 		 if(window.H5Manager){
-            H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,1,1);
-     }
+            H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,1,this.state.videoObj.isVr*1);
+    	 }
 	 
 	}
 
 	 randomString(len = 8) {
-	
+		
 	　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
 	　　var maxPos = $chars.length;
 	　　var pwd = '';
@@ -304,6 +312,79 @@ class LiveApp extends Component {
 
 		var id = this.props.params.id;
 		var s = this;
+
+		$.ajax({
+			url:window.baseUrl + '/get_video_detail',
+			type:'post',
+			data:{
+				videoId:id,
+			},
+			error(e){
+
+			},
+			success(data){
+				if(data.code === 200){
+					var result = data.result;
+					
+					s.state.videoObj.title = result.title;
+					s.state.videoObj.poster = result.poster;
+					s.state.videoObj.isVr = result.isVr;
+					s.state.videoObj.videoSrc = result.videoSrc;
+					s.state.videoObj.cate = result.cate;
+					s.state.videoObj.time = result.time;
+					s.state.videoObj.collect = result.collect;
+					s.state.videoObj.from = result.from;
+					s.state.videoObj.remark = result.remark;
+					s.state.isCollect = result.isCollect;
+					s.forceUpdate(()=>{
+						s.defaultRemark = s.state.videoObj.remark;
+						s.state.videoObj.remark = s.state.videoObj.remark.substring(0,32)+'...';
+
+						
+						s.forceUpdate(()=>{
+							s.minRemarkHeight = s.refs['wc-live-remark-scroll'].offsetHeight;
+						});
+
+						s.isMaxHeight = s.refs['wc-live-remark-scroll'].offsetHeight > s.viewH;
+						s.maxRemarkHeight =s.isMaxHeight? s.viewH -64 -6 : s.refs['wc-live-remark-scroll'].offsetHeight; 
+						setTimeout(()=>{
+							 s.topScroll = new IScroll(s.refs['wc-live-remark-scroll']);
+							 var commentHeight = s.viewH - s.refs['wc-live-remark-scroll'].offsetHeight - 64 ;
+							 s.setState({commentHeight:commentHeight})
+							  s.commentScroll = new IScroll(s.refs['wc-live-comment-list']);
+							  var startY = 0;
+
+							 	s.scrollTo(s.state.commentHeight - s.refs['wc-live-comment-list'].querySelector('ul').offsetHeight);
+
+							  s.refs['wc-live-comment-list'].addEventListener('touchstart',function(e){
+							  	var  e = e.changedTouches[0];
+							  	startY = e.pageY;
+							  	clearInterval(s.timer)
+							  	document.ontouchmove=function(e){
+							  		var  e = e.changedTouches[0];
+							  		var endY = e.pageY;
+							  		s.setState({
+							  			inputShow:startY<endY
+							  		},()=>{
+							  			startY = endY;
+							  		});
+							  	}
+							  	document.ontouchend = function(e){
+							  		var  e = e.changedTouches[0];
+							  		s.ontouchend = s.ontouchmove = null;
+							  		s.timer = setInterval(()=>{
+						  				s.loadComment(s);
+						  			},1000)
+							  	}
+							  });
+						},100);
+
+					});
+				}
+			}
+		})
+
+
 
 		this.commentList = this.commentList || [];
 		var source = new EventSource(window.baseUrl+'/get_comment?resid='+id+"&id="+s.randomString());
@@ -372,66 +453,7 @@ class LiveApp extends Component {
 
 
 
-		$.ajax({
-			url:window.baseUrl + '/get_video_detail',
-			data:{
-				videoId:id,
-			},
-			error(){
-			},
-			success(data){
-				if(data.code === 200){
-					var result = data.result;
-					s.state.videoObj = result;
-					s.state.isCollect = result.isCollect;
-					s.forceUpdate(()=>{
-
-						s.defaultRemark = s.state.videoObj.remark;
-						s.state.videoObj.remark = s.state.videoObj.remark.substring(0,32)+'...';
-
-						
-						s.forceUpdate(()=>{
-							s.minRemarkHeight = s.refs['wc-live-remark-scroll'].offsetHeight;
-						});
-
-						s.isMaxHeight = s.refs['wc-live-remark-scroll'].offsetHeight > s.viewH;
-						s.maxRemarkHeight =s.isMaxHeight? s.viewH -64 -6 : s.refs['wc-live-remark-scroll'].offsetHeight; 
-						setTimeout(()=>{
-							 s.topScroll = new IScroll(s.refs['wc-live-remark-scroll']);
-							 var commentHeight = s.viewH - s.refs['wc-live-remark-scroll'].offsetHeight - 64 ;
-							 s.setState({commentHeight:commentHeight})
-							  s.commentScroll = new IScroll(s.refs['wc-live-comment-list']);
-							  var startY = 0;
-
-							 	s.scrollTo(s.state.commentHeight - s.refs['wc-live-comment-list'].querySelector('ul').offsetHeight);
-
-							  s.refs['wc-live-comment-list'].addEventListener('touchstart',function(e){
-							  	var  e = e.changedTouches[0];
-							  	startY = e.pageY;
-							  	clearInterval(s.timer)
-							  	document.ontouchmove=function(e){
-							  		var  e = e.changedTouches[0];
-							  		var endY = e.pageY;
-							  		s.setState({
-							  			inputShow:startY<endY
-							  		},()=>{
-							  			startY = endY;
-							  		});
-							  	}
-							  	document.ontouchend = function(e){
-							  		var  e = e.changedTouches[0];
-							  		s.ontouchend = s.ontouchmove = null;
-							  		s.timer = setInterval(()=>{
-						  				s.loadComment(s);
-						  			},1000)
-							  	}
-							  });
-						},100);
-
-					});
-				}
-			}
-		})
+		
 
 	/*	var i = 0;
 

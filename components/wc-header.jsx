@@ -36,7 +36,6 @@ class WCHeader extends Component {
 
 		if(this.props.type === 'detail'){
 			if(window.H5Manager){
-					
 					H5Manager.showShare(this.props.title,(this.props.describe||'').stripHTML(),window.shareIco,window.location.href.split('?')[0],this.props.ID,this.props.isLive,this.props.isCollect,this.props.resType);
 				}
 		}
@@ -47,6 +46,10 @@ class WCHeader extends Component {
 				var userId = H5Manager.getUserID();
 				var subjectId = this.props.subjectId;
 				var isCollect = this.props.isCollect ;
+				if(userId*1 === -1){
+					H5Manager.redirectToLogin();
+					return;
+				}
 				$.ajax({
 					url:window.baseUrl + '/collect',
 					data:{

@@ -5,6 +5,16 @@
         return null;
     }
     window.onload = function () {
+
+
+        window.alert = function(){};
+
+        document.getElementById('showContent').style.width = window.innerWidth + 'px';
+        document.getElementById('showContent').style.height = window.innerWidth/16*9 + 'px';
+
+        document.getElementById('showPano').style.width = window.innerWidth + 'px';
+        document.getElementById('showPano').style.height = window.innerWidth/16*9 + 'px';
+
         var searchSTR = getQueryString("src");
         if(searchSTR){
             //场景数据配置
@@ -22,6 +32,10 @@
                 scenesArr: sceneData
             };
             initLoad(params);
+
+           
+
+
         }else{
             document.write("<div style='font-size: 14px;width: 100%;height:100%;'>" +
             "<div>请在地址栏后面加上src=******   .mp4 或者.m3u8 格式的视频地址</div></br>" +

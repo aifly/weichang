@@ -12,26 +12,45 @@
 		.lt-logo{
 			position: absolute;
 			top:50%;
-			width:1.4rem;
-			margin-top:-.7rem;
+			width:54px;
+			margin-top:-27px;
 			left: 50%;
-			margin-left: -.7rem;
-			height: 1.4rem;
+			margin-left: -27px;
+			height: 54px;
 			font-size: .3rem;
 			text-align: center;
-			line-height: 1.4rem;
+			line-height: 54px;
 			background: url(./assets/images/logo-bg.png) no-repeat center center;
 			background-size: contain;
+
+		}
+		.lt-logo:before{
+			content:'';
+			position: absolute;
+			width:6px;
+			height: 6px;
+			border:2px solid #349ed8;
+			border-radius: 50%;
+			box-sizing: border-box;
+			left: 50%;
+			margin-left: -3px;
+			top:50%;
+			margin-top: -3px;
+			opacity: .5;
+
 		}
 		.lt-logo div{
 			-webkit-animation: rotate 2s infinite;
+			position: relative;
+			
 		}
 		.lt-logo span{
 			 display: inline-block;
 			 width: 6px;
+			 opacity: .5;
 			 height: 6px;
 			 margin: 0 3px;
-			 border:1px solid #349ed8;
+			 border:2px solid #349ed8;
 			 border-radius: 50%;
 			 box-sizing: border-box;
 		}
@@ -49,15 +68,13 @@
 			30%{
 				-webkit-transform: rotate(0deg);
 			}
-			70%{
+			80%{
 				-webkit-transform: rotate(-360deg);
 			}
-			80%{
-				-webkit-transform: rotate(0deg);
-			}
 			100%{
-				-webkit-transform: rotate(0deg);
+				-webkit-transform: rotate(-360deg);
 			}
+			
 		}
 
 		@-webkit-keyframes move{
@@ -92,6 +109,11 @@
 		#fly-main-ui{
 			-webkit-transition:1s opacity;
 		}
+		@media all and (min-height: 730px){
+			.lt-logo:before{
+				margin-top: -2px;
+			}
+		}
 	</style>
 </head>
 <body>
@@ -99,12 +121,14 @@
 				<div class="lt-logo" style=";">
 						<div>
 							<span></span>
-							<span></span>
+							<span style="opacity: 0"></span>
 							<span></span>
 						</div>
 				</div>
 		</div>
 			<script>
+
+
 
 				function onError(){
 
@@ -146,8 +170,8 @@
 		</script>
 
 		<script src='./assets/libs/UtoVRPlayerGuide.js'></script>
-		<script src='http://localhost:1234/index.js' onError='onError()'></script> 
 		<!-- -->
+		<script src='http://localhost:1234/index.js' onError='onError()'></script> 
 		<!--
 		<script src='./assets/js/index.js'></script>
 

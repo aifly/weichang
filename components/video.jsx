@@ -9,7 +9,7 @@ class VideoChildApp extends Component {
         super(props);
 
         this.state = {
- 
+            showFullscreen:false
         };
         this.viewW = document.documentElement.clientWidth;
         this.viewH = document.documentElement.clientHeight;
@@ -32,8 +32,8 @@ class VideoChildApp extends Component {
                     {/*<video ref='video' width={this.viewW} height={this.viewW * this.props.scale} style={{position:'absolute',left:0,zIndex:10,opacity:this.props.videoShow?1:0,background:'#000'}} controls  >
                         <source src={this.props.videoObj.videoSrc}/>
                     </video>*/}
-                    {this.props.container==='live-video' && <iframe width={this.viewW} height={this.viewW*this.props.scale} frameBorder={0} src={window.liveSrc+this.props.videoObj.videoSrc}></iframe>}
-                    {this.props.container==='live-video' &&  <div className='lt-viode-toolbar'><img src='./assets/images/fullscreen.png'   onTouchTap={()=>{this.props.startPlay()}}/></div>}
+                    {this.props.container==='live-video' && <iframe  onLoad={()=>{setTimeout(()=>{this.setState({showFullscreen:true})},4000)}} width={this.viewW} height={this.viewW*this.props.scale} frameBorder={0} src={window.liveSrc+this.props.videoObj.videoSrc}></iframe>}
+                    {this.state.showFullscreen &&  <div className='lt-viode-toolbar'><img src='./assets/images/fullscreen.png'   onTouchTap={()=>{this.props.startPlay()}}/></div>}
                 </div>
                 <div className="wc-video-title-C">
                     <div className="wc-video-title-item">
@@ -80,6 +80,7 @@ class VideoChildApp extends Component {
     componentDidMount(){
            /*播放器参数配置*/
        this.update = true;
+
 
 
     }

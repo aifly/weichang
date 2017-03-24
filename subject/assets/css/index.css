@@ -130,8 +130,8 @@ body {
       height: 1rem;
       width: .82rem; }
       .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside:first-of-type div section {
-        width: 100%;
-        height: 100%; }
+        height: 1rem;
+        width: .82rem; }
   .wc-subject-main-ui .wc-subject-video .wc-subject-video-info aside:last-of-type {
     width: 7.2rem;
     padding-left: .3rem;

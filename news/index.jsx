@@ -15,12 +15,12 @@ class NewsApp extends Component {
 
 		this.state = {
 			isCollect:'false',
-			"title":"城市让生活更美好，而城市里的美丽人生， 从美术馆开始。",
-			"date":"2017/03/06",
-			"from":"维场",
+			"title":"",
+			"date":"",
+			"from":"",
 			type:0,//0图片 1、视频
-			"name":"小ming",
-			"follow":"2352万",
+			"name":"",
+			"follow":"",
 			"imgSrc":"",
 			"content":""
 		}
