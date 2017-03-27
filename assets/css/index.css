@@ -19,4 +19,7 @@
     -webkit-transform: translate3d(-50%, 0, 0);
     transform: translate3d(-50%, 0, 0); }
 
+input, button {
+  -webkit-appearance: none; }
+
 /*# sourceMappingURL=index.css.map */
