@@ -55,7 +55,7 @@ $mainW:9.4rem;
     &.wc-video-from{
       @include pos(r);
       top:.1rem;
-
+      width:2rem;
       img{
         width:.63rem;
       }
@@ -73,7 +73,9 @@ $mainW:9.4rem;
            height: 1rem;
            width:.82rem;
           margin: 0 auto 0;
+          border:1px solid transparent;
           @include pos(r);
+          @include transform(scale(.98));
           img{
             &.active{
               width: auto;

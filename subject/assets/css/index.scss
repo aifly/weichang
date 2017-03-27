@@ -169,6 +169,7 @@ $mainW : 9.4rem;
                 section{
                    height: 1rem;
                    width:.82rem;
+                   @include transform(scale(.98));
                 }
               }
             }
