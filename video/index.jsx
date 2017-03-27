@@ -60,6 +60,7 @@ class VideoApp extends Component {
 
 		return (
 			<div className="wc-video-main-ui">
+				{!window.H5Manager && <a href='javascript:void(0)'><img src='./assets/images/banner_top_open.jpg'/></a>}
 				<WCHeader {...headerProps}></WCHeader>
 				<div className="wc-video-remark-scroll" ref='wc-video-remark-scroll' style={{height:this.state.scrollHeight,overflow:'hidden'}}>
 					<div>
@@ -74,52 +75,42 @@ class VideoApp extends Component {
 	startPlay(){
 		//alert(Hls.isSupported);
 		
+		var src = this.state.videoObj.videoSrc;
+				//src='http://o8pomesqq.bkt.clouddn.com/5252.mp4'
+
+				 var params = {
+				 container: document.getElementsByClassName("wc-video-poster")[0],
+				 name:"SceneViewer",
+				 dragDirectionMode:true,
+				 dragMode:false,
+				 fullScreenMode:true,
+				 scenesArr:[
+				 //todo:注意修改视频路径，需要保证播放页面与视频属于同一域名下
+				 {sceneId:"v1", sceneName:"智媒体", sceneFilePath:src, sceneType:"Video",initFov:110}
+				 ],
+				 //播放器不支持全景播放回调
+				 errorCallBack:function(e){
+				 console.log("错误状态：" + e);
+				 },
+				 //浏览器不支持全屏回调
+				 fsCallBack:function(status,playObj){
+				 alert("浏览器不支持全屏！");
+				 }
+			 };
 		
 		this.state.videoShow=true;
 		this.forceUpdate();
-		if(window.H5Manager){
+		if(this.state.videoObj.isVr * 1 === 0){//普通视频
+			if(window.H5Manager){//
 		      H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,0,this.state.videoObj.isVr*1);
+			}else{
+			 	//initLoad(params);
+			}
 		}else{
-			var src = this.state.videoObj.videoSrc;
-			//src='http://o8pomesqq.bkt.clouddn.com/5252.mp4'
-
-			 var params = {
-			 container: document.getElementsByClassName("wc-video-poster")[0],
-			 name:"SceneViewer",
-			 dragDirectionMode:true,
-			 dragMode:false,
-			 fullScreenMode:true,
-			 scenesArr:[
-			 //todo:注意修改视频路径，需要保证播放页面与视频属于同一域名下
-			 {sceneId:"v1", sceneName:"智媒体", sceneFilePath:src, sceneType:"Video",initFov:110}
-			 ],
-			 //播放器不支持全景播放回调
-			 errorCallBack:function(e){
-			 console.log("错误状态：" + e);
-			 },
-			 //浏览器不支持全屏回调
-			 fsCallBack:function(status,playObj){
-			 alert("浏览器不支持全屏！");
-			 }
-		 };
-		 //$('.wc-video-poster').css({position:'fixed',left:0,top:0,width:'100%','height':'100%'});
-		 /*初始化开始*/
-
-		 initLoad(params);
+			initLoad(params);//VR视频、调用utovr的播放器。
 		}
-		/*if(Hls.isSupported()) {
-		 alert(3)
-		 var video = this.refs['video'];
-		 var hls = new Hls();
-		 hls.loadSource(this.state.videoSrc);
-		 hls.attachMedia(video);
-		 hls.on(Hls.Events.MANIFEST_PARSED,function() {
-		 video.play();
-		 });
-		 }*/
-			
-
-
+		
+ 
 
 	}
 

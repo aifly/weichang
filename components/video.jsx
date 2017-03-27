@@ -24,16 +24,22 @@ class VideoChildApp extends Component {
         if(this.props.videoObj.poster){
             posterStyle.background='url('+this.props.videoObj.poster+') no-repeat center center';
         }
+
+
         
         return (
             <div className="wc-video-child-main-ui">
                 <div className="wc-video-poster" onTouchTap={()=>{this.props.container!=='live-video' && this.props.startPlay()}} id={this.props.container} style={posterStyle} >
-                    {this.props.videoObj.isVr*1 && <img src="./assets/images/vr.png"/>}
+                    {this.props.videoObj.isVr*1 === 1  && <img src="./assets/images/vr.png"/>}
                     {/*<video ref='video' width={this.viewW} height={this.viewW * this.props.scale} style={{position:'absolute',left:0,zIndex:10,opacity:this.props.videoShow?1:0,background:'#000'}} controls  >
                         <source src={this.props.videoObj.videoSrc}/>
                     </video>*/}
-                    {this.props.container==='live-video' && <iframe  onLoad={()=>{setTimeout(()=>{this.setState({showFullscreen:true})},4000)}} width={this.viewW} height={this.viewW*this.props.scale} frameBorder={0} src={window.liveSrc+this.props.videoObj.videoSrc}></iframe>}
+                    {this.props.container==='live-video'  && this.props.videoObj.isVr*1 === 1 && <iframe  onLoad={()=>{setTimeout(()=>{this.setState({showFullscreen:true})},4000)}} width={this.viewW} height={this.viewW*this.props.scale} frameBorder={0} src={window.liveSrc+this.props.videoObj.videoSrc}></iframe>}
+
                     {this.state.showFullscreen &&  <div className='lt-viode-toolbar'><img src='./assets/images/fullscreen.png'   onTouchTap={()=>{this.props.startPlay()}}/></div>}
+                    {this.props.videoObj.isVr*1 === 0 && <video ref='video' width={this.viewW} height={this.viewW * this.props.scale} style={{position:'absolute',left:0,zIndex:10,opacity:this.props.videoShow?1:0,background:'#000'}} controls='controls'  >
+                        <source src={this.props.videoObj.videoSrc}/>
+                    </video> }
                 </div>
                 <div className="wc-video-title-C">
                     <div className="wc-video-title-item">

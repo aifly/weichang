@@ -73,7 +73,8 @@ class LiveApp extends Component {
 		}
 		var data = this.state;
 		data.startPlay = this.startPlay.bind(this);
-		data.container = 'live-video'
+		data.container = 'live-video';
+
 
 		var headerProps = {
 			subjectId:this.props.params.subjectId,
@@ -251,11 +252,11 @@ class LiveApp extends Component {
             ],
             //播放器不支持全景播放回调
             errorCallBack: function (e) {
-                console.log("错误状态：" + e);
+                //console.log("错误状态：" + e);
             },
             //浏览器不支持全屏回调
             fsCallBack: function (status, playObj) {
-                alert("浏览器不支持全屏！");
+                //alert("浏览器不支持全屏！");
             }
         };
    
@@ -266,9 +267,9 @@ class LiveApp extends Component {
 		this.state.videoShow=true;
 		this.forceUpdate();
 
-		 if(window.H5Manager){
-            H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,1,this.state.videoObj.isVr*1);
-    	 }
+		if(window.H5Manager){
+			H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,1,this.state.videoObj.isVr*1);
+		}
 	 
 	}
 
