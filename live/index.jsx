@@ -27,16 +27,16 @@ class LiveApp extends Component {
 			scale:9/16,
 			videoObj:{
 				"poster":"",
-				"isVr":true,
+				"isVr":0,
 				"videoSrc":'http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8',//"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
-				"title":"2016年维多利亚的秘密秀场",
-				"cate":"时尚",
-				"time":"01:35:55",
-				"collect":"124",
+				"title":"",
+				"cate":"",
+				"time":"",
+				"collect":"",
 				
 				"from":{
 					"src":"",
-					"name":"优酷"
+					"name":""
 				},
 				"remark":"",
 			
@@ -129,7 +129,7 @@ class LiveApp extends Component {
 						<a href="javascript:void(0)" onTouchStart={this.cancel.bind(this)}>取消</a>
 						<a href="javascript:void(0)" onTouchTap={this.publishComment.bind(this)}>发送</a>
 					</div>
-					<textarea  onChange={(e)=>{this.setState({comment:e.target.value})}} onBlur={this.boxBlur.bind(this)}  onFocus={this.boxFocus.bind(this)} ref='wc-input'></textarea>
+					<textarea value={this.state.comment}  onChange={(e)=>{this.setState({comment:e.target.value})}} onBlur={this.boxBlur.bind(this)}  onFocus={this.boxFocus.bind(this)} ref='wc-input'></textarea>
 				</div>
 
 			</div>
@@ -201,12 +201,7 @@ class LiveApp extends Component {
 			if(s.state.comment.length<=0){
 				return;
 			}
-			console.log({
-					resid:id,
-					restype:2,
-					phone:phone,
-					comment:s.state.comment
-				})
+			
 			$.ajax({
 				url:window.baseUrl+'/comment',
 				data:{
@@ -221,12 +216,12 @@ class LiveApp extends Component {
 				success(data){
 					console.log(data);
 					if((data.result*1 === 1)){
-						s.commentList.push({
+						s.commentList.unshift({
 							ico:s.avatarUrl || window.shareIco,
 							name:s.nickName || '我',
 							content:s.state.comment
 						});
-						s.setState({comment:''});
+						s.setState({comment:'',commentBoxShow:false});
 					}
 				}
 			});	
@@ -316,7 +311,7 @@ class LiveApp extends Component {
 
 		$.ajax({
 			url:window.baseUrl + '/get_video_detail',
-			type:'post',
+			
 			data:{
 				videoId:id,
 			},

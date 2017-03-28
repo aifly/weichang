@@ -4,6 +4,11 @@ body{
 }
 
 .wc-video-poster{
+  &.active{
+    &:before,&:after{
+      display: none;
+    }
+  }
   @include pos(r);
   z-index: 1;
   &:before,&:after{
@@ -67,15 +72,15 @@ $mainW:9.4rem;
         overflow: hidden;
         margin: 0 auto;
         height: 1rem;
-        width:.82rem;
+        width:.92rem;
         @include pos(r);
         section{
            height: 1rem;
-           width:.82rem;
+           width:.93rem;
           margin: 0 auto 0;
           border:1px solid transparent;
           @include pos(r);
-          @include transform(scale(.98));
+          @include transform(scale(1));
           img{
             &.active{
               width: auto;

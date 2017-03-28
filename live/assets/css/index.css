@@ -185,6 +185,7 @@ body {
     -webkit-box-orient: horizontal;
     -webkit-box-pack: start; }
     .wc-live-input-C .wc-live-input div {
+      line-height: .9rem;
       border-bottom: 1px solid #ccc;
       height: .8rem;
       width: 7rem;

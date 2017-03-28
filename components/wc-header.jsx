@@ -78,7 +78,9 @@ class WCHeader extends Component {
 
 		if(subjectId!==-1 && subjectId !== undefined){//页面是从专题列表进来的 \非专题
 				if(this.props.resType === 4){
-					H5Manager.goBack();
+					if(window.H5Manager){
+						H5Manager.goBack();
+					}
 				}else{
 					location.hash='#/subject/'+ subjectId+'?k='+ new Date().getTime();
 				}

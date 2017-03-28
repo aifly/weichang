@@ -41,7 +41,7 @@ class NewsApp extends Component {
 			<div className="wc-news-main-ui">
 				<WCHeader {...headerProps}></WCHeader>
 				<div className="wc-news-scroll" ref='wc-news-scroll' style={{height:this.viewH - 64 ,overflow:'hidden'}}>
-					<div>
+					<div style={{border:'1px solid transparent',paddingBottom:30}}>
 						<h2 className='wc-news-title'>{this.state.title}</h2>
 						<div className='wc-news-info'>
 							<aside>
@@ -76,25 +76,22 @@ class NewsApp extends Component {
             this.update = true;
         },1000);
         $.ajax({
-						url:window.baseUrl+'send_like',
-						data:{
-							resID:id
-						},
-						success(data){
-							if(data.code === 200 && data.result*1 === 1){
-								 window.obserable.trigger({
-					            type:'toast',
-					            data:''
-					        });
-								s.state.follow = s.state.follow*1 + 1;
-								s.state.isZan = true;
-								s.forceUpdate();
-							}
+			url:window.baseUrl+'send_like',
+			data:{
+				resID:id
+			},
+			success(data){
+				if(data.code === 200 && data.result*1 === 1){
+					 window.obserable.trigger({
+		            type:'toast',
+		            data:''
+		        });
+					s.state.follow = s.state.follow*1 + 1;
+					s.state.isZan = true;
+					s.forceUpdate();
 				}
-			});
-
-        
- 
+			}
+		});
     }
 	}
 
@@ -127,12 +124,18 @@ class NewsApp extends Component {
 
 
 		var id = this.props.params.id;
+		var phone = -1;
+		if(window.H5Manager){
+			phone  = H5Manager.getUserID();
+		}
+		var params = {
+			messageID:id
+		}
+		phone*1 !== -1 && (params.phone = phone);
 		this.messageID = id;
 		$.ajax({
 			url:window.baseUrl + '/get_news_detail',
-			data:{
-				messageID:id
-			},
+			data:params,
 			success(data){
 					if(data.code === 200){
 							var result = data.result;

@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("E:\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
 	'use strict';
 
@@ -182,7 +182,7 @@
 		return this.replace(reTag, "");
 	};
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
 /* 1 */
@@ -27370,7 +27370,7 @@
 /* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("E:\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
 	'use strict';
 
@@ -27421,6 +27421,8 @@
 
 				subjectId: "LocXxuu4",
 
+				imgCount: 5,
+
 				defaultDetailDescribeState: '查看更多',
 				defaultCommentState: '查看更多',
 				commentHeight: 'auto',
@@ -27428,14 +27430,15 @@
 
 				isCollect: 'false',
 				describeSrc: '',
+				describeFull: '',
 				title: '',
-				cate: '艺术区',
+				cate: '',
 				addressObj: {
 					address: '',
 					longitude: '', //经度
 					latitude: '', //纬度
-					collect: '2341万',
-					tel: '15718879215' //电话
+					collect: '',
+					tel: '' //电话
 				},
 				detailDescribe: '',
 				commentList: [
@@ -27494,123 +27497,123 @@
 	    		personCount:1000
 	    	}*/
 				],
-				fieldPicList: [{
-					src: "./assets/images/f-pic1.jpg",
-					name: '外场'
-				}, {
-					src: "./assets/images/f-pic2.jpg",
-					name: '内场'
-				}, {
-					src: "./assets/images/f-pic3.jpg",
-					name: '入场口'
-				}, {
-					src: "./assets/images/f-pic1.jpg",
-					name: '外场'
-				}, {
-					src: "./assets/images/f-pic2.jpg",
-					name: '内场'
-				}, {
-					src: "./assets/images/f-pic3.jpg",
-					name: '入场口'
-				}, {
-					src: "./assets/images/f-pic1.jpg",
-					name: '外场'
-				}, {
-					src: "./assets/images/f-pic2.jpg",
-					name: '内场'
-				}, {
-					src: "./assets/images/f-pic3.jpg",
-					name: '入场口'
-				}],
+				fieldPicList: [
+					/*{
+	    	src:"./assets/images/f-pic1.jpg",
+	    name:'外场'
+	    },{
+	    	src:"./assets/images/f-pic2.jpg",
+	       name:'内场'
+	    },{
+	    	src:"./assets/images/f-pic3.jpg",
+	    	name:'入场口'
+	    },{
+	    	src:"./assets/images/f-pic1.jpg",
+	    	name:'外场'
+	    },{
+	    	src:"./assets/images/f-pic2.jpg",
+	    	name:'内场'
+	    },{
+	    	src:"./assets/images/f-pic3.jpg",
+	    	name:'入场口'
+	    },{
+	    	src:"./assets/images/f-pic1.jpg",
+	    	name:'外场'
+	    },{
+	    	src:"./assets/images/f-pic2.jpg",
+	    	name:'内场'
+	    },{
+	    	src:"./assets/images/f-pic3.jpg",
+	    	name:'入场口'
+	    }*/
+				],
 				fieldActive: {
-					activePic: './assets/images/active.jpg',
-					activeList: [{
-						id: 1,
-						type: 'video',
-						src: './assets/images/active-detail1.jpg',
-						name: '维多利亚的秘密秀场',
-						date: '2016/01/22'
-
-					}, {
-						id: 2,
-						type: 'video',
-						src: './assets/images/active-detail2.jpg',
-						name: '维多利亚的秘密秀场',
-						date: '2016/01/22'
-					}, {
-						id: 3,
-						type: 'video',
-						src: './assets/images/active-detail2.jpg',
-						name: '维多利亚的秘密秀场',
-						date: '2016/01/22'
-					}, {
-						id: 4,
-						type: 'video',
-						src: './assets/images/active-detail2.jpg',
-						name: '维多利亚的秘密秀场',
-						date: '2016/01/22'
-					}, {
-						id: 5,
-						type: 'video',
-						src: './assets/images/active-detail2.jpg',
-						name: '维多利亚的秘密秀场',
-						date: '2016/01/22'
-					}, {
-						id: 6,
-						type: 'video',
-						src: './assets/images/active-detail2.jpg',
-						name: '维多利亚的秘密秀场',
-						date: '2016/01/22'
-					}]
+					/*activePic:'./assets/images/active.jpg',
+	    activeList:[
+	    	{
+	    		id:1,
+	    		type:'video',
+	    		src:'./assets/images/active-detail1.jpg',
+	    		name:'维多利亚的秘密秀场',
+	    		date:'2016/01/22'
+	     		},{
+	    		id:2,
+	    		type:'video',
+	    		src:'./assets/images/active-detail2.jpg',
+	    		name:'维多利亚的秘密秀场',
+	    		date:'2016/01/22'
+	    	},{
+	    		id:3,
+	    		type:'video',
+	    		src:'./assets/images/active-detail2.jpg',
+	    		name:'维多利亚的秘密秀场',
+	    		date:'2016/01/22'
+	    	},{
+	    		id:4,
+	    		type:'video',
+	    		src:'./assets/images/active-detail2.jpg',
+	    		name:'维多利亚的秘密秀场',
+	    		date:'2016/01/22'
+	    	},{
+	    		id:5,
+	    		type:'video',
+	    		src:'./assets/images/active-detail2.jpg',
+	    		name:'维多利亚的秘密秀场',
+	    		date:'2016/01/22'
+	    	},{
+	    		id:6,
+	    		type:'video',
+	    		src:'./assets/images/active-detail2.jpg',
+	    		name:'维多利亚的秘密秀场',
+	    		date:'2016/01/22'
+	    	}
+	    ]*/
 				},
-				sameFeildList: [{
-					id: 1,
-					src: './assets/images/feild.jpg',
-					title: '798艺术区美术馆',
-					address: '朝阳区',
-					area: '1500m2',
-					personCount: '1000'
-
-				}, {
-					id: 1,
-					src: './assets/images/feild.jpg',
-					title: '798艺术区美术馆',
-					address: '朝阳区',
-					area: '1500m2',
-					personCount: '1000'
-
-				}, {
-					id: 1,
-					src: './assets/images/feild.jpg',
-					title: '798艺术区美术馆',
-					address: '朝阳区',
-					area: '1500m2',
-					personCount: '1000'
-
-				}, {
-					id: 1,
-					src: './assets/images/feild.jpg',
-					title: '798艺术区美术馆',
-					address: '朝阳区',
-					area: '1500m2',
-					personCount: '1000'
-
-				}, {
-					id: 1,
-					src: './assets/images/feild.jpg',
-					title: '798艺术区美术馆',
-					address: '朝阳区',
-					area: '1500m2',
-					personCount: '1000'
-
-				}, {
-					id: 1,
-					src: './assets/images/feild.jpg',
-					title: '798艺术区美术馆',
-					address: '朝阳区',
-					area: '1500m2',
-					personCount: '1000'
-				}]
+				sameFeildList: [
+					/* {
+	    	 id:1,
+	    	 src:'./assets/images/feild.jpg',
+	    	 title:'798艺术区美术馆',
+	    	 address:'朝阳区',
+	    	 area:'1500m2',
+	    	 personCount:'1000'
+	    		 },{
+	    	 id:1,
+	    	 src:'./assets/images/feild.jpg',
+	    	 title:'798艺术区美术馆',
+	    	 address:'朝阳区',
+	    	 area:'1500m2',
+	    	 personCount:'1000'
+	    		 },{
+	    	 id:1,
+	    	 src:'./assets/images/feild.jpg',
+	    	 title:'798艺术区美术馆',
+	    	 address:'朝阳区',
+	    	 area:'1500m2',
+	    	 personCount:'1000'
+	    		 },{
+	    	 id:1,
+	    	 src:'./assets/images/feild.jpg',
+	    	 title:'798艺术区美术馆',
+	    	 address:'朝阳区',
+	    	 area:'1500m2',
+	    	 personCount:'1000'
+	    		 },{
+	    	 id:1,
+	    	 src:'./assets/images/feild.jpg',
+	    	 title:'798艺术区美术馆',
+	    	 address:'朝阳区',
+	    	 area:'1500m2',
+	    	 personCount:'1000'
+	    		 },{
+	    	 id:1,
+	    	 src:'./assets/images/feild.jpg',
+	    	 title:'798艺术区美术馆',
+	    	 address:'朝阳区',
+	    	 area:'1500m2',
+	    	 personCount:'1000'
+	     }*/
+				]
 			};
 			this.viewW = document.documentElement.clientWidth;
 			this.viewH = document.documentElement.clientHeight;
@@ -27650,12 +27653,12 @@
 						{ ref: 'scroll', className: 'wc-field-scroll', style: { height: this.viewH - 64 } },
 						_react2['default'].createElement(
 							'div',
-							{ style: { border: '1px solid transparent', paddingBottom: 10 } },
+							{ style: { border: '1px solid transparent', paddingBottom: 20 } },
 							_react2['default'].createElement(
 								'div',
 								{ className: 'wc-field-describe ' + (this.state.isFullScreen ? 'active' : ''), style: style },
-								this.state.describeSrc && _react2['default'].createElement('iframe', { height: this.viewW / 10 * 9.4 * 9 / 16, width: this.viewW / 10 * 9.4, src: this.state.describeSrc, frameBorder: '0' }),
-								this.state.describeSrc && _react2['default'].createElement(
+								this.state.describeFull && _react2['default'].createElement('iframe', { height: this.viewW / 10 * 9.4 * 9 / 16, width: this.viewW / 10 * 9.4, src: this.state.describeFull, frameBorder: '0' }),
+								this.state.describeFull && _react2['default'].createElement(
 									'div',
 									{ className: 'wc-feild-fullscreen', onTouchTap: function () {
 											_this.setState({ isFullScreen: true });
@@ -27809,7 +27812,7 @@
 								),
 								_react2['default'].createElement('aside', null)
 							),
-							_react2['default'].createElement(
+							this.state.fieldParams.length > 0 && _react2['default'].createElement(
 								'table',
 								{ className: 'wc-field-parameter-table' },
 								_react2['default'].createElement(
@@ -27886,8 +27889,10 @@
 								{ className: 'wc-field-pic-scroll', ref: 'wc-field-pic-scroll' },
 								_react2['default'].createElement(
 									'ul',
-									{ className: 'wc-field-pic-list', style: { width: this.state.fieldPicList.length * (document.documentElement.clientWidth / 10 * 4 + 10) } },
-									this.state.fieldPicList.map(function (item, i) {
+									{ className: 'wc-field-pic-list', style: { width: (Math.min(this.state.imgCount, this.state.fieldPicList.length) + 1) * (document.documentElement.clientWidth / 10 * 4 + 10) } },
+									this.state.fieldPicList.filter(function (item, i) {
+										return i < _this.state.imgCount;
+									}).map(function (item, i) {
 										return _react2['default'].createElement(
 											'li',
 											{ onTouchTap: _this.showImage.bind(_this, i), key: i },
@@ -27898,7 +27903,17 @@
 												item.name
 											)
 										);
-									})
+									}),
+									_react2['default'].createElement(
+										'li',
+										{ onTouchTap: this.showAllImage.bind(this) },
+										_react2['default'].createElement('div', { style: { background: 'url(./assets/images/all1.png) no-repeat left center / contain' } }),
+										_react2['default'].createElement(
+											'section',
+											{ style: { opacity: 0 } },
+											'2222'
+										)
+									)
 								)
 							),
 							this.state.fieldActive.activeList && _react2['default'].createElement(
@@ -28098,18 +28113,35 @@
 		}, {
 			key: 'showImage',
 			value: function showImage(index) {
+				var _this3 = this;
+
 				if (H5Manager) {
 					var arr = [];
-					this.state.fieldPicList.map(function (item, i) {
+					this.state.fieldPicList.filter(function (item, i) {
+						return i < _this3.state.imgCount;
+					}).map(function (item, i) {
 						arr.push(item.src);
 					});
-					H5Manager.showImage(index, arr);
+					var allImg = [];
+					this.fieldPicList.map(function (item, i) {
+						allImg.push(item.src);
+					});
+					H5Manager.showImage(index, arr, this.state.title, allImg);
 				}
+			}
+		}, {
+			key: 'showAllImage',
+			value: function showAllImage() {
+				var allImg = [];
+				this.fieldPicList.map(function (item, i) {
+					allImg.push(item.src);
+				});
+				H5Manager.showAllImage(this.state.title, allImg);
 			}
 		}, {
 			key: 'seeMoreComment',
 			value: function seeMoreComment() {
-				var _this3 = this;
+				var _this4 = this;
 
 				if (this.state.commentHeight === 'auto') {
 					this.state.commentHeight = this.defaultHeight;
@@ -28121,13 +28153,13 @@
 				}
 				this.forceUpdate();
 				setTimeout(function () {
-					_this3.mainScroll.refresh(); //刷新滚动条
+					_this4.mainScroll.refresh(); //刷新滚动条
 				}, 100);
 			}
 		}, {
 			key: 'seeMoreDetailDescribe',
 			value: function seeMoreDetailDescribe() {
-				var _this4 = this;
+				var _this5 = this;
 
 				if (this.state.detailDescribe === this.defaultDetailDescribe) {
 					this.state.detailDescribe = this.state.detailDescribe.substring(0, 130) + '...';
@@ -28138,7 +28170,7 @@
 				}
 				this.forceUpdate();
 				setTimeout(function () {
-					_this4.mainScroll.refresh(); //刷新滚动条
+					_this5.mainScroll.refresh(); //刷新滚动条
 				}, 100);
 			}
 		}, {
@@ -28158,17 +28190,24 @@
 				var id = this.props.params.id;
 
 				this.fieldId = id;
+				var phone = -1;
+				if (window.H5Manager) {
+					phone = H5Manager.getUserID();
+				}
+				var params = {
+					place_id: id
+				};
+				phone * 1 !== -1 && (params.phone = phone);
 				_jquery2['default'].ajax({
 					url: window.baseUrl + '/get_place_detail',
-					data: {
-						place_id: id
-					},
+					data: params,
 					success: function success(data) {
 						if (data.code === 200) {
 
 							var result = data.result;
 							console.log(result);
 							s.state.describeSrc = result.describeSrc;
+							s.state.describeFull = result.describeFull;
 							s.state.title = result.title;
 							s.state.cate = result.cate;
 							s.state.isCollect = result.isCollect;
@@ -28176,6 +28215,7 @@
 							s.state.detailDescribe = result.detailDescribe;
 							s.state.commentList = result.commentList;
 							s.state.fieldPicList = result.fieldPicList;
+							s.fieldPicList = result.fieldPicList.concat([]);
 							s.state.fieldActive = result.fieldActive;
 							s.state.fieldParams = result.fieldParams;
 							s.state.sameFeildList = result.similarPlace;
@@ -28227,13 +28267,13 @@
 	exports['default'] = (0, _componentsPublicPubJsx.WCPubCom)(FieldApp);
 	module.exports = exports['default'];
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
 /* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("E:\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
 	'use strict';
 
@@ -28362,7 +28402,9 @@
 				if (subjectId !== -1 && subjectId !== undefined) {
 					//页面是从专题列表进来的 \非专题
 					if (this.props.resType === 4) {
-						H5Manager.goBack();
+						if (window.H5Manager) {
+							H5Manager.goBack();
+						}
 					} else {
 						location.hash = '#/subject/' + subjectId + '?k=' + new Date().getTime();
 					}
@@ -28385,13 +28427,13 @@
 	exports['default'] = (0, _publicPubJsx.WCPubCom)(WCHeader);
 	module.exports = exports['default'];
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "wc-header.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "wc-header.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
 /* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("E:\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
 	'use strict';
 
@@ -28441,14 +28483,31 @@
 					return null;
 				}
 			}, {
+				key: 'switchPlatform',
+				value: function switchPlatform() {
+					if (/(iPhone|iPad|iPod|iOS)/ig.test(navigator.userAgent)) {
+						//判断iPhone|iPad|iPod|iOS
+						//alert(navigator.userAgent); 
+						return 'ios';
+					} else if (/(Android)/i.test(navigator.userAgent)) {
+						//判断Android
+						//alert(navigator.userAgent);
+						return 'android';
+					} else {
+						//pc
+						return 'pc';
+					};
+				}
+			}, {
 				key: 'render',
 				value: function render() {
 
 					var methods = {
-						getQueryString: this.getQueryString
-						//fillFeilds:this.fillFeilds
+						getQueryString: this.getQueryString,
+						switchPlatform: this.switchPlatform
 					};
 
+					//fillFeilds:this.fillFeilds
 					return _react2['default'].createElement(ComponsedComponent, _extends({}, methods, this.props, this.state));
 				}
 			}]);
@@ -28458,7 +28517,7 @@
 	};
 	exports.WCPubCom = WCPubCom;
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "pub.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "pub.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
 /* 245 */
@@ -40769,7 +40828,7 @@
 /* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("E:\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
 	'use strict';
 
@@ -40843,6 +40902,7 @@
 			};
 			this.viewW = document.documentElement.clientWidth;
 			this.viewH = document.documentElement.clientHeight;
+			this.platform = this.props.switchPlatform();
 		}
 
 		_createClass(VideoApp, [{
@@ -40978,11 +41038,18 @@
 					});
 				}, 1000);
 
+				var phone = -1;
+				if (window.H5Manager) {
+					phone = H5Manager.getUserID();
+				}
+				var params = {
+					videoId: id
+				};
+				phone * 1 !== -1 && (params.phone = phone);
+
 				_jquery2['default'].ajax({
 					url: window.baseUrl + '/get_video_detail',
-					data: {
-						videoId: id
-					},
+					data: params,
 					success: function success(data) {
 						console.log(data);
 						if (data.code === 200) {
@@ -41002,7 +41069,7 @@
 	exports['default'] = (0, _componentsPublicPubJsx.WCPubCom)(VideoApp);
 	module.exports = exports['default'];
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
 /* 254 */
@@ -41048,7 +41115,7 @@
 /* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("E:\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
 	'use strict';
 
@@ -41087,7 +41154,9 @@
 	        _get(Object.getPrototypeOf(VideoChildApp.prototype), 'constructor', this).call(this, props);
 
 	        this.state = {
-	            showFullscreen: false
+	            showFullscreen: false,
+	            playBtnShow: ''
+
 	        };
 	        this.viewW = document.documentElement.clientWidth;
 	        this.viewH = document.documentElement.clientHeight;
@@ -41112,12 +41181,12 @@
 	                { className: 'wc-video-child-main-ui' },
 	                _react2['default'].createElement(
 	                    'div',
-	                    { className: 'wc-video-poster', onTouchTap: function () {
+	                    { className: "wc-video-poster " + this.state.playBtnShow, onTouchTap: function () {
 	                            _this.props.container !== 'live-video' && _this.props.startPlay();
 	                        }, id: this.props.container, style: posterStyle },
 	                    this.props.videoObj.isVr * 1 === 1 && _react2['default'].createElement('img', { src: './assets/images/vr.png' }),
 	                    this.props.container === 'live-video' && this.props.videoObj.isVr * 1 === 1 && _react2['default'].createElement('iframe', { onLoad: function () {
-	                            setTimeout(function () {
+	                            _this.setState({ playBtnShow: 'active' });setTimeout(function () {
 	                                _this.setState({ showFullscreen: true });
 	                            }, 4000);
 	                        }, width: this.viewW, height: this.viewW * this.props.scale, frameBorder: 0, src: window.liveSrc + this.props.videoObj.videoSrc }),
@@ -41128,9 +41197,9 @@
 	                                _this.props.startPlay();
 	                            } })
 	                    ),
-	                    this.props.videoObj.isVr * 1 === 0 && _react2['default'].createElement(
+	                    this.props.videoObj.isVr * 1 === 0 && this.props.container === 'live-video' && _react2['default'].createElement(
 	                        'video',
-	                        { ref: 'video', width: this.viewW, height: this.viewW * this.props.scale, style: { position: 'absolute', left: 0, zIndex: 10, opacity: this.props.videoShow ? 1 : 0, background: '#000' }, controls: 'controls' },
+	                        { autoPlay: true, ref: 'video', width: this.viewW, height: this.viewW * this.props.scale, style: { position: 'absolute', left: 0, zIndex: 10, opacity: this.props.videoShow ? 1 : 0, background: '#000' }, webkitPlaysinline: true },
 	                        _react2['default'].createElement('source', { src: this.props.videoObj.videoSrc })
 	                    )
 	                ),
@@ -41236,7 +41305,7 @@
 	   <source src={this.props.videoObj.videoSrc}/>
 	</video>*/
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "video.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "video.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
 /* 257 */
@@ -41273,7 +41342,7 @@
 
 
 	// module
-	exports.push([module.id, "body{overflow:hidden}.wc-video-poster{position:relative;z-index:1}.wc-video-poster:before,.wc-video-poster:after{content:'';position:absolute;width:1rem;height:1rem;border:2px solid #fff;border-radius:50%;left:50%;top:50%;margin-left:-.5rem;margin-top:-.5rem;z-index:0}.wc-video-poster:after{border-right:none;width:0;height:0;z-index:-1;border-radius:0;margin-left:-.03rem;margin-top:-.23077rem;border-top:.3rem solid transparent;border-left:.4rem solid #fff;border-bottom:.3rem solid transparent}.wc-video-poster img{width:1.2rem;position:absolute;right:.4rem;top:.4rem}.wc-video-title-C{width:9.4rem;margin:.5rem auto;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:horizontal}.wc-video-title-C .wc-video-title-item{-webkit-box-flex:1}.wc-video-title-C .wc-video-title-item h3{font-weight:normal;font-size:.52rem;line-height:1rem}.wc-video-title-C .wc-video-title-item.wc-video-from{position:relative;top:.1rem;width:2rem;font-size:12px;color:#999;text-align:center}.wc-video-title-C .wc-video-title-item.wc-video-from img{width:.63rem}.wc-video-title-C .wc-video-title-item.wc-video-from div:last-of-type{-webkit-transform:scale(0.9);transform:scale(0.9)}.wc-video-title-C .wc-video-title-item.wc-video-from .wc-from-logo{overflow:hidden;margin:0 auto;height:1rem;width:.82rem;position:relative}.wc-video-title-C .wc-video-title-item.wc-video-from .wc-from-logo section{height:1rem;width:.82rem;margin:0 auto 0;border:1px solid transparent;position:relative;-webkit-transform:scale(0.98);transform:scale(0.98)}.wc-video-title-C .wc-video-title-item.wc-video-from .wc-from-logo section img{width:100%;height:auto;vertical-align:middle;position:absolute;top:50%;left:50%;-webkit-transform:translate3d(-50%, -50%, 0);transform:translate3d(-50%, -50%, 0)}.wc-video-title-C .wc-video-title-item.wc-video-from .wc-from-logo section img.active{width:auto;height:100%}.wc-video-title-C .wc-video-title-item .wc-video-cate{font-size:12px;color:#9da9bc}.wc-video-title-C .wc-video-title-item .wc-video-cate img{width:.5rem;margin:0 5px}.wc-video-remark-scroll{width:10rem;margin:0 auto}.wc-video-remark-scroll div.wc-video-remark{text-indent:2em;line-height:.75rem;width:9.4rem;margin:0 auto;color:#6d788f;padding-bottom:10px}.wc-video-tool{display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:horizontal;width:9.4rem;height:40px;line-height:40px;margin:0 auto}.wc-video-tool aside{-webkit-box-flex:1}.wc-video-tool aside img{width:.8rem}.wc-video-tool aside:last-of-type{text-align:right}.wc-video-tool aside:last-of-type img{margin:0 5px}.lt-viode-toolbar{background:#1f1f1f;position:absolute;bottom:0px;right:0;width:36px;height:38px}.lt-viode-toolbar img{left:3px;width:30px !important;height:30px  !important;top:5px !important}\r\n/*# sourceMappingURL=video.css.map */\r\n", ""]);
+	exports.push([module.id, "/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden; }\r\n\r\n.wc-video-poster {\r\n  position: relative;\r\n  z-index: 1; }\r\n  .wc-video-poster.active:before, .wc-video-poster.active:after {\r\n    display: none; }\r\n  .wc-video-poster:before, .wc-video-poster:after {\r\n    content: '';\r\n    position: absolute;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    border: 2px solid #fff;\r\n    border-radius: 50%;\r\n    left: 50%;\r\n    top: 50%;\r\n    margin-left: -.5rem;\r\n    margin-top: -.5rem;\r\n    z-index: 0; }\r\n  .wc-video-poster:after {\r\n    border-right: none;\r\n    width: 0;\r\n    height: 0;\r\n    z-index: -1;\r\n    border-radius: 0;\r\n    margin-left: -.03rem;\r\n    margin-top: -0.23077rem;\r\n    border-top: 0.3rem solid transparent;\r\n    border-left: 0.4rem solid #fff;\r\n    border-bottom: 0.3rem solid transparent; }\r\n  .wc-video-poster img {\r\n    width: 1.2rem;\r\n    position: absolute;\r\n    right: .4rem;\r\n    top: .4rem; }\r\n\r\n.wc-video-title-C {\r\n  width: 9.4rem;\r\n  margin: .5rem auto;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-video-title-C .wc-video-title-item {\r\n    -webkit-box-flex: 1; }\r\n    .wc-video-title-C .wc-video-title-item h3 {\r\n      font-weight: normal;\r\n      font-size: .52rem;\r\n      line-height: 1rem; }\r\n    .wc-video-title-C .wc-video-title-item.wc-video-from {\r\n      position: relative;\r\n      top: .1rem;\r\n      width: 2rem;\r\n      font-size: 12px;\r\n      color: #999;\r\n      text-align: center; }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from img {\r\n        width: .63rem; }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from div:last-of-type {\r\n        -webkit-transform: scale(0.9);\r\n        transform: scale(0.9); }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from .wc-from-logo {\r\n        overflow: hidden;\r\n        margin: 0 auto;\r\n        height: 1rem;\r\n        width: .92rem;\r\n        position: relative; }\r\n        .wc-video-title-C .wc-video-title-item.wc-video-from .wc-from-logo section {\r\n          height: 1rem;\r\n          width: .93rem;\r\n          margin: 0 auto 0;\r\n          border: 1px solid transparent;\r\n          position: relative;\r\n          -webkit-transform: scale(1);\r\n          transform: scale(1); }\r\n          .wc-video-title-C .wc-video-title-item.wc-video-from .wc-from-logo section img {\r\n            width: 100%;\r\n            height: auto;\r\n            vertical-align: middle;\r\n            position: absolute;\r\n            top: 50%;\r\n            left: 50%;\r\n            -webkit-transform: translate3d(-50%, -50%, 0);\r\n            transform: translate3d(-50%, -50%, 0); }\r\n            .wc-video-title-C .wc-video-title-item.wc-video-from .wc-from-logo section img.active {\r\n              width: auto;\r\n              height: 100%; }\r\n    .wc-video-title-C .wc-video-title-item .wc-video-cate {\r\n      font-size: 12px;\r\n      color: #9da9bc; }\r\n      .wc-video-title-C .wc-video-title-item .wc-video-cate img {\r\n        width: .5rem;\r\n        margin: 0 5px; }\r\n\r\n.wc-video-remark-scroll {\r\n  width: 10rem;\r\n  margin: 0 auto; }\r\n  .wc-video-remark-scroll div.wc-video-remark {\r\n    text-indent: 2em;\r\n    line-height: .75rem;\r\n    width: 9.4rem;\r\n    margin: 0 auto;\r\n    color: #6d788f;\r\n    padding-bottom: 10px; }\r\n\r\n.wc-video-tool {\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal;\r\n  width: 9.4rem;\r\n  height: 40px;\r\n  line-height: 40px;\r\n  margin: 0 auto; }\r\n  .wc-video-tool aside {\r\n    -webkit-box-flex: 1; }\r\n    .wc-video-tool aside img {\r\n      width: .8rem; }\r\n    .wc-video-tool aside:last-of-type {\r\n      text-align: right; }\r\n      .wc-video-tool aside:last-of-type img {\r\n        margin: 0 5px; }\r\n\r\n.lt-viode-toolbar {\r\n  background: #1f1f1f;\r\n  position: absolute;\r\n  bottom: 0px;\r\n  right: 0;\r\n  width: 36px;\r\n  height: 38px; }\r\n  .lt-viode-toolbar img {\r\n    left: 3px;\r\n    width: 30px !important;\r\n    height: 30px  !important;\r\n    top: 5px !important; }\r\n\r\n/*# sourceMappingURL=video.css.map */", ""]);
 
 	// exports
 
@@ -41282,7 +41351,7 @@
 /* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("E:\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
 	'use strict';
 
@@ -41352,16 +41421,16 @@
 				scale: 9 / 16,
 				videoObj: {
 					"poster": "",
-					"isVr": true,
+					"isVr": 0,
 					"videoSrc": 'http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8', //"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
-					"title": "2016年维多利亚的秘密秀场",
-					"cate": "时尚",
-					"time": "01:35:55",
-					"collect": "124",
+					"title": "",
+					"cate": "",
+					"time": "",
+					"collect": "",
 
 					"from": {
 						"src": "",
-						"name": "优酷"
+						"name": ""
 					},
 					"remark": ""
 
@@ -41520,7 +41589,7 @@
 								'发送'
 							)
 						),
-						_react2['default'].createElement('textarea', { onChange: function (e) {
+						_react2['default'].createElement('textarea', { value: this.state.comment, onChange: function (e) {
 								_this.setState({ comment: e.target.value });
 							}, onBlur: this.boxBlur.bind(this), onFocus: this.boxFocus.bind(this), ref: 'wc-input' })
 					)
@@ -41597,12 +41666,7 @@
 					if (s.state.comment.length <= 0) {
 						return;
 					}
-					console.log({
-						resid: id,
-						restype: 2,
-						phone: phone,
-						comment: s.state.comment
-					});
+
 					_jquery2['default'].ajax({
 						url: window.baseUrl + '/comment',
 						data: {
@@ -41615,12 +41679,12 @@
 						success: function success(data) {
 							console.log(data);
 							if (data.result * 1 === 1) {
-								s.commentList.push({
+								s.commentList.unshift({
 									ico: s.avatarUrl || window.shareIco,
 									name: s.nickName || '我',
 									content: s.state.comment
 								});
-								s.setState({ comment: '' });
+								s.setState({ comment: '', commentBoxShow: false });
 							}
 						}
 					});
@@ -41711,7 +41775,7 @@
 
 				_jquery2['default'].ajax({
 					url: window.baseUrl + '/get_video_detail',
-					type: 'post',
+
 					data: {
 						videoId: id
 					},
@@ -41873,7 +41937,7 @@
 	exports['default'] = (0, _componentsPublicPubJsx.WCPubCom)(LiveApp);
 	module.exports = exports['default'];
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
 /* 260 */
@@ -41910,7 +41974,7 @@
 
 
 	// module
-	exports.push([module.id, "/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden; }\r\n\r\n.wc-video-main-ui {\r\n  position: fixed;\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%;\r\n  height: 100%; }\r\n\r\n.wc-video-poster {\r\n  position: relative;\r\n  z-index: 1; }\r\n  .wc-video-poster:before, .wc-video-poster:after {\r\n    content: '';\r\n    position: absolute;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    border: 2px solid #fff;\r\n    border-radius: 50%;\r\n    left: 50%;\r\n    top: 50%;\r\n    margin-left: -.5rem;\r\n    margin-top: -.5rem;\r\n    z-index: 0; }\r\n  .wc-video-poster:after {\r\n    border-right: none;\r\n    width: 0;\r\n    height: 0;\r\n    z-index: -1;\r\n    border-radius: 0;\r\n    margin-left: -.03rem;\r\n    margin-top: -0.23077rem;\r\n    border-top: 0.3rem solid transparent;\r\n    border-left: 0.4rem solid #fff;\r\n    border-bottom: 0.3rem solid transparent; }\r\n  .wc-video-poster img {\r\n    width: 1.2rem;\r\n    position: absolute;\r\n    right: .4rem;\r\n    top: .4rem; }\r\n\r\n.wc-video-title-C {\r\n  width: 9.4rem;\r\n  margin: .5rem auto;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-video-title-C .wc-video-title-item {\r\n    -webkit-box-flex: 1; }\r\n    .wc-video-title-C .wc-video-title-item h3 {\r\n      font-weight: normal;\r\n      font-size: .52rem;\r\n      line-height: 1rem; }\r\n    .wc-video-title-C .wc-video-title-item.wc-video-from {\r\n      position: relative;\r\n      top: .1rem;\r\n      font-size: 12px;\r\n      color: #999;\r\n      text-align: center; }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from img {\r\n        width: .63rem; }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from div:last-of-type {\r\n        -webkit-transform: scale(0.9);\r\n        transform: scale(0.9); }\r\n    .wc-video-title-C .wc-video-title-item .wc-video-cate {\r\n      font-size: 12px;\r\n      color: #9da9bc; }\r\n      .wc-video-title-C .wc-video-title-item .wc-video-cate img {\r\n        width: .5rem;\r\n        margin: 0 5px; }\r\n\r\n.wc-live-from {\r\n  height: 1rem;\r\n  width: .82rem;\r\n  text-align: center;\r\n  position: relative; }\r\n  .wc-live-from section {\r\n    width: 94%;\r\n    height: 90%; }\r\n\r\n.wc-video-remark-scroll {\r\n  width: 10rem;\r\n  margin: 0 auto; }\r\n  .wc-video-remark-scroll div.wc-video-remark {\r\n    text-indent: 2em;\r\n    line-height: .75rem;\r\n    width: 9.4rem;\r\n    margin: 0 auto;\r\n    color: #6d788f;\r\n    padding-bottom: 10px; }\r\n\r\n.wc-live-more {\r\n  color: #1d94d4;\r\n  text-align: center; }\r\n  .wc-live-more span {\r\n    position: relative; }\r\n    .wc-live-more span:before, .wc-live-more span:after {\r\n      content: '';\r\n      width: 0;\r\n      height: 0;\r\n      border-left: 6px solid transparent;\r\n      border-right: 6px solid transparent;\r\n      border-bottom: 6px solid #e8ebf2;\r\n      position: absolute; }\r\n    .wc-live-more span:after {\r\n      margin-top: 4px; }\r\n    .wc-live-more span:before {\r\n      width: 6px;\r\n      height: 1px;\r\n      background: #e8ebf2;\r\n      border-left: none;\r\n      border-bottom: none;\r\n      border-right: none;\r\n      bottom: 4px;\r\n      right: -12px; }\r\n\r\n.wc-live-comment-list {\r\n  width: 9.4rem;\r\n  overflow: hidden;\r\n  margin: 0 auto;\r\n  border-top: 1px solid #ccc;\r\n  box-sizing: border-box; }\r\n  .wc-live-comment-list ul {\r\n    padding-bottom: 2px; }\r\n  .wc-live-comment-list li {\r\n    color: #6d788f;\r\n    margin: .5rem 0;\r\n    font-size: 12px;\r\n    display: -webkit-box;\r\n    -webkit-box-align: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-align: start;\r\n    -webkit-box-pack: start; }\r\n    .wc-live-comment-list li aside:first-of-type {\r\n      margin-right: .1rem;\r\n      color: #90b4dc; }\r\n      .wc-live-comment-list li aside:first-of-type img {\r\n        margin-right: .1rem; }\r\n    .wc-live-comment-list li aside:last-of-type {\r\n      width: 7.2rem;\r\n      -webkit-transform: scale(0.95);\r\n      transform: scale(0.95); }\r\n\r\n.wc-live-input-C {\r\n  -webkit-transition: -webkit-transform 0.2s;\r\n  transition: -webkit-transform 0.2s;\r\n  transition: transform 0.2s;\r\n  transition: transform 0.2s, -webkit-transform 0.2s;\r\n  -webkit-transform: translate3d(0, 100%, 0);\r\n  transform: translate3d(0, 100%, 0);\r\n  width: 100%;\r\n  position: fixed;\r\n  bottom: 0;\r\n  height: 1.2rem;\r\n  line-height: 1.2rem;\r\n  background: #f4f8ff; }\r\n  .wc-live-input-C.active {\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  .wc-live-input-C:before {\r\n    content: '';\r\n    width: 100%;\r\n    height: 1px;\r\n    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);\r\n    position: absolute;\r\n    background: rgba(0, 0, 0, 0.1);\r\n    top: 0; }\r\n  .wc-live-input-C img {\r\n    width: .5rem;\r\n    position: relative;\r\n    left: .5rem; }\r\n  .wc-live-input-C .wc-live-input {\r\n    margin: 0 auto;\r\n    display: -webkit-box;\r\n    -webkit-box-align: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-pack: start; }\r\n    .wc-live-input-C .wc-live-input div {\r\n      border-bottom: 1px solid #ccc;\r\n      height: .8rem;\r\n      width: 7rem;\r\n      color: #ccc;\r\n      position: relative;\r\n      top: 5px;\r\n      padding-left: .5rem;\r\n      display: inline-block; }\r\n    .wc-live-input-C .wc-live-input button, .wc-live-input-C .wc-live-input a {\r\n      border: none;\r\n      height: 26px;\r\n      width: 1.4rem;\r\n      display: inline-block;\r\n      text-align: center;\r\n      margin-left: .1rem;\r\n      line-height: 26px;\r\n      background: #1d94d4;\r\n      color: #fff;\r\n      border-radius: 3px; }\r\n\r\n.wc-comment-box {\r\n  -webkit-transform: translate3d(0, 6rem, 0);\r\n  transform: translate3d(0, 6rem, 0);\r\n  -webkit-transition: 0.2s;\r\n  transition: 0.2s;\r\n  position: absolute;\r\n  width: 100%;\r\n  background: #dadada;\r\n  z-index: 999;\r\n  padding-bottom: 1rem;\r\n  bottom: 0;\r\n  text-align: right; }\r\n  .wc-comment-box.active {\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  .wc-comment-box textarea {\r\n    width: 100%;\r\n    border: 1px solid #ccc;\r\n    height: 2rem;\r\n    -webkit-appearance: textarea;\r\n    background-color: white;\r\n    -webkit-rtl-ordering: logical;\r\n    -webkit-user-select: text;\r\n       -moz-user-select: text;\r\n        -ms-user-select: text;\r\n            user-select: text; }\r\n  .wc-comment-box div {\r\n    position: relative;\r\n    height: 36px; }\r\n  .wc-comment-box button, .wc-comment-box a {\r\n    margin-right: 10px;\r\n    top: 5px;\r\n    left: 20px;\r\n    border: none;\r\n    line-height: 26px;\r\n    height: 26px;\r\n    width: 1.4rem;\r\n    margin-left: .1rem;\r\n    position: absolute;\r\n    line-height: 26px;\r\n    text-align: center;\r\n    background: #cacaca;\r\n    color: #000;\r\n    border-radius: 3px; }\r\n    .wc-comment-box button:last-of-type, .wc-comment-box a:last-of-type {\r\n      right: 20px;\r\n      left: auto;\r\n      background: #1d94d4;\r\n      color: #fff; }\r\n\r\n/*# sourceMappingURL=index.css.map */", ""]);
+	exports.push([module.id, "/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {\r\n    background-color: #fff;\r\n    border-color: #bf1616;\r\n    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);\r\n}*/\r\nbody {\r\n  overflow: hidden; }\r\n\r\n.wc-video-main-ui {\r\n  position: fixed;\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%;\r\n  height: 100%; }\r\n\r\n.wc-video-poster {\r\n  position: relative;\r\n  z-index: 1; }\r\n  .wc-video-poster:before, .wc-video-poster:after {\r\n    content: '';\r\n    position: absolute;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    border: 2px solid #fff;\r\n    border-radius: 50%;\r\n    left: 50%;\r\n    top: 50%;\r\n    margin-left: -.5rem;\r\n    margin-top: -.5rem;\r\n    z-index: 0; }\r\n  .wc-video-poster:after {\r\n    border-right: none;\r\n    width: 0;\r\n    height: 0;\r\n    z-index: -1;\r\n    border-radius: 0;\r\n    margin-left: -.03rem;\r\n    margin-top: -0.23077rem;\r\n    border-top: 0.3rem solid transparent;\r\n    border-left: 0.4rem solid #fff;\r\n    border-bottom: 0.3rem solid transparent; }\r\n  .wc-video-poster img {\r\n    width: 1.2rem;\r\n    position: absolute;\r\n    right: .4rem;\r\n    top: .4rem; }\r\n\r\n.wc-video-title-C {\r\n  width: 9.4rem;\r\n  margin: .5rem auto;\r\n  display: -webkit-box;\r\n  -webkit-box-align: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-box-orient: horizontal; }\r\n  .wc-video-title-C .wc-video-title-item {\r\n    -webkit-box-flex: 1; }\r\n    .wc-video-title-C .wc-video-title-item h3 {\r\n      font-weight: normal;\r\n      font-size: .52rem;\r\n      line-height: 1rem; }\r\n    .wc-video-title-C .wc-video-title-item.wc-video-from {\r\n      position: relative;\r\n      top: .1rem;\r\n      font-size: 12px;\r\n      color: #999;\r\n      text-align: center; }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from img {\r\n        width: .63rem; }\r\n      .wc-video-title-C .wc-video-title-item.wc-video-from div:last-of-type {\r\n        -webkit-transform: scale(0.9);\r\n        transform: scale(0.9); }\r\n    .wc-video-title-C .wc-video-title-item .wc-video-cate {\r\n      font-size: 12px;\r\n      color: #9da9bc; }\r\n      .wc-video-title-C .wc-video-title-item .wc-video-cate img {\r\n        width: .5rem;\r\n        margin: 0 5px; }\r\n\r\n.wc-live-from {\r\n  height: 1rem;\r\n  width: .82rem;\r\n  text-align: center;\r\n  position: relative; }\r\n  .wc-live-from section {\r\n    width: 94%;\r\n    height: 90%; }\r\n\r\n.wc-video-remark-scroll {\r\n  width: 10rem;\r\n  margin: 0 auto; }\r\n  .wc-video-remark-scroll div.wc-video-remark {\r\n    text-indent: 2em;\r\n    line-height: .75rem;\r\n    width: 9.4rem;\r\n    margin: 0 auto;\r\n    color: #6d788f;\r\n    padding-bottom: 10px; }\r\n\r\n.wc-live-more {\r\n  color: #1d94d4;\r\n  text-align: center; }\r\n  .wc-live-more span {\r\n    position: relative; }\r\n    .wc-live-more span:before, .wc-live-more span:after {\r\n      content: '';\r\n      width: 0;\r\n      height: 0;\r\n      border-left: 6px solid transparent;\r\n      border-right: 6px solid transparent;\r\n      border-bottom: 6px solid #e8ebf2;\r\n      position: absolute; }\r\n    .wc-live-more span:after {\r\n      margin-top: 4px; }\r\n    .wc-live-more span:before {\r\n      width: 6px;\r\n      height: 1px;\r\n      background: #e8ebf2;\r\n      border-left: none;\r\n      border-bottom: none;\r\n      border-right: none;\r\n      bottom: 4px;\r\n      right: -12px; }\r\n\r\n.wc-live-comment-list {\r\n  width: 9.4rem;\r\n  overflow: hidden;\r\n  margin: 0 auto;\r\n  border-top: 1px solid #ccc;\r\n  box-sizing: border-box; }\r\n  .wc-live-comment-list ul {\r\n    padding-bottom: 2px; }\r\n  .wc-live-comment-list li {\r\n    color: #6d788f;\r\n    margin: .5rem 0;\r\n    font-size: 12px;\r\n    display: -webkit-box;\r\n    -webkit-box-align: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-align: start;\r\n    -webkit-box-pack: start; }\r\n    .wc-live-comment-list li aside:first-of-type {\r\n      margin-right: .1rem;\r\n      color: #90b4dc; }\r\n      .wc-live-comment-list li aside:first-of-type img {\r\n        margin-right: .1rem; }\r\n    .wc-live-comment-list li aside:last-of-type {\r\n      width: 7.2rem;\r\n      -webkit-transform: scale(0.95);\r\n      transform: scale(0.95); }\r\n\r\n.wc-live-input-C {\r\n  -webkit-transition: -webkit-transform 0.2s;\r\n  transition: -webkit-transform 0.2s;\r\n  transition: transform 0.2s;\r\n  transition: transform 0.2s, -webkit-transform 0.2s;\r\n  -webkit-transform: translate3d(0, 100%, 0);\r\n  transform: translate3d(0, 100%, 0);\r\n  width: 100%;\r\n  position: fixed;\r\n  bottom: 0;\r\n  height: 1.2rem;\r\n  line-height: 1.2rem;\r\n  background: #f4f8ff; }\r\n  .wc-live-input-C.active {\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  .wc-live-input-C:before {\r\n    content: '';\r\n    width: 100%;\r\n    height: 1px;\r\n    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);\r\n    position: absolute;\r\n    background: rgba(0, 0, 0, 0.1);\r\n    top: 0; }\r\n  .wc-live-input-C img {\r\n    width: .5rem;\r\n    position: relative;\r\n    left: .5rem; }\r\n  .wc-live-input-C .wc-live-input {\r\n    margin: 0 auto;\r\n    display: -webkit-box;\r\n    -webkit-box-align: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-pack: start; }\r\n    .wc-live-input-C .wc-live-input div {\r\n      line-height: .9rem;\r\n      border-bottom: 1px solid #ccc;\r\n      height: .8rem;\r\n      width: 7rem;\r\n      color: #ccc;\r\n      position: relative;\r\n      top: 5px;\r\n      padding-left: .5rem;\r\n      display: inline-block; }\r\n    .wc-live-input-C .wc-live-input button, .wc-live-input-C .wc-live-input a {\r\n      border: none;\r\n      height: 26px;\r\n      width: 1.4rem;\r\n      display: inline-block;\r\n      text-align: center;\r\n      margin-left: .1rem;\r\n      line-height: 26px;\r\n      background: #1d94d4;\r\n      color: #fff;\r\n      border-radius: 3px; }\r\n\r\n.wc-comment-box {\r\n  -webkit-transform: translate3d(0, 6rem, 0);\r\n  transform: translate3d(0, 6rem, 0);\r\n  -webkit-transition: 0.2s;\r\n  transition: 0.2s;\r\n  position: absolute;\r\n  width: 100%;\r\n  background: #dadada;\r\n  z-index: 999;\r\n  padding-bottom: 1rem;\r\n  bottom: 0;\r\n  text-align: right; }\r\n  .wc-comment-box.active {\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n    transform: translate3d(0, 0, 0); }\r\n  .wc-comment-box textarea {\r\n    width: 100%;\r\n    border: 1px solid #ccc;\r\n    height: 2rem;\r\n    -webkit-appearance: textarea;\r\n    background-color: white;\r\n    -webkit-rtl-ordering: logical;\r\n    -webkit-user-select: text;\r\n       -moz-user-select: text;\r\n        -ms-user-select: text;\r\n            user-select: text; }\r\n  .wc-comment-box div {\r\n    position: relative;\r\n    height: 36px; }\r\n  .wc-comment-box button, .wc-comment-box a {\r\n    margin-right: 10px;\r\n    top: 5px;\r\n    left: 20px;\r\n    border: none;\r\n    line-height: 26px;\r\n    height: 26px;\r\n    width: 1.4rem;\r\n    margin-left: .1rem;\r\n    position: absolute;\r\n    line-height: 26px;\r\n    text-align: center;\r\n    background: #cacaca;\r\n    color: #000;\r\n    border-radius: 3px; }\r\n    .wc-comment-box button:last-of-type, .wc-comment-box a:last-of-type {\r\n      right: 20px;\r\n      left: auto;\r\n      background: #1d94d4;\r\n      color: #fff; }\r\n\r\n/*# sourceMappingURL=index.css.map */", ""]);
 
 	// exports
 
@@ -41919,7 +41983,7 @@
 /* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("E:\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
 	'use strict';
 
@@ -42011,7 +42075,7 @@
 						{ className: 'wc-news-scroll', ref: 'wc-news-scroll', style: { height: this.viewH - 64, overflow: 'hidden' } },
 						_react2['default'].createElement(
 							'div',
-							null,
+							{ style: { border: '1px solid transparent', paddingBottom: 30 } },
 							_react2['default'].createElement(
 								'h2',
 								{ className: 'wc-news-title' },
@@ -42127,12 +42191,18 @@
 				};
 
 				var id = this.props.params.id;
+				var phone = -1;
+				if (window.H5Manager) {
+					phone = H5Manager.getUserID();
+				}
+				var params = {
+					messageID: id
+				};
+				phone * 1 !== -1 && (params.phone = phone);
 				this.messageID = id;
 				_jquery2['default'].ajax({
 					url: window.baseUrl + '/get_news_detail',
-					data: {
-						messageID: id
-					},
+					data: params,
 					success: function success(data) {
 						if (data.code === 200) {
 							var result = data.result;
@@ -42169,7 +42239,7 @@
 	exports['default'] = (0, _componentsPublicPubJsx.WCPubCom)(NewsApp);
 	module.exports = exports['default'];
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
 /* 263 */
@@ -42215,7 +42285,7 @@
 /* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("E:\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
 	'use strict';
 
@@ -42269,7 +42339,7 @@
 
 			_get(Object.getPrototypeOf(SubjectApp.prototype), 'constructor', this).call(this, props);
 			this.state = {
-				isCollect: false,
+				isCollect: "false",
 				imgSrc: '',
 				describe: '',
 				list: [
@@ -42575,11 +42645,19 @@
 						isCollect: data
 					});
 				});
+
+				var phone = -1;
+				if (window.H5Manager) {
+					phone = H5Manager.getUserID();
+				}
+				var params = {
+					subjectID: subjectID
+				};
+				phone * 1 !== -1 && (params.phone = phone);
+				window.H5Manager && H5Manager.log(window.baseUrl + '/get_subject_detail?subjectID=' + subjectID + "&phone=" + phone + ' ------------------------');
 				_jquery2['default'].ajax({
 					url: window.baseUrl + '/get_subject_detail',
-					data: {
-						subjectID: subjectID
-					},
+					data: params,
 					error: function error() {},
 					success: function success(data) {
 						if (data.code === 200) {
@@ -42589,7 +42667,6 @@
 							s.state.imgSrc = result.imgSrc;
 							s.state.describe = (result.describe || '').substring(0, 70);
 							s.state.list = result.list;
-
 							s.state.isCollect = result.isCollect;
 							s.forceUpdate();
 							s.scroll = null;
@@ -42619,7 +42696,7 @@
 	exports['default'] = (0, _componentsPublicPubJsx.WCPubCom)(SubjectApp);
 	module.exports = exports['default'];
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
 /* 266 */
@@ -43109,7 +43186,7 @@
 /* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("E:\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
 	"use strict";
 
@@ -43170,7 +43247,7 @@
 	exports["default"] = Obserable;
 	module.exports = exports["default"];
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("E:\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "obserable.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("F:\\xuchang2017\\project\\weichang\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "obserable.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ }
 /******/ ]);

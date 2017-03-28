@@ -34,6 +34,8 @@ class VideoApp extends Component {
 		}
 		this.viewW = document.documentElement.clientWidth;
 		this.viewH = document.documentElement.clientHeight;
+		this.platform = this.props.switchPlatform();
+		
 	}
 	render() {
 
@@ -47,6 +49,8 @@ class VideoApp extends Component {
 		}
 		var data = this.state;
 		data.startPlay = this.startPlay.bind(this);
+
+		
 
 
 			var headerProps = {
@@ -155,12 +159,18 @@ class VideoApp extends Component {
 			});
 		},1000);
 
+		var phone = -1;
+		if(window.H5Manager){
+			phone  = H5Manager.getUserID();
+		}
+		var params = {
+			videoId:id
+		}
+		phone*1 !== -1 && (params.phone = phone);
 		
 		$.ajax({
 			url:window.baseUrl + '/get_video_detail',
-			data:{
-				videoId:id,
-			},
+			data:params,
 			success(data){
 				console.log(data);
 				if(data.code === 200){
@@ -171,12 +181,6 @@ class VideoApp extends Component {
 				}
 			}
 		})
-
-
-
-
-
-
 	}
 }
 export default WCPubCom(VideoApp);

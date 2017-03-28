@@ -13,7 +13,7 @@ class SubjectApp extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isCollect:false,
+			isCollect:"false",
 			imgSrc:'',
 			describe:'',
 			list:[
@@ -59,7 +59,8 @@ class SubjectApp extends Component {
 		this.viewH = document.documentElement.clientHeight;
 	}
 	render() {
- 
+ 		
+
 		var headerProps = {
 			rightMenu:this.state.isCollect === 'true' ? <img style={{marginTop:10}} src='./assets/images/collect1.png'/>:<img style={{marginTop:10}} src='./assets/images/collect.png'/>,
 			type:'subjectlist',//列表页面,
@@ -168,43 +169,50 @@ class SubjectApp extends Component {
 				isCollect:data
 			})
 		});
-	  $.ajax({
-	  	url:window.baseUrl + '/get_subject_detail',
-	  	data:{
-	  		subjectID:subjectID
-	  	},
-	  	error(){
 
-	  	},
-	  	success(data){
-	  		if(data.code  === 200){
+		var phone = -1;
+		if(window.H5Manager){
+			phone  = H5Manager.getUserID();
+		}
+		var params = {
+			subjectID:subjectID
+		}
+		phone*1 !== -1 && (params.phone = phone);
+		window.H5Manager&& H5Manager.log(window.baseUrl + '/get_subject_detail?subjectID='+subjectID+"&phone="+phone +' ------------------------');
+		  $.ajax({
+		  	url:window.baseUrl + '/get_subject_detail',
+		  	data:params,
+		  	error(){
 
-	  			var result = data.result;
-	  			console.log(result)
-	  			s.state.imgSrc = result.imgSrc;
-	  			s.state.describe = (result.describe||'').substring(0,70);
-	  			s.state.list = result.list;
-	  			
-  				s.state.isCollect = result.isCollect;
-	  			s.forceUpdate();
-	  			s.scroll = null;
-	  			setTimeout(()=>{
-	  				s.scroll = new IScroll(s.refs['wc-subject-scroll-C'],{
-						preventDefault:false
-					});
-	  			},100 )
-	  			var imgList = [];
-	  			s.state.imgSrc && imgList.push(s.state.imgSrc);
-	  			s.state.list.map((item,i)=>{
-	  				imgList.push(item.imgSrc);
-	  			});
-	  			loading(imgList,null,()=>{
-	  				
-	  				s.scroll && s.scroll.refresh();
-	  			});
-	  		}
-	  	}
-	  })
+		  	},
+		  	success(data){
+		  		if(data.code  === 200){
+
+		  			var result = data.result;
+		  			console.log(result)
+		  			s.state.imgSrc = result.imgSrc;
+		  			s.state.describe = (result.describe||'').substring(0,70);
+		  			s.state.list = result.list;
+	  				s.state.isCollect = result.isCollect;
+		  			s.forceUpdate();
+		  			s.scroll = null;
+		  			setTimeout(()=>{
+		  				s.scroll = new IScroll(s.refs['wc-subject-scroll-C'],{
+							preventDefault:false
+						});
+		  			},100 )
+		  			var imgList = [];
+		  			s.state.imgSrc && imgList.push(s.state.imgSrc);
+		  			s.state.list.map((item,i)=>{
+		  				imgList.push(item.imgSrc);
+		  			});
+		  			loading(imgList,null,()=>{
+		  				
+		  				s.scroll && s.scroll.refresh();
+		  			});
+		  		}
+		  	}
+		  })
 		
 	}
 }

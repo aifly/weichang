@@ -14,6 +14,8 @@ class FieldApp extends Component {
 
 			subjectId:"LocXxuu4",
 
+			imgCount:5,
+
 			 defaultDetailDescribeState:'查看更多',
 			 defaultCommentState:'查看更多',
 			 commentHeight:'auto',
@@ -21,14 +23,15 @@ class FieldApp extends Component {
 
 			 isCollect:'false',
 			 describeSrc:'',
+			 describeFull:'',
 			 title:'',
-			 cate:'艺术区',
+			 cate:'',
 			 addressObj:{
 			 		address:'',
 			 		longitude:'',//经度
 			 		latitude:'',//纬度
-				 	collect:'2341万',
-			 		tel:'15718879215'//电话
+				 	collect:'',
+			 		tel:''//电话
 			 },
 			 detailDescribe:'',
 			 commentList:[
@@ -88,7 +91,7 @@ class FieldApp extends Component {
 			 		}*/
 			 ],
 			 fieldPicList:[
-			 		{
+			 		/*{
 			 			src:"./assets/images/f-pic1.jpg",
 						name:'外场'
 			 		},{
@@ -115,10 +118,10 @@ class FieldApp extends Component {
 			 		},{
 			 			src:"./assets/images/f-pic3.jpg",
 			 			name:'入场口'
-			 		}
+			 		}*/
 			 ],
 			 fieldActive:{
-				 	activePic:'./assets/images/active.jpg',
+				 	/*activePic:'./assets/images/active.jpg',
 				 	activeList:[
 				 		{
 				 			id:1,
@@ -158,10 +161,10 @@ class FieldApp extends Component {
 				 			name:'维多利亚的秘密秀场',
 				 			date:'2016/01/22'
 				 		}
-				 	]
+				 	]*/
 			 },
 			 sameFeildList:[
-				 {
+				/* {
 					 id:1,
 					 src:'./assets/images/feild.jpg',
 					 title:'798艺术区美术馆',
@@ -208,7 +211,7 @@ class FieldApp extends Component {
 					 address:'朝阳区',
 					 area:'1500m2',
 					 personCount:'1000'
-				 }
+				 }*/
 			 ]
 		};
 		this.viewW = document.documentElement.clientWidth;
@@ -237,10 +240,10 @@ class FieldApp extends Component {
 				{this.state.isFullScreen && <iframe className='wc-fullscreen' height={this.viewW/10*9.4*9/16} width={this.viewW/10*9.4} src={this.state.describeSrc} frameBorder="0"></iframe>}
 				<WCHeader {...headerProps}></WCHeader>
 				<section ref="scroll" className="wc-field-scroll" style={{height:this.viewH - 64 }}>
-					<div style={{border:'1px solid transparent',paddingBottom:10}}>
+					<div style={{border:'1px solid transparent',paddingBottom:20}}>
 						<div className={'wc-field-describe ' +(this.state.isFullScreen?'active':'')} style={style}>
-							{this.state.describeSrc && <iframe height={this.viewW/10*9.4*9/16} width={this.viewW/10*9.4} src={this.state.describeSrc} frameBorder="0"></iframe>}
-							{this.state.describeSrc && <div className='wc-feild-fullscreen'  onTouchTap={()=>{this.setState({isFullScreen:true})}}><img src='./assets/images/fullscreen.png'/></div>}
+							{this.state.describeFull && <iframe height={this.viewW/10*9.4*9/16} width={this.viewW/10*9.4} src={this.state.describeFull} frameBorder="0"></iframe>}
+							{this.state.describeFull && <div className='wc-feild-fullscreen'  onTouchTap={()=>{this.setState({isFullScreen:true})}}><img src='./assets/images/fullscreen.png'/></div>}
 
 						</div>
 						<div className='wc-field-title-C'>
@@ -282,26 +285,26 @@ class FieldApp extends Component {
 													<aside>场地参数</aside>
 													<aside></aside>
 												</div>}
-						<table className='wc-field-parameter-table'>
-							<thead>
-								<tr>
-									<th>地址名称</th>
-									<th>尺寸(L/W/H)</th>
-									<th>面积</th>
-									<th>容纳人数</th>
-								</tr>
-							</thead>
-							<tbody>
-								{this.state.fieldParams.map((item,i)=>{
-									return <tr key={i}>
-												<td>{item.name}</td>
-												<td>{item.size}</td>
-												<td>{item.area}</td>
-												<td>{item.personCount}</td>
-											</tr>
-								})}
-							</tbody>
-						</table>
+						{this.state.fieldParams.length >0 && <table className='wc-field-parameter-table'>
+													<thead>
+														<tr>
+															<th>地址名称</th>
+															<th>尺寸(L/W/H)</th>
+															<th>面积</th>
+															<th>容纳人数</th>
+														</tr>
+													</thead>
+													<tbody>
+														{this.state.fieldParams.map((item,i)=>{
+															return <tr key={i}>
+																		<td>{item.name}</td>
+																		<td>{item.size}</td>
+																		<td>{item.area}</td>
+																		<td>{item.personCount}</td>
+																	</tr>
+														})}
+													</tbody>
+												</table>}
 						
 						{this.state.fieldPicList.length>0 && <div className="wc-field-commit-C">
 													<aside>场地图片</aside>
@@ -309,13 +312,19 @@ class FieldApp extends Component {
 												</div>}
 
 						<div className='wc-field-pic-scroll' ref='wc-field-pic-scroll'>
-								<ul className='wc-field-pic-list' style={{width:this.state.fieldPicList.length * (document.documentElement.clientWidth/ 10 * 4+ 10)}}>
-										{this.state.fieldPicList.map((item,i)=>{
+								<ul className='wc-field-pic-list' style={{width:(Math.min(this.state.imgCount,this.state.fieldPicList.length) +1)* (document.documentElement.clientWidth/ 10 * 4+ 10)}}>
+										{this.state.fieldPicList.filter((item,i)=>{
+											return i < this.state.imgCount;
+										}).map((item,i)=>{
 											return <li onTouchTap={this.showImage.bind(this,i)} key={i}>
 													<div style={{background:'url('+item.src+') no-repeat left center / contain'}}></div>
 													<section>{item.name}</section>
 											</li>
 										})}
+										<li onTouchTap={this.showAllImage.bind(this)}>
+											<div style={{background:'url(./assets/images/all1.png) no-repeat left center / contain'}}></div>
+											<section style={{opacity:0}}>{'2222'}</section>
+										</li>
 								</ul>
 						</div>
 
@@ -418,12 +427,27 @@ class FieldApp extends Component {
 	showImage(index){
 		if(H5Manager){
 			var arr = [];
-			this.state.fieldPicList.map((item,i)=>{
+			this.state.fieldPicList.filter((item,i)=>{
+				return i < this.state.imgCount;
+			}).map((item,i)=>{
 				arr.push(item.src);
 			});
-			H5Manager.showImage(index,arr);	
+			var allImg = [];
+			this.fieldPicList.map((item,i)=>{
+				allImg.push(item.src);
+			})
+			H5Manager.showImage(index,arr,this.state.title,allImg);	
 		}
 	}
+
+	showAllImage(){
+		var allImg = [];
+		this.fieldPicList.map((item,i)=>{
+			allImg.push(item.src);
+		})
+		H5Manager.showAllImage(this.state.title,allImg);	
+	}
+
 	seeMoreComment(){
 		if(this.state.commentHeight === 'auto'){
 			this.state.commentHeight = this.defaultHeight;
@@ -471,17 +495,24 @@ class FieldApp extends Component {
 		var id = this.props.params.id;
 
 		this.fieldId = id;
+		var phone = -1;
+		if(window.H5Manager){
+			phone  = H5Manager.getUserID();
+		}
+		var params = {
+			place_id:id
+		}
+		phone*1 !== -1 && (params.phone = phone);
 		$.ajax({
 			url:window.baseUrl + '/get_place_detail',
-			data:{
-				place_id:id
-			},
+			data:params,
 			success(data){
 					if(data.code === 200){
 
 							var result = data.result;
 							console.log(result)
 							s.state.describeSrc = result.describeSrc;
+							s.state.describeFull = result.describeFull;
 							s.state.title = result.title;
 							s.state.cate = result.cate;
 							s.state.isCollect = result.isCollect;
@@ -489,6 +520,7 @@ class FieldApp extends Component {
 							s.state.detailDescribe = result.detailDescribe;
 							s.state.commentList = result.commentList;
 							s.state.fieldPicList = result.fieldPicList;
+							s.fieldPicList = result.fieldPicList.concat([]);
 							s.state.fieldActive = result.fieldActive;
 							s.state.fieldParams = result.fieldParams;
 							s.state.sameFeildList = result.similarPlace;

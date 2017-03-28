@@ -207,7 +207,7 @@ $mainW:9.4rem;
     @include displayBox(horizontal);
     -webkit-box-pack: start;
     div{
-     
+     line-height: .9rem;
       border-bottom:1px solid #ccc;
       height:.8rem;
       width:7rem;
