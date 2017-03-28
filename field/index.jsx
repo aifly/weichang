@@ -17,7 +17,9 @@ class FieldApp extends Component {
 			imgCount:5,
 
 			 defaultDetailDescribeState:'查看更多',
+			 defaultParamsState:'查看更多',
 			 defaultCommentState:'查看更多',
+			 defaultParamsCount:5,
 			 commentHeight:'auto',
 			 isFullScreen:false,
 
@@ -216,6 +218,9 @@ class FieldApp extends Component {
 		};
 		this.viewW = document.documentElement.clientWidth;
 		this.viewH = document.documentElement.clientHeight;
+		this.defaultParamsCount = 5;
+		this.fieldParams = 0;
+		this.fieldParamsArr = [];
 	}	
 
 
@@ -295,7 +300,9 @@ class FieldApp extends Component {
 														</tr>
 													</thead>
 													<tbody>
-														{this.state.fieldParams.map((item,i)=>{
+														{this.state.fieldParams.filter((item,k)=>{
+															return k < this.state.defaultParamsCount;
+														}).map((item,i)=>{
 															return <tr key={i}>
 																		<td>{item.name}</td>
 																		<td>{item.size}</td>
@@ -305,6 +312,7 @@ class FieldApp extends Component {
 														})}
 													</tbody>
 												</table>}
+						{this.fieldParamsArr.length > this.defaultParamsCount && <div className="wc-field-more" onTouchTap={this.seeMoreParams.bind(this)}><span className={this.state.defaultParamsState==='收起更多'?'active':''}>{this.state.defaultParamsState}</span></div>}
 						
 						{this.state.fieldPicList.length>0 && <div className="wc-field-commit-C">
 													<aside>场地图片</aside>
@@ -409,6 +417,21 @@ class FieldApp extends Component {
         
  
     }
+	}
+	seeMoreParams(){
+		if(this.state.defaultParamsCount === this.defaultParamsCount){
+			this.state.defaultParamsCount = this.fieldParamsArr.length;
+			this.state.defaultParamsState = '收起更多';
+		}else{
+			this.state.defaultParamsCount = this.defaultParamsCount;
+			this.state.defaultParamsState = '查看更多';
+		}
+
+		setTimeout(()=>{
+			this.mainScroll.refresh();//刷新滚动条
+		},100);
+
+		this.forceUpdate();
 	}
 
 	showComment(){//进入评论页面
@@ -523,6 +546,7 @@ class FieldApp extends Component {
 							s.fieldPicList = result.fieldPicList.concat([]);
 							s.state.fieldActive = result.fieldActive;
 							s.state.fieldParams = result.fieldParams;
+							s.fieldParamsArr = result.fieldParams.concat([]);
 							s.state.sameFeildList = result.similarPlace;
 							s.forceUpdate();
 							setTimeout(()=>{
