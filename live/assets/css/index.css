@@ -78,12 +78,15 @@ body {
 
 .wc-live-from {
   height: 1rem;
-  width: .82rem;
+  width: .93rem;
   text-align: center;
   position: relative; }
   .wc-live-from section {
-    width: 94%;
-    height: 90%; }
+    height: 1rem;
+    width: .93rem; }
+    .wc-live-from section img {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1); }
 
 .wc-video-remark-scroll {
   width: 10rem;

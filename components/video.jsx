@@ -37,7 +37,7 @@ class VideoChildApp extends Component {
                     {this.props.container==='live-video'  && this.props.videoObj.isVr*1 === 1 && <iframe  onLoad={()=>{this.setState({playBtnShow:'active'});setTimeout(()=>{this.setState({showFullscreen:true})},4000)}} width={this.viewW} height={this.viewW*this.props.scale} frameBorder={0} src={window.liveSrc+this.props.videoObj.videoSrc}></iframe>}
 
                     {this.state.showFullscreen &&  <div className='lt-viode-toolbar'><img src='./assets/images/fullscreen.png'   onTouchTap={()=>{this.props.startPlay()}}/></div>}
-                    {this.props.videoObj.isVr*1 === 0  && this.props.container ==='live-video' && <video autoPlay ref='video' width={this.viewW} height={this.viewW * this.props.scale} style={{position:'absolute',left:0,zIndex:10,opacity:this.props.videoShow?1:0,background:'#000'}}   webkitPlaysinline>
+                    {this.props.videoObj.isVr*1 === 0  && this.props.container ==='live-video' && <video autoPlay ref='video' width={this.viewW} height={this.viewW * this.props.scale} style={{position:'absolute',left:0,zIndex:10,opacity:this.props.videoShow?1:0,background:'#000'}}  >
                         <source src={this.props.videoObj.videoSrc}/>
                     </video> }
 
@@ -51,7 +51,7 @@ class VideoChildApp extends Component {
                     </div>
                     <div className='wc-video-from wc-video-title-item' onTouchTap={this.playLive.bind(this)}>
                         <div className='wc-from-logo' >
-                            {this.props.videoObj.from.src && <section style={{background:'url('+this.props.videoObj.from.src+') no-repeat center center / contain'}}><img src={'./assets/images/logo-bg.png'}/></section>}
+                            {this.props.videoObj.from.src && <section style={{background:'#fff url('+this.props.videoObj.from.src+') no-repeat center center / cover'}}><img src={'./assets/images/logo-bg.png'}/></section>}
                         </div>
                         <div>
                             {this.props.videoObj.from.name}

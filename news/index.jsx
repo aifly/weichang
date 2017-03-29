@@ -15,6 +15,7 @@ class NewsApp extends Component {
 
 		this.state = {
 			isCollect:'false',
+			scroll:'',
 			"title":"",
 			"date":"",
 			"from":"",
@@ -35,7 +36,8 @@ class NewsApp extends Component {
 				describe:this.state.content,
 				isCollect:this.state.isCollect === 'true'? 1 : 0,
 				resType:3 ,//1场地  2 视频  3 资讯 4 专题
-				ID:this.props.params.id
+				ID:this.props.params.id,
+				scroll:this.state.scroll
 			};	
 		return (
 			<div className="wc-news-main-ui">
@@ -156,7 +158,9 @@ class NewsApp extends Component {
 							var img = new Image();
 							img.onload = img.onerror = function(){
 								setTimeout(()=>{
-									s.scroll = new IScroll(s.refs['wc-news-scroll']);
+									s.scroll = new IScroll(s.refs['wc-news-scroll'],{scrollbars: true});
+									s.state.scroll = s.scroll;
+									s.forceUpdate();
 								},550)
 							}
 							img.src= s.state.imgSrc;

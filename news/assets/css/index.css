@@ -1,2 +1,52 @@
-body{overflow:hidden}.wc-news-main-ui .wc-news-title{font-weight:normal;width:9.4rem;margin:.3rem auto 0;font-size:.5rem}.wc-news-main-ui .wc-news-info{width:9.4rem;height:50px;line-height:50px;margin:0 auto;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:horizontal;-webkit-box-pack:start;font-size:12px;color:#cdd6e7}.wc-news-main-ui .wc-news-info span{margin:0 .2rem}.wc-news-main-ui .wc-news-info span:first-of-type{color:#7f8fa9}.wc-news-main-ui .wc-news-info aside{-webkit-box-flex:1}.wc-news-main-ui .wc-news-info aside:last-of-type img{width:.5rem}.wc-news-main-ui .wc-news-info aside:last-of-type{text-align:right}.wc-news-main-ui .wc-news-img{width:9.4rem;margin:0 auto}.wc-news-main-ui .wc-news-img img{border-radius:5px}.wc-news-main-ui .wc-news-content{width:9.4rem;margin:0 auto}.wc-news-main-ui .wc-news-content p{text-indent:2em;font-size:12px;line-height:.65rem;margin:10px 0}
+/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {
+    background-color: #fff;
+    border-color: #bf1616;
+    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);
+}*/
+body {
+  overflow: hidden; }
+
+.wc-news-main-ui .wc-news-scroll {
+  position: relative; }
+.wc-news-main-ui .wc-news-title {
+  font-weight: normal;
+  width: 9.4rem;
+  margin: .3rem auto 0;
+  font-size: .5rem; }
+.wc-news-main-ui .wc-news-info {
+  width: 9.4rem;
+  height: 50px;
+  line-height: 50px;
+  margin: 0 auto;
+  display: -webkit-box;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: start;
+  font-size: 12px;
+  color: #cdd6e7; }
+  .wc-news-main-ui .wc-news-info span {
+    margin: 0 .2rem; }
+    .wc-news-main-ui .wc-news-info span:first-of-type {
+      color: #7f8fa9; }
+  .wc-news-main-ui .wc-news-info aside {
+    -webkit-box-flex: 1; }
+    .wc-news-main-ui .wc-news-info aside:last-of-type img {
+      width: .5rem; }
+    .wc-news-main-ui .wc-news-info aside:last-of-type {
+      text-align: right; }
+.wc-news-main-ui .wc-news-img {
+  width: 9.4rem;
+  margin: 0 auto; }
+  .wc-news-main-ui .wc-news-img img {
+    border-radius: 5px; }
+.wc-news-main-ui .wc-news-content {
+  width: 9.4rem;
+  margin: 0 auto; }
+  .wc-news-main-ui .wc-news-content p {
+    text-indent: 2em;
+    font-size: 12px;
+    line-height: .65rem;
+    margin: 10px 0; }
+
 /*# sourceMappingURL=index.css.map */

@@ -104,14 +104,17 @@ class VideoApp extends Component {
 		
 		this.state.videoShow=true;
 		this.forceUpdate();
+
+		//任何点播视频都是跳转到native里面播放的。
+		 H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,0,this.state.videoObj.isVr*1);
 		if(this.state.videoObj.isVr * 1 === 0){//普通视频
 			if(window.H5Manager){//
-		      H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,0,this.state.videoObj.isVr*1);
+		      //H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,0,this.state.videoObj.isVr*1);
 			}else{
 			 	//initLoad(params);
 			}
 		}else{
-			initLoad(params);//VR视频、调用utovr的播放器。
+			//initLoad(params);//VR视频、调用utovr的播放器。
 		}
 		
  

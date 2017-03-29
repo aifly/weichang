@@ -164,12 +164,15 @@ $mainW : 9.4rem;
               color:#b2d2e3;
               div{
                 font-size:12px;
-                height: 1rem;
-                width:.82rem;
+                 height: 1rem;
+                 width:.93rem;
                 section{
-                   height: 1rem;
-                   width:.82rem;
-                   @include transform(scale(.98));
+                    height: 1rem;
+                     width:.93rem;
+                   img{
+                    @include transform(scale(1.2));
+                   }
+
                 }
               }
             }

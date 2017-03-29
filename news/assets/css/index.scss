@@ -5,6 +5,9 @@ body{
 
 $mainW : 9.4rem;
 .wc-news-main-ui{
+  .wc-news-scroll{
+    @include pos(r);
+  }
   .wc-news-title{
     font-weight:normal;
     width: $mainW;

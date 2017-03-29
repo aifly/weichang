@@ -158,10 +158,8 @@ class LiveApp extends Component {
 	}
 
 	displayCommentBox(){
-		this.setState({commentBoxShow:true},()=>{
-		})
-		
-		
+		this.setState({commentBoxShow:true})
+		this.refs['wc-input'].focus();
 	}
 
 	seeMoreDescribe(){
@@ -189,6 +187,7 @@ class LiveApp extends Component {
 
 	publishComment(e){
 		e.preventDefault();
+		this.refs['wc-input'].blur();
 		var id = this.props.params.id;
 		if(window.H5Manager){
 			var phone = H5Manager.getUserID();
@@ -335,7 +334,6 @@ class LiveApp extends Component {
 					s.forceUpdate(()=>{
 						s.defaultRemark = s.state.videoObj.remark;
 						s.state.videoObj.remark = s.state.videoObj.remark.substring(0,32)+'...';
-
 						
 						s.forceUpdate(()=>{
 							s.minRemarkHeight = s.refs['wc-live-remark-scroll'].offsetHeight;

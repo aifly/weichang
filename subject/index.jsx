@@ -66,7 +66,8 @@ class SubjectApp extends Component {
 			type:'subjectlist',//列表页面,
 			subjectId:this.subjectId,
 			isCollect:this.state.isCollect === 'true' ? 1 : 0,
-			resType:4
+			resType:4,
+			scroll:this.state.scroll
 		}
 		return (
 			<div className="wc-subject-main-ui">
@@ -200,6 +201,8 @@ class SubjectApp extends Component {
 		  				s.scroll = new IScroll(s.refs['wc-subject-scroll-C'],{
 							preventDefault:false
 						});
+						s.state.scroll = s.scroll;
+						s.forceUpdate();
 		  			},100 )
 		  			var imgList = [];
 		  			s.state.imgSrc && imgList.push(s.state.imgSrc);

@@ -20,7 +20,7 @@ class WCHeader extends Component {
 							<div><img src='./assets/images/back.png'/></div>
 							{this.state.text}
 					</aside>
-					<aside className='wc-header-c'>{this.props.logo|| <img style={{width:this.viewW/750*310}} src='./assets/images/logo1.png'/>}</aside>
+					<aside className='wc-header-c' onTouchTap={this.restorePos.bind(this)}>{this.props.logo|| <img style={{width:this.viewW/750*310}} src='./assets/images/logo1.png'/>}</aside>
 					<aside className='wc-header-r' onTouchTap={this.rightMenuClick.bind(this)}>
 							<div>{this.props.rightMenu||<img src='./assets/images/menu.png'/>}</div>
 					</aside>
@@ -29,6 +29,10 @@ class WCHeader extends Component {
 	}
 
 	componentDidMount() {
+	}
+
+	restorePos(){
+		this.props.scroll &&  this.props.scroll.scrollTo(0,0,200);
 	}
 
 	rightMenuClick(){

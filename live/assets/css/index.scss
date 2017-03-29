@@ -86,13 +86,16 @@ $mainW:9.4rem;
 }
 
 .wc-live-from{
-  height: 1rem;
-  width:.82rem;
+    height: 1rem;
+           width:.93rem;
   text-align: center;
   @include pos(r);
   section{
-    width:94%;
-    height:90%;
+     height: 1rem;
+        width:.93rem;
+        img{
+           @include transform(scale(1.1));
+        }
   }
   span{
   }

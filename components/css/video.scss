@@ -69,10 +69,9 @@ $mainW:9.4rem;
         @include transform(scale(.9));
       }
       .wc-from-logo{
-        overflow: hidden;
         margin: 0 auto;
         height: 1rem;
-        width:.92rem;
+        width:.93rem;
         @include pos(r);
         section{
            height: 1rem;
@@ -80,19 +79,21 @@ $mainW:9.4rem;
           margin: 0 auto 0;
           border:1px solid transparent;
           @include pos(r);
-          @include transform(scale(1));
+          
           img{
             &.active{
               width: auto;
               height: 100%;
+
             }
+
             width: 100%;
             height: auto;
             vertical-align: middle;
             @include pos(a);
             top:50%;
             left: 50%;
-            @include transform(translate3d(-50%,-50%,0));
+            @include transform(translate3d(-50%,-50%,0) scale(1.1));
           }
         }
       }

@@ -223,7 +223,17 @@ class FieldApp extends Component {
 		this.fieldParamsArr = [];
 	}	
 
+	fullscreen(){
+		if(window.H5Manager) {
+			H5Manager.showPanorama(this.state.describeSrc);	
+		} else{
+			this.setState({isFullScreen:true});	
+		}
+	}
 
+	exitFullscreen(){
+		this.setState({isFullScreen:false});
+	}
 
 	render() {
 			
@@ -233,7 +243,8 @@ class FieldApp extends Component {
 				describe:this.state.detailDescribe,
 				isCollect:this.state.isCollect === 'true'? 1 : 0,
 				resType:1, //1场地  2 视频  3 资讯 4 专题
-				ID:this.props.params.id
+				ID:this.props.params.id,
+				scroll : this.state.scroll
 			};	
 			var style = {
 				height:this.viewW/10*9.4*9/16
@@ -241,14 +252,14 @@ class FieldApp extends Component {
 			
 		return (
 			<div className='wc-field-ui'>
-				{this.state.describeSrc && this.state.isFullScreen && <div className='wc-feild-back' onTouchTap={()=>{this.setState({isFullScreen:false})}}>返回</div>}
-				{this.state.isFullScreen && <iframe className='wc-fullscreen' height={this.viewW/10*9.4*9/16} width={this.viewW/10*9.4} src={this.state.describeSrc} frameBorder="0"></iframe>}
+				{this.state.describeSrc && this.state.isFullScreen && <div className='wc-feild-back' onTouchTap={this.exitFullscreen.bind(this)}>返回</div>}
+				{this.state.isFullScreen && <iframe className='wc-fullscreen' ref='wc-fullscreen' src={this.state.describeSrc} frameBorder="0"></iframe>}
 				<WCHeader {...headerProps}></WCHeader>
 				<section ref="scroll" className="wc-field-scroll" style={{height:this.viewH - 64 }}>
 					<div style={{border:'1px solid transparent',paddingBottom:20}}>
 						<div className={'wc-field-describe ' +(this.state.isFullScreen?'active':'')} style={style}>
 							{this.state.describeFull && <iframe height={this.viewW/10*9.4*9/16} width={this.viewW/10*9.4} src={this.state.describeFull} frameBorder="0"></iframe>}
-							{this.state.describeFull && <div className='wc-feild-fullscreen'  onTouchTap={()=>{this.setState({isFullScreen:true})}}><img src='./assets/images/fullscreen.png'/></div>}
+							{this.state.describeFull && <div className='wc-feild-fullscreen'  onTouchTap={this.fullscreen.bind(this)}><img src='./assets/images/f.png'/></div>}
 
 						</div>
 						<div className='wc-field-title-C'>
@@ -448,27 +459,35 @@ class FieldApp extends Component {
 	}
 
 	showImage(index){
-		if(H5Manager){
+		if(window.H5Manager){
 			var arr = [];
+
 			this.state.fieldPicList.filter((item,i)=>{
 				return i < this.state.imgCount;
 			}).map((item,i)=>{
 				arr.push(item.src);
 			});
-			var allImg = [];
+			var allArrSrc = [],
+				allArrName = [];
 			this.fieldPicList.map((item,i)=>{
-				allImg.push(item.src);
-			})
-			H5Manager.showImage(index,arr,this.state.title,allImg);	
+				allArrSrc.push(item.src);
+				allArrName.push(item.name);
+			});
+			
+			H5Manager.showImage(index,arr,this.state.title,allArrSrc,allArrName);	
 		}
 	}
 
 	showAllImage(){
-		var allImg = [];
+
+		var allArrSrc = [],
+			allArrName = [];
+
 		this.fieldPicList.map((item,i)=>{
-			allImg.push(item.src);
-		})
-		H5Manager.showAllImage(this.state.title,allImg);	
+			allArrSrc.push(item.src);
+			allArrName.push(item.name);
+		});
+		window.H5Manager && H5Manager.showAllImage(this.state.title,allArrSrc,allArrName);	
 	}
 
 	seeMoreComment(){
@@ -544,6 +563,7 @@ class FieldApp extends Component {
 							s.state.commentList = result.commentList;
 							s.state.fieldPicList = result.fieldPicList;
 							s.fieldPicList = result.fieldPicList.concat([]);
+							window.s =s;
 							s.state.fieldActive = result.fieldActive;
 							s.state.fieldParams = result.fieldParams;
 							s.fieldParamsArr = result.fieldParams.concat([]);
@@ -553,6 +573,9 @@ class FieldApp extends Component {
 								s.mainScroll = new IScroll(s.refs['scroll'],{
 									preventDefault:false
 								});
+
+								s.state.scroll = s.mainScroll;
+								s.forceUpdate()
 
 								s.fieldPicScroll = new IScroll(s.refs['wc-field-pic-scroll'],{
 									scrollX:true,
