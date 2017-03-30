@@ -7,6 +7,8 @@ import VideoApp from './video/index.jsx';
 import LiveApp from './live/index.jsx';
 import NewsApp from './news/index.jsx';
 import SubjectApp from './subject/index.jsx';
+import AgreementApp from './agreement/index.jsx';
+
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 import './assets/css/index.css';
@@ -29,6 +31,7 @@ class App extends React.Component{
 				{path: '/live/:id(/:subjectId)', app:LiveApp },
 				{path: '/news/:id(/:subjectId)', app:NewsApp },
 				{path: '/subject/:id', app:SubjectApp },
+				{path: '/agreement/(:id)', app:AgreementApp }
 		];
 		return (
 			<div>

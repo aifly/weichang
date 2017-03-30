@@ -27,6 +27,7 @@ class VideoChildApp extends Component {
             posterStyle.background='url('+this.props.videoObj.poster+') no-repeat center center';
         }
 
+
         return (
             <div className="wc-video-child-main-ui">
                 <div className={"wc-video-poster "+ this.state.playBtnShow } onTouchTap={()=>{this.props.container!=='live-video' && this.props.startPlay()}} id={this.props.container} style={posterStyle} >
@@ -38,8 +39,10 @@ class VideoChildApp extends Component {
 
                     {this.state.showFullscreen &&  <div className='lt-viode-toolbar'><img src='./assets/images/fullscreen.png'   onTouchTap={()=>{this.props.startPlay()}}/></div>}
                     {this.props.videoObj.isVr*1 === 0  && this.props.container ==='live-video' && <video autoPlay ref='video' width={this.viewW} height={this.viewW * this.props.scale} style={{position:'absolute',left:0,zIndex:10,opacity:this.props.videoShow?1:0,background:'#000'}}  >
-                        <source src={this.props.videoObj.videoSrc}/>
+                        <source src={this.props.videoObj.videoSrc} type="application/vnd.apple.mpegurl"/>
                     </video> }
+
+                    {this.props.videoObj.isVr*1 === 0  && this.props.container ==='live-video' && <div className='wc-live-full' onTouchTap={this.showVideo.bind(this)}></div>}
 
                 </div>
                 <div className="wc-video-title-C">
@@ -63,12 +66,15 @@ class VideoChildApp extends Component {
     }
 
 
+    showVideo(){
+         H5Manager.showVideo(this.props.videoObj.title,this.props.videoObj.videoSrc,1,this.props.videoObj.isVr*1);
+    }
+
     playLive(){
        
     }
 
     dianzan(){//点赞
-       
         
         if(this.update){
             this.update = false;
@@ -87,9 +93,7 @@ class VideoChildApp extends Component {
     componentDidMount(){
            /*播放器参数配置*/
        this.update = true;
-      
-     
-
+       
     }
 }
 VideoChildApp.defaultProps ={

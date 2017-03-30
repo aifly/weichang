@@ -9,6 +9,22 @@ body{
       display: none;
     }
   }
+
+
+  .wc-live-full{
+     @include pos(a);
+     width:40px;
+     height: 40px;
+     right: 0;
+     bottom: 0;
+     z-index: 10;
+  }
+  video{
+    @include pos(a);
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
   @include pos(r);
   z-index: 1;
   &:before,&:after{

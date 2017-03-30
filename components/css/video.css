@@ -11,6 +11,18 @@ body {
   z-index: 1; }
   .wc-video-poster.active:before, .wc-video-poster.active:after {
     display: none; }
+  .wc-video-poster .wc-live-full {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 0;
+    bottom: 0;
+    z-index: 10; }
+  .wc-video-poster video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1; }
   .wc-video-poster:before, .wc-video-poster:after {
     content: '';
     position: absolute;

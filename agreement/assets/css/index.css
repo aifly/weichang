@@ -1,0 +1,28 @@
+/*.ant-btn:focus, .ant-btn:hover,.ant-input:focus, .ant-input:hover {
+    background-color: #fff;
+    border-color: #bf1616;
+    box-shadow: 0 0 0 2px rgba(191, 22, 22, 0.1);
+}*/
+body {
+  overflow: hidden; }
+
+.wc-agreenment-main-ui .wc-agreenment-scroll {
+  position: relative; }
+.wc-agreenment-main-ui .wc-agreenment-title {
+  font-weight: normal;
+  width: 9.4rem;
+  margin: .3rem auto 0;
+  font-size: .5rem; }
+.wc-agreenment-main-ui h2, .wc-agreenment-main-ui h3 {
+  font-weight: normal; }
+.wc-agreenment-main-ui h2 {
+  margin: 20px auto 0;
+  text-align: center; }
+.wc-agreenment-main-ui .wc-agreenment-scroller h3, .wc-agreenment-main-ui .wc-agreenment-scroller div {
+  width: 90%;
+  margin: 0 auto; }
+.wc-agreenment-main-ui .wc-agreenment-scroller h3 {
+  height: 50px;
+  line-height: 50px; }
+
+/*# sourceMappingURL=index.css.map */

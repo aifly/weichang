@@ -218,7 +218,7 @@ body {
   width: 100%;
   background: #dadada;
   z-index: 999;
-  padding-bottom: 1rem;
+  padding-bottom: 10px;
   bottom: 0;
   text-align: right; }
   .wc-comment-box.active {

@@ -27,7 +27,7 @@ class LiveApp extends Component {
 			scale:9/16,
 			videoObj:{
 				"poster":"",
-				"isVr":0,
+				"isVr":null,
 				"videoSrc":'http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8',//"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
 				"title":"",
 				"cate":"",
@@ -74,6 +74,7 @@ class LiveApp extends Component {
 		var data = this.state;
 		data.startPlay = this.startPlay.bind(this);
 		data.container = 'live-video';
+		data.switchPlatform = this.props.switchPlatform;
 
 
 		var headerProps = {
@@ -332,6 +333,9 @@ class LiveApp extends Component {
 					s.state.videoObj.remark = result.remark;
 					s.state.isCollect = result.isCollect;
 					s.forceUpdate(()=>{
+						if(s.props.switchPlatform() === 'ios' && window.H5Manager){
+					            H5Manager.showLiveVideo(s.state.videoObj.title,s.state.videoObj.videoSrc,s.state.videoObj.isVr*1);
+					       }
 						s.defaultRemark = s.state.videoObj.remark;
 						s.state.videoObj.remark = s.state.videoObj.remark.substring(0,32)+'...';
 						

@@ -1,0 +1,36 @@
+@import "../../../components/css/base.scss";
+body{
+  overflow: hidden;
+}
+
+$mainW : 9.4rem;
+.wc-agreenment-main-ui{
+  .wc-agreenment-scroll{
+    @include pos(r);
+  }
+  .wc-agreenment-title{
+    font-weight:normal;
+    width: $mainW;
+    margin:.3rem auto 0;
+    font-size:.5rem;
+  }
+
+  h2,h3{
+      font-weight: normal;
+  }
+  h2{
+    margin:20px auto 0;
+    text-align: center;
+  }
+  .wc-agreenment-scroller{
+    h3,div{
+      width:90%;
+      margin: 0 auto;
+    }  
+    h3{
+      height: 50px;
+      line-height: 50px;
+    }
+  }
+  
+}
