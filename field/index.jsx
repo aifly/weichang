@@ -225,7 +225,7 @@ class FieldApp extends Component {
 
 	fullscreen(){
 		if(window.H5Manager) {
-			H5Manager.showPanorama(this.state.describeSrc);	
+			H5Manager.showPanorama(this.state.describeFull);	
 		} else{
 			this.setState({isFullScreen:true});	
 		}
@@ -253,12 +253,12 @@ class FieldApp extends Component {
 		return (
 			<div className='wc-field-ui'>
 				{this.state.describeSrc && this.state.isFullScreen && <div className='wc-feild-back' onTouchTap={this.exitFullscreen.bind(this)}>返回</div>}
-				{this.state.isFullScreen && <iframe className='wc-fullscreen' ref='wc-fullscreen' src={this.state.describeSrc} frameBorder="0"></iframe>}
+				{this.state.isFullScreen && <iframe className='wc-fullscreen' ref='wc-fullscreen' src={this.state.describeFull} frameBorder="0"></iframe>}
 				<WCHeader {...headerProps}></WCHeader>
 				<section ref="scroll" className="wc-field-scroll" style={{height:this.viewH - 64 }}>
 					<div style={{border:'1px solid transparent',paddingBottom:20}}>
 						<div className={'wc-field-describe ' +(this.state.isFullScreen?'active':'')} style={style}>
-							{this.state.describeFull && <iframe height={this.viewW/10*9.4*9/16} width={this.viewW/10*9.4} src={this.state.describeFull} frameBorder="0"></iframe>}
+							{this.state.describeFull && <iframe height={this.viewW/10*9.4*9/16} width={this.viewW/10*9.4} src={this.state.describeSrc} frameBorder="0"></iframe>}
 							{this.state.describeFull && <div className='wc-feild-fullscreen'  onTouchTap={this.fullscreen.bind(this)}><img src='./assets/images/f.png'/></div>}
 
 						</div>
