@@ -20,11 +20,10 @@ class VideoChildApp extends Component {
 
         var  posterStyle = {
             width:this.viewW,
-            height:this.viewW * this.props.scale,
-            backgroundSize:'cover'
+            height:this.viewW * this.props.scale
         }
         if(this.props.videoObj.poster){
-            posterStyle.background='url('+this.props.videoObj.poster+') no-repeat center center';
+            posterStyle.background='url('+this.props.videoObj.poster+') no-repeat center center / cover';
         }
 
 
