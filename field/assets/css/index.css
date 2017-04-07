@@ -49,6 +49,10 @@ body {
       position: absolute;
       right: 8px; }
 
+.wc-field-no-comment {
+  width: 9.4rem;
+  margin: 0 auto; }
+
 .wc-field-scroll {
   overflow: hidden; }
 

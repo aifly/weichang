@@ -123,6 +123,7 @@ class FieldApp extends Component {
 			 		}*/
 			 ],
 			 fieldActive:{
+			 	activeList:[]
 				 	/*activePic:'./assets/images/active.jpg',
 				 	activeList:[
 				 		{
@@ -296,8 +297,9 @@ class FieldApp extends Component {
 							</ul>
 						</div>
 						{this.state.commentList.length>0 && <div className="wc-field-more" onTouchTap={this.seeMoreComment.bind(this)}><span className={this.state.defaultCommentState==='收起更多'?'active':''}>{this.state.defaultCommentState}</span></div>}
+						{this.state.commentList.length<=0 && <div className='wc-field-no-comment'><img src='./assets/images/buchong.png'/></div>}
 
-						{this.state.fieldParams.length >0 && <div className="wc-field-commit-C wc-field-params">
+						{<div className="wc-field-commit-C wc-field-params">
 													<aside>场地参数</aside>
 													<aside></aside>
 												</div>}
@@ -323,9 +325,10 @@ class FieldApp extends Component {
 														})}
 													</tbody>
 												</table>}
+						{this.state.fieldParams.length <=0 && <div className='wc-field-no-comment'><img src='./assets/images/buchong.png'/></div>}
 						{this.fieldParamsArr.length > this.defaultParamsCount && <div className="wc-field-more" onTouchTap={this.seeMoreParams.bind(this)}><span className={this.state.defaultParamsState==='收起更多'?'active':''}>{this.state.defaultParamsState}</span></div>}
 						
-						{this.state.fieldPicList.length>0 && <div className="wc-field-commit-C">
+						{ <div className="wc-field-commit-C">
 													<aside>场地图片</aside>
 													<aside></aside>
 												</div>}
@@ -340,19 +343,21 @@ class FieldApp extends Component {
 													<section>{item.name}</section>
 											</li>
 										})}
-										<li onTouchTap={this.showAllImage.bind(this)}>
+										{this.state.fieldPicList.length > 0 && <li onTouchTap={this.showAllImage.bind(this)}>
 											<div style={{background:'url(./assets/images/all1.png) no-repeat left center / contain'}}></div>
 											<section style={{opacity:0}}>{'2222'}</section>
-										</li>
+										</li>}
 								</ul>
 						</div>
 
-						{this.state.fieldActive.activeList && <div className="wc-field-commit-C">
+						{this.state.fieldPicList.length <=0 && <div className='wc-field-no-comment'><img src='./assets/images/buchong.png'/></div>}
+
+						{<div className="wc-field-commit-C">
 													<aside>曾办活动</aside>
 													<aside></aside>
 												</div>}
 						<div className="wc-field-active">
-							{this.state.fieldActive.activeList &&<div className='wc-field-active-img'>
+							{this.state.fieldActive && this.state.fieldActive.activeList &&<div className='wc-field-active-img'>
 								  <img src={this.state.fieldActive.activePic}/>
 							</div>}
 							<div  className="wc-field-active-scroll" ref='wc-field-active-scroll'>
@@ -376,7 +381,9 @@ class FieldApp extends Component {
 							</div>
 						</div>
 
-						{this.state.sameFeildList.length>0 && <div className="wc-field-same-C">
+						{this.state.fieldActive && (this.state.fieldActive.activeList ||  this.state.fieldActive.activeList.length <=0 )&& <div className='wc-field-no-comment'><img src='./assets/images/buchong.png'/></div>}
+
+						{<div className="wc-field-same-C">
 													<aside>相似场地</aside>
 													<aside></aside>
 												</div>}
@@ -390,9 +397,9 @@ class FieldApp extends Component {
 										<div style={{maxWidth:'8rem'}}><span>{item.address}</span><span></span><span>{item.area}㎡</span><span></span><span>最多容纳{item.personCount}人</span></div>
 									</li>
 								})}
-								{this.state.sameFeildList.length<=0 && <div style={{width:'9.4rem',marginLeft:'.3rem','color':'#ccc'}}></div>}
 							</ul>
 						</div>
+						{this.state.sameFeildList.length<=0 && <div className='wc-field-no-comment'><img src='./assets/images/buchong.png'/></div>}
 					</div>
 				</section>
 			</div>
@@ -552,7 +559,6 @@ class FieldApp extends Component {
 					if(data.code === 200){
 
 							var result = data.result;
-							console.log(result)
 							s.state.describeSrc = result.describeSrc;
 							s.state.describeFull = result.describeFull;
 							s.state.title = result.title;
@@ -564,10 +570,16 @@ class FieldApp extends Component {
 							s.state.fieldPicList = result.fieldPicList;
 							s.fieldPicList = result.fieldPicList.concat([]);
 							window.s =s;
+
 							s.state.fieldActive = result.fieldActive;
+							if(!result.fieldActive.activeList){
+								s.state.fieldActive.activeList = [];
+							}
+
+
 							s.state.fieldParams = result.fieldParams;
 							s.fieldParamsArr = result.fieldParams.concat([]);
-							s.state.sameFeildList = result.similarPlace;
+							//s.state.sameFeildList = result.similarPlace;
 							s.forceUpdate();
 							setTimeout(()=>{
 								s.mainScroll = new IScroll(s.refs['scroll'],{
@@ -609,13 +621,41 @@ class FieldApp extends Component {
 									}
 								});
 								s.state.commentHeight = s.defaultHeight;
-								s.forceUpdate();
+								s.forceUpdate(()=>{
+									s.filterLoadingImg(s.state);
+									loading(s.loadingImg,null,()=>{
+										s.mainScroll.refresh();
+									});
+								});
 						
 					} 
 			}
 		})
 
 		
+	}
+
+	filterLoadingImg(data){
+		this.loadingImg = this.loadingImg || [];
+		for(var attr in data){
+			if(typeof data[attr] === 'object'){
+				this.filterLoadingImg(data[attr]);
+			}else{
+				if(typeof data[attr] === 'string' && data[attr].split('.').length>1){
+					var suffix = data[attr].split('.')[data[attr].split('.').length-1];
+					
+					if(suffix === 'jpg'||suffix === 'png'||suffix === 'gif'||suffix === 'jpeg'){
+						var add =true;
+						this.loadingImg.forEach((item,i)=>{
+							if(item === data[attr]){
+								add = false;
+							}
+						});
+						add && this.loadingImg.push(data[attr]);
+					}
+				}
+			}
+		}
 	}
 }
 export default WCPubCom(FieldApp);
