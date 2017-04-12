@@ -623,8 +623,12 @@ class FieldApp extends Component {
 								s.state.commentHeight = s.defaultHeight;
 								s.forceUpdate(()=>{
 									s.filterLoadingImg(s.state);
+									if(window.H5Manager){
+										H5Manager.loadFinish && H5Manager.loadFinish();
+									}
 									loading(s.loadingImg,null,()=>{
 										s.mainScroll.refresh();
+
 									});
 								});
 						

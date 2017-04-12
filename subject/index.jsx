@@ -209,9 +209,14 @@ class SubjectApp extends Component {
 		  			s.state.list.map((item,i)=>{
 		  				imgList.push(item.imgSrc);
 		  			});
+		  			if(window.H5Manager){
+						H5Manager.loadFinish && H5Manager.loadFinish();
+					}
 		  			loading(imgList,null,()=>{
 		  				
 		  				s.scroll && s.scroll.refresh();
+
+
 		  			});
 		  		}
 		  	}

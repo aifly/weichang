@@ -64,7 +64,7 @@ class VideoApp extends Component {
 
 		return (
 			<div className="wc-video-main-ui">
-				{!window.H5Manager && <a href='javascript:void(0)'><img src='./assets/images/banner_top_open.jpg'/></a>}
+				{!window.H5Manager && false && <a href='javascript:void(0)'><img src='./assets/images/banner_top_open.jpg'/></a>}
 				<WCHeader {...headerProps}></WCHeader>
 				<div className="wc-video-remark-scroll" ref='wc-video-remark-scroll' style={{height:this.state.scrollHeight,overflow:'hidden'}}>
 					<div>
@@ -180,7 +180,11 @@ class VideoApp extends Component {
 					var result = data.result;
 					s.state.isCollect = result.isCollect;
 					s.state.videoObj = result;
-					s.forceUpdate();
+					s.forceUpdate(()=>{
+						if(window.H5Manager){
+							H5Manager.loadFinish && H5Manager.loadFinish();
+						}
+					});
 				}
 			}
 		})
