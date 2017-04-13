@@ -626,10 +626,11 @@ class FieldApp extends Component {
 									if(window.H5Manager){
 										H5Manager.loadFinish && H5Manager.loadFinish();
 									}
-									loading(s.loadingImg,null,()=>{
-										s.mainScroll.refresh();
+									
+								});
 
-									});
+								loading(s.loadingImg,null,()=>{
+									s.mainScroll && s.mainScroll.refresh();
 								});
 						
 					} 
