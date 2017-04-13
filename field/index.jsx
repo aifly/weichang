@@ -446,7 +446,7 @@ class FieldApp extends Component {
 		}
 
 		setTimeout(()=>{
-			this.mainScroll.refresh();//刷新滚动条
+			this.mainScroll && this.mainScroll.refresh();//刷新滚动条
 		},100);
 
 		this.forceUpdate();
@@ -509,7 +509,7 @@ class FieldApp extends Component {
 		}
 		this.forceUpdate();
 		setTimeout(()=>{
-			this.mainScroll.refresh();//刷新滚动条
+			this.mainScroll && this.mainScroll.refresh();//刷新滚动条
 		},100);
 	}
 
@@ -524,7 +524,7 @@ class FieldApp extends Component {
 			}
 			this.forceUpdate();
 			setTimeout(()=>{
-				this.mainScroll.refresh();//刷新滚动条
+				this.mainScroll &&  this.mainScroll.refresh();//刷新滚动条
 			},100);
 
 			
