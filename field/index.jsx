@@ -381,7 +381,7 @@ class FieldApp extends Component {
 							</div>
 						</div>
 
-						{this.state.fieldActive && (this.state.fieldActive.activeList ||  this.state.fieldActive.activeList.length <=0 )&& <div className='wc-field-no-comment'><img src='./assets/images/buchong.png'/></div>}
+						{this.state.fieldActive && (this.state.fieldActive.activeList &&  this.state.fieldActive.activeList.length <=0 )&& <div className='wc-field-no-comment'><img src='./assets/images/buchong.png'/></div>}
 
 						{<div className="wc-field-same-C">
 													<aside>相似场地</aside>
