@@ -28,7 +28,7 @@ class LiveApp extends Component {
 			videoObj:{
 				"poster":"",
 				"isVr":null,
-				"videoSrc":'http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8',//"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
+				"videoSrc":'',//"http://pili-live-hls.live.zmiti.com/test-wechang/wechang.m3u8"
 				"title":"",
 				"cate":"",
 				"time":"",
@@ -75,6 +75,7 @@ class LiveApp extends Component {
 		data.startPlay = this.startPlay.bind(this);
 		data.container = 'live-video';
 		data.switchPlatform = this.props.switchPlatform;
+
 
 
 		var headerProps = {
