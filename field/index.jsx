@@ -579,7 +579,7 @@ class FieldApp extends Component {
 
 							s.state.fieldParams = result.fieldParams;
 							s.fieldParamsArr = result.fieldParams.concat([]);
-							//s.state.sameFeildList = result.similarPlace;
+							s.state.sameFeildList = result.similarPlace;
 							s.forceUpdate();
 							setTimeout(()=>{
 								s.mainScroll = new IScroll(s.refs['scroll'],{
