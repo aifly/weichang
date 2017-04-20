@@ -365,7 +365,7 @@ class FieldApp extends Component {
 								{this.state.fieldActive.activeList && <ul  className="wc-field-active-list" style={{width:(this.state.fieldActive.activeList.length+1) * (document.documentElement.clientWidth/ 10 * 4+ 10)}}>
 									{this.state.fieldActive.activeList.map((item,i)=>{
 										return <li key={i}>
-											<div  style={{background:'url('+item.src+') no-repeat center center / cover',backgroundSize:'cover',height:'2.5rem'}} ><Link to={''+ item.type+'/'+item.id}><img style={{opacity:0}} src={item.src}/></Link></div>
+											<div  style={{background:'url('+item.src+') no-repeat center center / cover',backgroundSize:'cover',height:'2.5rem'}} ><Link onTouchTap={()=>{setTimeout(()=>{window.location.reload();},500)}} to={'/'+ item.type+'/'+item.id}><img style={{opacity:0}} src={item.src}/></Link></div>
 											<h3>{item.name}</h3>
 											<div>{item.date}</div>
 										</li>
