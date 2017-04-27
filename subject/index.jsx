@@ -123,7 +123,7 @@ class SubjectApp extends Component {
 											<section className='wc-subject-video'>
 												<div className='wc-subject-video-img'>
 														<Link to={'/'+item.type+'/'+item.id+'/'+this.subjectId}><img src={item.imgSrc} /></Link>
-														{item.isVr && <img className='wc-subject-vr' src='./assets/images/vr.png'/>}
+														{(item.isVr==='1') && <img className='wc-subject-vr' src='./assets/images/vr.png'/>}
 												</div>
 												<div className='wc-subject-video-info'>
 														<aside>
