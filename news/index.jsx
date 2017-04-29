@@ -152,8 +152,8 @@ class NewsApp extends Component {
 							s.state.imgSrc = result.imgSrc;
 							var text = s.HTMLDeCode(result.content);
 
-							s.state.content = text.replace(/&/g,'>');
-							s.state.content = s.state.content.replace(/>amp;nbsp;/g,'');
+							s.state.content = text.replace(/>amp;nbsp;/g,'');
+							//s.state.content = s.state.content.replace(/&/g,'>');
 							s.forceUpdate(()=>{
 								if(window.H5Manager){
 									H5Manager.loadFinish && H5Manager.loadFinish();
