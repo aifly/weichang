@@ -17,41 +17,7 @@ class SubjectApp extends Component {
 			imgSrc:'',
 			describe:'',
 			list:[
-				/*{
-					id:'1',
-					type:'field',
-					imgSrc:'./assets/images/feild.jpg',
-					name:'798艺术区约美术馆',
-					detail:{
-						address:'朝阳区',
-						area:'1500m2',
-						maxPerson:'1000'
-					},
-					title:'城市让生活更美好，而城市里的美丽人生，从美术馆开始。',
-					describe:'这里的展览从来不会让挑剔的观众失望，什么样的艺术大师都来过。新馆是2008年10月新建的，地处偏远，但来的人很多。整个建筑设计得非常有特色，展示的空间布局合理，移步换景。由建筑师矶崎新设计，据说设计费每平米达700元。'
-				},
-				{
-					id:'2',
-					type:'news',
-					imgSrc:'./assets/images/f-remark.jpg',
-					title:'城市里面的美丽人生，从美术馆开始。',
-					describe:'这里的展览从来不会让挑剔的观众失望，什么样的艺术大师都来过。新馆是2008年10月新建的，地处偏远，但来的人很多。整个建筑设计得非常有特色，展示的空间布局合理，移步换景。由建筑师矶崎新设计，据说设计费每平米达700元。'
-				},
-				{
-					id:1,
-					type:'video',
-					isVr:true,
-					imgSrc:'./assets/images/video-poster.jpg',
-					from:{
-						src:'./assets/images/yk-logo.png',
-						name:'优酷'
-					},
-					videoTitle:'2017年维多利亚的秘密秀场直播',
-					duration:'01:54:30',
-					follow:355,
-					desTitle:'城市里面的美丽人生，从美术馆开始。',
-					describe:'这里的展览从来不会让挑剔的观众失望，什么样的艺术大师都来过。新馆是2008年10月新建的，地处偏远，但来的人很多。整个建筑设计得非常有特色，展示的空间布局合理，移步换景。由建筑师矶崎新设计，据说设计费每平米达700元。'
-				}*/
+				
 			]
 		}
 		this.subjectId = 100;

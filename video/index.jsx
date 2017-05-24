@@ -140,13 +140,13 @@ class VideoApp extends Component {
 					resID:id
 				},
 				success(data){
-					console.log(data)
+					
 					if(data.code === 200 && data.result*1 === 1){
 						 window.obserable.trigger({
-			            type:'toast',
-			            data:''
-			        });
-						s.state.videoObj.collect = s.state.videoObj.collect*1 + 1;
+				            type:'toast',
+				            data:''
+				        });
+						s.state.videoObj.follow = s.state.videoObj.follow*1 + 1;
 						s.forceUpdate();
 					}
 				}
@@ -180,6 +180,7 @@ class VideoApp extends Component {
 					var result = data.result;
 					s.state.isCollect = result.isCollect;
 					s.state.videoObj = result;
+					s.state.videoObj.follow = result.follow || 0;
 					s.forceUpdate(()=>{
 						if(window.H5Manager){
 							H5Manager.loadFinish && H5Manager.loadFinish();

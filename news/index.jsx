@@ -85,9 +85,9 @@ class NewsApp extends Component {
 			success(data){
 				if(data.code === 200 && data.result*1 === 1){
 					 window.obserable.trigger({
-		            type:'toast',
-		            data:''
-		        });
+			            type:'toast',
+			            data:''
+			        });
 					s.state.follow = s.state.follow*1 + 1;
 					s.state.isZan = true;
 					s.forceUpdate();

@@ -51,7 +51,7 @@ class VideoChildApp extends Component {
                         <h3>{this.props.videoObj.title}</h3>
                         <div className="wc-video-cate">{this.props.videoObj.cate} | <span> <span>{this.props.videoObj.time}</span>  {this.state.isZan?<img onTouchTap={this.dianzan.bind(this)}
                                     src="./assets/images/heart1.png" alt=""/>:<img
-                                    onTouchTap={this.dianzan.bind(this)} src="./assets/images/heart.png" alt=""/>}</span> <span>{this.props.videoObj.collect}</span></div>
+                                    onTouchTap={this.dianzan.bind(this)} src="./assets/images/heart.png" alt=""/>}</span> <span>{this.props.videoObj.follow}</span></div>
                     </div>
                     <div className='wc-video-from wc-video-title-item' onTouchTap={this.playLive.bind(this)}>
                         <div className='wc-from-logo' >
