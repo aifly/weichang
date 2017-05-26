@@ -594,12 +594,14 @@ class FieldApp extends Component {
 									scrollY:false,
 									preventDefault:false
 								});
-
-								s.fieldActiveScroll = new IScroll(s.refs['wc-field-active-scroll'],{
-									scrollX:true,
-									scrollY:false,
-									preventDefault:false
-								});
+								if(s.refs['wc-field-active-scroll']){
+									s.fieldActiveScroll = new IScroll(s.refs['wc-field-active-scroll'],{
+										scrollX:true,
+										scrollY:false,
+										preventDefault:false
+									});	
+								}
+								
 								s.sameFeildScroll = new IScroll(s.refs['wc-feild-same-scroll'],{
 									scrollX:true,
 									scrollY:false,
