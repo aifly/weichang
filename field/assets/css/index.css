@@ -98,13 +98,10 @@ body {
     color: #1d94d4;
     margin-left: 10px; }
   .wc-field-address .wc-address {
-    width: 6rem;
-    overflow: hidden;
+    width: 8rem;
     display: inline-block;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative; }
+    position: relative;
+    color: #1d94d4; }
   .wc-field-address .wc-entry-map {
     display: inline-block;
     color: #ccc;
@@ -112,7 +109,8 @@ body {
     transform: scale(1, 1.5);
     position: absolute;
     right: 0;
-    top: 1px; }
+    top: 50%;
+    margin-top: -10px; }
   .wc-field-address > div {
     color: #9da9bc; }
     .wc-field-address > div:last-of-type {
