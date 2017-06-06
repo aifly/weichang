@@ -43,6 +43,10 @@ class VideoChildApp extends Component {
                         <source src={this.props.videoObj.videoSrc} type="application/vnd.apple.mpegurl"/>
                     </video> }
 
+                    {this.props.videoObj.isVr*1 === 0 && this.props.videoObj.videoSrc  && this.props.container !=='live-video' && <video  ref='video' width={this.viewW} height={this.viewW * this.props.scale} style={{position:'absolute',left:0,zIndex:10,display:this.props.videoShow?'block':'none',background:'#000'}}  >
+                        <source src={this.props.videoObj.videoSrc} type='video/mp4'/>
+                    </video> }
+
                     {this.props.videoObj.isVr*1 === 0  && this.props.container ==='live-video' && <div className='wc-live-full' onTouchTap={this.showVideo.bind(this)}></div>}
 
                 </div>

@@ -50,8 +50,6 @@ class VideoApp extends Component {
 		var data = this.state;
 		data.startPlay = this.startPlay.bind(this);
 
-		
-
 
 			var headerProps = {
 				subjectId:this.props.params.subjectId,
@@ -102,15 +100,18 @@ class VideoApp extends Component {
 				 }
 			 };
 		
-		this.state.videoShow=true;
+		//this.state.videoShow=true;
 		this.forceUpdate();
 
 		//任何点播视频都是跳转到native里面播放的。
-		 H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,0,this.state.videoObj.isVr*1);
+		window.H5Manager && H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,0,this.state.videoObj.isVr*1);
 		if(this.state.videoObj.isVr * 1 === 0){//普通视频
 			if(window.H5Manager){//
 		      //H5Manager.showVideo(this.state.videoObj.title,this.state.videoObj.videoSrc,0,this.state.videoObj.isVr*1);
 			}else{
+				this.state.videoShow=true;
+				this.forceUpdate();
+				$('video')[0].play()
 			 	//initLoad(params);
 			}
 		}else{
