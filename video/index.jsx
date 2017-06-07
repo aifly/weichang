@@ -80,7 +80,7 @@ class VideoApp extends Component {
 		var src = this.state.videoObj.videoSrc;
 				//src='http://o8pomesqq.bkt.clouddn.com/5252.mp4'
 
-				 var params = {
+			var params = {
 				 container: document.getElementsByClassName("wc-video-poster")[0],
 				 name:"SceneViewer",
 				 dragDirectionMode:true,
